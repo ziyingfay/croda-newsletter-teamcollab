@@ -1,5 +1,7 @@
 # 禾大 Croda 情报订阅 Agent 工作区
 
+Repository: `corda-newsletter`
+
 这是为客户**禾大 Croda Beauty / Croda 美妆个护事业部**定制的行业情报订阅项目工作区。
 
 项目已从上一代“食品饮料 RSS 抓取 + newsletter 打标”模板迁移为禾大专属项目。旧食品饮料代码、字典和数据流说明已归档到 `reference/legacy-food-beverage/`，仅作为方法论和实现参考；当前活跃文档、标签字典和打标 skill 均以禾大美妆个护原料情报场景为准。
