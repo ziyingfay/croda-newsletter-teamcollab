@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.openclaw.skills/newsletter-tagging/croda_tag_output.schema.json",
+  "title": "Croda Beauty newsletter tagging output",
+  "description": "A single Croda Beauty article tagging result. Batch output may be an array of this object.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "article_id",
+    "relevance",
+    "tagging_decision",
+    "evidence_records",
+    "suggested_new_tags",
+    "review_reasons",
+    "tag_audit"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "newsletter-tagging/croda-beauty-v1"
+    },
+    "article_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string"
+    },
+    "source_key": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "relevance": {
+      "type": "string",
+      "enum": ["relevant", "not_relevant", "unclear"]
+    },
+    "tagging_decision": {
+      "type": "string",
+      "enum": ["tagged", "no_relevant_tag", "no_matching_tag", "needs_review"]
+    },
+    "source_nature": {
+      "type": "string",
+      "enum": [
+        "official_source",
+        "media_report_interview",
+        "wechat_public_account",
+        "third_party_analysis",
+        "other"
+      ]
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "content_language": {
+          "type": "string"
+        },
+        "market_region": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "primary_story_type": {
+          "type": "string"
+        },
+        "industry_segment": {
+          "type": "string"
+        },
+        "product_application": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "ingredient_technology": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^([a-z0-9_]+|other:[a-z0-9_]+)$"
+          },
+          "uniqueItems": true
+        },
+        "functional_claim": {
+          "type": "array",
+          "items": { "type": "string" },
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "strategic_driver": {
+          "type": "array",
+          "items": { "type": "string" },
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "value_chain_stage": {
+          "type": "string"
+        },
+        "entity_role": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "company": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "evidence_records": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidenceRecord" }
+    },
+    "suggested_new_tags": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/suggestedNewTag" }
+    },
+    "review_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "insufficient_evidence",
+          "ambiguous_relevance",
+          "suggested_new_taxonomy_label",
+          "conflicting_tags",
+          "insufficient_content",
+          "broad_or_suspicious_tag",
+          "inconsistent_model_output",
+          "high_risk_label_sample",
+          "random_sample",
+          "post_processing_flag",
+          "human_requested"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "tag_audit": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "tagger",
+        "tagged_at",
+        "evidence_fields",
+        "dictionary_version",
+        "prompt_version"
+      ],
+      "properties": {
+        "tagger": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tagged_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["content", "text", "title", "summary", "raw_tags", "url", "source_defaults"]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "dictionary_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retag_reason": {
+          "type": "string"
+        },
+        "company_entity_version": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "tagging_decision": { "const": "tagged" }
+        }
+      },
+      "then": {
+        "required": ["source_nature", "tags"],
+        "properties": {
+          "tags": {
+            "required": [
+              "content_language",
+              "primary_story_type",
+              "industry_segment",
+              "strategic_driver",
+              "value_chain_stage"
+            ],
+            "properties": {
+              "strategic_driver": { "minItems": 1 }
+            }
+          },
+          "evidence_records": { "minItems": 1 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "tagging_decision": { "const": "needs_review" }
+        }
+      },
+      "then": {
+        "properties": {
+          "review_reasons": { "minItems": 1 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "tagging_decision": { "const": "no_matching_tag" }
+        }
+      },
+      "then": {
+        "properties": {
+          "review_reasons": { "minItems": 1 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "suggestedNewTag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "label", "display_name", "reason", "evidence", "status"],
+      "properties": {
+        "field": { "type": "string" },
+        "label": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_label": { "type": "string" },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": { "const": "pending_review" }
+      }
+    },
+    "evidenceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "label", "evidence_field", "evidence_text", "reason"],
+      "properties": {
+        "field": { "type": "string" },
+        "label": { "type": "string" },
+        "extracted_name": { "type": "string" },
+        "evidence_field": {
+          "type": "string",
+          "enum": ["content", "text", "title", "summary", "raw_tags", "url", "source_defaults"]
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

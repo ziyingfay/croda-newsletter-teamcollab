@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市场监测月报 2026年5月 | 禾大Croda Beauty</title>
+<style>
+:root {
+  --primary: #6B5B95;
+  --secondary: #4A90E2;
+  --accent: #E8A87C;
+  --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg: #F8F9FC;
+  --card: #FFFFFF;
+  --text: #2D3748;
+  --text-secondary: #718096;
+  --border: #E2E8F0;
+  --success: #48BB78;
+  --warning: #ED8936;
+  --danger: #F56565;
+  --info: #4299E1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 0;
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .collapsible-content { max-height: none !important; }
+  .report-header { position: relative !important; }
+  section { break-inside: avoid; }
+}
+
+/* Report Header */
+.report-header {
+  background: var(--gradient);
+  color: white;
+  padding: 48px 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.report-header .header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.report-header h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.report-header .subtitle {
+  font-size: 1.1em;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+.report-header .meta {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+.report-header .meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Toolbar */
+.toolbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.toolbar .search-box {
+  flex: 1;
+  min-width: 200px;
+  max-width: 360px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.toolbar .search-box:focus {
+  border-color: var(--secondary);
+}
+.toolbar .filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: white;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-secondary);
+}
+.toolbar .filter-btn:hover, .toolbar .filter-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.toolbar .export-btn {
+  margin-left: auto;
+  padding: 8px 20px;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.toolbar .export-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+}
+
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 40px 60px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 40px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  user-select: none;
+  padding: 16px 20px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.section-header:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.section-header .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  color: white;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  flex: 1;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+.section-header .toggle-icon {
+  transition: transform 0.3s;
+  color: var(--text-secondary);
+  font-size: 0.9em;
+}
+.section-header.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+.collapsible-content {
+  max-height: 10000px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+.collapsible-content.collapsed {
+  max-height: 0;
+}
+
+/* Market Flash Cards */
+.flash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.flash-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.flash-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient);
+}
+.flash-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.flash-card .rank {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+.flash-card .tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.tag-policy { background: #FED7D7; color: #C53030; }
+.tag-product { background: #C6F6D5; color: #276749; }
+.tag-tech { background: #BEE3F8; color: #2B6CB0; }
+.tag-market { background: #FEFCBF; color: #975A16; }
+.tag-event { background: #E9D8FD; color: #6B46C1; }
+.tag-finance { background: #FED7E2; color: #B83280; }
+
+.flash-card h3 {
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.flash-card h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.flash-card h3 a:hover {
+  color: var(--primary);
+}
+.flash-card p {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.flash-card .date {
+  font-size: 0.78em;
+  color: #A0AEC0;
+  margin-top: 10px;
+}
+
+/* Executive Summary */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.summary-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+.summary-card h3 {
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.summary-card ul {
+  list-style: none;
+  padding: 0;
+}
+.summary-card li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9em;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.summary-card li:last-child {
+  border-bottom: none;
+}
+.summary-card li .bullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 8px;
+}
+
+/* Competitor Table */
+.comp-category {
+  margin-bottom: 28px;
+}
+.comp-category h3 {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-left: 12px;
+  border-left: 4px solid var(--primary);
+}
+.comp-table {
+  width: 100%;
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-collapse: collapse;
+}
+.comp-table th {
+  background: var(--gradient);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.88em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.comp-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88em;
+  vertical-align: top;
+}
+.comp-table tr:last-child td {
+  border-bottom: none;
+}
+.comp-table tr:hover td {
+  background: #F7FAFC;
+}
+.comp-table .company {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.comp-table .dynamic a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.comp-table .dynamic a:hover {
+  text-decoration: underline;
+}
+
+/* Depth Analysis Panels */
+.depth-panel {
+  margin: 8px 16px 12px;
+  background: #F7FAFC;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.depth-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.83em;
+  font-weight: 600;
+  color: var(--primary);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s;
+}
+.depth-toggle:hover {
+  background: #EDF2F7;
+}
+.depth-toggle .arrow {
+  transition: transform 0.3s;
+  font-size: 0.7em;
+}
+.depth-toggle.open .arrow {
+  transform: rotate(90deg);
+}
+.depth-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.depth-content.open {
+  max-height: 600px;
+}
+.depth-inner {
+  padding: 12px 16px 16px;
+  font-size: 0.83em;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.depth-inner .depth-item {
+  margin-bottom: 8px;
+}
+.depth-inner .depth-label {
+  font-weight: 600;
+  color: var(--text);
+}
+.depth-inner .confidence {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+.confidence-high { background: #C6F6D5; color: #276749; }
+.confidence-medium { background: #FEFCBF; color: #975A16; }
+.confidence-low { background: #FED7D7; color: #C53030; }
+
+/* Ingredient Trends */
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+.trend-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.trend-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+.trend-card .trend-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.trend-card .trend-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+}
+.trend-card h4 {
+  font-size: 1.05em;
+  font-weight: 600;
+}
+.trend-card .trend-meta {
+  font-size: 0.8em;
+  color: var(--text-secondary);
+}
+.trend-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.trend-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--gradient);
+  transition: width 1s ease;
+}
+.trend-card p {
+  font-size: 0.88em;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* Charts */
+.chart-container {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.chart-container h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 260px;
+  padding: 0 10px;
+}
+.bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+.bar {
+  width: 100%;
+  max-width: 50px;
+  border-radius: 6px 6px 0 0;
+  background: var(--gradient);
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+  min-height: 4px;
+}
+.bar:hover {
+  opacity: 0.85;
+  transform: scaleY(1.02);
+  transform-origin: bottom;
+}
+.bar .bar-label {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.bar .bar-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+.bar:hover .bar-tooltip {
+  opacity: 1;
+}
+.bar-group .bar-name {
+  margin-top: 8px;
+  font-size: 0.72em;
+  color: var(--text-secondary);
+  text-align: center;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Matrix Grid */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.matrix-header {
+  background: var(--gradient);
+  color: white;
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+.matrix-cell {
+  background: var(--card);
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.8em;
+}
+.matrix-row-label {
+  background: #F7FAFC;
+  padding: 10px 6px;
+  text-align: center;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.matrix-level-high { background: #C6F6D5; color: #276749; font-weight: 600; }
+.matrix-level-medium { background: #FEFCBF; color: #975A16; }
+.matrix-level-low { background: #FED7D7; color: #C53030; }
+.matrix-level-none { color: #CBD5E0; }
+
+/* Activity Timeline */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 22px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--card);
+}
+.timeline-item h4 {
+  font-size: 1em;
+  margin-bottom: 6px;
+}
+.timeline-item h4 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.timeline-item h4 a:hover {
+  color: var(--primary);
+}
+.timeline-item .timeline-date {
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.timeline-item p {
+  font-size: 0.88em;
+  color: var(--text-secondary);
+}
+
+/* Appendix */
+.appendix-list {
+  list-style: none;
+  padding: 0;
+}
+.appendix-list li {
+  padding: 12px 16px;
+  background: var(--card);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+.appendix-list li:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.appendix-list .source-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.appendix-list a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 0.88em;
+  flex: 1;
+}
+.appendix-list a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.report-footer {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding: 24px 40px;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+
+/* KPI Cards */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.kpi-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.kpi-card .kpi-value {
+  font-size: 2em;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.kpi-card .kpi-label {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .report-header { padding: 32px 20px; }
+  .report-header h1 { font-size: 1.6em; }
+  .container { padding: 20px 16px 40px; }
+  .toolbar { padding: 10px 16px; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .flash-grid { grid-template-columns: 1fr; }
+  .trend-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Highlight */
+.highlight { background: #FFF9E6; padding: 2px 6px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="report-header">
+  <div class="header-inner">
+    <h1>市场监测月报</h1>
+    <div class="subtitle">2026年5月 | 美妆个护原料市场动态监测</div>
+    <div class="meta">
+      <span>📅 监测周期：2026.04.26 – 2026.05.26</span>
+      <span>🏢 禾大Croda Beauty 市场部</span>
+      <span>🔍 版本：V1.0</span>
+      <span>📊 数据来源：30+ 渠道</span>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== TOOLBAR ==================== -->
+<nav class="toolbar no-print">
+  <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索关键词、公司、成分..." oninput="filterContent()">
+  <button class="filter-btn active" onclick="setFilter(this,'all')">全部</button>
+  <button class="filter-btn" onclick="setFilter(this,'competitor')">竞品动态</button>
+  <button class="filter-btn" onclick="setFilter(this,'ingredient')">成分趋势</button>
+  <button class="filter-btn" onclick="setFilter(this,'tech')">技术创新</button>
+  <button class="filter-btn" onclick="setFilter(this,'event')">市场活动</button>
+  <button class="export-btn no-print" onclick="window.print()">🖨️ 导出PDF</button>
+</nav>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<main class="container">
+
+<!-- KPI Overview -->
+<div class="kpi-row" style="margin-bottom:32px;">
+  <div class="kpi-card">
+    <div class="kpi-value">169</div>
+    <div class="kpi-label">2025年新原料备案数量（+88%）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">89.3%</div>
+    <div class="kpi-label">国产新原料占比</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">~$35B</div>
+    <div class="kpi-label">全球化妆品原料市场规模</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">8.2%</div>
+    <div class="kpi-label">中国市场年复合增速</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">30+</div>
+    <div class="kpi-label">本月监测竞品动态</div>
+  </div>
+</div>
+
+<!-- ==================== Section 1: 市场快讯 ==================== -->
+<section class="section" data-category="market">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#FF6B6B,#EE5A24);">⚡</div>
+    <h2>市场快讯 · 本月TOP10热点事件</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+    <div class="flash-grid">
+
+      <div class="flash-card">
+        <span class="rank">1</span>
+        <span class="tag tag-finance">资本市场</span>
+        <h3><a href="https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc" target="_blank">维琪科技北交所过会，冲刺"美妆原料第一股"</a></h3>
+        <p>5月6日维琪科技IPO申请获北交所通过，2025年营收2.75亿元（+11%），净利润0.91亿元，中国多肽原料市场份额6.6%排名第一。</p>
+        <div class="date">2026.05.10 · 百度百家号</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">2</span>
+        <span class="tag tag-product">新品发布</span>
+        <h3><a href="https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html" target="_blank">禾大Croda发布Matrixyl® Neolide新一代多肽技术</a></h3>
+        <p>革命性包封技术实现多肽15天可控释放，皮肤紧致度提升25%，碳足迹降低43%，99.79%天然来源。</p>
+        <div class="date">2026.04.22 · Personal Care Insights</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">3</span>
+        <span class="tag tag-event">行业展会</span>
+        <h3><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026杭州落幕：近50款全球首发新品，AI驱动原料创新</a></h3>
+        <p>860余家企业参展，295项芳典奖申报。AI从营销卖点变为研发"必选项"，生成式AI从头设计全新分子结构。</p>
+        <div class="date">2026.03.18-20 · 网易</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">4</span>
+        <span class="tag tag-event">国际展会</span>
+        <h3><a href="https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065" target="_blank">in-cosmetics Global 2026巴黎开幕：1100+展商共探美妆前沿</a></h3>
+        <p>BASF、Evonik、Croda、Clariant等巨头集中发布新品，蓝生物技术、情绪护肤、AI研发成为三大关键词。</p>
+        <div class="date">2026.04.14-16 · in-cosmetics Global</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">5</span>
+        <span class="tag tag-policy">法规政策</span>
+        <h3><a href="https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/" target="_blank">化妆品新原料各地利好政策持续汇总（2026年5月更新）</a></h3>
+        <p>多地出台化妆品新原料鼓励政策，提供"一对一"精准服务，积极争取参与技术审评工作。</p>
+        <div class="date">2026.05.18 · 中贸合规中心</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">6</span>
+        <span class="tag tag-product">新品发布</span>
+        <h3><a href="https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html" target="_blank">赢创Evonik发布SPHINOX® Vively等10+新品</a></h3>
+        <p>推出100%可再生原料的突破性鞘脂、生物基防晒膜剂、双靶向线粒体递送系统等多项创新。</p>
+        <div class="date">2026.04.08 · Evonik官网</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">7</span>
+        <span class="tag tag-tech">技术创新</span>
+        <h3><a href="https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026" target="_blank">科莱恩Lucas Meyer发布AlgaSurge™蓝生物技术活性物</a></h3>
+        <p>源自极端环境微藻，双分子量级递送，可替代HA/PDRN的纯素抗衰老解决方案。</p>
+        <div class="date">2026.04.15 · Clariant官网</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">8</span>
+        <span class="tag tag-finance">投融资</span>
+        <h3><a href="https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc" target="_blank">瑞吉明生物完成数千万元B轮融资，加速PDRN国产替代</a></h3>
+        <p>楚昌基金领投，资金将投向PDRN/PN核酸原料研发升级、产能扩张与全球化市场拓展。</p>
+        <div class="date">2026.04.11 · 百度百家号</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">9</span>
+        <span class="tag tag-product">新品发布</span>
+        <h3><a href="https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065" target="_blank">巴斯夫发布Plantigenix™ Bisabolol生物技术红没药醇</a></h3>
+        <p>生物发酵法生产，100%可再生碳含量，仅产生活性最高的(-)-α-异构体，碳足迹显著降低。</p>
+        <div class="date">2026.04.07 · BASF官网</div>
+      </div>
+
+      <div class="flash-card">
+        <span class="rank">10</span>
+        <span class="tag tag-policy">法规政策</span>
+        <h3><a href="https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml" target="_blank">欧盟56种新增致敏原标注要求7月31日生效</a></h3>
+        <p>含新增致敏原但不符合标注要求的化妆品不得投放欧盟市场，出口企业需提前合规。</p>
+        <div class="date">2026.02.04 · 商务部WTO咨询网</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Section 2: 执行摘要 ==================== -->
+<section class="section" data-category="market">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#4A90E2,#667eea);">📋</div>
+    <h2>执行摘要 · 关键洞察与行动建议</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+    <div class="summary-grid">
+
+      <div class="summary-card">
+        <h3>🔑 关键洞察</h3>
+        <ul>
+          <li><span class="bullet"></span><span><strong>多肽赛道升温：</strong>维琪科技即将上市（2025年营收2.75亿，+11%），中国多肽原料市场持续高增长，禾大Matrixyl® Neolide在此窗口期发布，需加速市场推广。</span></li>
+          <li><span class="bullet"></span><span><strong>AI研发成为标配：</strong>路博润、亚什兰、MetaNovas等纷纷将生成式AI融入原料研发流程，研发周期从数月缩短至数周，成功率超60%。</span></li>
+          <li><span class="bullet"></span><span><strong>情绪护肤科学化：</strong>"神经美容"从概念走向可量化验证，华东理工大学已通过EEG脑电测试实现情绪调节效果量化，嘉法狮将30年感官评估体系融入情绪维度。</span></li>
+          <li><span class="bullet"></span><span><strong>可持续从加分到必修：</strong>碳足迹核算、RSPO认证、生物质平衡方案成为行业基线，禾大Matrixyl® Neolide碳足迹降低43%具有差异化优势。</span></li>
+          <li><span class="bullet"></span><span><strong>国产原料加速出海：</strong>辉文生物HWPDRN® DDS核酸递送技术输出东南亚、欧洲，深圳柏垠生物可拉酸钠出海，国产原料从"替代进口"到"全球竞争"。</span></li>
+        </ul>
+      </div>
+
+      <div class="summary-card">
+        <h3>🎯 行动建议</h3>
+        <ul>
+          <li><span class="bullet"></span><span><strong>Matrixyl® Neolide市场推广：</strong>利用PCHi芳典奖及in-cosmetics Global发布的势能，针对中国高端抗衰品牌开展定向技术研讨会，强调15天可控释放与43%碳足迹降低的差异化优势。</span></li>
+          <li><span class="bullet"></span><span><strong>情绪护肤赛道布局：</strong>禾大可考虑将神经美容/情绪护肤纳入技术研发路线图，与嘉法狮等在感官评估领域开展合作探讨。</span></li>
+          <li><span class="bullet"></span><span><strong>国产竞品监控强化：</strong>维琪科技上市后将获得更多资本助力，其21个新原料备案数量行业第一的记录需持续关注；瑞吉明B轮融资后PDRN产能将大幅扩张。</span></li>
+          <li><span class="bullet"></span><span><strong>AI研发能力建设：</strong>关注MetaNovas等AI+原料公司的发展，评估合作或技术引进的可能性，保持技术竞争力。</span></li>
+          <li><span class="bullet"></span><span><strong>法规动态跟踪：</strong>欧盟致敏原新规7月31日生效，需确保出口产品合规；国内新原料备案流程持续优化，可加快新原料注册进度。</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Section 3: 竞品动态监测 ==================== -->
+<section class="section" data-category="competitor">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#667eea,#764ba2);">🏢</div>
+    <h2>竞品动态监测 · 国际与国内原料商动态</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+
+    <!-- 国际原料商 -->
+    <div class="comp-category">
+      <h3>🌐 国际原料商动态</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>企业</th>
+            <th>动态描述</th>
+            <th>技术方向</th>
+            <th>来源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="company">巴斯夫 BASF</td>
+            <td class="dynamic">
+              <a href="https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065" target="_blank">in-cosmetics发布"Beyond Beauty: Authentic+"概念，推出Plantigenix™ Bisabolol生物技术红没药醇、Uvinul® T 150 X EcoBalanced生物质平衡防晒剂</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-inner">
+                    <div class="depth-item"><span class="depth-label">战略意图：</span>BASF从功效驱动转向"真实性+情感健康"定位，强调在AI滤镜时代回归真实肌肤自信。生物技术路线替代传统提取，降低供应链风险。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>Plantigenix™ Bisabolol纯度优势明显（仅产生活性最高异构体），可能冲击天然红没药醇市场格局。BMB防晒剂为即用型替代方案，降低配方改造成本。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>关注BASF红没药醇对禾大天然舒缓成分的竞争；BMB方案是行业趋势，评估禾大产品线的生物质平衡认证可行性。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-high">高</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>生物技术、生物质平衡、感官科学</td>
+            <td><a href="https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065" target="_blank">BASF官网</a></td>
+          </tr>
+          <tr>
+            <td class="company">赢创 Evonik</td>
+            <td class="dynamic">
+              <a href="https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html" target="_blank">in-cosmetics发布10+新品，包括SPHINOX® Vively（100%可再生鞘脂）、TEGO® FILMSTAR BST1（生物基可降解防晒膜剂）、X50 CellEssence（双靶向线粒体递送系统）</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-inner">
+                    <div class="depth-item"><span class="depth-label">战略意图：</span>赢创以全新视觉形象亮相，将品牌定位升级为"可持续特种解决方案合作伙伴"。SPHINOX® Vively碳足迹降低45%，直指绿色配方趋势。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>X50 CellEssence双靶向线粒体递送系统是递送技术重大突破，CoQ10精准递送可能开辟抗衰新赛道。SPHINOHANCE® Clear实现透明水基配方中的神经酰胺递送，技术壁垒较高。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>禾大Matrixyl® Neolide的包封递送技术需与赢创X50递送系统进行技术对标；关注SPHINOHANCE® Clear在透明配方市场的渗透。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-high">高</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>鞘脂技术、防晒创新、递送系统</td>
+            <td><a href="https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html" target="_blank">Evonik官网</a></td>
+          </tr>
+          <tr>
+            <td class="company">科莱恩/ Lucas Meyer</td>
+            <td class="dynamic">
+              <a href="https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026" target="_blank">发布AlgaSurge™蓝生物技术抗衰活性物（源自极端环境微藻，替代HA/PDRN）；Lysofix™ Liquid新增头发护理功效数据</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-inner">
+                    <div class="depth-item"><span class="depth-label">战略意图：</span>Clariant通过Lucas Meyer品牌切入蓝生物技术赛道，AlgaSurge™定位为"下一代皮肤长寿成分"，直接对标HA和PDRN市场。同时拓展Lysofix™至头发护理领域。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>蓝生物技术是新兴热点，AlgaSurge™纯素定位迎合欧洲市场趋势。但PDRN/HA替代声称需充分临床数据支撑，市场接受度待验证。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>禾大可评估蓝生物技术领域的研发布局；关注AlgaSurge™在PCHi杭州展的反馈数据（Clariant同期参展PCHi）。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-medium">中</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>蓝生物技术、皮肤长寿、多功能乳化</td>
+            <td><a href="https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026" target="_blank">Clariant官网</a></td>
+          </tr>
+          <tr>
+            <td class="company">路博润 Lubrizol</td>
+            <td class="dynamic">
+              <a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026发布Eyeseryl® All-in peptide，利用AI智能筛选技术精准靶向眼周PAR-1受体，首次实现眼周七层结构全维度抗衰</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-inner">
+                    <div class="depth-item"><span class="depth-label">战略意图：</span>路博润将AI技术融入多肽研发全流程，从分子设计到靶点筛选实现智能化，大幅提升研发效率和精准度。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>眼周护理是高增长细分市场（消费升级驱动），AI+多肽的技术组合可能在眼霜领域形成技术壁垒。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>禾大Matrixyl® Neolide的包封递送技术可与路博润的AI靶点筛选形成互补叙事——"智能设计+智能递送"；关注眼周护理市场增长数据。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-high">高</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>AI多肽设计、眼周抗衰</td>
+            <td><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026报道</a></td>
+          </tr>
+          <tr>
+            <td class="company">亚什兰 Ashland</td>
+            <td class="dynamic">
+              <a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026发布eternight™逆时恒颜精萃，通过AI面部扫描系统量化功效评价，实现精准抗衰效果可视化</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-inner">
+                    <div class="depth-item"><span class="depth-label">战略意图：</span>亚什兰将AI从研发端延伸到功效评价端，AI面部扫描实现抗衰效果"可视化"，降低B2B客户的产品推广门槛。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>AI功效评价可能成为行业新标准，原料商提供"智能评价工具"将成为差异化竞争点。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>禾大可考虑为Matrixyl® Neolide配套开发AI驱动的临床效果可视化工具，增强B2B客户的说服力。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-medium">中</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>AI功效评价、精准抗衰</td>
+            <td><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026报道</a></td>
+          </tr>
+          <tr>
+            <td class="company">嘉法狮 Gattefossé</td>
+            <td class="dynamic">
+              <a href="https://www.163.com/dy/article/JQRON6QP0550789W.html" target="_blank">推出Noxifense沙棘叶新型活性成分，同时将30年感官评估体系融入情绪维度，开发"信赖感"轻盈质地原料与"舒缓感"草本香型</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-item"><span class="depth-label">战略意图：</span>嘉法狮将情绪护肤作为核心战略方向，依托30年感官评估数据积累，构建"肤感+香气+情绪"三位一体的原料评估体系。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>情绪护肤正从营销概念走向科学验证阶段，嘉法狮的感官评估数据积累构成竞争壁垒。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>禾大可关注情绪护肤赛道的技术合作机会，评估与嘉法狮在感官科学领域的互补性。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-medium">中</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>情绪护肤、感官科学、天然活性物</td>
+            <td><a href="https://www.163.com/dy/article/JQRON6QP0550789W.html" target="_blank">行业报道</a></td>
+          </tr>
+          <tr>
+            <td class="company">帝斯曼-芬美意 DSM-Firmenich</td>
+            <td class="dynamic">
+              <a href="https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html" target="_blank">2024年中国区销售额达10.96亿欧元（+9.93%），持续加大中国研发投入；情绪香氛因子库参与情绪护肤赛道</a>
+            </td>
+            <td>情绪香氛、中国本土化研发</td>
+            <td><a href="https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html" target="_blank">新浪财经</a></td>
+          </tr>
+          <tr>
+            <td class="company">奇华顿 Givaudan</td>
+            <td class="dynamic">
+              <a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026展示VectorHyal™超分子均透纳囊，AI算法优化微胶囊结构，活性成分渗透效率提升30%</a>
+            </td>
+            <td>AI微胶囊、渗透递送</td>
+            <td><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026报道</a></td>
+          </tr>
+          <tr>
+            <td class="company">瓦克化学 Wacker</td>
+            <td class="dynamic">持续深耕有机硅在个人护理领域应用，聚焦可持续硅替代方案</td>
+            <td>有机硅替代、可持续</td>
+            <td>行业跟踪</td>
+          </tr>
+          <tr>
+            <td class="company">德之馨 Symrise</td>
+            <td class="dynamic">Mindera®米德拉通过全生命周期绿色认证；参与情绪护肤赛道研发</td>
+            <td>绿色认证、情绪护肤</td>
+            <td>行业跟踪</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 国内原料商 -->
+    <div class="comp-category">
+      <h3>🇨🇳 国内原料商动态</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>企业</th>
+            <th>动态描述</th>
+            <th>技术方向</th>
+            <th>来源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="company">维琪科技 Winkey</td>
+            <td class="dynamic">
+              <a href="https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc" target="_blank">北交所IPO过会，冲刺"美妆原料第一股"；2025年营收2.75亿元，净利润0.91亿元；果酸肽获PCHi芳典奖</a>
+              <div class="depth-panel">
+                <button class="depth-toggle" onclick="toggleDepth(this)">
+                  <span class="arrow">▶</span> 深度分析
+                </button>
+                <div class="depth-content">
+                  <div class="depth-inner">
+                    <div class="depth-item"><span class="depth-label">战略意图：</span>借助资本力量加速多肽原料研发和国际化布局，已向宝洁、联合利华供应创新多肽原料，正在推动与资生堂、雅诗兰黛的合作。</div>
+                    <div class="depth-item"><span class="depth-label">市场影响：</span>维琪上市后将大幅提升品牌影响力和研发投入能力，21个新原料备案+65项发明专利构建了较高竞争壁垒。多肽赛道竞争将更加激烈。</div>
+                    <div class="depth-item"><span class="depth-label">应对建议：</span>持续跟踪维琪的多肽新品发布和国际化进展；禾大Matrixyl®系列需强化"国际品牌背书+递送技术差异化"叙事，与国产多肽形成区隔。</div>
+                    <div class="depth-item"><span class="depth-label">置信度：</span><span class="confidence confidence-high">高</span></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>创新多肽、新原料备案、资本化</td>
+            <td><a href="https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc" target="_blank">百度百家号</a></td>
+          </tr>
+          <tr>
+            <td class="company">瑞吉明生物</td>
+            <td class="dynamic">
+              <a href="https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc" target="_blank">完成数千万元B轮融资（楚昌基金领投）；全球首款人工合成PDRN原料中试成功；ICIC 2026主办PDRN核酸原料专题会议</a>
+            </td>
+            <td>PDRN/PN核酸原料、合成生物</td>
+            <td><a href="https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc" target="_blank">百度百家号</a></td>
+          </tr>
+          <tr>
+            <td class="company">辉文生物</td>
+            <td class="dynamic">
+              <a href="https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html" target="_blank">PCHi 2026参展，携HWPDRN® DDS核酸递送技术亮相；已将产品输出至东南亚、欧洲市场</a>
+            </td>
+            <td>PDRN递送、核酸技术、出海</td>
+            <td><a href="https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html" target="_blank">杭州市政府</a></td>
+          </tr>
+          <tr>
+            <td class="company">克琴科技</td>
+            <td class="dynamic">
+              <a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">Anallerg®-NFA获PCHi芳典奖绿色可持续发展金奖；绿色合成路线与低致敏性获得行业认可</a>
+            </td>
+            <td>绿色合成、低致敏、可持续</td>
+            <td><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026报道</a></td>
+          </tr>
+          <tr>
+            <td class="company">华熙生物</td>
+            <td class="dynamic">
+              <a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026发布Hymagic™-VCHA透明质酸衍生物（HybridLink™专利技术实现VC与HA共价结合）和Hymagic™-GluHA（通过全生命周期绿色认证）</a>
+            </td>
+            <td>透明质酸衍生物、绿色认证</td>
+            <td><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026报道</a></td>
+          </tr>
+          <tr>
+            <td class="company">JLand聚源生物</td>
+            <td class="dynamic">PCHi 2026参展，持续深耕重组胶原蛋白领域</td>
+            <td>重组胶原蛋白</td>
+            <td>行业跟踪</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 竞品动态对比矩阵 -->
+    <div class="chart-container">
+      <h3>📊 竞品技术布局矩阵（本月活跃度）</h3>
+      <div class="matrix-grid">
+        <div class="matrix-header">企业</div>
+        <div class="matrix-header">新品发布</div>
+        <div class="matrix-header">AI/数字技术</div>
+        <div class="matrix-header">可持续发展</div>
+        <div class="matrix-header">情绪护肤</div>
+
+        <div class="matrix-row-label">巴斯夫</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+
+        <div class="matrix-row-label">赢创</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+
+        <div class="matrix-row-label">路博润</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+
+        <div class="matrix-row-label">科莱恩</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+
+        <div class="matrix-row-label">亚什兰</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+
+        <div class="matrix-row-label">嘉法狮</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+
+        <div class="matrix-row-label">维琪科技</div>
+        <div class="matrix-cell matrix-level-high">★★★</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+
+        <div class="matrix-row-label">瑞吉明</div>
+        <div class="matrix-cell matrix-level-medium">★★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+        <div class="matrix-cell matrix-level-low">★</div>
+        <div class="matrix-cell matrix-level-none">—</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== Section 4: 成分趋势分析 ==================== -->
+<section class="section" data-category="ingredient">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#43E97B,#38F9D7);">🧪</div>
+    <h2>成分趋势分析 · 热门成分与新兴趋势</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+
+    <div class="chart-container">
+      <h3>📈 2026年热门成分热度指数</h3>
+      <div class="bar-chart">
+        <div class="bar-group">
+          <div class="bar" style="height:92%;background:linear-gradient(135deg,#667eea,#764ba2);">
+            <span class="bar-label">92</span>
+            <div class="bar-tooltip">多肽 (Peptides) - 市场持续升温，维琪上市催化</div>
+          </div>
+          <span class="bar-name">多肽</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:85%;background:linear-gradient(135deg,#f093fb,#f5576c);">
+            <span class="bar-label">85</span>
+            <div class="bar-tooltip">PDRN/核酸 - 人工合成突破，临床医美级应用</div>
+          </div>
+          <span class="bar-name">PDRN/核酸</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:80%;background:linear-gradient(135deg,#4facfe,#00f2fe);">
+            <span class="bar-label">80</span>
+            <div class="bar-tooltip">神经酰胺 - 屏障修复核心，国产品牌打破垄断</div>
+          </div>
+          <span class="bar-name">神经酰胺</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:78%;background:linear-gradient(135deg,#43E97B,#38F9D7);">
+            <span class="bar-label">78</span>
+            <div class="bar-tooltip">透明质酸衍生物 - HA功能升级，共价结合创新</div>
+          </div>
+          <span class="bar-name">HA衍生物</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:75%;background:linear-gradient(135deg,#FA709A,#FEE140);">
+            <span class="bar-label">75</span>
+            <div class="bar-tooltip">视黄醇替代 - 外泌体、发酵活性物等生物技术路线</div>
+          </div>
+          <span class="bar-name">视黄醇替代</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:72%;background:linear-gradient(135deg,#A18CD1,#FBC2EB);">
+            <span class="bar-label">72</span>
+            <div class="bar-tooltip">重组胶原蛋白 - 合成生物学驱动，产能扩张</div>
+          </div>
+          <span class="bar-name">重组胶原蛋白</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:68%;background:linear-gradient(135deg,#FFD26F,#3677FF);">
+            <span class="bar-label">68</span>
+            <div class="bar-tooltip">益生菌/微生态 - 从肠道到皮肤微生态平衡</div>
+          </div>
+          <span class="bar-name">益生菌</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:65%;background:linear-gradient(135deg,#EE9CA7,#FFDDE1);">
+            <span class="bar-label">65</span>
+            <div class="bar-tooltip">烟酰胺 - 成熟成分，功效浓度精细化趋势</div>
+          </div>
+          <span class="bar-name">烟酰胺</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:60%;background:linear-gradient(135deg,#C471F5,#FA71CD);">
+            <span class="bar-label">60</span>
+            <div class="bar-tooltip">端粒科学/长寿 - 学术前沿概念，市场转化早期</div>
+          </div>
+          <span class="bar-name">端粒/长寿</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:58%;background:linear-gradient(135deg,#89F7FE,#66A6FF);">
+            <span class="bar-label">58</span>
+            <div class="bar-tooltip">蓝藻/蓝生物技术 - 新兴赛道，科莱恩AlgaSurge引领</div>
+          </div>
+          <span class="bar-name">蓝藻技术</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trend-grid">
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#667eea,#764ba2);">🧬</div>
+          <div>
+            <h4>多肽 (Peptides)</h4>
+            <div class="trend-meta">热度持续攀升 | 市场规模高速增长</div>
+          </div>
+        </div>
+        <div class="trend-bar"><div class="trend-bar-fill" style="width:92%;"></div></div>
+        <p><strong>核心动态：</strong>维琪科技IPO过会催化市场关注度；禾大Matrixyl® Neolide新一代包封技术发布；路博润Eyeseryl® AI多肽眼周七层抗衰；铜肽GHK-Cu临床新数据支持胶原蛋白III提升。</p>
+        <p><strong>趋势判断：</strong>多肽从"成分堆砌"进入"精准递送+AI设计"新阶段。包封技术和靶向递送成为竞争焦点。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 技术深度解读
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">技术原理：</span>多肽通过信号传导刺激胶原蛋白和弹性蛋白合成。新一代技术聚焦：①包封递送（提高稳定性和渗透率）；②AI靶点筛选（精准匹配受体）；③结构创新（突破传统三肽/五肽限制）。</div>
+              <div class="depth-item"><span class="depth-label">功效机制：</span>Matrixyl® Neolide的专利包封技术实现15天可控释放，临床显示皮肤紧致度提升25%，与微针联用胶原蛋白III提升31%。</div>
+              <div class="depth-item"><span class="depth-label">市场接受度：</span>维琪科技2025年多肽原料营收占比超60%，中国多肽原料市场增速远超其他活性成分。</div>
+              <div class="depth-item"><span class="depth-label">应用前景：</span>从基础护肤向医美级精准抗衰延伸，微针联用、注射级多肽是新兴方向。</div>
+              <div class="depth-item"><span class="depth-label">禾大对标分析：</span>Matrixyl® Neolide的99.79%天然来源+43%碳足迹降低+15天可控释放构成三重差异化优势。与维琪等国产多肽相比，禾大的品牌遗产（30年）和全球合规优势显著。建议加强中国市场定制化推广。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c);">🔬</div>
+          <div>
+            <h4>PDRN / 核酸原料</h4>
+            <div class="trend-meta">高速增长 | 国产替代加速</div>
+          </div>
+        </div>
+        <div class="trend-bar"><div class="trend-bar-fill" style="width:85%;"></div></div>
+        <p><strong>核心动态：</strong>瑞吉明生物完成B轮融资；全球首款人工合成PDRN中试成功；ICIC 2026主办PDRN专题会议；辉文HWPDRN® DDS核酸递送技术出海。</p>
+        <p><strong>趋势判断：</strong>PDRN从三文鱼提取（受原料限制）向合成生物学路线转变，产能和成本将大幅优化。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 技术深度解读
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">技术原理：</span>PDRN（多聚脱氧核糖核苷酸）通过激活腺苷A2A受体促进组织再生和血管生成。传统提取自三文鱼精巢，瑞吉明通过合成生物技术实现人工合成。</div>
+              <div class="depth-item"><span class="depth-label">功效机制：</span>促进成纤维细胞增殖、胶原蛋白合成、血管新生和组织修复。在皮肤再生、伤口愈合方面效果显著。</div>
+              <div class="depth-item"><span class="depth-label">市场接受度：</span>医美级PDRN在韩国市场已高度成熟，中国市场正在快速跟进。合成生物路线将大幅降低成本。</div>
+              <div class="depth-item"><span class="depth-label">应用前景：</span>从医美注射向护肤品渗透，核酸递送技术（如辉文DDS）提升外用PDRN的生物利用度。</div>
+              <div class="depth-item"><span class="depth-label">禾大对标分析：</span>禾大目前无PDRN相关产品线。科莱恩AlgaSurge™定位为PDRN的植物替代方案，值得跟踪其市场验证数据。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">🛡️</div>
+          <div>
+            <h4>神经酰胺 (Ceramides)</h4>
+            <div class="trend-meta">成熟赛道 | 国产突破</div>
+          </div>
+        </div>
+        <div class="trend-bar"><div class="trend-bar-fill" style="width:80%;"></div></div>
+        <p><strong>核心动态：</strong>迪克曼生物DKM-EOP®黄金神经酰胺获芳典奖屏障修复金奖；赢创SPHINOHANCE® Clear实现透明配方中的神经酰胺递送。</p>
+        <p><strong>趋势判断：</strong>屏障修复仍是核心功效诉求，国产神经酰胺正打破进口垄断，透明配方技术成为新竞争维度。</p>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#FA709A,#FEE140);">🔄</div>
+          <div>
+            <h4>视黄醇替代 (Retinol Alternatives)</h4>
+            <div class="trend-meta">前沿趋势 | 生物技术驱动</div>
+          </div>
+        </div>
+        <div class="trend-bar"><div class="trend-bar-fill" style="width:75%;"></div></div>
+        <p><strong>核心动态：</strong>in-cosmetics 2026聚焦"7大生物技术抗皱创新替代视黄醇"，外泌体、发酵活性物、植物源视黄醇替代成为热点。</p>
+        <p><strong>趋势判断：</strong>消费者对视黄醇刺激性的担忧持续推动替代品研发，生物技术路线（外泌体、发酵提取物）增长最快。</p>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#A18CD1,#FBC2EB);">🧫</div>
+          <div>
+            <h4>重组胶原蛋白</h4>
+            <div class="trend-meta">高热度 | 合成生物学</div>
+          </div>
+        </div>
+        <div class="trend-bar"><div class="trend-bar-fill" style="width:72%;"></div></div>
+        <p><strong>核心动态：</strong>聚源生物PCHi 2026参展；行业产能持续扩张。重组胶原蛋白从III型向全型覆盖，应用从医美向护肤品延伸。</p>
+        <p><strong>趋势判断：</strong>合成生物技术驱动成本下降，重组胶原蛋白正成为"下一个透明质酸"。</p>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#C471F5,#FA71CD);">⏳</div>
+          <div>
+            <h4>端粒科学 / 长寿成分</h4>
+            <div class="trend-meta">新兴前沿 | 学术驱动</div>
+          </div>
+        </div>
+        <div class="trend-bar"><div class="trend-bar-fill" style="width:60%;"></div></div>
+        <p><strong>核心动态：</strong>英敏特2026成分趋势榜单将端粒科学列为新兴趋势；MetaNovas端到端AI平台融合长寿科学研究。</p>
+        <p><strong>趋势判断：</strong>目前处于学术概念向市场转化早期，需关注临床验证数据和安全评估进展。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Section 5: 技术创新追踪 ==================== -->
+<section class="section" data-category="tech">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#FA709A,#FEE140);">💡</div>
+    <h2>技术创新追踪 · 递送系统、AI与生物技术</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+
+    <div class="trend-grid">
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#667eea,#764ba2);">📦</div>
+          <div>
+            <h4>多肽包封递送技术</h4>
+            <div class="trend-meta">禾大Croda Matrixyl® Neolide</div>
+          </div>
+        </div>
+        <p><strong>技术亮点：</strong>专利包封技术保护多肽在配方中稳定存在，实现15天可控释放。临床显示皮肤紧致度提升25%，微针联用胶原蛋白III提升31%。99.79%天然来源，碳足迹较传统版降低43%。</p>
+        <p><strong>创新意义：</strong>解决多肽在配方中稳定性差的核心痛点，"即插即用"型解决方案简化下游配方开发。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 创新价值评估
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">技术成熟度：</span><span class="confidence confidence-high">高</span> - 已完成临床验证，具备规模化生产条件</div>
+              <div class="depth-item"><span class="depth-label">商业化潜力：</span><span class="confidence confidence-high">高</span> - 基于Matrixyl® 30年品牌遗产，客户接受门槛低；高端抗衰市场持续增长</div>
+              <div class="depth-item"><span class="depth-label">竞争壁垒：</span><span class="confidence confidence-high">高</span> - 专利包封技术+15天可控释放数据+99.79%天然来源三重壁垒</div>
+              <div class="depth-item"><span class="depth-label">跟进建议：</span>重点推广微针联用数据（31%胶原蛋白III提升），针对高端院线品牌定制技术研讨会</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#43E97B,#38F9D7);">🤖</div>
+          <div>
+            <h4>AI驱动原料研发</h4>
+            <div class="trend-meta">MetaNovas / 路博润 / 亚什兰</div>
+          </div>
+        </div>
+        <p><strong>技术亮点：</strong>MetaNovas端到端AI平台融合深度学习与知识图谱，新原料研发周期从数月缩短至数周，成功率超60%。路博润AI筛选靶向眼周PAR-1受体。亚什兰AI面部扫描量化功效评价。</p>
+        <p><strong>创新意义：</strong>AI从"优化者"升级为"创造者"，生成式AI可从头设计全新分子结构。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 创新价值评估
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">技术成熟度：</span><span class="confidence confidence-medium">中</span> - MetaNovas已与欧莱雅、拜尔斯道夫等合作，但规模化验证尚需时间</div>
+              <div class="depth-item"><span class="depth-label">商业化潜力：</span><span class="confidence confidence-high">高</span> - 研发成本和周期大幅降低，ROI显著</div>
+              <div class="depth-item"><span class="depth-label">竞争壁垒：</span><span class="confidence confidence-medium">中</span> - 算法可复制，但数据积累和领域知识构成差异化</div>
+              <div class="depth-item"><span class="depth-label">跟进建议：</span>评估与MetaNovas等AI原料公司的合作可能性；内部可探索AI辅助配方优化工具</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">🧠</div>
+          <div>
+            <h4>神经美容 / 情绪护肤</h4>
+            <div class="trend-meta">嘉法狮 / 奇华顿 / 华东理工</div>
+          </div>
+        </div>
+        <p><strong>技术亮点：</strong>嘉法狮30年感官评估体系融入情绪维度；华东理工通过EEG脑电测试量化情绪调节效果；珈凯生物Gavient PY定位"皮肤神经稳态"。</p>
+        <p><strong>创新意义：</strong>情绪护肤从营销概念走向可量化验证，神经科学为功效声称提供科学支撑。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 创新价值评估
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">技术成熟度：</span><span class="confidence confidence-medium">中</span> - 科学验证体系正在建立，但行业标准和法规框架尚不完善</div>
+              <div class="depth-item"><span class="depth-label">商业化潜力：</span><span class="confidence confidence-medium">中</span> - 消费者对"情绪价值"关注度提升，但付费意愿待验证</div>
+              <div class="depth-item"><span class="depth-label">竞争壁垒：</span><span class="confidence confidence-medium">中</span> - 嘉法狮30年数据积累是壁垒，但技术原理可被学习</div>
+              <div class="depth-item"><span class="depth-label">跟进建议：</span>持续观察此赛道发展，暂不建议重投入；关注第三方检测机构推出的"情绪实验室"服务</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#FFD26F,#3677FF);">🌿</div>
+          <div>
+            <h4>蓝生物技术 / 极端环境微生物</h4>
+            <div class="trend-meta">科莱恩 Lucas Meyer AlgaSurge™</div>
+          </div>
+        </div>
+        <p><strong>技术亮点：</strong>AlgaSurge™源自极端环境微藻，高/低分子量双重递送机制，可模拟HA功能但抗酶解能力更强。纯素、植物基替代方案。</p>
+        <p><strong>创新意义：</strong>极端环境微生物具有独特的生物活性分子，是天然活性物开发的新宝库。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 创新价值评估
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">技术成熟度：</span><span class="confidence confidence-medium">中</span> - 临床数据已发布，但长期市场验证不足</div>
+              <div class="depth-item"><span class="depth-label">商业化潜力：</span><span class="confidence confidence-high">高</span> - 纯素/植物基标签在欧洲市场极具竞争力</div>
+              <div class="depth-item"><span class="depth-label">竞争壁垒：</span><span class="confidence confidence-medium">中</span> - 微藻培养和纯化工艺有一定技术门槛</div>
+              <div class="depth-item"><span class="depth-label">跟进建议：</span>跟踪AlgaSurge™上市后的品牌采用率和市场反馈</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#EE9CA7,#FFDDE1);">🔬</div>
+          <div>
+            <h4>合成生物学 / 人工合成PDRN</h4>
+            <div class="trend-meta">瑞吉明生物</div>
+          </div>
+        </div>
+        <p><strong>技术亮点：</strong>全球首款人工合成PDRN原料中试成功，突破三文鱼提取的原料限制和产能瓶颈。B轮融资（楚昌基金领投）支持产能扩张。</p>
+        <p><strong>创新意义：</strong>合成生物学路线使PDRN从"稀缺原料"变为"可规模化生产原料"，成本大幅下降。</p>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-icon" style="background:linear-gradient(135deg,#C471F5,#FA71CD);">🎯</div>
+          <div>
+            <h4>双靶向递送系统</h4>
+            <div class="trend-meta">赢创 X50 CellEssence</div>
+          </div>
+        </div>
+        <p><strong>技术亮点：</strong>同时靶向细胞和线粒体的CoQ10递送系统，提升抗氧化效率。实现活性成分的精准多层递送。</p>
+        <p><strong>创新意义：</strong>从"单点递送"到"双靶点递送"的升级，为抗衰活性物提供更高效的递送平台。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Section 6: 市场活动汇总 ==================== -->
+<section class="section" data-category="event">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#FFD26F,#3677FF);">🎪</div>
+    <h2>市场活动汇总 · 展会与行业会议</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h4><a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026 中国国际化妆品原料展</a></h4>
+        <div class="timeline-date">2026.03.18-20 | 杭州大会展中心</div>
+        <p>860余家企业参展，26个国家/地区，近50款全球首发新品，295项芳典奖申报。AI驱动创新、绿色转型深化、情绪护肤崛起、国产原料加速出海四大核心趋势。禾大Croda Beauty、巴斯夫、赢创、路博润、亚什兰、科莱恩、维琪科技等均参展。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 活动价值分析
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">活动影响力：</span><span class="confidence confidence-high">高</span> - 亚太区最大的化妆品原料展会，超5万名行业人士参加</div>
+              <div class="depth-item"><span class="depth-label">参与价值：</span>国产原料商芳典奖获奖占比65%，是评估国内竞争格局的最佳窗口</div>
+              <div class="depth-item"><span class="depth-label">竞品参与情况：</span>巴斯夫、赢创、路博润、亚什兰、科莱恩、嘉法狮、维琪、华熙、瑞吉明等全部参展</div>
+              <div class="depth-item"><span class="depth-label">后续跟进：</span>2027年PCHi移师广州（2.24-26），建议提前规划参展和演讲申报</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <h4><a href="https://rxglobal.com/cosmetics-global-2026-serve-taste-tomorrows-beauty-paris" target="_blank">in-cosmetics Global 2026 欧洲化妆品原料展</a></h4>
+        <div class="timeline-date">2026.04.14-16 | 巴黎凡尔赛门展览馆</div>
+        <p>1100+参展商，16000+专业观众。BASF"Beyond Beauty: Authentic+"概念、Evonik"The Soul and Science of Beauty"、Clariant AlgaSurge™发布、禾大Croda Matrixyl® Neolide展示。蓝生物技术、情绪护肤、AI研发成为展会三大关键词。</p>
+        <div class="depth-panel">
+          <button class="depth-toggle" onclick="toggleDepth(this)">
+            <span class="arrow">▶</span> 活动价值分析
+          </button>
+          <div class="depth-content">
+            <div class="depth-inner">
+              <div class="depth-item"><span class="depth-label">活动影响力：</span><span class="confidence confidence-high">高</span> - 全球最大的个人护理原料展会，引领行业趋势风向标</div>
+              <div class="depth-item"><span class="depth-label">参与价值：</span>Matrixyl® Neolide全球首发平台，与BASF/Evonik/Clariant同台竞技</div>
+              <div class="depth-item"><span class="depth-label">竞品参与情况：</span>全部国际竞品参展，贝泰妮云南特植实验室代表中国企业亮相</div>
+              <div class="depth-item"><span class="depth-label">后续跟进：</span>2027年in-cosmetics Global将于4月回归（具体日期待定），建议持续参展</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <h4><a href="https://baijiahao.baidu.com/s?id=1862361864727796604&wfr=spider&for=pc" target="_blank">ICIC 2026 国际化妆品创新大会</a></h4>
+        <div class="timeline-date">2026.04.21 | 上海</div>
+        <p>汇聚全球20+权威协会与顶尖院校，3000+行业精英参与。瑞吉明生物联合主办"PDRN核酸原料科学研究与创新应用"专题会议，探讨合成生物技术突破PDRN生产瓶颈。</p>
+      </div>
+
+      <div class="timeline-item">
+        <h4><a href="https://www.lucasmeyercosmetics.com/en/Corporate/Events/2026/03/PCHi-2026" target="_blank">NYSCC Suppliers' Day 2026</a></h4>
+        <div class="timeline-date">2026.05.19-20 | 纽约Jacob Javits会展中心</div>
+        <p>北美最重要的化妆品原料供应商展会。Clariant/Lucas Meyer Cosmetics参展（展位#841），展示AlgaSurge™和LightYears配方概念。禾大Croda Beauty预计同期参展。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Section 7: 数据可视化 ==================== -->
+<section class="section" data-category="all">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#43E97B,#38F9D7);">📊</div>
+    <h2>数据可视化 · 关键趋势图表</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+
+    <div class="chart-container">
+      <h3>📈 中国化妆品新原料备案量趋势（2022-2025）</h3>
+      <div class="bar-chart">
+        <div class="bar-group">
+          <div class="bar" style="height:18%;background:linear-gradient(135deg,#E2E8F0,#CBD5E0);">
+            <span class="bar-label">~50</span>
+            <div class="bar-tooltip">2022年：约50款（新规初期探索）</div>
+          </div>
+          <span class="bar-name">2022</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:35%;background:linear-gradient(135deg,#BEE3F8,#90CDF4);">
+            <span class="bar-label">~80</span>
+            <div class="bar-tooltip">2023年：约80款（快速增长期）</div>
+          </div>
+          <span class="bar-name">2023</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:55%;background:linear-gradient(135deg,#90CDF4,#63B3ED);">
+            <span class="bar-label">90</span>
+            <div class="bar-tooltip">2024年：90款（持续增长）</div>
+          </div>
+          <span class="bar-name">2024</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:95%;background:linear-gradient(135deg,#667eea,#764ba2);">
+            <span class="bar-label">169</span>
+            <div class="bar-tooltip">2025年：169款（同比+88%，国产占比89.3%）</div>
+          </div>
+          <span class="bar-name">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h3>💰 维琪科技营收增长趋势（2023-2025）</h3>
+      <div class="bar-chart">
+        <div class="bar-group">
+          <div class="bar" style="height:60%;background:linear-gradient(135deg,#E2E8F0,#CBD5E0);">
+            <span class="bar-label">1.65亿</span>
+            <div class="bar-tooltip">2023年营收：1.65亿元</div>
+          </div>
+          <span class="bar-name">2023</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:82%;background:linear-gradient(135deg,#BEE3F8,#4A90E2);">
+            <span class="bar-label">2.48亿</span>
+            <div class="bar-tooltip">2024年营收：2.48亿元（+50.3%）</div>
+          </div>
+          <span class="bar-name">2024</span>
+        </div>
+        <div class="bar-group">
+          <div class="bar" style="height:95%;background:linear-gradient(135deg,#667eea,#764ba2);">
+            <span class="bar-label">2.75亿</span>
+            <div class="bar-tooltip">2025年营收：2.75亿元（+10.9%），净利润0.91亿（+28.2%）</div>
+          </div>
+          <span class="bar-name">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h3>🏷️ 本月热门技术标签</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;padding:10px 0;">
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.95em;font-weight:600;">包封递送</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:1.3em;font-weight:700;">AI研发</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.9em;font-weight:500;">多肽创新</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:1.1em;font-weight:600;">情绪护肤</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.85em;font-weight:500;">生物技术</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:1.2em;font-weight:700;">可持续</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.88em;font-weight:500;">神经美容</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:1em;font-weight:600;">PDRN</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.95em;font-weight:600;">碳足迹</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.82em;font-weight:500;">蓝生物技术</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:1.05em;font-weight:600;">合成生物</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.78em;font-weight:500;">微生态</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.9em;font-weight:600;">神经酰胺</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:1.15em;font-weight:700;">国产替代</span>
+        <span style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#667eea22,#764ba222);color:#6B5B95;font-size:0.85em;font-weight:500;">端粒科学</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== Section 8: 附录 ==================== -->
+<section class="section" data-category="all">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="icon" style="background:linear-gradient(135deg,#A18CD1,#FBC2EB);">📎</div>
+    <h2>附录 · 数据来源与原文链接汇总</h2>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="collapsible-content">
+
+    <h3 style="margin:16px 0 12px;font-size:1.05em;">📰 新闻与报道来源</h3>
+    <ul class="appendix-list">
+      <li>
+        <span class="source-tag tag-product">新品</span>
+        <a href="https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html" target="_blank">Croda launches Matrixyl Neolide with encapsulation for controlled, long-lasting peptide release</a>
+      </li>
+      <li>
+        <span class="source-tag tag-finance">资本</span>
+        <a href="https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc" target="_blank">2026美妆原料第一股要来了 - 维琪科技北交所过会</a>
+      </li>
+      <li>
+        <span class="source-tag tag-event">展会</span>
+        <a href="https://www.163.com/dy/article/KOMQARL40550789W.html" target="_blank">PCHi 2026深度洞察：原料大战进入规范化新周期</a>
+      </li>
+      <li>
+        <span class="source-tag tag-product">新品</span>
+        <a href="https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065" target="_blank">In-cosmetics Global 2026: BASF champions authenticity and emotional well-being</a>
+      </li>
+      <li>
+        <span class="source-tag tag-product">新品</span>
+        <a href="https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html" target="_blank">Evonik at in-cosmetics Global 2026: New beauty identity and product launches</a>
+      </li>
+      <li>
+        <span class="source-tag tag-product">新品</span>
+        <a href="https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026" target="_blank">Lucas Meyer Cosmetics by Clariant unveils game-changing innovations at in-cosmetics 2026</a>
+      </li>
+      <li>
+        <span class="source-tag tag-finance">融资</span>
+        <a href="https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc" target="_blank">楚昌基金领投，瑞吉明撬动国产核酸原料新纪元</a>
+      </li>
+      <li>
+        <span class="source-tag tag-policy">法规</span>
+        <a href="https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/" target="_blank">化妆品新原料各地利好政策汇总（2026年5月）</a>
+      </li>
+      <li>
+        <span class="source-tag tag-policy">法规</span>
+        <a href="https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml" target="_blank">一文掌握2026年全球化妆品主流市场监管新规</a>
+      </li>
+      <li>
+        <span class="source-tag tag-product">新品</span>
+        <a href="https://m.163.com/local/article/KPTU0F7M0530JPVV.html" target="_blank">禾大Croda Beauty：以原料创新引领护发新风向 - SensaLuxe™ DF</a>
+      </li>
+      <li>
+        <span class="source-tag tag-event">展会</span>
+        <a href="https://ishare.ifeng.com/c/s/v002rhMFQfFzbIPPUdJnt1ogM6gbX6Xb7ZOE-_a1bAep--ZvA__" target="_blank">In-Cosmetics Global 2026：贝泰妮云南特植实验室展现中国植萃创新实力</a>
+      </li>
+      <li>
+        <span class="source-tag tag-tech">技术</span>
+        <a href="https://organicskincare.com/biotech-skincare-innovations-replacing-retinol-2026/" target="_blank">7 Biotech Skincare Innovations Replacing Retinol in 2026</a>
+      </li>
+      <li>
+        <span class="source-tag tag-tech">技术</span>
+        <a href="https://www.realpeptides.co/skin-care-peptides-2026-update-whats-changed/" target="_blank">Skin Care Peptides 2026 Update — What's Changed</a>
+      </li>
+      <li>
+        <span class="source-tag tag-market">市场</span>
+        <a href="https://digi.china.com/articles/20260326/202603261833265.html" target="_blank">海科新源：以硬核技术与全矩阵方案，领跑个护原料国产替代新征程</a>
+      </li>
+      <li>
+        <span class="source-tag tag-market">市场</span>
+        <a href="https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html" target="_blank">2025年科研大战，中国原料全面反攻</a>
+      </li>
+    </ul>
+
+    <h3 style="margin:24px 0 12px;font-size:1.05em;">📋 行业机构与数据库</h3>
+    <ul class="appendix-list">
+      <li>
+        <span class="source-tag" style="background:#E2E8F0;color:#4A5568;">数据库</span>
+        <a href="https://www.specialchem.com/cosmetics/news/in-cosmetics-global-2026-to-showcase-emerging-trends-new-ingredients-services-from-lab-to-launch" target="_blank">SpecialChem - in-cosmetics Global 2026 coverage</a>
+      </li>
+      <li>
+        <span class="source-tag" style="background:#E2E8F0;color:#4A5568;">数据库</span>
+        <a href="https://www.researchandmarkets.com/reports/5939541/cosmetic-ingredients-market-report" target="_blank">Research and Markets - Cosmetic Ingredients Market Report 2026</a>
+      </li>
+      <li>
+        <span class="source-tag" style="background:#E2E8F0;color:#4A5568;">数据库</span>
+        <a href="https://www.globalgrowthinsights.com/blog/cosmetics-personal-care-ingredients-companies-1090" target="_blank">Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies</a>
+      </li>
+      <li>
+        <span class="source-tag" style="background:#E2E8F0;color:#4A5568;">机构</span>
+        <a href="https://www.gcimagazine.com/roundups/2026/may" target="_blank">Global Cosmetic Industry - May 2026 Roundup</a>
+      </li>
+      <li>
+        <span class="source-tag" style="background:#E2E8F0;color:#4A5568;">机构</span>
+        <a href="https://www.10100.com/article/124115526" target="_blank">英敏特《2026中国美容个护成分趋势榜单》</a>
+      </li>
+    </ul>
+
+    <h3 style="margin:24px 0 12px;font-size:1.05em;">⚠️ 监测范围说明</h3>
+    <div style="background:var(--card);border-radius:10px;padding:18px;border:1px solid var(--border);font-size:0.88em;color:var(--text-secondary);">
+      <p><strong>国际原料商监测范围：</strong>巴斯夫、德之馨、赢创、瓦克化学、帝斯曼-芬美意、亚什兰、路博润、森馨、嘉法狮、仙婷、科莱恩/Lucas Meyer</p>
+      <p style="margin-top:8px;"><strong>国内原料商监测范围：</strong>辉文生物、唯铂莱生物科技、克琴科技、JLand聚源生物、瑞吉明生物、维琪科技、华熙生物、迪克曼生物、珈凯生物</p>
+      <p style="margin-top:8px;"><strong>关键词覆盖：</strong>原料、成分、配方、新品、技术、创新、巴斯夫、德之馨、赢创、辉文、唯铂莱、克琴、聚源、维琪、视黄醇、烟酰胺、多肽、透明质酸、神经酰胺、益生菌</p>
+      <p style="margin-top:8px;"><strong>数据来源：</strong>Web搜索（30+查询）、企业官网新闻稿、行业媒体报道（网易、新浪、百度百家号、搜狐等）、专业数据库（SpecialChem、Research and Markets、Global Growth Insights）、展会官方信息</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="report-footer">
+  <p><strong>市场监测月报 2026年5月</strong> | 禾大Croda Beauty 市场部</p>
+  <p style="margin-top:6px;">本报告由AI智能体自动生成，数据截至2026年5月26日。仅供内部参考，不构成对外发布内容。</p>
+  <p style="margin-top:6px;">报告生成时间：2026年5月26日 17:15 | 监测工具：WorkBuddy Automation</p>
+</footer>
+
+<script>
+// Section toggle
+function toggleSection(header) {
+  const content = header.nextElementSibling;
+  const icon = header.querySelector('.toggle-icon');
+  header.classList.toggle('collapsed');
+  content.classList.toggle('collapsed');
+}
+
+// Depth analysis toggle
+function toggleDepth(btn) {
+  btn.classList.toggle('open');
+  const content = btn.nextElementSibling;
+  content.classList.toggle('open');
+}
+
+// Category filter
+let activeFilter = 'all';
+function setFilter(btn, category) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = category;
+  applyFilters();
+}
+
+function applyFilters() {
+  const sections = document.querySelectorAll('.section');
+  const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+
+  sections.forEach(section => {
+    const cat = section.getAttribute('data-category') || 'all';
+    const text = section.textContent.toLowerCase();
+    const matchesFilter = activeFilter === 'all' || cat === 'all' || cat === activeFilter;
+    const matchesSearch = !searchTerm || text.includes(searchTerm);
+
+    section.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+  });
+}
+
+function filterContent() {
+  applyFilters();
+}
+
+// Animate bars on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.trend-bar-fill').forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = width; }, 100);
+      });
+      entry.target.querySelectorAll('.bar').forEach(bar => {
+        const height = bar.style.height;
+        bar.style.height = '0%';
+        setTimeout(() => { bar.style.height = height; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.chart-container, .trend-card').forEach(el => observer.observe(el));
+
+// Animate flash cards
+document.querySelectorAll('.flash-card').forEach((card, i) => {
+  card.style.animationDelay = `${i * 0.08}s`;
+  card.classList.add('animate-in');
+});
+</script>
+
+</body>
+</html>
