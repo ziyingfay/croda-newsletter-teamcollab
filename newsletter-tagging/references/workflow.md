@@ -1,23 +1,25 @@
 # Structured Tagging Workflow
 
-This reference defines the code-controlled workflow for Croda Beauty newsletter tagging. The LLM only judges article semantics.
+This reference defines the code-controlled workflow for Croda Beauty newsletter tagging. The MVP reads monthly JSON files; the full version may use database views. The LLM only judges article semantics.
 
 ## Code Responsibilities
 
 Code or scripts must own:
 
-- Read pending articles from `v_articles_for_tagging`.
-- Lock rows and move `article_tag_status` through `pending`, `in_progress`, `tagged`, `needs_review`, and `failed`.
+- MVP: read pending articles from `outputs/<month>/rss_clean.json`.
+- Full version: read pending articles from `v_articles_for_tagging`.
+- Full version only: lock rows and move `article_tag_status` through `pending`, `in_progress`, `tagged`, `needs_review`, and `failed`.
 - Call the LLM with the approved prompt and one article package at a time.
 - Parse strict JSON and validate it against `schemas/tag_output.schema.json`.
 - Run `scripts/validate_tags.py`.
 - Run deterministic post-processing rules.
 - Retry technical failures and invalid model output according to configured max attempts.
-- Write validated formal taxonomy labels, inline `ingredient_technology` other terms, and free company entities to `article_tags`.
-- Write one or more `tag_evidence` rows for every formal tag.
-- Map `ingredient_technology` inline `other:<slug>` to `inline_other_terms` for frequency tracking.
+- MVP: write validated tagging results to `outputs/<month>/tagging.json`.
+- Full version: write validated formal taxonomy labels, inline open-field other terms, and free company entities to `article_tags`.
+- Full version: write one or more `tag_evidence` rows for every formal tag.
+- Full version: map inline `other:<slug>` to `inline_other_terms` for frequency tracking.
 - Map `suggested_new_tags` to the review flow, not directly into formal tags.
-- Create review queue rows for `needs_review`, random samples, high-risk tags, and post-processing flags.
+- MVP: write review reasons and post-processing flags into `tagging.json` / `run_log.json`; full version may create review queue rows.
 - Log attempts, raw invalid output, validation errors, retry counts, and final outcomes.
 - Support `--dry-run`, batch limits, retry limits, and batch metrics output.
 
@@ -25,16 +27,39 @@ Code or scripts must own:
 
 The LLM only owns semantic judgment:
 
-- Read `title`, `summary`, `content`, `source_name`, `source_key`, `url`, `raw_tags`, and source metadata.
+- Read `title`, `summary`, `content`, `source_name`, `source_key`, `url`, `raw_tags`, source metadata, and base fields already written by the ingest script.
 - Judge whether the article is relevant to Croda Beauty market intelligence.
 - Select allowed taxonomy labels from `references/标签字段字典.md`.
-- Extract inline `ingredient_technology` `other:<slug>` labels for concrete, dictionary-missing ingredients or technologies.
+- Extract inline `other:<slug>` labels for concrete, dictionary-missing values in open fields.
 - Provide evidence for every formal label.
 - Identify articles that need review because relevance, evidence, taxonomy fit, or content quality is unclear.
 - Return `no_matching_tag` when the article is relevant but no controlled label fits.
 - Return `suggested_new_tags` for review instead of inventing formal labels in closed fields.
 
-## State Machine
+## MVP Monthly JSON Workflow
+
+MVP flow:
+
+```text
+outputs/<month>/rss_clean.json
+→ one article package at a time
+→ LLM semantic judgment
+→ schema + validator + post-processing
+→ outputs/<month>/tagging.json
+→ outputs/<month>/run_log.json
+```
+
+`tagging.json` should contain:
+
+- `month`
+- `dictionary_version`
+- `items[]` using `schema_version: newsletter-tagging/croda-beauty-v1`
+- `metrics`
+- optional `review_items[]`
+
+The MVP does not write database status rows. It preserves enough structure for later import into the full database version.
+
+## Full-Version State Machine
 
 Primary `article_tag_status.status` values:
 
@@ -77,26 +102,23 @@ Set `needs_review` when any condition is true:
 - `tagging_decision` is `needs_review`.
 - The article is relevant but returns `no_matching_tag` with `suggested_new_tags`.
 - Content is missing, too short, mostly navigation, or extraction status is not enough to judge.
-- Tags conflict, such as unsupported combinations of story type, strategic driver, and evidence.
+- Tags conflict, such as unsupported combinations of story type, value-chain stage, company, and evidence.
 - Post-processing flags broad or suspicious labels.
 - Repeated LLM attempts produce materially different formal tags.
 - The article is selected by random sample review.
 - The article contains high-risk tags or newly suggested taxonomy labels.
 
-Do not set `needs_review` solely because `ingredient_technology` contains a valid inline `other:<slug>` with evidence and `extracted_name`.
+Do not set `needs_review` solely because an open field contains a valid inline `other:<slug>` with evidence and `extracted_name`.
 
 ## Deterministic Post-Processing Rules
 
 These rules belong in code, not only in the prompt:
 
-- Reject any formal label not in the active taxonomy, except valid `ingredient_technology` inline `other:<slug>`.
-- Reject any formal tag without an evidence record for the exact `(field, label)`.
-- Reject `ingredient_technology` `other:<slug>` evidence without `extracted_name`.
-- Reject any output containing `confidence`, `confidence_score`, or threshold-based logic.
-- Flag `sustainability` when evidence only says generic green, eco, natural, or environmentally friendly without concrete sustainability facts.
+- Reject any formal label not in the active taxonomy, except valid inline `other:<slug>` in the open fields (`ingredient_technology`, `product_application`, `functional_claim`).
+- Reject any formal tag without an evidence record (`field`, `label`, `evidence_text`) for the exact `(field, label)`.
+- Reject any `other:<slug>` evidence without `extracted_name`.
 - Flag `ai_rd_formulation` when evidence merely mentions AI in passing.
 - Do not infer broad beauty tags just because the source or company is in beauty; require article-level evidence.
-- Flag `source_defaults`-only evidence for optional article tags.
 - If `content_length` is below the configured minimum, or content is missing and summary is too thin, set `needs_review` with `insufficient_content`.
 - Do not require a company watchlist. Company names are free entities extracted by the LLM and validated by evidence.
 - If a company appears only in navigation, ads, related links, quote attribution, or long lists, do not write the company entity.
@@ -106,7 +128,10 @@ These rules belong in code, not only in the prompt:
 
 Recommended runner options:
 
-- `--limit N`: maximum articles to load from `v_articles_for_tagging`.
+- `--month 2606`: monthly folder under `outputs/`.
+- `--input outputs/2606/rss_clean.json`: explicit JSON input path.
+- `--output outputs/2606/tagging.json`: explicit JSON output path.
+- `--limit N`: maximum articles to load.
 - `--dry-run`: run LLM, validation, post-processing, and metrics without writing tags or status changes permanently.
 - `--retry-max N`: retry count for `technical_failure` and `invalid_model_output`.
 - `--batch-id ID`: explicit tagging run id, otherwise generated.
@@ -114,7 +139,7 @@ Recommended runner options:
 - `--high-risk-sample-rate 0.20`: review sample rate for high-risk tags or new tag suggestions.
 - `--log-file PATH`: JSONL attempt and metrics log.
 
-Every attempt log should include `tag_run_id`, `article_id`, attempt number, model/prompt version, status transition, validation result, post-processing flags, retry decision, and final outcome.
+Every attempt log should include `article_id`, attempt number, model/prompt version, validation result, post-processing flags, retry decision, and final outcome. Full-version logs may also include `tag_run_id` and database status transitions.
 
 ## Quality Metrics
 

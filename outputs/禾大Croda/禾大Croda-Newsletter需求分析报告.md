@@ -17,7 +17,7 @@
 | 交付物 | 每月 1 日 09:00 自动生成的交互式 HTML 月报《市场监测月报_YYYYMM》，中英文双语，内部参考 |
 | 核心定位 | Croda 作为原料商，需要监测**上游竞品原料商、平行代理商、下游客户品牌、行业媒体与法规**，并把动态对标到自身产品线（如 Matrixyl® 多肽系列） |
 
-**关键判断：** 禾大与现有字典服务的"食品饮料"完全是另一个行业。现有字典（`industry_segment=finished_food/beverage/ingredients…`、`product_application=dairy/bakery…`、`strategic_driver=health_nutrition…`）**不能直接复用其词表**，但其**两层 MECE 架构、证据驱动、活字典、公司自由实体、无 confidence** 等设计原则完全适用，应当继承。
+**关键判断：** 禾大与现有字典服务的"食品饮料"完全是另一个行业。现有字典（`industry_segment=finished_food/beverage/ingredients…`、`product_application=dairy/bakery…`、`strategic_driver=health_nutrition…`）**不能直接复用其词表**，但其**两层 MECE 架构、证据驱动、活字典、公司自由实体**等设计原则完全适用，应当继承。
 
 ---
 
@@ -25,7 +25,7 @@
 
 ### 2.1 监测的公司实体（按角色分层）
 
-原型把监测对象明确分成五类角色，这正是禾大情报体系的核心结构。这些公司名单来自客户上传的 Excel（`美妆个护公众号list.xlsx`、`competitor PC list.xlsx`），属于**客户配置**，不进字典词表（遵循项目决策 009）。字典用 `entity_role`（仅表达"相对禾大的关系"：self/competitor/customer/channel_partner/ecosystem）+ `market_region`（国际/国内）+ `value_chain_stage`（链位置）三者组合来还原下表的五类角色，避免在单一字段里重复编码关系、地理与位置。
+原型把监测对象明确分成五类角色，这正是禾大情报体系的核心结构。这些公司名单来自客户上传的 Excel（`美妆个护公众号list.xlsx`、`competitor PC list.xlsx`），属于**客户配置 Watchlist**，不进字典词表（遵循项目决策 009，见 §6.2 与字典第六节）。v2 字典中，公司**角色**不再由 Agent 打标（已删除 `entity_role` 标签），而是由后端用抽取出的 `company` 去匹配 Watchlist（其中配置了 `entity_role`、`market_region`）得出下表的五类角色，避免在打标阶段重复编码关系、地理与位置。
 
 | 角色 | 代表实体（来自原型与 WeChat Export） | 情报用途 |
 |------|--------------------------------------|----------|
@@ -76,10 +76,19 @@
 
 | 章节 | 深度分析维度 |
 |------|--------------|
-| 竞品动态 | 战略意图 + 市场影响 + 应对建议 + 置信度评分 |
+| 竞品动态 | 战略意图 + 市场影响 + 应对建议 |
 | 成分趋势 | 技术原理 + 功效机制 + 市场接受度 + 应用前景 + **禾大对标分析** |
 | 技术创新 | 技术成熟度 + 商业化潜力 + 竞争壁垒 + 跟进建议 |
 | 市场活动 | 活动影响力 + 参与价值 + 后续跟进建议 + 竞品参与情况 |
+| **重点客户监测（新增）** | **客户卖点 + 在用成分/技术 + 质量趋势 + 对禾大的供应机会** |
+
+> **新增"重点客户监测"章节（原型未覆盖）：** 在原型四大深度分析之外，新增一个面向**终端品牌客户**的监测章节（章节名可定为"重点客户监测 / 客户雷达 / Customer Watch"）。
+>
+> - **监测对象**：Excel 名单内的**全部下游客户品牌**——MNC（雅诗兰黛、兰蔻、资生堂、SK-II、玉兰油、多芬等）与国货（珀莱雅、薇诺娜、润百颜、夸迪、可复美、自然堂等）。覆盖范围 = 名单内所有客户，而非仅热点客户。
+> - **监测维度**：①**卖点**（品牌主打的功效宣称/概念，对应 `functional_claim`）；②**成分技术**（客户产品在用/主推的成分与技术，对应 `ingredient_technology`、`product_application`）；③**质量趋势**（口碑、功效验证、安全/质量争议、配方升级方向）；④由上述推导的**对禾大的供应/合作机会**。
+> - **业务价值**：从下游需求侧反推禾大该备什么料、推什么概念、找谁 BD——把"竞品在供什么"与"客户在要什么"对接起来。
+> - **打标支撑**：`company`（命中 Watchlist 中 `entity_role=customer` 的实体）+ `functional_claim` + `ingredient_technology` + `product_application` + `primary_story_type`（含 `market_consumer_insight` / `regulation_policy` 的质量相关条目）。
+> - **相关性边界**：客户品牌新闻只有在涉及**成分/配方/原料采购/功效/质量**时才纳入；纯代言、营销活动不纳入（见 §7）。
 
 ### 3.3 原型中实际传达的 Insight（样例）
 
@@ -89,7 +98,7 @@
 - **可持续从加分到必修**（碳足迹、RSPO、生物质平衡；Matrixyl® Neolide 碳足迹降 43%）
 - **国产原料加速出海**（辉文 HWPDRN®、柏垠可拉酸钠）
 
-→ 这些 insight 都可分解为：**事件类型 + 成分/技术 + 功效宣称 + 战略驱动 + 涉事公司+角色**。这正是字典要承载的维度。
+→ 这些 insight 都可分解为：**事件类型 + 成分/技术 + 功效宣称 + 涉事公司（含 Watchlist 角色）**。这正是字典要承载的维度（注：v2 字典已删除独立的 `strategic_driver`/`entity_role`，战略含义由事件类型+成分+功效组合表达，公司角色由 Watchlist 匹配得出）。
 
 ---
 
@@ -97,13 +106,13 @@
 
 | 业务场景 | Newsletter 如何服务 | 对应的标签筛选 |
 |----------|---------------------|----------------|
-| **竞争情报** | 及时掌握巴斯夫/德之馨/赢创等竞品的新原料、产能、合作、融资 | `entity_role=competitor` + `primary_story_type` + `company` |
-| **产品/研发路线图** | 跟踪成分与技术趋势（多肽、PDRN、递送、合成生物、AI），决定 Croda 自研/引进方向 | `ingredient_technology` + `strategic_driver` + `functional_claim` |
-| **市场定位 / 营销** | 用差异化卖点（碳足迹、缓释、功效验证）支撑 Matrixyl® 等自家产品推广 | `strategic_driver=sustainability/efficacy_science/delivery_technology` + `company=Croda` |
-| **BD / 客户开发** | 监测下游 MNC 与国货品牌的成分偏好与新需求，发现合作机会 | `entity_role=customer` (× `market_region` 分 MNC/国货) + `functional_claim` + `product_application` |
-| **法规合规** | 跟踪新原料备案、欧盟致敏原、可持续认证，保障出口合规与注册节奏 | `primary_story_type=regulation_policy` + `strategic_driver=regulation_compliance` |
-| **国产替代 / 出海布局** | 评估国内新锐原料商威胁与海外扩张机会 | `strategic_driver=localization/globalization` + `market_region` |
-| **投资 / 并购雷达** | 监测融资上市（维琪、瑞吉明）判断行业资本动向 | `primary_story_type=capital_finance` |
+| **竞争情报** | 及时掌握巴斯夫/德之馨/赢创等竞品的新原料、产能、合作、融资 | `company`(Watchlist=competitor) + `primary_story_type` + `ingredient_technology` |
+| **产品/研发路线图** | 跟踪成分与技术趋势（多肽、PDRN、递送、合成生物、AI），决定 Croda 自研/引进方向 | `ingredient_technology` + `functional_claim` + `primary_story_type=technology_process_innovation/research_science` |
+| **市场定位 / 营销** | 用差异化卖点（缓释、功效验证）支撑 Matrixyl® 等自家产品推广 | `ingredient_technology`(递送/缓释) + `functional_claim` + `company=Croda` |
+| **BD / 客户开发** | 监测下游 MNC 与国货品牌的成分偏好与新需求，发现合作机会 | `company`(Watchlist=customer, × `market_region` 分 MNC/国货) + `functional_claim` + `product_application` |
+| **法规合规** | 跟踪新原料备案、欧盟致敏原、可持续认证，保障出口合规与注册节奏 | `primary_story_type=regulation_policy` + `market_region` |
+| **国产替代 / 出海布局** | 评估国内新锐原料商威胁与海外扩张机会 | `company`(Watchlist=competitor) + `market_region` + `primary_story_type=corporate_move` |
+| **投资 / 并购雷达** | 监测融资上市（维琪、瑞吉明）判断行业资本动向 | `primary_story_type=corporate_move`（含投融资/IPO） |
 
 **结论：** 禾大 newsletter 的本质是**上游原料商视角的市场+竞争+技术+法规情报雷达**，每篇文章必须能回答"谁（公司+角色）做了什么（事件类型）、涉及什么成分/技术、宣称什么功效、为什么对 Croda 重要（战略驱动）、发生在哪个市场/价值链阶段"。日后所有 newsletter 都应围绕这套维度服务上述七类业务场景。
 
@@ -115,15 +124,14 @@
 |------|------|---------------------|
 | 每月定时自动生成 | 月报，回溯 30 天 | 需 `published_at` 时间筛选、批处理 runner |
 | 交互式 HTML + 中英双语 | 折叠章节、筛选器、图表、词云、搜索、PDF 导出 | `content_language`；标签需可聚合为筛选器维度（按竞品/时间/类型/成分） |
-| 可点击有效链接 + 链接验证 | 所有新闻必须有有效原文链接 | `url/canonical_url`、`access_status`、`extraction_status` |
-| 市场快讯 TOP10 卡片 | 事件分类标签 | `primary_story_type` 驱动卡片分类 |
-| 竞品动态矩阵 | product/technology/activity/cooperation 四维 | `primary_story_type` + `entity_role=competitor` + `company` |
+| 可点击有效链接 + 链接验证 | 所有新闻必须有有效原文链接 | `url/canonical_url`、`link_status`（月报阶段校验）、`extraction_status` |
+| 市场快讯 TOP10 卡片 | 事件分类标签 | `primary_story_type`（多选）驱动卡片分类 |
+| 竞品动态矩阵 | product/technology/activity/cooperation 四维 | `primary_story_type` + `company`(Watchlist=competitor) + `ingredient_technology` |
 | 成分热度指数 / 备案量趋势图 | 数据可视化 | `ingredient_technology` 多选标签 + 计数聚合 |
-| 深度分析（战略意图/对标/价值评估） | LLM 生成的二次洞察 | 依赖准确的一级标签作为输入；置信度由人工复核而非 AI 自评（遵循项目"无 confidence"原则） |
+| 深度分析（战略意图/对标/价值评估） | LLM 生成的二次洞察 | 依赖准确的一级标签、证据与来源链接作为输入 |
 | 异常处理 | 抓取失败记录后继续、数据不足标注 | 对应 `extraction_status`、`needs_review`、失败分类 |
 
 **注意事项（与本项目原则的衔接）：**
-- 原型 prompt 要求竞品动态给"置信度评分"。但本项目决策 008 已明确**废弃 AI 自评 confidence**。建议禾大版同样不让 LLM 输出 confidence，置信度改由**证据强度 + 人工复核抽样**体现；如客户坚持要展示置信度，应在生成层用规则（来源性质 + 证据字段数）派生，而非让打标 LLM 自评。
 - 深度分析（战略意图/对标/价值评估）属于 newsletter **生成阶段**的二次加工，不属于打标阶段；打标只负责输出客观可复现的受控标签 + 证据，深度洞察由后续生成 prompt 基于标签聚合产出。
 
 ---
@@ -135,18 +143,22 @@
 2. **MECE**：每字段一个独立维度，不跨字段重复。
 3. **客户匹配导向**：字段必须能帮后端把文章匹配到客户关注的对象/议题。
 4. **公司不入字典**：公司名自由实体抽取，watchlist 作为客户配置而非 taxonomy。
-5. **证据驱动 + 无 confidence + 活字典候选机制（suggested_new_tags → 人工 qualification）**。
+5. **证据驱动 + 活字典机制**。
 
-### 6.2 差异（针对禾大美妆个护重构的词表）
-| 维度 | 食品饮料版 | 禾大美妆个护版 |
-|------|-----------|----------------|
-| `industry_segment` | finished_food/beverage/ingredients… | active_ingredients/functional_ingredients/finished_cosmetics/contract_manufacturing… |
-| `product_application` | dairy/bakery/confectionery… | skincare/sun_care/color_cosmetics/hair_care/body_care… |
-| `strategic_driver` | health_nutrition/clean_label… | sustainability/efficacy_science/delivery_technology/biotech/ai_rd/localization/globalization… |
-| **新增 `functional_claim`** | （无，原 benefit_claim 已删） | 抗衰/美白/保湿/修护/祛痘/情绪护肤/微生态…（美妆功效是核心筛选维度，独立于战略驱动） |
-| **新增 `ingredient_technology`** | （无） | 多肽/PDRN/神经酰胺/视黄醇替代/重组胶原/递送技术/合成生物…（成分与技术是月报主轴，活字典在此最活跃） |
-| **新增 `entity_role`** | （无，纯自由实体） | self/competitor/customer/channel_partner/ecosystem（**仅关系轴**，与 value_chain_stage 解耦；地理交给 market_region，公司名仍自由抽取） |
-| `value_chain_stage` | agriculture→consumer | upstream_raw_material→ingredient_active→formulation→contract_mfg→brand_product→channel→consumer |
+### 6.2 v2 字段结构（应用户反馈重构后）
+
+> v2 对照说明（相对最初提交版）：严格区分**字段（属性）**与**标签**；精简 Agent 判断标签为 6 个；删除 `industry_segment`、`strategic_driver`、`entity_role`。
+
+| 字段 | 层 | 现状 |
+|------|----|------|
+| `source_nature` / `content_language` / `market_region` / `ingest_method` / `extraction_status` | 字段（入库脚本写入） | 由脚本判定，Agent 不重算 |
+| `primary_story_type` | 标签 | **改多选**；合并 business+capital → `corporate_move`；删 safety_quality/supply_chain（拆入法规/企业动态/市场洞察） |
+| `product_application` | 标签 | 保留；`ingredient_general`+固定 other → 统一活字典 `other:<名>` |
+| `ingredient_technology` | 标签 | 主轴；活字典 `other:<名>`（多肽/PDRN/递送/合成生物…） |
+| `functional_claim` | 标签 | 美妆功效（抗衰/美白/保湿/修护/情绪护肤/微生态…）；活字典 `other:<名>` |
+| `value_chain_stage` | 标签 | 合并原 `industry_segment`；上游→原料→配方→代工→包装→品牌→渠道→消费者→监管科研 |
+| `company` | 标签（自由实体） | 自由抽取；角色由 Watchlist 匹配（不再有 `entity_role` 标签） |
+| ~~`industry_segment`~~ / ~~`strategic_driver`~~ / ~~`entity_role`~~ | — | **已删除**（并入 value_chain / 拆解到事件+成分+功效 / 转 Watchlist 配置） |
 
 详细词表见配套文件 `标签字段字典-禾大美妆个护版.md`。
 
@@ -154,11 +166,10 @@
 
 ## 七、风险与待确认事项
 
-1. **置信度评分**：原型要求展示，项目原则禁止 AI 自评 confidence。需向客户确认改为"证据强度+人工复核"或规则派生（见 §5）。
-2. **watchlist 来源**：监测公司名单来自客户 Excel，需作为客户配置文件维护，并定期与客户同步增删（如新增竞品、新锐原料商）。
-3. **成分/技术词表的活字典节奏**：美妆新成分迭代极快（如外泌体、合成 PDRN、蓝生物技术）。已采用**内联 `other:<名>` 实时打标**机制（字典见 4.4.1）：字典外成分由 AI 实时打标、宁多勿漏，文章当下即可检索；后端按频次驱动晋升，人工只看高频列表批量审核（无需重读文章）。复核节奏建议每两周。
-4. **下游品牌信号的相关性边界**：客户品牌新闻很多与原料无关（如代言、营销），需在 prompt 中强约束：只有当品牌新闻涉及**成分/配方/原料采购/功效宣称**时才打标，否则判 `no_matching_tag` 或低相关。
-5. **双语**：抓取以中文公众号为主，月报需英文版，翻译属生成阶段，不影响打标，但 `content_language` 需准确以便分流。
+1. **Watchlist（已定义，待客户确认名单）**：监测公司名单来自客户 Excel（客户相关公司 + 竞品公司），已在字典第六节与数据库 `watchlist_entities` 定义为**客户配置**：含 `display_name`、`aliases`（规范化，如"欧莱雅"="L'Oréal"）、`entity_role`、`market_region`。公司名不进 `suggested_new_tags`、不回写字典词表；由客户独立维护、定期同步增删。Agent 抽取的 `company` 由后端 `v_watchlist_matches` 匹配出角色。待确认项：名单初始内容与同步频率。
+2. **成分/技术词表的活字典节奏**：美妆新成分迭代极快（如外泌体、合成 PDRN、蓝生物技术）。已采用**内联 `other:<名>` 实时打标**机制（字典见 4.4.1）：字典外成分由 AI 实时打标、宁多勿漏，文章当下即可检索；后端按频次驱动晋升，人工只看高频列表批量审核（无需重读文章）。复核节奏建议每两周。
+3. **下游品牌信号的相关性边界**：客户品牌新闻很多与原料无关（如代言、营销），需在 prompt 中强约束：只有当品牌新闻涉及**成分/配方/原料采购/功效宣称**时才打标，否则判 `no_matching_tag` 或低相关。
+4. **双语**：抓取以中文公众号为主，月报需英文版，翻译属生成阶段，不影响打标，但 `content_language` 需准确以便分流。
 
 ---
 

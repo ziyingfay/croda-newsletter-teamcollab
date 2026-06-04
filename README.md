@@ -50,16 +50,16 @@ newsletter 字典/
 
 - 禾大项目背景：已根据客户 Word、Excel、HTML prototype 梳理完成。
 - 禾大标签字典：已作为当前活跃字典同步到 `dev/docs/标签字段字典.md` 和 `newsletter-tagging/references/标签字段字典.md`。
-- 打标原则：沿用两层字段、MECE、证据驱动、公司自由实体、无 AI 自评 confidence。
-- 打标主轴：`ingredient_technology`、`functional_claim`、`entity_role`、`primary_story_type`、`strategic_driver`、`value_chain_stage`。
+- 打标原则：沿用字段/标签分离、MECE、证据驱动、公司自由实体和活字典机制。
+- 打标主轴：`primary_story_type`、`product_application`、`ingredient_technology`、`functional_claim`、`value_chain_stage`、`company`。
 - 旧项目清理：食品饮料抓取代码、旧字典、旧数据流说明已归档；缓存、`node_modules`、`.git`、`.DS_Store`、`__pycache__` 已清理。
 
 ## 下一阶段
 
-1. 建立禾大数据源配置：公众号清单、竞品官网、行业数据库、展会与法规源。
-2. 实现文章入库和正文抽取：优先支持微信公众号文章，其次支持官网和数据库补充。
-3. 实现 `v_articles_for_tagging` 和批处理 runner：让 Agent 稳定读取待打标文章、校验输出并写回数据库。
-4. 实现月报生成链路：从标签聚合出 TOP10、执行摘要、竞品矩阵、成分趋势、技术创新、活动汇总和附录链接。
-5. 建立人工复核和活字典机制：尤其是 `ingredient_technology` 的 `other:<slug>` 高频晋升。
+1. 跑通 `outputs/<month>/rss_clean.json`，把当月 RSS 原始记录整理成干净文章 JSON。
+2. 跑通小龙虾 1，读取 `rss_clean.json` 并输出 `tagging.json`。
+3. 跑通 HTML 渲染脚本，读取 `report_content.json` 稳定输出月报。
+4. 跑通小龙虾 2，读取近 3 个月最终报告、当月 RSS JSON 和打标 JSON，输出 `report_content.json`。
+5. 在 MVP 稳定后，再评估是否接入 `dev/docs/数据库设计.md` 中的完整数据库版本。
 
 详细计划见 `dev/docs/项目管理文档.md` 和 `dev/docs/里程碑检查清单.md`。
