@@ -25,7 +25,7 @@ Repository: `corda-newsletter`
 | `reference/禾大newsletter/WeChat Article Export.xlsx` | 客户提供的监测对象清单，包括行业媒体、国际/国内原料商、代理商、MNC 客户品牌和国内品牌 |
 | `reference/禾大newsletter/市场监测月报_202605 workbuddy.html` | 客户提供的交互式 HTML prototype，定义月报栏目、卡片、图表和深度分析形式 |
 | `outputs/禾大Croda/禾大Croda-Newsletter需求分析报告.md` | 已完成的客户需求分析与项目背景反推 |
-| `outputs/禾大Croda/标签字段字典-禾大美妆个护版.md` | 已完成的禾大美妆个护定制标签字段字典 |
+| `outputs/禾大Croda/标签字段字典-禾大美妆个护版-V2.md` | 已完成的禾大美妆个护定制标签字段字典 V2 |
 
 ## 工作区结构
 

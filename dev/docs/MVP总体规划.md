@@ -1,378 +1,219 @@
 # MVP 总体规划
 
-> 本文档定义当前 MVP 路线。MVP 采用**按月文件夹 + JSON 工件 + HTML 渲染**的轻量流程，目标是尽快稳定产出月度报告；完整数据库版本保留在 `dev/docs/数据库设计.md`，作为后续第二版接入方案。
+> 本文档定义禾大 Croda 情报订阅 Agent 的 MVP 路线和团队执行计划。MVP 采用**按月文件夹 + JSON 工件 + HTML 渲染**的轻量流程，目标是尽快稳定产出月度报告。关键文件字段与输入输出契约见 `dev/docs/MVP关键工件契约.md`；完整数据库版本保留在 `dev/docs/数据库设计.md`，作为后续第二版接入方案。
 
 ---
 
+# 第一部分：项目本身的 MVP 规划
+
 ## 一、MVP 定位
 
-当前客户需求是**月度频次的行业情报报告**，核心交付物是每月一份可阅读、可交互、可复核的 HTML 月报。现阶段不需要复杂的历史数据管理、跨月检索、长期回填或多用户数据运营，因此 MVP 不实现数据库入库、状态机和长期存量维护。
+当前客户需求是**月度频次的行业情报报告**。MVP 的目标不是先建设完整数据平台，而是先把接近人工工作方式的端到端流程跑稳：
 
-MVP 的工程目标是：
+```text
+RSS / 公众号抓取
+→ 干净 RSS JSON
+→ 小龙虾 1 打标 JSON
+→ 小龙虾 2 报告内容 JSON
+→ HTML 渲染脚本
+→ 最终月报
+```
+
+MVP 的核心价值：
 
 - 每个月形成一个独立工作包，例如 `outputs/2606/`。
 - 每一步都输出可读 JSON，方便人工查看、复核和调试。
-- Agent 只处理当月数据，除“写报告”阶段读取过往 3 个月最终报告外，不依赖历史存量。
-- HTML 版式由固定脚本渲染，报告内容由 JSON 配置驱动。
-- 产物结构与完整数据库版字段保持兼容，未来可把月度 JSON 导入 SQLite。
+- 除报告写作阶段读取近 3 个月最终报告外，其余步骤不维护历史存量。
+- HTML 版式由固定脚本渲染，业务内容由 `report_content.json` 驱动。
+- 字段与未来数据库设计保持兼容，后续可通过 adapter 导入 SQLite。
 
-## 二、MVP 与完整版本的边界
+## 二、MVP 与完整版本边界
 
-| 项 | MVP 版本（当前） | 完整版本（第二版） |
-|----|------------------|--------------------|
-| 数据组织 | 按月份文件夹组织 JSON / HTML | SQLite 表、视图、状态机 |
-| 数据范围 | 当前月份为主；写报告时读取过往 3 个月最终报告 | 支持历史文章、重打标、活字典晋升、跨月查询 |
-| 打标输入 | 干净 RSS JSON | `v_articles_for_tagging` |
+| 项 | MVP 版本（当前主线） | 完整版本（第二版） |
+|----|----------------------|--------------------|
+| 数据组织 | 按月份文件夹组织 JSON / HTML | SQLite 表、视图、运行状态 |
+| 数据范围 | 当月数据为主；报告阶段读取近 3 个月最终报告 | 历史文章、跨月查询、重打标、活字典运营 |
+| 打标输入 | `rss_clean.json` | `v_articles_for_tagging` |
 | 打标输出 | `tagging.json` | `article_tags` + `tag_evidence` |
-| 报告输入 | RSS JSON + 打标 JSON + 近 3 个月最终报告 | `v_monthly_report_articles` + `report_runs` |
-| 报告输出 | `report_content.json` + HTML | HTML + JSON 摘要 + report_runs |
-| 主要优势 | 快、可读、接近人工工作方式 | 可追溯、可统计、可长期运营 |
-| 当前优先级 | 最高 | 保留设计，不做第一阶段实现 |
+| 报告输入 | RSS JSON + 打标 JSON + 近 3 个月报告摘要 | 报告视图 + `report_runs` |
+| 报告输出 | `report_content.json` + `report.html` | HTML + JSON 摘要 + 数据库运行记录 |
+| 当前优先级 | 最高，先交付 | 保留设计，不作为 MVP 阻塞项 |
 
-## 三、月度文件夹结构
+MVP 不删除数据库相关文档，也不把原数据库设计改成“废弃”。数据库是第二版能力，适合在客户确认长期运营、跨月检索、历史回填和数据分析需求后接入。
 
-建议每个月使用一个固定目录，短期采用用户现有口径：
+## 三、MVP 交付目标
 
-```text
-outputs/2606/
-├── raw/
-│   ├── rss_raw_*.json
-│   └── fetch_log.json
-├── rss_clean.json
-├── tagging.json
-├── report_context.json
-├── report_content.json
-├── report.html
-└── run_log.json
-```
+| 交付层级 | 具体交付物 | 交付目标 | 验收方式 |
+|----------|------------|----------|----------|
+| 项目规划 | 本文档、里程碑、问题跟踪、测试记录 | 团队知道当前先做什么、不做什么 | PM 审阅并保持文档一致 |
+| 数据输入 | `outputs/<month>/rss_clean.json` | 当月文章完整、干净、可打标 | 抽样核对来源、链接、去重、正文 |
+| 标签判断 | `outputs/<month>/tagging.json` | 小龙虾 1 输出可复核的标签和证据 | schema/validator + 人工抽样复核 |
+| 报告内容 | `outputs/<month>/report_content.json` | 小龙虾 2 选题、写作、分区结构化 | PM/行业 Reviewer 审阅 |
+| 前端展示 | `outputs/<month>/report.html` | 客户可阅读、可点击、版式稳定 | 浏览器检查 + 客户确认 |
+| 运行记录 | `outputs/<month>/run_log.json` | 每步输入、输出、错误和人工复核可追溯 | QA 检查日志完整性 |
 
-| 文件 | 生成者 | 用途 |
-|------|--------|------|
-| `raw/rss_raw_*.json` | RSS 抓取脚本 | 原始抓取记录，保留排查线索 |
-| `raw/fetch_log.json` | RSS 抓取脚本 | 抓取过程、失败源、跳过原因 |
-| `rss_clean.json` | 清洗脚本 | 完整且干净的当月文章 JSON，是 Agent 输入 |
-| `tagging.json` | 小龙虾 1 | 每篇文章的标签、证据、相关性判断 |
-| `report_context.json` | 报告控制脚本 | 近 3 个月最终报告摘要 + 当月输入索引 |
-| `report_content.json` | 小龙虾 2 | HTML 配置文件，决定本期报告写什么和怎么分区 |
-| `report.html` | 渲染脚本 | 最终 HTML 月报 |
-| `run_log.json` | 控制脚本 | 每步输入、输出、时间、错误和人工复核记录 |
+关键工件的字段结构、生成者和消费者见 `dev/docs/MVP关键工件契约.md`。
 
-## 四、MVP 流程
+## 四、团队角色与责任
 
-```text
-RSS 抓取
-→ 清洗为 rss_clean.json
-→ 小龙虾 1 读取 rss_clean.json 并输出 tagging.json
-→ 小龙虾 2 读取近 3 个月 final report + rss_clean.json + tagging.json
-→ 小龙虾 2 判断入选文章并生成 report_content.json
-→ HTML 渲染脚本读取 report_content.json
-→ 输出 report.html
-```
+实际团队可以一人兼多角色，但项目管理时按以下责任拆分，避免任务边界混在一起：
 
-## 五、关键工件契约
+| 角色 | 主要责任 | 主要交付物 | 质量责任 |
+|------|----------|------------|----------|
+| PM / 产品负责人 | 范围、节奏、客户确认、验收标准 | 项目计划、客户确认清单、变更记录 | 决定是否进入下一阶段 |
+| 行业 / 客户 Reviewer | 标签口径、栏目价值、业务叙事质量 | 分类反馈、报告内容修改意见 | 确认内容是否符合禾大需求 |
+| RSS / 数据工程 | 抓取、清洗、去重、基础字段补齐 | raw 文件、`fetch_log.json`、`rss_clean.json` | 保证输入完整、稳定、可追溯 |
+| Agent 工程 | 小龙虾 1/2 的 prompt、schema、控制脚本 | 打标 runner、报告 runner、日志 | 保证 Agent 输出可校验、可复跑 |
+| 前端 / 渲染工程 | HTML 模板、CSS、JavaScript、渲染脚本 | `report_content.json` schema、`report.html` | 保证改 JSON 可稳定影响版式 |
+| QA / 复核 | 运行检查、抽样复核、回归测试 | 测试记录、问题单、验收报告 | 阻止坏工件进入客户交付 |
 
-### 5.1 `rss_clean.json`
+## 五、阶段目标与交付
 
-目标：给打标 Agent 一个完整、干净、可复核的文章列表。
+> 工作量是项目管理估算，按人日计算。若同一人承担多个角色，总日历周期会拉长。
 
-最小结构：
+| 阶段 | 目标 | 主要参与者 | 关键交付物 | 估算工作量 | 进入下一阶段条件 |
+|------|------|------------|------------|------------|------------------|
+| Phase 0：MVP 方案冻结 | 明确月度 JSON 工作流、报告目标和质量门槛 | PM、行业 Reviewer、工程 Lead | MVP 规划、工件契约、里程碑、问题清单 | 1-2 人日 | 团队认可 MVP 与完整版本边界 |
+| Phase 1：月度输入清洗 | 从原始 RSS/公众号记录生成干净文章 JSON | RSS / 数据工程、QA | `raw/`、`fetch_log.json`、`rss_clean.json` | 3-5 人日 | `rss_clean.json` 抽样通过，失败项有日志 |
+| Phase 2：小龙虾 1 打标 | 跑通文章到标签 JSON | Agent 工程、行业 Reviewer、QA | `tagging.json`、validator、复核记录 | 3-5 人日 | 标签输出通过校验，抽样质量可接受 |
+| Phase 3：HTML 渲染 | 固定报告版式和 JSON 驱动渲染 | 前端 / 渲染工程、PM、QA | `report_content.json` schema、模板、CSS/JS、样例 HTML | 4-7 人日 | 只改 JSON 可稳定输出报告 |
+| Phase 4：小龙虾 2 报告 | 跑通选题、去重、写作和结构化报告 JSON | Agent 工程、行业 Reviewer、PM | `report_context.json`、`report_content.json`、报告入选规则 | 4-6 人日 | 报告 JSON 可渲染，内容通过业务复核 |
+| Phase 5：2606 端到端演练 | 用 2606 样本跑完整链路并交付客户确认 | 全员 | `report.html`、运行日志、问题修复清单 | 3-5 人日 | 客户确认第一版分类、内容和 HTML |
+| Phase 6：复盘与第二版评估 | 判断是否继续强化 MVP 或接入数据库 | PM、工程 Lead、客户 Reviewer | 复盘记录、第二版建议 | 1-2 人日 | 明确下一周期开发路线 |
 
-```json
-{
-  "month": "2606",
-  "generated_at": "2026-06-04T00:00:00+02:00",
-  "articles": [
-    {
-      "article_id": "stable_hash",
-      "title": "...",
-      "summary": "...",
-      "content": "...",
-      "url": "...",
-      "canonical_url": "...",
-      "published_at": "...",
-      "source_key": "...",
-      "source_name": "...",
-      "ingest_method": "wechat_account",
-      "source_nature": "wechat_public_account",
-      "content_language": "zh",
-      "market_region": ["china"],
-      "raw_tags": []
-    }
-  ]
-}
-```
+## 六、MVP 成功标准
 
-约束：
+MVP 成功不等于所有能力自动化完成，而是满足以下条件：
 
-- 字段与 `dev/docs/标签字段字典.md` 的“基础数据字段”一致。
-- 抓取失败记录不混入 `articles`，进入 `raw/fetch_log.json`。
-- `article_id` 必须稳定，后续导入数据库时可复用。
+1. 2606 月度工作包可以端到端生成 `report.html`。
+2. 每个中间工件都可读、可校验、可追溯。
+3. 小龙虾 1 和小龙虾 2 分工清楚，输出不互相污染。
+4. 客户能确认报告栏目、标签口径、内容颗粒度和 HTML 展示标准。
+5. 团队能基于同一套工件定位问题，而不是靠聊天记录回忆。
+6. 后续如接入数据库，不需要推翻 Agent 与报告 JSON 的核心逻辑。
 
-### 5.2 `tagging.json`
+## 七、当前不做的事
 
-目标：保存小龙虾 1 对当月文章的语义判断。
-
-结构应兼容 `newsletter-tagging/schemas/tag_output.schema.json`：
-
-```json
-{
-  "month": "2606",
-  "dictionary_version": "croda-beauty-2026-06-04",
-  "items": [
-    {
-      "schema_version": "newsletter-tagging/croda-beauty-v1",
-      "article_id": "stable_hash",
-      "relevance": "relevant",
-      "tagging_decision": "tagged",
-      "tags": {
-        "primary_story_type": ["product_launch_or_update"],
-        "ingredient_technology": ["peptides"],
-        "functional_claim": ["anti_aging"],
-        "value_chain_stage": "ingredient_active",
-        "company": ["Croda"]
-      },
-      "evidence_records": [
-        {
-          "field": "ingredient_technology",
-          "label": "peptides",
-          "evidence_text": "..."
-        }
-      ],
-      "review_reasons": []
-    }
-  ]
-}
-```
-
-约束：
-
-- 不输出基础字段；基础字段来自 `rss_clean.json`。
-- 开放字段可用 `other:<slug>`。
-- 每个正式标签必须有 `evidence_text`。
-
-### 5.3 `report_context.json`
-
-目标：让小龙虾 2 知道过去 3 个月写过什么，避免重复叙事，并延续趋势判断。
-
-最小结构：
-
-```json
-{
-  "month": "2606",
-  "previous_reports": [
-    {
-      "month": "2605",
-      "path": "outputs/2605/report.html",
-      "summary": "...",
-      "covered_companies": ["..."],
-      "covered_topics": ["..."],
-      "open_followups": ["..."]
-    }
-  ]
-}
-```
-
-### 5.4 `report_content.json`
-
-目标：作为 HTML 渲染配置文件。小龙虾 2 只负责生成结构化报告内容，渲染脚本负责版式。
-
-建议结构：
-
-```json
-{
-  "month": "2606",
-  "title": "市场监测月报",
-  "period": "2026-06-01 至 2026-06-30",
-  "summary": {
-    "key_insights": [],
-    "actions": []
-  },
-  "sections": [
-    {
-      "section_id": "market_flash",
-      "title": "市场快讯",
-      "items": []
-    },
-    {
-      "section_id": "competitor_watch",
-      "title": "竞品动态监测",
-      "items": []
-    },
-    {
-      "section_id": "ingredient_trends",
-      "title": "成分趋势分析",
-      "items": []
-    },
-    {
-      "section_id": "technology_innovation",
-      "title": "技术创新追踪",
-      "items": []
-    },
-    {
-      "section_id": "customer_watch",
-      "title": "重点客户监测",
-      "items": []
-    },
-    {
-      "section_id": "events",
-      "title": "市场活动汇总",
-      "items": []
-    },
-    {
-      "section_id": "appendix",
-      "title": "原文链接汇总",
-      "items": []
-    }
-  ],
-  "charts": [],
-  "source_links": []
-}
-```
-
-约束：
-
-- 每条报告内容必须能追溯到 `article_id` 和 URL。
-- HTML 里所有可点击链接来自 `source_links` 或 section item 的 `url`。
-- 渲染脚本不得自由生成业务内容，只读取 JSON。
-
-## 六、三类工作进度
-
-### 6.1 项目规划与交付物目标
-
-阶段目标：
-
-1. 与客户确认标签分类和 Watchlist 角色口径。
-2. 确认报告栏目、入选标准、深度分析颗粒度和最终 HTML 交付标准。
-3. 确认 MVP 只交付月度文件夹工件，不做数据库实现。
-4. 确认 HTML prototype 版式后冻结第一版渲染结构。
-
-任务拆分：
-
-| 任务 | 输出 | 验收 |
-|------|------|------|
-| 标签口径确认 | `dev/docs/标签字段字典.md` v2 确认版 | 客户接受字段、标签、Watchlist、活字典机制 |
-| 报告标准确认 | 报告栏目和 section schema | 客户知道每章写什么、不写什么 |
-| MVP 范围确认 | 本文档 + 里程碑 | 团队认同先 JSON 后数据库 |
-| HTML 样式确认 | `report_content.json` schema + HTML prototype | 改 JSON 可稳定影响报告内容 |
-
-### 6.2 脚本部分
-
-阶段目标：
-
-1. 抓取后生成 `rss_clean.json`。
-2. 建立 HTML 渲染脚本，让 `report_content.json` 稳定渲染为 `report.html`。
-3. 调优 JavaScript 和 CSS，使筛选、折叠、图表、打印/PDF 友好。
-
-任务拆分：
-
-| 模块 | 任务 | 输出 |
-|------|------|------|
-| RSS 清洗 | 合并原始 RSS、去重、字段补全、剔除失败项 | `rss_clean.json` |
-| JSON 校验 | 校验 `rss_clean.json`、`tagging.json`、`report_content.json` | schema / validator |
-| HTML 渲染 | 将配置 JSON 渲染成固定版式 | `report.html` |
-| 前端交互 | 折叠、筛选、搜索、图表、打印/PDF | JS/CSS |
-| 样式调优 | 按客户确认版修改视觉层级、卡片、表格、图表 | HTML/CSS |
-
-### 6.3 Agent 与控制脚本
-
-阶段目标：
-
-1. 小龙虾 1 跑通“文章 → 标签 JSON”。
-2. 小龙虾 2 跑通“过往报告 + 当月文章/标签 → 报告内容 JSON”。
-3. 控制脚本负责编排步骤、传入上下文、收集错误、写日志。
-4. 多智能体分角色协作，避免一个 Agent 同时做打标、选题、写作和版式。
-
-任务拆分：
-
-| Agent / 脚本 | 职责 | 输入 | 输出 |
-|--------------|------|------|------|
-| 控制脚本 | 调度月份目录、校验输入输出、写 `run_log.json` | month 参数 | 月度工件 |
-| 小龙虾 1：打标 | 判断文章相关性、标签、证据、公司实体 | `rss_clean.json` | `tagging.json` |
-| 小龙虾 2：报告策划/写作 | 读取过往报告，选择本期入选内容，写报告 JSON | `rss_clean.json` + `tagging.json` + `report_context.json` | `report_content.json` |
-| 渲染脚本 | 固定版式渲染 HTML | `report_content.json` | `report.html` |
-| 人工复核 | 检查入选文章、关键洞察、链接、版式 | 全部工件 | 修改意见 |
-
-## 七、阶段计划
-
-### Phase 0：MVP 方案冻结
-
-目标：确认“不先做数据库，以月度 JSON 工作包为 MVP”的项目路线。
-
-完成标志：
-
-- 本文档进入 `dev/docs/`。
-- `项目管理文档`、`系统结构`、`里程碑检查清单` 与本文档一致。
-- 数据库设计保留为完整版本，不作为 MVP 阻塞项。
-
-### Phase 1：月度输入清洗
-
-目标：从 RSS/raw 记录生成完整干净的 `rss_clean.json`。
-
-任务：
-
-- 定义 `outputs/2606/` 目录约定。
-- 定义 `rss_clean.json` schema。
-- 编写或整理清洗脚本。
-- 用 2606 样本跑通一次。
-
-### Phase 2：小龙虾 1 打标 JSON
-
-目标：让 Agent 基于 `rss_clean.json` 输出稳定 `tagging.json`。
-
-任务：
-
-- 将 `newsletter-tagging` workflow 从数据库入口改为兼容 JSON 入口。
-- 校验 `tagging.json`。
-- 抽样人工复核标签质量。
-
-### Phase 3：HTML 渲染脚本
-
-目标：先把 `report_content.json` 渲染成稳定 HTML。
-
-任务：
-
-- 设计 `report_content.json` schema。
-- 从 prototype 拆出 HTML 模板、CSS、JS。
-- 实现渲染脚本。
-- 验证只改 JSON 即可改变报告内容。
-
-### Phase 4：小龙虾 2 报告 JSON
-
-目标：让 Agent 读取近 3 个月最终报告和当月 JSON，输出可渲染的 `report_content.json`。
-
-任务：
-
-- 定义“入选本期报告”的规则。
-- 定义“避免重复上月内容”的规则。
-- 定义每个 section 的写作要求和字段。
-- 跑通 `report_content.json` 生成。
-
-### Phase 5：客户验收与迭代
-
-目标：让客户确认报告分类、内容标准和 HTML 展示。
-
-任务：
-
-- 交付一版 2606 HTML。
-- 根据客户反馈调整标签、栏目、样式。
-- 固化 MVP 操作流程。
-
-## 八、与完整数据库版的兼容策略
-
-为了未来能重新接入数据库，MVP 需要遵守以下规则：
-
-1. `article_id` 稳定，未来可直接作为 `articles.article_id`。
-2. `rss_clean.json.articles[]` 字段命名与 `articles` / `article_contents` 保持一致。
-3. `tagging.json.items[]` 与 `newsletter-tagging` schema 保持一致，未来可拆入 `article_tags` / `tag_evidence`。
-4. `report_content.json` 保留 `article_id` 和 URL，未来可关联 `report_runs`。
-5. 活字典 `other:<slug>` 不在 MVP 阶段强制晋升，但要保留 `extracted_name`，未来可导入 `inline_other_terms`。
-6. 月度文件夹不要写死数据库假设；完整版本通过 adapter 导入 JSON，而不是重写 Agent 逻辑。
-
-## 九、当前不做的事
-
-- 不实现 SQLite 入库与状态机。
+- 不实现 SQLite 入库与数据库状态机。
 - 不实现跨月全文检索。
 - 不实现长期历史重打标。
 - 不实现复杂后台管理界面。
 - 不让 Agent 直接写 HTML。
 - 不让渲染脚本生成业务洞察。
+
+# 第二部分：团队具体工作计划
+
+## 八、协作原则
+
+项目管理的重点是让团队每一步都知道“输入是什么、输出是什么、谁来验收、失败怎么处理”。
+
+| 原则 | 执行方式 |
+|------|----------|
+| 单一事实源 | 需求与决策写入 `dev/docs/需求变更日志.md`；问题写入 `dev/docs/问题跟踪.md`；测试写入 `dev/docs/测试记录.md` |
+| 工件先行 | 每个阶段先冻结输入输出契约，再写脚本或 prompt |
+| 小步验收 | 每个阶段只在关键工件通过检查后进入下一阶段 |
+| 人工复核有记录 | 复核意见进入 `run_log.json` 或过程文档，不只保留口头结论 |
+| Agent 分角色 | 小龙虾 1 只做打标，小龙虾 2 只做报告内容 JSON，渲染器只做版式 |
+| 保留第二版空间 | MVP 不做数据库，但字段命名和 ID 设计保持可导入 |
+
+## 九、工作线 1：项目规划与交付物目标
+
+目标：把客户需求、标签分类、报告标准和验收条件具体化，保证工程和内容团队不是各做各的。
+
+| 阶段 | 负责人 | 任务 | 交付物 | 工作量 | 验收点 |
+|------|--------|------|--------|--------|--------|
+| Phase 0 | PM | 冻结 MVP 范围、角色、里程碑和风险 | 本文档、问题清单、里程碑 | 0.5-1 人日 | 团队确认先 JSON 后数据库 |
+| Phase 0-1 | PM + 行业 Reviewer | 与客户确认标签分类、Watchlist、栏目结构 | 客户确认清单、字典修改意见 | 1-2 人日 | 分类和报告栏目无重大分歧 |
+| Phase 2 | 行业 Reviewer | 抽样复核小龙虾 1 标签结果 | 标签复核记录 | 0.5-1 人日 | 错误类型可归纳并反馈 prompt |
+| Phase 3 | PM + 客户 Reviewer | 确认 HTML prototype 的版式和栏目优先级 | HTML 修改清单 | 1 人日 | 前端可冻结第一版布局 |
+| Phase 4-5 | PM + 行业 Reviewer | 审核报告选题、洞察、行动建议 | 报告内容修改意见 | 1-2 人日 | 内容达到客户可读标准 |
+| Phase 6 | PM | 复盘 MVP 是否满足月度交付 | 复盘记录、第二版建议 | 0.5-1 人日 | 决定继续 MVP 优化或进入数据库版 |
+
+对齐机制：
+
+- 每个阶段开始前确认本阶段唯一目标和退出条件。
+- 每个阶段结束时只评审该阶段工件，不把后续功能提前塞进验收。
+- 客户反馈分为三类：必须改才能交付、下月优化、第二版能力。
+
+质量门槛：
+
+- 标签口径变更必须同步 `dev/docs/标签字段字典.md`。
+- 报告栏目变更必须同步 `report_content.json` schema 或渲染模板。
+- 需求范围变更必须同步 `dev/docs/需求变更日志.md`。
+
+## 十、工作线 2：脚本、HTML 与渲染
+
+目标：保证从 JSON 到 HTML 的链路稳定，前端展示可被客户确认，工程实现不依赖 Agent 即兴发挥。
+
+| 阶段 | 负责人 | 任务 | 交付物 | 工作量 | 验收点 |
+|------|--------|------|--------|--------|--------|
+| Phase 1 | RSS / 数据工程 | 整理原始抓取记录、去重、补齐基础字段 | `rss_clean.json`、`fetch_log.json` | 3-5 人日 | 抽样文章字段完整，失败项有日志 |
+| Phase 1 | QA | 建立清洗输出检查清单 | 输入检查记录 | 0.5 人日 | 重复、缺 URL、缺正文可被发现 |
+| Phase 3 | 前端 / 渲染工程 | 从 prototype 拆出模板、CSS、JS | `app/report_template/` | 2-3 人日 | 静态样例可打开 |
+| Phase 3 | 前端 / 渲染工程 | 定义并实现 `report_content.json` 渲染 | 渲染脚本、样例报告 | 2-4 人日 | 改 JSON 可改变栏目和内容 |
+| Phase 3 | QA | 浏览器检查、链接检查、打印/PDF 检查 | 测试记录、问题单 | 1 人日 | 关键版式无明显错位 |
+| Phase 5 | 全员 | 2606 端到端运行与修复 | 最终 `report.html` | 1-2 人日 | 客户可审阅 |
+
+脚本质量要求：
+
+- 脚本应通过月份参数读取 `outputs/<month>/`。
+- 清洗脚本、渲染脚本和 Agent runner 都要写 `run_log.json`。
+- 渲染脚本只读取 `report_content.json`，不生成业务判断。
+- 样式修改要基于客户 prototype，而不是重新做营销页式展示。
+
+## 十一、工作线 3：Agent 与控制脚本
+
+目标：让小龙虾 1 和小龙虾 2 分步骤输出稳定 JSON，并通过控制脚本管理上下文、校验和错误。
+
+| 阶段 | 负责人 | 任务 | 交付物 | 工作量 | 验收点 |
+|------|--------|------|--------|--------|--------|
+| Phase 2 | Agent 工程 | 调整小龙虾 1 输入为 `rss_clean.json` | 打标 runner、prompt、workflow | 1-2 人日 | 能按月份读取文章 |
+| Phase 2 | Agent 工程 | 输出并校验 `tagging.json` | `tagging.json`、validator 结果 | 1-2 人日 | 输出符合 schema |
+| Phase 2 | 行业 Reviewer + QA | 抽样复核标签质量 | 复核记录、prompt 修改建议 | 0.5-1 人日 | 主要错误类型被修正 |
+| Phase 4 | Agent 工程 | 生成 `report_context.json` | context 脚本、近 3 月摘要 | 1 人日 | 上月内容可被读取和摘要 |
+| Phase 4 | Agent 工程 | 设计小龙虾 2 报告入选与写作 prompt | 报告 runner、section 规则 | 2-3 人日 | 输出 `report_content.json` |
+| Phase 4 | PM + 行业 Reviewer | 复核小龙虾 2 选题与写作 | 修改意见、入选规则调整 | 1-2 人日 | 报告结构和值得写的内容被确认 |
+| Phase 5 | Agent 工程 + QA | 编排端到端控制脚本 | 月度 runbook、`run_log.json` | 1-2 人日 | 可复跑并定位失败步骤 |
+
+Agent 质量要求：
+
+- 小龙虾 1 不补基础字段，不写报告，不直接判断 HTML 展示。
+- 小龙虾 2 不改标签字典，不直接写 HTML，不绕过 `report_content.json`。
+- 控制脚本负责传入必要上下文、调用校验、记录错误。
+- 每次 prompt 调整都应记录触发原因和验证样本。
+
+## 十二、阶段会议与质量门
+
+| 节点 | 参与者 | 会议目标 | 输出 |
+|------|--------|----------|------|
+| Phase Kickoff | PM + 相关工程 + Reviewer | 确认本阶段输入、输出、退出条件 | 阶段任务清单 |
+| Mid-check | PM + 当前负责人 | 发现阻塞、确认样例是否跑通 | 问题单或调整项 |
+| Gate Review | PM + QA + Reviewer | 判断是否进入下一阶段 | 验收记录 |
+| Client Review | PM + 客户 Reviewer | 确认报告内容和 HTML | 客户修改清单 |
+| Retrospective | 全员 | 复盘本月工作包 | 下月优化项 |
+
+每个阶段的 Gate Review 必须回答四个问题：
+
+1. 本阶段承诺的工件是否存在。
+2. 工件是否能被下一阶段直接读取。
+3. 错误、跳过和人工修改是否有记录。
+4. 是否有必须修复的问题阻塞客户交付。
+
+## 十三、风险与应对
+
+| 风险 | 影响 | 应对 |
+|------|------|------|
+| RSS 输入不完整 | 报告内容偏薄或缺关键来源 | `fetch_log.json` 暴露失败源，PM 决定是否人工补源 |
+| 标签口径未冻结 | 小龙虾 1 输出波动 | 先冻结 v2 字典，变更进入需求日志 |
+| 小龙虾 2 写作重复上月内容 | 客户觉得报告低价值 | `report_context.json` 提供近 3 个月摘要和已覆盖主题 |
+| HTML schema 过早变化 | 前端和 Agent 互相返工 | Phase 3 冻结第一版 `report_content.json` 结构 |
+| MVP 被数据库需求拖慢 | 2606 无法按时交付 | 数据库只保留兼容策略，不作为本轮开发任务 |
+
+## 十四、近期优先级
+
+1. 确认 `dev/docs/MVP关键工件契约.md` 是否符合团队后续实现需要。
+2. 基于 reference prototype 冻结第一版 `report_content.json` section 结构。
+3. 实现 `rss_clean.json` 清洗脚本和检查清单。
+4. 跑通小龙虾 1 的 `tagging.json`。
+5. 实现 HTML 渲染脚本并用样例 JSON 生成报告。
+6. 再接入小龙虾 2，完成 2606 端到端演练。

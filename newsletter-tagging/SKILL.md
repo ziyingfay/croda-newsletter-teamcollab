@@ -7,7 +7,7 @@ description: Use this skill when OpenClaw runs structured tagging for Croda Beau
 
 ## Use
 
-Use this skill for Croda Beauty article tagging, retagging, review preparation, inline open-field other extraction, and company entity extraction.
+Use this skill for Croda Beauty article tagging, retagging, review preparation, inline open-field other extraction, relevance screening, and company entity extraction.
 
 OpenClaw must not improvise the workflow. The code workflow owns input loading, retries, validation, post-processing, writes, review collection, logging, dry runs, and batch metrics. The LLM only performs semantic judgment for one article at a time.
 
@@ -35,8 +35,9 @@ OpenClaw must not improvise the workflow. The code workflow owns input loading, 
 The LLM may:
 
 - Judge relevance to Croda Beauty market intelligence.
+- Apply the V2 relevance gate: downstream brand news is relevant only when it involves ingredients, formulation, raw-material procurement, or functional claims.
 - Choose allowed taxonomy labels with evidence.
-- Extract company entities when they are news subjects or important related parties.
+- Extract company entities when they are news subjects, central analysis subjects, or important related parties; skip passing example mentions.
 - Use inline `other:<slug>` labels in the open fields (`ingredient_technology`, `product_application`, `functional_claim`) such as `other:synthetic_pdrn` when a concrete value is absent from the dictionary. Prefer over-extracting to missing a new trend.
 - Choose multiple `primary_story_type` values when the article genuinely spans several event types.
 - Return `no_matching_tag` when the article is relevant but a closed taxonomy field lacks a suitable label.
@@ -80,7 +81,7 @@ Return either one Croda v1 tagging result object or an array of such objects. Mi
   "tag_audit": {
     "tagger": "openclaw",
     "tagged_at": "2026-06-04T12:00:00+08:00",
-    "dictionary_version": "croda-beauty-2026-06-04",
+    "dictionary_version": "croda-beauty-2026-06-04-v2",
     "prompt_version": "newsletter-tagging-prompt/croda-beauty-v1"
   }
 }

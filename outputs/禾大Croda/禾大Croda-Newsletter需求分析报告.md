@@ -2,7 +2,7 @@
 
 > 本报告基于 `reference/禾大newsletter/` 中的三份原型材料（`Beauty Monthly Report Prompt V1.docx`、`WeChat Article Export.xlsx`、`市场监测月报_202605 workbuddy.html`）反推客户的情报需求，并结合本项目现有的两层 MECE 标签体系（需求变更 009），为禾大定制 newsletter 与配套标签字典提供依据。
 >
-> 配套交付物：`标签字段字典-禾大美妆个护版.md`（同目录）。
+> 配套交付物：`标签字段字典-禾大美妆个护版-V2.md`（同目录）。
 
 ---
 
@@ -51,7 +51,7 @@
 
 ### 2.3 媒体源需求
 
-- **微信公众号**为最主要来源（25+ 行业公众号），故 `source_nature=wechat_public_account`、`ingest_method` 需支持公众号抓取（参考 `reference/wewe-rss/`）。
+- **微信公众号**为最主要来源（25+ 行业公众号），故媒体源配置中的 `source` 需支持 `wechat_official`、`wechat_domestic_media`、`wechat_event_official`、`wechat_third_party_analysis` 等来源分类，`ingest_method` 需支持公众号抓取（参考 `reference/wewe-rss/`）。
 - 竞品官网新闻稿（`web_scraper`）、行业媒体报道、专业数据库（SpecialChem 等）、展会官方信息。
 - 地域以**中国市场为核心**，同时覆盖欧美（in-cosmetics Global、欧盟法规）→ `market_region` 需要 china / global / europe / north_america / japan_korea / sea。
 - 语言以**中文为主、英文为辅**，月报要求中英文切换 → `content_language` 主要 zh / en。
@@ -151,7 +151,7 @@
 
 | 字段 | 层 | 现状 |
 |------|----|------|
-| `source_nature` / `content_language` / `market_region` / `ingest_method` / `extraction_status` | 字段（入库脚本写入） | 由脚本判定，Agent 不重算 |
+| `source` / `source_name` / `source_list` / `content_language` / `market_region` / `ingest_method` / `extraction_status` | 字段（清洗/入库脚本写入） | 来源相关字段由 media list / `source_profiles` 派生，Agent 不重算 |
 | `primary_story_type` | 标签 | **改多选**；合并 business+capital → `corporate_move`；删 safety_quality/supply_chain（拆入法规/企业动态/市场洞察） |
 | `product_application` | 标签 | 保留；`ingredient_general`+固定 other → 统一活字典 `other:<名>` |
 | `ingredient_technology` | 标签 | 主轴；活字典 `other:<名>`（多肽/PDRN/递送/合成生物…） |
@@ -160,7 +160,7 @@
 | `company` | 标签（自由实体） | 自由抽取；角色由 Watchlist 匹配（不再有 `entity_role` 标签） |
 | ~~`industry_segment`~~ / ~~`strategic_driver`~~ / ~~`entity_role`~~ | — | **已删除**（并入 value_chain / 拆解到事件+成分+功效 / 转 Watchlist 配置） |
 
-详细词表见配套文件 `标签字段字典-禾大美妆个护版.md`。
+详细词表见配套文件 `标签字段字典-禾大美妆个护版-V2.md`。
 
 ---
 

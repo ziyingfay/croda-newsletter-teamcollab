@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Validate Croda Beauty newsletter-tagging JSON output and print batch metrics.
 
-v2 taxonomy (croda-beauty-2026-06-04):
-- Agent emits only judgment tags; base fields (source_nature, content_language,
+v2 taxonomy (croda-beauty-2026-06-04-v2):
+- Agent emits only judgment tags; base fields (source, source_name, source_list, content_language,
   market_region, ...) are written by the ingest script onto the article record.
 - primary_story_type is multi-select; industry_segment / strategic_driver /
   entity_role removed; value_chain merged.
@@ -76,6 +76,8 @@ ALLOWED = {
         "ai_rd_formulation",
         "neurocosmetics_tech",
         "dual_targeting_delivery",
+        "microfluidics",
+        "stem_cell",
     },
     "functional_claim": {
         "anti_aging",
@@ -89,6 +91,9 @@ ALLOWED = {
         "microbiome_balance",
         "hair_scalp_care",
         "emotion_wellbeing",
+        "anti_glycation",
+        "blue_light_protection",
+        "anti_pollution",
     },
     "value_chain_stage": {
         "raw_material_upstream",

@@ -27,7 +27,7 @@ Code or scripts must own:
 
 The LLM only owns semantic judgment:
 
-- Read `title`, `summary`, `content`, `source_name`, `source_key`, `url`, `raw_tags`, source metadata, and base fields already written by the ingest script.
+- Read `title`, `summary`, `content`, `source_name`, `source_key`, `source`, `source_list`, `url`, `raw_tags`, source metadata, and base fields already written by the clean/ingest script.
 - Judge whether the article is relevant to Croda Beauty market intelligence.
 - Select allowed taxonomy labels from `references/标签字段字典.md`.
 - Extract inline `other:<slug>` labels for concrete, dictionary-missing values in open fields.
@@ -117,11 +117,12 @@ These rules belong in code, not only in the prompt:
 - Reject any formal label not in the active taxonomy, except valid inline `other:<slug>` in the open fields (`ingredient_technology`, `product_application`, `functional_claim`).
 - Reject any formal tag without an evidence record (`field`, `label`, `evidence_text`) for the exact `(field, label)`.
 - Reject any `other:<slug>` evidence without `extracted_name`.
+- Normalize or reject malformed `other:<slug>` values: lowercase snake_case, spaces and hyphens converted to underscores, leading articles removed, simple trailing plurals singularized.
 - Flag `ai_rd_formulation` when evidence merely mentions AI in passing.
 - Do not infer broad beauty tags just because the source or company is in beauty; require article-level evidence.
 - If `content_length` is below the configured minimum, or content is missing and summary is too thin, set `needs_review` with `insufficient_content`.
 - Do not require a company watchlist. Company names are free entities extracted by the LLM and validated by evidence.
-- If a company appears only in navigation, ads, related links, quote attribution, or long lists, do not write the company entity.
+- If a company appears only in navigation, ads, related links, quote attribution, long lists, or passing examples such as "another brand also uses this ingredient," do not write the company entity.
 - Reject or flag company entities without matching evidence for `field=company` and the exact company display name.
 
 ## Batch, Dry Run, Retry, And Logging
