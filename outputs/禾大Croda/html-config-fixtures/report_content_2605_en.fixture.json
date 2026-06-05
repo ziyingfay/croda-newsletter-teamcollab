@@ -1,0 +1,1821 @@
+{
+  "schema_version": "croda-report-content-fixture-v0.1",
+  "month": "2605",
+  "period": "2026-05-01 至 2026-05-31",
+  "title": "Monthly Market Monitoring Report May 2026 | Croda Beauty",
+  "client": "Croda Beauty",
+  "language_mode": "en",
+  "fixture_purpose": "英文报告配置，用于验证英文标题、长英文卡片、英文附录和无内部锚点时的默认导航。",
+  "source_link_export": {
+    "path": "reference/禾大newsletter/link_exports/links_export_1780462024708_en.json",
+    "page_title": "Monthly Market Monitoring Report May 2026 | Croda Beauty",
+    "page_url": "file:///C:/Users/jiaya/Downloads/%E5%B8%82%E5%9C%BA%E7%9B%91%E6%B5%8B%E6%9C%88%E6%8A%A5_202605_EN.html",
+    "export_time": "2026-06-03T04:47:04.708Z",
+    "export_type": "links",
+    "total_count": 60,
+    "exported_count": 60,
+    "internal_anchor_count": 0,
+    "external_link_count": 60,
+    "unique_external_url_count": 25
+  },
+  "deliverable_requirements_inferred": [
+    "最终客户交付物应是按月生成的静态 HTML 月报 report.html，由 report_content.json 驱动。",
+    "HTML 渲染器只处理版式、导航、卡片、图表和链接，不负责业务判断。",
+    "Agent 2 输出 report_content.json；所有文章必须通过 article_id 回连 rss_clean.json 与 tagging.json。",
+    "报告需包含市场快讯、执行摘要、竞品动态、成分趋势、技术创新、重点客户、市场活动、数据可视化、附录链接。",
+    "渲染器必须支持重复 URL 的不同展示文案、外链去重、附录汇总和中英文/双语标题。"
+  ],
+  "navigation": [
+    {
+      "anchor": "#market_flash",
+      "label": "Flash News",
+      "target_section_hint": "market_flash"
+    },
+    {
+      "anchor": "#executive_summary",
+      "label": "Executive Summary & Actions",
+      "target_section_hint": "executive_summary"
+    },
+    {
+      "anchor": "#competitor_watch",
+      "label": "Competitor Watch",
+      "target_section_hint": "competitor_watch"
+    },
+    {
+      "anchor": "#ingredient_trends",
+      "label": "Ingredient Trends",
+      "target_section_hint": "ingredient_trends"
+    },
+    {
+      "anchor": "#technology_innovation",
+      "label": "Technology Innovation",
+      "target_section_hint": "technology_innovation"
+    },
+    {
+      "anchor": "#customer_watch",
+      "label": "Customer Watch",
+      "target_section_hint": "customer_watch"
+    },
+    {
+      "anchor": "#events",
+      "label": "Events",
+      "target_section_hint": "events"
+    },
+    {
+      "anchor": "#charts",
+      "label": "Data Viz",
+      "target_section_hint": "charts"
+    },
+    {
+      "anchor": "#appendix",
+      "label": "Appendix",
+      "target_section_hint": "appendix"
+    }
+  ],
+  "summary": {
+    "key_insights": [
+      "本配置来自 HTML 链接导出，仅用于开发和测试；真实报告洞察应由小龙虾 2 基于 rss_clean.json 与 tagging.json 生成。",
+      "链接导出包含 60 条外链、25 个唯一 URL，可用于测试重复链接去重和附录渲染。",
+      "主要来源域名包括：baijiahao.baidu.com、www.163.com、www.personalcareinsights.com、www.basf.com、www.zmuni.com"
+    ],
+    "actions": [
+      "先用该配置冻结 HTML 模板的导航、栏目、卡片、图表和附录结构。",
+      "再用真实 report_content.json 替换 fixture 内容，验证只改 JSON 即可更新报告。",
+      "渲染脚本应对缺少 section items、重复 URL、长标题和中英文混排做容错。"
+    ]
+  },
+  "sections": [
+    {
+      "section_id": "market_flash",
+      "title": "Flash News",
+      "title_en": "Flash News",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "market_flash_01",
+          "article_id": "link_a70181b817e6",
+          "title": "Summary of Favorable Ingredient Policies (May 2026 Update)",
+          "title_cn": null,
+          "title_en": "Summary of Favorable Ingredient Policies (May 2026 Update)",
+          "url": "https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/",
+          "source_domain": "www.zmuni.com",
+          "link_text_variants": [
+            "Summary of Favorable Ingredient Policies (May 2026 Update)",
+            "Summary of Favorable Policies for New Cosmetic Ingredients by Region (May 2026)"
+          ],
+          "raw_link_ids": [
+            "fli-link-4",
+            "fli-link-47"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_02",
+          "article_id": "link_7bc2340a8709",
+          "title": "EU 56 New Allergen Labeling Rules Effective July 31",
+          "title_cn": null,
+          "title_en": "EU 56 New Allergen Labeling Rules Effective July 31",
+          "url": "https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml",
+          "source_domain": "chinawto.mofcom.gov.cn",
+          "link_text_variants": [
+            "EU 56 New Allergen Labeling Rules Effective July 31",
+            "A Complete Guide to 2026 Global Cosmetics Market Regulations"
+          ],
+          "raw_link_ids": [
+            "fli-link-9",
+            "fli-link-48"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_03",
+          "article_id": "link_186c1a626307",
+          "title": "Launched Noxifense sea buckthorn leaf active; integrated 30-year sensory evaluation into emotional d",
+          "title_cn": null,
+          "title_en": "Launched Noxifense sea buckthorn leaf active; integrated 30-year sensory evaluation into emotional d",
+          "url": "https://www.163.com/dy/article/JQRON6QP0550789W.html",
+          "source_domain": "www.163.com",
+          "link_text_variants": [
+            "Launched Noxifense sea buckthorn leaf active; integrated 30-year sensory evaluation into emotional d",
+            "Industry Report"
+          ],
+          "raw_link_ids": [
+            "fli-link-20",
+            "fli-link-21"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_04",
+          "article_id": "link_0ed545e002a3",
+          "title": "2024 China revenue EUR 1.096B (+9.93%), increasing R&D investment; emotional fragrance library enter",
+          "title_cn": null,
+          "title_en": "2024 China revenue EUR 1.096B (+9.93%), increasing R&D investment; emotional fragrance library enter",
+          "url": "https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html",
+          "source_domain": "finance.sina.cn",
+          "link_text_variants": [
+            "2024 China revenue EUR 1.096B (+9.93%), increasing R&D investment; emotional fragrance library enter",
+            "Sina Finance",
+            "2025 R&D War: Chinese Ingredients Mount a Comprehensive Counterattack"
+          ],
+          "raw_link_ids": [
+            "fli-link-22",
+            "fli-link-23",
+            "fli-link-54"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_05",
+          "article_id": "link_a91e95f90d29",
+          "title": "ICIC 2026 International Cosmetic Innovation Conference",
+          "title_cn": null,
+          "title_en": "ICIC 2026 International Cosmetic Innovation Conference",
+          "url": "https://baijiahao.baidu.com/s?id=1862361864727796604&wfr=spider&for=pc",
+          "source_domain": "baijiahao.baidu.com",
+          "link_text_variants": [
+            "ICIC 2026 International Cosmetic Innovation Conference"
+          ],
+          "raw_link_ids": [
+            "fli-link-38"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_06",
+          "article_id": "link_b01691464b58",
+          "title": "Croda Beauty: Leading Hair Care Innovation with Ingredients - SensaLuxe™ DF",
+          "title_cn": null,
+          "title_en": "Croda Beauty: Leading Hair Care Innovation with Ingredients - SensaLuxe™ DF",
+          "url": "https://m.163.com/local/article/KPTU0F7M0530JPVV.html",
+          "source_domain": "m.163.com",
+          "link_text_variants": [
+            "Croda Beauty: Leading Hair Care Innovation with Ingredients - SensaLuxe™ DF"
+          ],
+          "raw_link_ids": [
+            "fli-link-49"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_07",
+          "article_id": "link_8118bcdb5ab6",
+          "title": "Haike Xinyuan: Leading Domestic Substitution in Personal Care Ingredients with Core Technology",
+          "title_cn": null,
+          "title_en": "Haike Xinyuan: Leading Domestic Substitution in Personal Care Ingredients with Core Technology",
+          "url": "https://digi.china.com/articles/20260326/202603261833265.html",
+          "source_domain": "digi.china.com",
+          "link_text_variants": [
+            "Haike Xinyuan: Leading Domestic Substitution in Personal Care Ingredients with Core Technology"
+          ],
+          "raw_link_ids": [
+            "fli-link-53"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_08",
+          "article_id": "link_d96c8372a9ea",
+          "title": "Global Cosmetic Industry - May 2026 Roundup",
+          "title_cn": null,
+          "title_en": "Global Cosmetic Industry - May 2026 Roundup",
+          "url": "https://www.gcimagazine.com/roundups/2026/may",
+          "source_domain": "www.gcimagazine.com",
+          "link_text_variants": [
+            "Global Cosmetic Industry - May 2026 Roundup"
+          ],
+          "raw_link_ids": [
+            "fli-link-58"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "market_flash_09",
+          "article_id": "link_3e0304fff237",
+          "title": "Mintel \"2026 China Beauty & Personal Care Ingredient Trends Ranking\"",
+          "title_cn": null,
+          "title_en": "Mintel \"2026 China Beauty & Personal Care Ingredient Trends Ranking\"",
+          "url": "https://www.10100.com/article/124115526",
+          "source_domain": "www.10100.com",
+          "link_text_variants": [
+            "Mintel \"2026 China Beauty & Personal Care Ingredient Trends Ranking\""
+          ],
+          "raw_link_ids": [
+            "fli-link-59"
+          ],
+          "render_hint": "external_article_card"
+        }
+      ]
+    },
+    {
+      "section_id": "executive_summary",
+      "title": "Executive Summary & Actions",
+      "title_en": "Executive Summary & Actions",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "executive_summary_01",
+          "title": "The monthly report should summarize 3-5 business insights and action recommendations from high-value events.",
+          "article_id": null,
+          "url": null,
+          "render_hint": "insight_block"
+        }
+      ]
+    },
+    {
+      "section_id": "competitor_watch",
+      "title": "Competitor Watch",
+      "title_en": "Competitor Watch",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "competitor_watch_01",
+          "article_id": "link_d9d53d63ae41",
+          "title": "in-cosmetics Global 2026 Paris: 1100+ Exhibitors Explore Beauty Frontiers",
+          "title_cn": null,
+          "title_en": "in-cosmetics Global 2026 Paris: 1100+ Exhibitors Explore Beauty Frontiers",
+          "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+          "source_domain": "www.basf.com",
+          "link_text_variants": [
+            "in-cosmetics Global 2026 Paris: 1100+ Exhibitors Explore Beauty Frontiers",
+            "BASF Launches Plantigenix™ Bisabolol Biotech Ingredient",
+            "Launched \"Beyond Beauty: Authentic+\" at in-cosmetics with Plantigenix™ Bisabolol and Uvinul® T 150 X",
+            "BASF",
+            "In-cosmetics Global 2026: BASF champions authenticity and emotional well-being"
+          ],
+          "raw_link_ids": [
+            "fli-link-3",
+            "fli-link-8",
+            "fli-link-10",
+            "fli-link-11",
+            "fli-link-43"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "competitor_watch_02",
+          "article_id": "link_3d861dbfa39f",
+          "title": "Evonik Launches 10+ Products Including SPHINOX® Vively",
+          "title_cn": null,
+          "title_en": "Evonik Launches 10+ Products Including SPHINOX® Vively",
+          "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+          "source_domain": "www.evonik.com",
+          "link_text_variants": [
+            "Evonik Launches 10+ Products Including SPHINOX® Vively",
+            "Launched 10+ products: SPHINOX® Vively (100% renewable sphingolipid), TEGO® FILMSTAR BST1 (bio-based",
+            "Evonik",
+            "Evonik at in-cosmetics Global 2026: New beauty identity and product launches"
+          ],
+          "raw_link_ids": [
+            "fli-link-5",
+            "fli-link-12",
+            "fli-link-13",
+            "fli-link-44"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "competitor_watch_03",
+          "article_id": "link_7ebc725b050c",
+          "title": "Clariant Lucas Meyer Launches AlgaSurge™ Blue Biotech Active",
+          "title_cn": null,
+          "title_en": "Clariant Lucas Meyer Launches AlgaSurge™ Blue Biotech Active",
+          "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+          "source_domain": "www.clariant.cn",
+          "link_text_variants": [
+            "Clariant Lucas Meyer Launches AlgaSurge™ Blue Biotech Active",
+            "Launched AlgaSurge™ blue biotech anti-aging active (extremophile microalgae, HA/PDRN alternative); L",
+            "Clariant",
+            "Lucas Meyer Cosmetics by Clariant unveils game-changing innovations at in-cosmetics 2026"
+          ],
+          "raw_link_ids": [
+            "fli-link-6",
+            "fli-link-14",
+            "fli-link-15",
+            "fli-link-45"
+          ],
+          "render_hint": "external_article_card"
+        }
+      ]
+    },
+    {
+      "section_id": "ingredient_trends",
+      "title": "Ingredient Trends",
+      "title_en": "Ingredient Trends",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "ingredient_trends_01",
+          "article_id": "link_4746f67131df",
+          "title": "SpecialChem - in-cosmetics Global 2026 coverage",
+          "title_cn": null,
+          "title_en": "SpecialChem - in-cosmetics Global 2026 coverage",
+          "url": "https://www.specialchem.com/cosmetics/news/in-cosmetics-global-2026-to-showcase-emerging-trends-new-ingredients-services-from-lab-to-launch",
+          "source_domain": "www.specialchem.com",
+          "link_text_variants": [
+            "SpecialChem - in-cosmetics Global 2026 coverage"
+          ],
+          "raw_link_ids": [
+            "fli-link-55"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "ingredient_trends_02",
+          "article_id": "link_fc3293c98497",
+          "title": "Research and Markets - Cosmetic Ingredients Market Report 2026",
+          "title_cn": null,
+          "title_en": "Research and Markets - Cosmetic Ingredients Market Report 2026",
+          "url": "https://www.researchandmarkets.com/reports/5939541/cosmetic-ingredients-market-report",
+          "source_domain": "www.researchandmarkets.com",
+          "link_text_variants": [
+            "Research and Markets - Cosmetic Ingredients Market Report 2026"
+          ],
+          "raw_link_ids": [
+            "fli-link-56"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "ingredient_trends_03",
+          "article_id": "link_16ffbb0e3ec9",
+          "title": "Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies",
+          "title_cn": null,
+          "title_en": "Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies",
+          "url": "https://www.globalgrowthinsights.com/blog/cosmetics-personal-care-ingredients-companies-1090",
+          "source_domain": "www.globalgrowthinsights.com",
+          "link_text_variants": [
+            "Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies"
+          ],
+          "raw_link_ids": [
+            "fli-link-57"
+          ],
+          "render_hint": "external_article_card"
+        }
+      ]
+    },
+    {
+      "section_id": "technology_innovation",
+      "title": "Technology Innovation",
+      "title_en": "Technology Innovation",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "technology_innovation_01",
+          "article_id": "link_2231c3426bab",
+          "title": "Croda Launches Matrixyl® Neolide Next-Gen Peptide Technology",
+          "title_cn": null,
+          "title_en": "Croda Launches Matrixyl® Neolide Next-Gen Peptide Technology",
+          "url": "https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html",
+          "source_domain": "www.personalcareinsights.com",
+          "link_text_variants": [
+            "Croda Launches Matrixyl® Neolide Next-Gen Peptide Technology",
+            "Croda launches Matrixyl Neolide with encapsulation for controlled, long-lasting peptide release"
+          ],
+          "raw_link_ids": [
+            "fli-link-1",
+            "fli-link-40"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "technology_innovation_02",
+          "article_id": "link_057c8f9d2813",
+          "title": "PCHi 2026 Hangzhou: ~50 Global Premieres, AI-Driven Innovation",
+          "title_cn": null,
+          "title_en": "PCHi 2026 Hangzhou: ~50 Global Premieres, AI-Driven Innovation",
+          "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+          "source_domain": "www.163.com",
+          "link_text_variants": [
+            "PCHi 2026 Hangzhou: ~50 Global Premieres, AI-Driven Innovation",
+            "Launched Eyeseryl® All-in peptide at PCHi 2026 with AI screening targeting periorbital PAR-1 recepto",
+            "PCHi 2026 Report",
+            "Launched eternight™ at PCHi 2026, using AI facial scanning for quantified efficacy evaluation and vi",
+            "Showcased VectorHyal™ supramolecular nano-capsule at PCHi 2026, AI-optimized structure with 30% impr",
+            "Anallerg®-NFA won PCHi Award Gold for Green Sustainability; green synthesis and low sensitization re",
+            "Launched Hymagic™-VCHA (VC-HA covalent bonding) and Hymagic™-GluHA (green certified) at PCHi 2026",
+            "PCHi 2026 China Intl. Cosmetic Ingredient Exhibition",
+            "PCHi 2026 Deep Insight: Ingredient Competition Enters New Normalization Cycle"
+          ],
+          "raw_link_ids": [
+            "fli-link-2",
+            "fli-link-16",
+            "fli-link-17",
+            "fli-link-18",
+            "fli-link-19",
+            "fli-link-24",
+            "fli-link-25",
+            "fli-link-32",
+            "fli-link-33",
+            "fli-link-34",
+            "fli-link-35",
+            "fli-link-36",
+            "fli-link-42"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "technology_innovation_03",
+          "article_id": "link_061ea8755ae9",
+          "title": "Ruijiming Series B to Accelerate PDRN Domestic Substitution",
+          "title_cn": null,
+          "title_en": "Ruijiming Series B to Accelerate PDRN Domestic Substitution",
+          "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+          "source_domain": "baijiahao.baidu.com",
+          "link_text_variants": [
+            "Ruijiming Series B to Accelerate PDRN Domestic Substitution",
+            "Completed Series B (Chuchang Fund); world's first synthetic PDRN pilot success; hosted PDRN symposiu",
+            "Baijiahao",
+            "Chuchang Fund Leads Investment, Ruijiming Opens New Era for Domestic Nucleic Acid Ingredients"
+          ],
+          "raw_link_ids": [
+            "fli-link-7",
+            "fli-link-28",
+            "fli-link-29",
+            "fli-link-46"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "technology_innovation_04",
+          "article_id": "link_355ccc0e707a",
+          "title": "Exhibited at PCHi 2026 with HWPDRN® DDS nucleic acid delivery; products exported to Southeast Asia a",
+          "title_cn": null,
+          "title_en": "Exhibited at PCHi 2026 with HWPDRN® DDS nucleic acid delivery; products exported to Southeast Asia a",
+          "url": "https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html",
+          "source_domain": "www.hangzhou.gov.cn",
+          "link_text_variants": [
+            "Exhibited at PCHi 2026 with HWPDRN® DDS nucleic acid delivery; products exported to Southeast Asia a",
+            "Hangzhou Gov"
+          ],
+          "raw_link_ids": [
+            "fli-link-30",
+            "fli-link-31"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "technology_innovation_05",
+          "article_id": "link_da385cfc18e5",
+          "title": "7 Biotech Skincare Innovations Replacing Retinol in 2026",
+          "title_cn": null,
+          "title_en": "7 Biotech Skincare Innovations Replacing Retinol in 2026",
+          "url": "https://organicskincare.com/biotech-skincare-innovations-replacing-retinol-2026/",
+          "source_domain": "organicskincare.com",
+          "link_text_variants": [
+            "7 Biotech Skincare Innovations Replacing Retinol in 2026"
+          ],
+          "raw_link_ids": [
+            "fli-link-51"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "technology_innovation_06",
+          "article_id": "link_693c32e060e8",
+          "title": "Skin Care Peptides 2026 Update — What's Changed",
+          "title_cn": null,
+          "title_en": "Skin Care Peptides 2026 Update — What's Changed",
+          "url": "https://www.realpeptides.co/skin-care-peptides-2026-update-whats-changed/",
+          "source_domain": "www.realpeptides.co",
+          "link_text_variants": [
+            "Skin Care Peptides 2026 Update — What's Changed"
+          ],
+          "raw_link_ids": [
+            "fli-link-52"
+          ],
+          "render_hint": "external_article_card"
+        }
+      ]
+    },
+    {
+      "section_id": "customer_watch",
+      "title": "Customer Watch",
+      "title_en": "Customer Watch",
+      "required_in_final_html": true,
+      "items": []
+    },
+    {
+      "section_id": "events",
+      "title": "Events",
+      "title_en": "Events",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "events_01",
+          "article_id": "link_cc928372b61c",
+          "title": "Winkey IPO Approved by BSE, Targeting \"First Beauty Ingredient IPO\"",
+          "title_cn": null,
+          "title_en": "Winkey IPO Approved by BSE, Targeting \"First Beauty Ingredient IPO\"",
+          "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+          "source_domain": "baijiahao.baidu.com",
+          "link_text_variants": [
+            "Winkey IPO Approved by BSE, Targeting \"First Beauty Ingredient IPO\"",
+            "IPO approved by BSE; 2025 revenue RMB 275M, net profit RMB 91M; Fruit Acid Peptide won PCHi Award",
+            "Baijiahao",
+            "2026 First Beauty Ingredient IPO - Winkey Approved by BSE"
+          ],
+          "raw_link_ids": [
+            "fli-link-0",
+            "fli-link-26",
+            "fli-link-27",
+            "fli-link-41"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "events_02",
+          "article_id": "link_d2f59b14a5a2",
+          "title": "in-cosmetics Global 2026 European Cosmetic Ingredient Exhibition",
+          "title_cn": null,
+          "title_en": "in-cosmetics Global 2026 European Cosmetic Ingredient Exhibition",
+          "url": "https://rxglobal.com/cosmetics-global-2026-serve-taste-tomorrows-beauty-paris",
+          "source_domain": "rxglobal.com",
+          "link_text_variants": [
+            "in-cosmetics Global 2026 European Cosmetic Ingredient Exhibition"
+          ],
+          "raw_link_ids": [
+            "fli-link-37"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "events_03",
+          "article_id": "link_931c9bbef0ac",
+          "title": "NYSCC Suppliers' Day 2026",
+          "title_cn": null,
+          "title_en": "NYSCC Suppliers' Day 2026",
+          "url": "https://www.lucasmeyercosmetics.com/en/Corporate/Events/2026/03/PCHi-2026",
+          "source_domain": "www.lucasmeyercosmetics.com",
+          "link_text_variants": [
+            "NYSCC Suppliers' Day 2026"
+          ],
+          "raw_link_ids": [
+            "fli-link-39"
+          ],
+          "render_hint": "external_article_card"
+        },
+        {
+          "item_id": "events_04",
+          "article_id": "link_bfb181d41ce4",
+          "title": "in-cosmetics Global 2026: Betaine Yunnan Botanical Lab Showcases Chinese Botanical Innovation",
+          "title_cn": null,
+          "title_en": "in-cosmetics Global 2026: Betaine Yunnan Botanical Lab Showcases Chinese Botanical Innovation",
+          "url": "https://ishare.ifeng.com/c/s/v002rhMFQfFzbIPPUdJnt1ogM6gbX6Xb7ZOE-_a1bAep--ZvA__",
+          "source_domain": "ishare.ifeng.com",
+          "link_text_variants": [
+            "in-cosmetics Global 2026: Betaine Yunnan Botanical Lab Showcases Chinese Botanical Innovation"
+          ],
+          "raw_link_ids": [
+            "fli-link-50"
+          ],
+          "render_hint": "external_article_card"
+        }
+      ]
+    },
+    {
+      "section_id": "charts",
+      "title": "Data Viz",
+      "title_en": "Data Viz",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "charts_01",
+          "title": "来源域名分布 / Source domain distribution",
+          "chart_id": "source_domain_distribution",
+          "render_hint": "bar_or_donut_chart"
+        }
+      ]
+    },
+    {
+      "section_id": "appendix",
+      "title": "Appendix",
+      "title_en": "Appendix",
+      "required_in_final_html": true,
+      "items": [
+        {
+          "item_id": "appendix_01",
+          "article_id": "link_cc928372b61c",
+          "title": "Winkey IPO Approved by BSE, Targeting \"First Beauty Ingredient IPO\"",
+          "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+          "source_domain": "baijiahao.baidu.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_02",
+          "article_id": "link_2231c3426bab",
+          "title": "Croda Launches Matrixyl® Neolide Next-Gen Peptide Technology",
+          "url": "https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html",
+          "source_domain": "www.personalcareinsights.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_03",
+          "article_id": "link_057c8f9d2813",
+          "title": "PCHi 2026 Hangzhou: ~50 Global Premieres, AI-Driven Innovation",
+          "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+          "source_domain": "www.163.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_04",
+          "article_id": "link_d9d53d63ae41",
+          "title": "in-cosmetics Global 2026 Paris: 1100+ Exhibitors Explore Beauty Frontiers",
+          "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+          "source_domain": "www.basf.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_05",
+          "article_id": "link_a70181b817e6",
+          "title": "Summary of Favorable Ingredient Policies (May 2026 Update)",
+          "url": "https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/",
+          "source_domain": "www.zmuni.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_06",
+          "article_id": "link_3d861dbfa39f",
+          "title": "Evonik Launches 10+ Products Including SPHINOX® Vively",
+          "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+          "source_domain": "www.evonik.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_07",
+          "article_id": "link_7ebc725b050c",
+          "title": "Clariant Lucas Meyer Launches AlgaSurge™ Blue Biotech Active",
+          "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+          "source_domain": "www.clariant.cn",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_08",
+          "article_id": "link_061ea8755ae9",
+          "title": "Ruijiming Series B to Accelerate PDRN Domestic Substitution",
+          "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+          "source_domain": "baijiahao.baidu.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_09",
+          "article_id": "link_7bc2340a8709",
+          "title": "EU 56 New Allergen Labeling Rules Effective July 31",
+          "url": "https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml",
+          "source_domain": "chinawto.mofcom.gov.cn",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_10",
+          "article_id": "link_186c1a626307",
+          "title": "Launched Noxifense sea buckthorn leaf active; integrated 30-year sensory evaluation into emotional d",
+          "url": "https://www.163.com/dy/article/JQRON6QP0550789W.html",
+          "source_domain": "www.163.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_11",
+          "article_id": "link_0ed545e002a3",
+          "title": "2024 China revenue EUR 1.096B (+9.93%), increasing R&D investment; emotional fragrance library enter",
+          "url": "https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html",
+          "source_domain": "finance.sina.cn",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_12",
+          "article_id": "link_355ccc0e707a",
+          "title": "Exhibited at PCHi 2026 with HWPDRN® DDS nucleic acid delivery; products exported to Southeast Asia a",
+          "url": "https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html",
+          "source_domain": "www.hangzhou.gov.cn",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_13",
+          "article_id": "link_d2f59b14a5a2",
+          "title": "in-cosmetics Global 2026 European Cosmetic Ingredient Exhibition",
+          "url": "https://rxglobal.com/cosmetics-global-2026-serve-taste-tomorrows-beauty-paris",
+          "source_domain": "rxglobal.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_14",
+          "article_id": "link_a91e95f90d29",
+          "title": "ICIC 2026 International Cosmetic Innovation Conference",
+          "url": "https://baijiahao.baidu.com/s?id=1862361864727796604&wfr=spider&for=pc",
+          "source_domain": "baijiahao.baidu.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_15",
+          "article_id": "link_931c9bbef0ac",
+          "title": "NYSCC Suppliers' Day 2026",
+          "url": "https://www.lucasmeyercosmetics.com/en/Corporate/Events/2026/03/PCHi-2026",
+          "source_domain": "www.lucasmeyercosmetics.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_16",
+          "article_id": "link_b01691464b58",
+          "title": "Croda Beauty: Leading Hair Care Innovation with Ingredients - SensaLuxe™ DF",
+          "url": "https://m.163.com/local/article/KPTU0F7M0530JPVV.html",
+          "source_domain": "m.163.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_17",
+          "article_id": "link_bfb181d41ce4",
+          "title": "in-cosmetics Global 2026: Betaine Yunnan Botanical Lab Showcases Chinese Botanical Innovation",
+          "url": "https://ishare.ifeng.com/c/s/v002rhMFQfFzbIPPUdJnt1ogM6gbX6Xb7ZOE-_a1bAep--ZvA__",
+          "source_domain": "ishare.ifeng.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_18",
+          "article_id": "link_da385cfc18e5",
+          "title": "7 Biotech Skincare Innovations Replacing Retinol in 2026",
+          "url": "https://organicskincare.com/biotech-skincare-innovations-replacing-retinol-2026/",
+          "source_domain": "organicskincare.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_19",
+          "article_id": "link_693c32e060e8",
+          "title": "Skin Care Peptides 2026 Update — What's Changed",
+          "url": "https://www.realpeptides.co/skin-care-peptides-2026-update-whats-changed/",
+          "source_domain": "www.realpeptides.co",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_20",
+          "article_id": "link_8118bcdb5ab6",
+          "title": "Haike Xinyuan: Leading Domestic Substitution in Personal Care Ingredients with Core Technology",
+          "url": "https://digi.china.com/articles/20260326/202603261833265.html",
+          "source_domain": "digi.china.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_21",
+          "article_id": "link_4746f67131df",
+          "title": "SpecialChem - in-cosmetics Global 2026 coverage",
+          "url": "https://www.specialchem.com/cosmetics/news/in-cosmetics-global-2026-to-showcase-emerging-trends-new-ingredients-services-from-lab-to-launch",
+          "source_domain": "www.specialchem.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_22",
+          "article_id": "link_fc3293c98497",
+          "title": "Research and Markets - Cosmetic Ingredients Market Report 2026",
+          "url": "https://www.researchandmarkets.com/reports/5939541/cosmetic-ingredients-market-report",
+          "source_domain": "www.researchandmarkets.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_23",
+          "article_id": "link_16ffbb0e3ec9",
+          "title": "Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies",
+          "url": "https://www.globalgrowthinsights.com/blog/cosmetics-personal-care-ingredients-companies-1090",
+          "source_domain": "www.globalgrowthinsights.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_24",
+          "article_id": "link_d96c8372a9ea",
+          "title": "Global Cosmetic Industry - May 2026 Roundup",
+          "url": "https://www.gcimagazine.com/roundups/2026/may",
+          "source_domain": "www.gcimagazine.com",
+          "render_hint": "appendix_link"
+        },
+        {
+          "item_id": "appendix_25",
+          "article_id": "link_3e0304fff237",
+          "title": "Mintel \"2026 China Beauty & Personal Care Ingredient Trends Ranking\"",
+          "url": "https://www.10100.com/article/124115526",
+          "source_domain": "www.10100.com",
+          "render_hint": "appendix_link"
+        }
+      ]
+    }
+  ],
+  "charts": [
+    {
+      "chart_id": "source_domain_distribution",
+      "title": "Source Domain Distribution",
+      "type": "bar",
+      "data": [
+        {
+          "domain": "baijiahao.baidu.com",
+          "count": 3
+        },
+        {
+          "domain": "www.163.com",
+          "count": 2
+        },
+        {
+          "domain": "www.personalcareinsights.com",
+          "count": 1
+        },
+        {
+          "domain": "www.basf.com",
+          "count": 1
+        },
+        {
+          "domain": "www.zmuni.com",
+          "count": 1
+        },
+        {
+          "domain": "www.evonik.com",
+          "count": 1
+        },
+        {
+          "domain": "www.clariant.cn",
+          "count": 1
+        },
+        {
+          "domain": "chinawto.mofcom.gov.cn",
+          "count": 1
+        },
+        {
+          "domain": "finance.sina.cn",
+          "count": 1
+        },
+        {
+          "domain": "www.hangzhou.gov.cn",
+          "count": 1
+        },
+        {
+          "domain": "rxglobal.com",
+          "count": 1
+        },
+        {
+          "domain": "www.lucasmeyercosmetics.com",
+          "count": 1
+        },
+        {
+          "domain": "m.163.com",
+          "count": 1
+        },
+        {
+          "domain": "ishare.ifeng.com",
+          "count": 1
+        },
+        {
+          "domain": "organicskincare.com",
+          "count": 1
+        },
+        {
+          "domain": "www.realpeptides.co",
+          "count": 1
+        },
+        {
+          "domain": "digi.china.com",
+          "count": 1
+        },
+        {
+          "domain": "www.specialchem.com",
+          "count": 1
+        },
+        {
+          "domain": "www.researchandmarkets.com",
+          "count": 1
+        },
+        {
+          "domain": "www.globalgrowthinsights.com",
+          "count": 1
+        },
+        {
+          "domain": "www.gcimagazine.com",
+          "count": 1
+        },
+        {
+          "domain": "www.10100.com",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "source_links": [
+    {
+      "article_id": "link_cc928372b61c",
+      "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+      "domain": "baijiahao.baidu.com",
+      "labels": [
+        "Winkey IPO Approved by BSE, Targeting \"First Beauty Ingredient IPO\"",
+        "IPO approved by BSE; 2025 revenue RMB 275M, net profit RMB 91M; Fruit Acid Peptide won PCHi Award",
+        "Baijiahao",
+        "2026 First Beauty Ingredient IPO - Winkey Approved by BSE"
+      ],
+      "raw_link_ids": [
+        "fli-link-0",
+        "fli-link-26",
+        "fli-link-27",
+        "fli-link-41"
+      ]
+    },
+    {
+      "article_id": "link_2231c3426bab",
+      "url": "https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html",
+      "domain": "www.personalcareinsights.com",
+      "labels": [
+        "Croda Launches Matrixyl® Neolide Next-Gen Peptide Technology",
+        "Croda launches Matrixyl Neolide with encapsulation for controlled, long-lasting peptide release"
+      ],
+      "raw_link_ids": [
+        "fli-link-1",
+        "fli-link-40"
+      ]
+    },
+    {
+      "article_id": "link_057c8f9d2813",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "domain": "www.163.com",
+      "labels": [
+        "PCHi 2026 Hangzhou: ~50 Global Premieres, AI-Driven Innovation",
+        "Launched Eyeseryl® All-in peptide at PCHi 2026 with AI screening targeting periorbital PAR-1 recepto",
+        "PCHi 2026 Report",
+        "Launched eternight™ at PCHi 2026, using AI facial scanning for quantified efficacy evaluation and vi",
+        "Showcased VectorHyal™ supramolecular nano-capsule at PCHi 2026, AI-optimized structure with 30% impr",
+        "Anallerg®-NFA won PCHi Award Gold for Green Sustainability; green synthesis and low sensitization re",
+        "Launched Hymagic™-VCHA (VC-HA covalent bonding) and Hymagic™-GluHA (green certified) at PCHi 2026",
+        "PCHi 2026 China Intl. Cosmetic Ingredient Exhibition",
+        "PCHi 2026 Deep Insight: Ingredient Competition Enters New Normalization Cycle"
+      ],
+      "raw_link_ids": [
+        "fli-link-2",
+        "fli-link-16",
+        "fli-link-17",
+        "fli-link-18",
+        "fli-link-19",
+        "fli-link-24",
+        "fli-link-25",
+        "fli-link-32",
+        "fli-link-33",
+        "fli-link-34",
+        "fli-link-35",
+        "fli-link-36",
+        "fli-link-42"
+      ]
+    },
+    {
+      "article_id": "link_d9d53d63ae41",
+      "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+      "domain": "www.basf.com",
+      "labels": [
+        "in-cosmetics Global 2026 Paris: 1100+ Exhibitors Explore Beauty Frontiers",
+        "BASF Launches Plantigenix™ Bisabolol Biotech Ingredient",
+        "Launched \"Beyond Beauty: Authentic+\" at in-cosmetics with Plantigenix™ Bisabolol and Uvinul® T 150 X",
+        "BASF",
+        "In-cosmetics Global 2026: BASF champions authenticity and emotional well-being"
+      ],
+      "raw_link_ids": [
+        "fli-link-3",
+        "fli-link-8",
+        "fli-link-10",
+        "fli-link-11",
+        "fli-link-43"
+      ]
+    },
+    {
+      "article_id": "link_a70181b817e6",
+      "url": "https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/",
+      "domain": "www.zmuni.com",
+      "labels": [
+        "Summary of Favorable Ingredient Policies (May 2026 Update)",
+        "Summary of Favorable Policies for New Cosmetic Ingredients by Region (May 2026)"
+      ],
+      "raw_link_ids": [
+        "fli-link-4",
+        "fli-link-47"
+      ]
+    },
+    {
+      "article_id": "link_3d861dbfa39f",
+      "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+      "domain": "www.evonik.com",
+      "labels": [
+        "Evonik Launches 10+ Products Including SPHINOX® Vively",
+        "Launched 10+ products: SPHINOX® Vively (100% renewable sphingolipid), TEGO® FILMSTAR BST1 (bio-based",
+        "Evonik",
+        "Evonik at in-cosmetics Global 2026: New beauty identity and product launches"
+      ],
+      "raw_link_ids": [
+        "fli-link-5",
+        "fli-link-12",
+        "fli-link-13",
+        "fli-link-44"
+      ]
+    },
+    {
+      "article_id": "link_7ebc725b050c",
+      "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+      "domain": "www.clariant.cn",
+      "labels": [
+        "Clariant Lucas Meyer Launches AlgaSurge™ Blue Biotech Active",
+        "Launched AlgaSurge™ blue biotech anti-aging active (extremophile microalgae, HA/PDRN alternative); L",
+        "Clariant",
+        "Lucas Meyer Cosmetics by Clariant unveils game-changing innovations at in-cosmetics 2026"
+      ],
+      "raw_link_ids": [
+        "fli-link-6",
+        "fli-link-14",
+        "fli-link-15",
+        "fli-link-45"
+      ]
+    },
+    {
+      "article_id": "link_061ea8755ae9",
+      "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+      "domain": "baijiahao.baidu.com",
+      "labels": [
+        "Ruijiming Series B to Accelerate PDRN Domestic Substitution",
+        "Completed Series B (Chuchang Fund); world's first synthetic PDRN pilot success; hosted PDRN symposiu",
+        "Baijiahao",
+        "Chuchang Fund Leads Investment, Ruijiming Opens New Era for Domestic Nucleic Acid Ingredients"
+      ],
+      "raw_link_ids": [
+        "fli-link-7",
+        "fli-link-28",
+        "fli-link-29",
+        "fli-link-46"
+      ]
+    },
+    {
+      "article_id": "link_7bc2340a8709",
+      "url": "https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml",
+      "domain": "chinawto.mofcom.gov.cn",
+      "labels": [
+        "EU 56 New Allergen Labeling Rules Effective July 31",
+        "A Complete Guide to 2026 Global Cosmetics Market Regulations"
+      ],
+      "raw_link_ids": [
+        "fli-link-9",
+        "fli-link-48"
+      ]
+    },
+    {
+      "article_id": "link_186c1a626307",
+      "url": "https://www.163.com/dy/article/JQRON6QP0550789W.html",
+      "domain": "www.163.com",
+      "labels": [
+        "Launched Noxifense sea buckthorn leaf active; integrated 30-year sensory evaluation into emotional d",
+        "Industry Report"
+      ],
+      "raw_link_ids": [
+        "fli-link-20",
+        "fli-link-21"
+      ]
+    },
+    {
+      "article_id": "link_0ed545e002a3",
+      "url": "https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html",
+      "domain": "finance.sina.cn",
+      "labels": [
+        "2024 China revenue EUR 1.096B (+9.93%), increasing R&D investment; emotional fragrance library enter",
+        "Sina Finance",
+        "2025 R&D War: Chinese Ingredients Mount a Comprehensive Counterattack"
+      ],
+      "raw_link_ids": [
+        "fli-link-22",
+        "fli-link-23",
+        "fli-link-54"
+      ]
+    },
+    {
+      "article_id": "link_355ccc0e707a",
+      "url": "https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html",
+      "domain": "www.hangzhou.gov.cn",
+      "labels": [
+        "Exhibited at PCHi 2026 with HWPDRN® DDS nucleic acid delivery; products exported to Southeast Asia a",
+        "Hangzhou Gov"
+      ],
+      "raw_link_ids": [
+        "fli-link-30",
+        "fli-link-31"
+      ]
+    },
+    {
+      "article_id": "link_d2f59b14a5a2",
+      "url": "https://rxglobal.com/cosmetics-global-2026-serve-taste-tomorrows-beauty-paris",
+      "domain": "rxglobal.com",
+      "labels": [
+        "in-cosmetics Global 2026 European Cosmetic Ingredient Exhibition"
+      ],
+      "raw_link_ids": [
+        "fli-link-37"
+      ]
+    },
+    {
+      "article_id": "link_a91e95f90d29",
+      "url": "https://baijiahao.baidu.com/s?id=1862361864727796604&wfr=spider&for=pc",
+      "domain": "baijiahao.baidu.com",
+      "labels": [
+        "ICIC 2026 International Cosmetic Innovation Conference"
+      ],
+      "raw_link_ids": [
+        "fli-link-38"
+      ]
+    },
+    {
+      "article_id": "link_931c9bbef0ac",
+      "url": "https://www.lucasmeyercosmetics.com/en/Corporate/Events/2026/03/PCHi-2026",
+      "domain": "www.lucasmeyercosmetics.com",
+      "labels": [
+        "NYSCC Suppliers' Day 2026"
+      ],
+      "raw_link_ids": [
+        "fli-link-39"
+      ]
+    },
+    {
+      "article_id": "link_b01691464b58",
+      "url": "https://m.163.com/local/article/KPTU0F7M0530JPVV.html",
+      "domain": "m.163.com",
+      "labels": [
+        "Croda Beauty: Leading Hair Care Innovation with Ingredients - SensaLuxe™ DF"
+      ],
+      "raw_link_ids": [
+        "fli-link-49"
+      ]
+    },
+    {
+      "article_id": "link_bfb181d41ce4",
+      "url": "https://ishare.ifeng.com/c/s/v002rhMFQfFzbIPPUdJnt1ogM6gbX6Xb7ZOE-_a1bAep--ZvA__",
+      "domain": "ishare.ifeng.com",
+      "labels": [
+        "in-cosmetics Global 2026: Betaine Yunnan Botanical Lab Showcases Chinese Botanical Innovation"
+      ],
+      "raw_link_ids": [
+        "fli-link-50"
+      ]
+    },
+    {
+      "article_id": "link_da385cfc18e5",
+      "url": "https://organicskincare.com/biotech-skincare-innovations-replacing-retinol-2026/",
+      "domain": "organicskincare.com",
+      "labels": [
+        "7 Biotech Skincare Innovations Replacing Retinol in 2026"
+      ],
+      "raw_link_ids": [
+        "fli-link-51"
+      ]
+    },
+    {
+      "article_id": "link_693c32e060e8",
+      "url": "https://www.realpeptides.co/skin-care-peptides-2026-update-whats-changed/",
+      "domain": "www.realpeptides.co",
+      "labels": [
+        "Skin Care Peptides 2026 Update — What's Changed"
+      ],
+      "raw_link_ids": [
+        "fli-link-52"
+      ]
+    },
+    {
+      "article_id": "link_8118bcdb5ab6",
+      "url": "https://digi.china.com/articles/20260326/202603261833265.html",
+      "domain": "digi.china.com",
+      "labels": [
+        "Haike Xinyuan: Leading Domestic Substitution in Personal Care Ingredients with Core Technology"
+      ],
+      "raw_link_ids": [
+        "fli-link-53"
+      ]
+    },
+    {
+      "article_id": "link_4746f67131df",
+      "url": "https://www.specialchem.com/cosmetics/news/in-cosmetics-global-2026-to-showcase-emerging-trends-new-ingredients-services-from-lab-to-launch",
+      "domain": "www.specialchem.com",
+      "labels": [
+        "SpecialChem - in-cosmetics Global 2026 coverage"
+      ],
+      "raw_link_ids": [
+        "fli-link-55"
+      ]
+    },
+    {
+      "article_id": "link_fc3293c98497",
+      "url": "https://www.researchandmarkets.com/reports/5939541/cosmetic-ingredients-market-report",
+      "domain": "www.researchandmarkets.com",
+      "labels": [
+        "Research and Markets - Cosmetic Ingredients Market Report 2026"
+      ],
+      "raw_link_ids": [
+        "fli-link-56"
+      ]
+    },
+    {
+      "article_id": "link_16ffbb0e3ec9",
+      "url": "https://www.globalgrowthinsights.com/blog/cosmetics-personal-care-ingredients-companies-1090",
+      "domain": "www.globalgrowthinsights.com",
+      "labels": [
+        "Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies"
+      ],
+      "raw_link_ids": [
+        "fli-link-57"
+      ]
+    },
+    {
+      "article_id": "link_d96c8372a9ea",
+      "url": "https://www.gcimagazine.com/roundups/2026/may",
+      "domain": "www.gcimagazine.com",
+      "labels": [
+        "Global Cosmetic Industry - May 2026 Roundup"
+      ],
+      "raw_link_ids": [
+        "fli-link-58"
+      ]
+    },
+    {
+      "article_id": "link_3e0304fff237",
+      "url": "https://www.10100.com/article/124115526",
+      "domain": "www.10100.com",
+      "labels": [
+        "Mintel \"2026 China Beauty & Personal Care Ingredient Trends Ranking\""
+      ],
+      "raw_link_ids": [
+        "fli-link-59"
+      ]
+    }
+  ],
+  "raw_link_records_for_renderer_tests": [
+    {
+      "id": "fli-link-0",
+      "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+      "text": "Winkey IPO Approved by BSE, Targeting \"First Beauty Ingredient IPO\"",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-1",
+      "url": "https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html",
+      "text": "Croda Launches Matrixyl® Neolide Next-Gen Peptide Technology",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-2",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Hangzhou: ~50 Global Premieres, AI-Driven Innovation",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-3",
+      "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+      "text": "in-cosmetics Global 2026 Paris: 1100+ Exhibitors Explore Beauty Frontiers",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-4",
+      "url": "https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/",
+      "text": "Summary of Favorable Ingredient Policies (May 2026 Update)",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-5",
+      "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+      "text": "Evonik Launches 10+ Products Including SPHINOX® Vively",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-6",
+      "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+      "text": "Clariant Lucas Meyer Launches AlgaSurge™ Blue Biotech Active",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-7",
+      "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+      "text": "Ruijiming Series B to Accelerate PDRN Domestic Substitution",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-8",
+      "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+      "text": "BASF Launches Plantigenix™ Bisabolol Biotech Ingredient",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-9",
+      "url": "https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml",
+      "text": "EU 56 New Allergen Labeling Rules Effective July 31",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-10",
+      "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+      "text": "Launched \"Beyond Beauty: Authentic+\" at in-cosmetics with Plantigenix™ Bisabolol and Uvinul® T 150 X",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-11",
+      "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+      "text": "BASF",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-12",
+      "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+      "text": "Launched 10+ products: SPHINOX® Vively (100% renewable sphingolipid), TEGO® FILMSTAR BST1 (bio-based",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-13",
+      "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+      "text": "Evonik",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-14",
+      "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+      "text": "Launched AlgaSurge™ blue biotech anti-aging active (extremophile microalgae, HA/PDRN alternative); L",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-15",
+      "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+      "text": "Clariant",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-16",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "Launched Eyeseryl® All-in peptide at PCHi 2026 with AI screening targeting periorbital PAR-1 recepto",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-17",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Report",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-18",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "Launched eternight™ at PCHi 2026, using AI facial scanning for quantified efficacy evaluation and vi",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-19",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Report",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-20",
+      "url": "https://www.163.com/dy/article/JQRON6QP0550789W.html",
+      "text": "Launched Noxifense sea buckthorn leaf active; integrated 30-year sensory evaluation into emotional d",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-21",
+      "url": "https://www.163.com/dy/article/JQRON6QP0550789W.html",
+      "text": "Industry Report",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-22",
+      "url": "https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html",
+      "text": "2024 China revenue EUR 1.096B (+9.93%), increasing R&D investment; emotional fragrance library enter",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-23",
+      "url": "https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html",
+      "text": "Sina Finance",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-24",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "Showcased VectorHyal™ supramolecular nano-capsule at PCHi 2026, AI-optimized structure with 30% impr",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-25",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Report",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-26",
+      "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+      "text": "IPO approved by BSE; 2025 revenue RMB 275M, net profit RMB 91M; Fruit Acid Peptide won PCHi Award",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-27",
+      "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+      "text": "Baijiahao",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-28",
+      "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+      "text": "Completed Series B (Chuchang Fund); world's first synthetic PDRN pilot success; hosted PDRN symposiu",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-29",
+      "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+      "text": "Baijiahao",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-30",
+      "url": "https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html",
+      "text": "Exhibited at PCHi 2026 with HWPDRN® DDS nucleic acid delivery; products exported to Southeast Asia a",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-31",
+      "url": "https://www.hangzhou.gov.cn/col/col812266/art/2026/art_ba1cf86c37b441dca6b9ee9cf089fe70.html",
+      "text": "Hangzhou Gov",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-32",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "Anallerg®-NFA won PCHi Award Gold for Green Sustainability; green synthesis and low sensitization re",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-33",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Report",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-34",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "Launched Hymagic™-VCHA (VC-HA covalent bonding) and Hymagic™-GluHA (green certified) at PCHi 2026",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-35",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Report",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-36",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 China Intl. Cosmetic Ingredient Exhibition",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-37",
+      "url": "https://rxglobal.com/cosmetics-global-2026-serve-taste-tomorrows-beauty-paris",
+      "text": "in-cosmetics Global 2026 European Cosmetic Ingredient Exhibition",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-38",
+      "url": "https://baijiahao.baidu.com/s?id=1862361864727796604&wfr=spider&for=pc",
+      "text": "ICIC 2026 International Cosmetic Innovation Conference",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-39",
+      "url": "https://www.lucasmeyercosmetics.com/en/Corporate/Events/2026/03/PCHi-2026",
+      "text": "NYSCC Suppliers' Day 2026",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-40",
+      "url": "https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html",
+      "text": "Croda launches Matrixyl Neolide with encapsulation for controlled, long-lasting peptide release",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-41",
+      "url": "https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc",
+      "text": "2026 First Beauty Ingredient IPO - Winkey Approved by BSE",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-42",
+      "url": "https://www.163.com/dy/article/KOMQARL40550789W.html",
+      "text": "PCHi 2026 Deep Insight: Ingredient Competition Enters New Normalization Cycle",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-43",
+      "url": "https://www.basf.com/global/en/media/news-releases/2026/04/p-26-065",
+      "text": "In-cosmetics Global 2026: BASF champions authenticity and emotional well-being",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-44",
+      "url": "https://www.evonik.com/en/news/press-releases/2026/04/in-cosmetics-global-2026.html",
+      "text": "Evonik at in-cosmetics Global 2026: New beauty identity and product launches",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-45",
+      "url": "https://www.clariant.cn/zh-CN/Corporate/News/2026/04/Lucas-Meyer-Cosmetics-by-Clariant-to-unveil-game_changing-beauty-innovations-at-in_cosmetics-2026",
+      "text": "Lucas Meyer Cosmetics by Clariant unveils game-changing innovations at in-cosmetics 2026",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-46",
+      "url": "https://baijiahao.baidu.com/s?id=1864849119045135150&wfr=spider&for=pc",
+      "text": "Chuchang Fund Leads Investment, Ruijiming Opens New Era for Domestic Nucleic Acid Ingredients",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-47",
+      "url": "https://www.zmuni.com/zh-hans/news/huazhuangpinxinyuanliaogedilihaozhengcehuizong2026nian5yue/",
+      "text": "Summary of Favorable Policies for New Cosmetic Ingredients by Region (May 2026)",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-48",
+      "url": "https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml",
+      "text": "A Complete Guide to 2026 Global Cosmetics Market Regulations",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-49",
+      "url": "https://m.163.com/local/article/KPTU0F7M0530JPVV.html",
+      "text": "Croda Beauty: Leading Hair Care Innovation with Ingredients - SensaLuxe™ DF",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-50",
+      "url": "https://ishare.ifeng.com/c/s/v002rhMFQfFzbIPPUdJnt1ogM6gbX6Xb7ZOE-_a1bAep--ZvA__",
+      "text": "in-cosmetics Global 2026: Betaine Yunnan Botanical Lab Showcases Chinese Botanical Innovation",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-51",
+      "url": "https://organicskincare.com/biotech-skincare-innovations-replacing-retinol-2026/",
+      "text": "7 Biotech Skincare Innovations Replacing Retinol in 2026",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-52",
+      "url": "https://www.realpeptides.co/skin-care-peptides-2026-update-whats-changed/",
+      "text": "Skin Care Peptides 2026 Update — What's Changed",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-53",
+      "url": "https://digi.china.com/articles/20260326/202603261833265.html",
+      "text": "Haike Xinyuan: Leading Domestic Substitution in Personal Care Ingredients with Core Technology",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-54",
+      "url": "https://finance.sina.cn/2025-03-11/detail-inephfyi9726584.d.html",
+      "text": "2025 R&D War: Chinese Ingredients Mount a Comprehensive Counterattack",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-55",
+      "url": "https://www.specialchem.com/cosmetics/news/in-cosmetics-global-2026-to-showcase-emerging-trends-new-ingredients-services-from-lab-to-launch",
+      "text": "SpecialChem - in-cosmetics Global 2026 coverage",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-56",
+      "url": "https://www.researchandmarkets.com/reports/5939541/cosmetic-ingredients-market-report",
+      "text": "Research and Markets - Cosmetic Ingredients Market Report 2026",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-57",
+      "url": "https://www.globalgrowthinsights.com/blog/cosmetics-personal-care-ingredients-companies-1090",
+      "text": "Global Growth Insights - Top 15 Global Cosmetics Ingredients Companies",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-58",
+      "url": "https://www.gcimagazine.com/roundups/2026/may",
+      "text": "Global Cosmetic Industry - May 2026 Roundup",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    },
+    {
+      "id": "fli-link-59",
+      "url": "https://www.10100.com/article/124115526",
+      "text": "Mintel \"2026 China Beauty & Personal Care Ingredient Trends Ranking\"",
+      "title": "",
+      "target": "_blank",
+      "isExternal": false,
+      "tagName": "A"
+    }
+  ]
+}
