@@ -1,0 +1,297 @@
+{
+  "schema_version": "croda-source-profiles-v2",
+  "source_file": "project-management/reference/source-materials/croda-newsletter/WeChat Article Export.xlsx",
+  "field_mapping": {
+    "Source": "source",
+    "Specific Source": "source_name",
+    "Source List": "source_list"
+  },
+  "recommended_enums": {
+    "source": [
+      "web_official",
+      "wechat_official",
+      "wechat_domestic_media",
+      "wechat_event_official",
+      "wechat_third_party_analysis",
+      "rss_media",
+      "google_news_media",
+      "manual_reference"
+    ],
+    "ingest_method": [
+      "wechat_account",
+      "web_scraper",
+      "direct_rss",
+      "google_news_rss",
+      "manual_or_reference"
+    ],
+    "status": [
+      "active",
+      "pending",
+      "paused",
+      "archived"
+    ]
+  },
+  "source_profiles": [
+    {
+      "source_key": "wechat_guitanshu_rihuaquan",
+      "source": "wechat_domestic_media",
+      "source_name": "硅碳鼠日化圈",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_meilang_cbeauty",
+      "source": "wechat_domestic_media",
+      "source_name": "美浪CBEAUTY",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_fbeauty_weilaiji",
+      "source": "wechat_domestic_media",
+      "source_name": "Fbeauty未来迹",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_meizhuang_xiaobao",
+      "source": "wechat_domestic_media",
+      "source_name": "美妆小报",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_meizhuang_chanpinguan",
+      "source": "wechat_domestic_media",
+      "source_name": "美妆产品观",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_ringier_personal_care",
+      "source": "wechat_domestic_media",
+      "source_name": "荣格个人护理",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_meili_xiuxing_app",
+      "source": "wechat_third_party_analysis",
+      "source_name": "美丽修行App",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 2,
+      "status": "pending",
+      "note": "数据/分析平台；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_pchi",
+      "source": "wechat_event_official",
+      "source_name": "PCHi",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh",
+        "en"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "展会/活动官方微信来源；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_qingyan",
+      "source": "wechat_domestic_media",
+      "source_name": "青眼",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_jumeili",
+      "source": "wechat_domestic_media",
+      "source_name": "聚美丽",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_china_cosmetics",
+      "source": "wechat_domestic_media",
+      "source_name": "中国化妆品",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_pinguan_cosmetics_observer",
+      "source": "wechat_domestic_media",
+      "source_name": "化妆品观察 品观",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    },
+    {
+      "source_key": "wechat_i_meizhuang_toutiao",
+      "source": "wechat_domestic_media",
+      "source_name": "i美妆头条",
+      "source_list": [
+        "croda_beauty_customer_excel_industry_media"
+      ],
+      "url": null,
+      "rss_url": null,
+      "ingest_method": "wechat_account",
+      "market_region": [
+        "china"
+      ],
+      "language": [
+        "zh"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "note": "客户 Excel 行业媒体；抓取入口待补齐。"
+    }
+  ]
+}

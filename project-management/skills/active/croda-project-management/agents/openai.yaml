@@ -1,0 +1,4 @@
+interface:
+  display_name: "Croda Project Management"
+  short_description: "禾大 Croda 项目目录、JSON 工件与月报流程"
+  default_prompt: "Use $croda-project-management to start or manage the Croda Beauty newsletter project."

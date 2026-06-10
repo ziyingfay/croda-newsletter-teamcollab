@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="kai-report-creator custom croda-green v1.23.1">
+  <meta name="ir-hash" content="sha256:8c8b43fbb1b5f3f6cbead9f5082e0cc4f8dd5f4d2ec31e3c22af690c4c8c9f53">
+  <title>Croda Beauty 市场监测月报 · 标签驱动版 Demo</title>
+  <meta name="description" content="Croda Beauty 月度情报报告 HTML demo, showing tag-driven report generation, traceability, and customer confirmation workflow.">
+  <script type="application/json" id="report-summary">
+    {
+      "title": "Croda Beauty 市场监测月报 · 标签驱动版 Demo",
+      "author": "Codex for Croda Beauty MVP",
+      "date": "2026-06-05",
+      "abstract": "本 demo 用于确认月报 HTML 如何由标签驱动生成，并展示客户复核、证据追溯与局部编辑体验。",
+      "poster_title": "标签驱动月报",
+      "poster_subtitle": "以 Croda 深绿视觉为主，从文章识别到栏目、洞察、图表与人工确认",
+      "poster_note": "Dummy Data 仅用于确认前端展示和报告结构，不作为真实情报结论。",
+      "sections": ["报告摘要", "标签生成逻辑", "样例文章链路", "执行摘要", "市场快讯", "竞品动态", "成分趋势", "技术创新", "重点客户", "数据可视化", "原文与证据"],
+      "kpis": [
+        {"label": "入选样例事件", "value": "10", "trend": ""},
+        {"label": "命中重点公司", "value": "18", "trend": ""},
+        {"label": "标签维度", "value": "6", "trend": ""},
+        {"label": "聚合洞察", "value": "5", "trend": ""},
+        {"label": "需补证据", "value": "3", "trend": ""}
+      ]
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #f4f7f1;
+      --panel: #ffffff;
+      --panel-soft: #edf4ea;
+      --ink: #10231d;
+      --muted: #65746d;
+      --line: #d8e3d8;
+      --brand: #00513f;
+      --brand-2: #007a53;
+      --brand-3: #8fbf3f;
+      --brand-pale: #dcebd7;
+      --ok: #127a48;
+      --warn: #b46b12;
+      --risk: #b42318;
+      --info: #24695d;
+      --shadow: 0 20px 60px rgba(0, 81, 63, .10);
+      --radius: 8px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 0 0, rgba(143,191,63,.26), transparent 30%),
+        radial-gradient(circle at 92% 4%, rgba(0,81,63,.12), transparent 26%),
+        linear-gradient(180deg, #ecf4e8 0%, var(--bg) 380px);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .app-shell { display: grid; grid-template-columns: 272px minmax(0, 1fr); min-height: 100vh; }
+    .toc {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 22px 18px;
+      background: #00382e;
+      color: #eaf2ec;
+      overflow: auto;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .toc .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      font-weight: 760;
+      letter-spacing: .01em;
+    }
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #004837, #006d4e);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .toc small { color: #b7c8bf; display: block; margin-top: 2px; font-weight: 500; }
+    .toc nav { display: grid; gap: 6px; }
+    .toc a {
+      color: #d3ded8;
+      padding: 9px 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .toc a:hover, .toc a.active { background: rgba(255,255,255,.08); color: white; }
+    .toc .pill {
+      font-size: 11px;
+      color: #d2f4a5;
+      background: rgba(143,191,63,.14);
+      border: 1px solid rgba(210,244,165,.28);
+      padding: 1px 6px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .toc-footer {
+      margin-top: 24px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 8px;
+      color: #bccbc4;
+      font-size: 12px;
+      background: rgba(255,255,255,.04);
+    }
+    .main { min-width: 0; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: rgba(244,247,241,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(216,227,216,.88);
+    }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .btn {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      padding: 8px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 10px 24px rgba(0,81,63,.20);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .search {
+      width: min(330px, 44vw);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: white;
+      outline: none;
+    }
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 28px 28px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--brand);
+      background: rgba(0,81,63,.08);
+      border: 1px solid rgba(0,81,63,.18);
+      border-radius: 99px;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-weight: 720;
+    }
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(34px, 5vw, 68px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .lead {
+      max-width: 860px;
+      color: #34463e;
+      font-size: clamp(16px, 1.8vw, 21px);
+      margin: 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .hero-card, .panel, .metric, .report-card, .map-card, .chart-panel {
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(216,227,216,.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 22px; }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .flow span {
+      min-height: 74px;
+      border-radius: 8px;
+      background: #f7faf5;
+      border: 1px solid var(--line);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #4f6258;
+    }
+    .flow b { color: var(--ink); font-size: 13px; }
+    .notice {
+      background:
+        radial-gradient(circle at 100% 0, rgba(143,191,63,.20), transparent 28%),
+        #00382e;
+      color: white;
+      padding: 22px;
+      border-radius: 8px;
+      min-height: 100%;
+    }
+    .notice p { color: #d3ded8; margin: 10px 0 0; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .badge, .tag, .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 720;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .badge { color: #00513f; background: #edf6e8; border-color: #c9dfbe; }
+    .tag { color: #29423a; background: #f2f7ef; border-color: #d8e3d8; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .status.ok { color: #0b6b42; background: #edf8ef; border-color: #b8dfbd; }
+    .status.review { color: #b45309; background: #fffbeb; border-color: #fcd34d; }
+    .status.risk { color: #b91c1c; background: #fef2f2; border-color: #fecaca; }
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px;
+      scroll-margin-top: 72px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 14px;
+    }
+    h2 { margin: 0; font-size: clamp(23px, 3vw, 36px); line-height: 1.14; }
+    .section-kicker { color: var(--brand); font-size: 13px; font-weight: 760; margin-bottom: 6px; }
+    .section-note { color: var(--muted); max-width: 660px; margin: 7px 0 0; }
+    .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 22px; }
+    .metric { padding: 16px; box-shadow: none; }
+    .metric .num { font-size: 28px; line-height: 1; font-weight: 820; color: var(--brand); font-variant-numeric: tabular-nums; }
+    .metric .label { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .panel { padding: 20px; box-shadow: none; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .map-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .map-card { padding: 16px; box-shadow: none; border-left: 4px solid var(--brand); }
+    .map-card h3, .report-card h3, .panel h3, .chart-panel h3 { margin: 0 0 8px; font-size: 17px; }
+    .map-card p, .report-card p, .panel p { margin: 7px 0; color: #4f6258; }
+    .example {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .arrow-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .arrow-list div {
+      padding: 10px 12px;
+      background: #f7faf5;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .summary-list {
+      display: grid;
+      gap: 12px;
+    }
+    .insight {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 14px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .insight .rank {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: white;
+      font-weight: 820;
+      background: linear-gradient(135deg, var(--brand), var(--brand-3));
+      font-variant-numeric: tabular-nums;
+    }
+    .insight h3 { margin: 0 0 7px; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .report-card { padding: 18px; box-shadow: none; position: relative; }
+    .report-card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .report-card .id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--brand);
+      font-weight: 820;
+      font-size: 13px;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .source {
+      margin-top: 12px;
+      padding-top: 11px;
+      border-top: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .source a { color: var(--brand); font-weight: 720; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: white; }
+    table { border-collapse: collapse; width: 100%; min-width: 780px; }
+    th, td { padding: 12px 13px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { color: #4f6258; background: #f7faf5; font-size: 12px; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .chart-panel { padding: 18px; box-shadow: none; }
+    .bars { display: grid; gap: 10px; margin-top: 12px; }
+    .bar-row { display: grid; grid-template-columns: 96px 1fr 42px; gap: 10px; align-items: center; font-size: 13px; }
+    .bar-track { height: 12px; background: #e8f0e4; border-radius: 99px; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-3)); border-radius: inherit; }
+    .matrix {
+      display: grid;
+      grid-template-columns: 100px repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    .matrix div { background: white; padding: 10px; min-height: 42px; }
+    .matrix .head { background: #f7faf5; color: #4f6258; font-weight: 760; }
+    .score-high { color: var(--brand); font-weight: 820; }
+    .score-mid { color: var(--warn); font-weight: 820; }
+    .timeline { display: grid; gap: 12px; }
+    .event {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      padding: 15px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .date { color: var(--brand); font-weight: 820; font-variant-numeric: tabular-nums; }
+    .footer {
+      max-width: var(--max);
+      margin: 0 auto 48px;
+      padding: 24px 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hidden { display: none !important; }
+    body.card-mode .section { max-width: 1480px; }
+    body.card-mode .cards { grid-template-columns: repeat(3, 1fr); }
+    #sc-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,56,46,.72);
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #sc-overlay.open { display: flex; }
+    .overlay-card {
+      width: min(760px, 100%);
+      background: white;
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.28);
+    }
+    .overlay-card textarea {
+      width: 100%;
+      min-height: 180px;
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      resize: vertical;
+    }
+    #toc-toggle-btn { display: none; }
+    .edit-hotzone { position: fixed; bottom: 0; left: 0; width: 78px; height: 78px; z-index: 70; }
+    .edit-toggle {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      z-index: 71;
+      border: 0;
+      border-radius: 8px;
+      background: var(--brand);
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 760;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 10px 24px rgba(0,81,63,.20);
+    }
+    .edit-toggle.show, .edit-toggle.active { opacity: 1; pointer-events: auto; }
+    .edit-toggle.active { background: var(--ok); }
+    body.edit-mode [contenteditable] { outline: 1px dashed var(--brand); border-radius: 3px; }
+
+    @media (max-width: 1040px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .toc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+        transition: transform .2s ease;
+        z-index: 60;
+        width: 280px;
+      }
+      body.toc-open .toc { transform: translateX(0); }
+      #toc-toggle-btn { display: inline-flex; }
+      .hero-grid, .example, .grid-2, .chart-grid { grid-template-columns: 1fr; }
+      .metrics, .map-grid, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .cards, body.card-mode .cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .topbar { align-items: stretch; flex-direction: column; padding: 10px 14px; }
+      .controls { width: 100%; }
+      .search { width: 100%; }
+      .hero, .section { padding-left: 16px; padding-right: 16px; }
+      .metrics, .map-grid, .grid-3 { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .insight { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+    }
+    @media print {
+      .toc, .topbar, #sc-overlay { display: none !important; }
+      .app-shell { display: block; }
+      body { background: white; }
+      .hero, .section, .footer { max-width: none; padding: 16px 0; }
+      .hero-card, .panel, .metric, .report-card, .map-card, .chart-panel { box-shadow: none; break-inside: avoid; }
+      a { text-decoration: underline; }
+    }
+  </style>
+</head>
+<body data-template="kai-report-creator" data-version="1.23.1-adapted" data-theme="croda-green" data-report-mode="demo">
+  <div class="edit-hotzone" id="edit-hotzone"></div>
+  <button class="edit-toggle" id="edit-toggle" title="编辑模式 E">Edit</button>
+
+  <div class="app-shell main-with-toc">
+    <aside class="toc" id="toc-sidebar">
+      <div class="logo">
+        <div class="logo-mark">CB</div>
+        <div>
+          Croda Beauty
+          <small>Croda green demo</small>
+        </div>
+      </div>
+      <nav>
+        <a href="#summary" class="active">报告摘要 <span class="pill">概览</span></a>
+        <a href="#tag-map">标签生成逻辑 <span class="pill">核心</span></a>
+        <a href="#article-example">样例文章链路 <span class="pill">证据</span></a>
+        <a href="#executive">执行摘要 <span class="pill">洞察</span></a>
+        <a href="#market-flash">市场快讯 <span class="pill">TOP</span></a>
+        <a href="#competitor">竞品动态 <span class="pill">Watch</span></a>
+        <a href="#ingredient">成分趋势 <span class="pill">Trend</span></a>
+        <a href="#technology">技术创新 <span class="pill">Tech</span></a>
+        <a href="#customer">重点客户 <span class="pill">BD</span></a>
+        <a href="#charts">数据可视化 <span class="pill">Chart</span></a>
+        <a href="#sources">原文与证据 <span class="pill">Trace</span></a>
+      </nav>
+      <div class="toc-footer">
+        本 demo 展示“标签不是附件，而是报告生成逻辑”。内容为样例，不代表真实月度情报结论。
+      </div>
+    </aside>
+
+    <main class="main report-wrapper">
+      <div class="topbar">
+        <div class="controls">
+          <button class="btn" id="toc-toggle-btn">目录</button>
+          <input class="search" id="searchBox" placeholder="搜索公司、成分、标签、栏目">
+          <select class="btn" id="statusFilter" aria-label="按状态筛选">
+            <option value="all">全部状态</option>
+            <option value="review">待客户确认</option>
+            <option value="ok">建议保留</option>
+            <option value="risk">需补证据</option>
+          </select>
+        </div>
+        <div class="controls">
+          <button class="btn" id="card-mode-btn">卡片模式</button>
+          <button class="btn primary" id="export-btn">导出</button>
+          <button class="btn" id="export-print">打印 / PDF</button>
+          <button class="btn" id="export-png-desktop">桌面截图说明</button>
+          <button class="btn" id="export-png-mobile">移动端截图说明</button>
+          <button class="btn" id="export-im-share">复制给 WorkBuddy</button>
+          <div id="export-menu" class="hidden"></div>
+        </div>
+      </div>
+
+      <header class="hero" id="summary">
+        <span class="eyebrow">MVP Demo V0.4 · Croda green brand reference</span>
+        <h1>Croda Beauty 市场监测月报</h1>
+        <p class="lead">这不是一份临时写出来的 HTML 月报，而是一个“标签驱动的结构化情报草稿”：文章先被识别、分类和聚合，再进入栏目、图表、洞察和人工确认流程。</p>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <h3>本月报告生成链路</h3>
+            <div class="flow" aria-label="报告生成链路">
+              <span><b>01 原文文章</b>公众号、官网、媒体和展会信息</span>
+              <span><b>02 相关性</b>只保留原料、成分、配方、功效、法规相关内容</span>
+              <span><b>03 语义标签</b>事件、成分、功效、应用、价值链、公司</span>
+              <span><b>04 信号聚合</b>成分热度、竞品动作、客户需求</span>
+              <span><b>05 报告草稿</b>事实、洞察、建议分层生成</span>
+              <span><b>06 人工确认</b>局部修改，不重写整份报告</span>
+            </div>
+          </div>
+          <div class="notice">
+            <h3>客户确认版说明</h3>
+            <p>新闻、数字和判断沿用 Workbuddy prototype 作为 Dummy Data。当前重点是确认前端展示、栏目结构、标签如何驱动报告，以及客户如何复核。</p>
+            <div class="badge-row">
+              <span class="status review">待确认 6</span>
+              <span class="status ok">建议保留 8</span>
+              <span class="status risk">需补证据 3</span>
+              <span class="badge">25 个唯一 URL</span>
+            </div>
+          </div>
+        </div>
+
+        <section id="report-kpis" class="metrics" aria-label="报告摘要 KPI">
+          <div class="metric"><div class="num">10</div><div class="label">入选样例事件</div></div>
+          <div class="metric"><div class="num">18</div><div class="label">命中重点公司</div></div>
+          <div class="metric"><div class="num">6</div><div class="label">标签维度驱动分析</div></div>
+          <div class="metric"><div class="num">5</div><div class="label">本月聚合洞察</div></div>
+          <div class="metric"><div class="num">3</div><div class="label">需补证据条目</div></div>
+        </section>
+      </header>
+
+      <section class="section" id="tag-map">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">TAG TO REPORT</div>
+            <h2>标签不是附件，而是报告生成逻辑</h2>
+            <p class="section-note">每个标签维度只回答一个问题，多个维度交叉后，才决定文章进入哪个栏目、生成什么图表、触发什么洞察。</p>
+          </div>
+        </div>
+        <div class="map-grid">
+          <div class="map-card"><h3>relevance</h3><p>判断文章是否进入月报；纯营销、促销和代言新闻排除。</p></div>
+          <div class="map-card"><h3>primary_story_type</h3><p>决定文章是企业动态、新品发布、技术创新、法规、市场洞察还是活动。</p></div>
+          <div class="map-card"><h3>ingredient_technology</h3><p>聚合成分趋势，如多肽、PDRN、神经酰胺、AI 研发和递送系统。</p></div>
+          <div class="map-card"><h3>functional_claim</h3><p>判断抗衰、修护、情绪护肤、防晒等功效方向。</p></div>
+          <div class="map-card"><h3>product_application</h3><p>识别护肤、防晒、洗护发、彩妆等应用场景。</p></div>
+          <div class="map-card"><h3>value_chain_stage</h3><p>判断影响发生在原料端、品牌端、消费者端还是监管端。</p></div>
+          <div class="map-card"><h3>company + Watchlist</h3><p>把公司归为国际竞品、国内竞品、渠道伙伴、客户或 Croda 自身。</p></div>
+          <div class="map-card"><h3>evidence</h3><p>每个结论可回到原文、标签和证据文本，支撑客户复核。</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="article-example">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">ARTICLE TRACE</div>
+            <h2>样例：一篇文章如何变成报告内容</h2>
+            <p class="section-note">这个模块专门给客户看“为什么它被放进报告”。后续 WorkBuddy 可以按编号移动、删除或改写单条内容。</p>
+          </div>
+        </div>
+        <div class="example">
+          <div class="panel">
+            <span class="status review">待客户确认</span>
+            <h3>维琪科技北交所过会，冲刺“美妆原料第一股”</h3>
+            <p><strong>事实摘要：</strong>维琪科技 IPO 申请获北交所通过，主营创新多肽原料，属于国内原料商竞品 watchlist。</p>
+            <div class="tag-row">
+              <span class="tag">corporate_move</span>
+              <span class="tag">peptides</span>
+              <span class="tag">anti_aging</span>
+              <span class="tag">ingredient_active</span>
+              <span class="tag">company: 维琪科技</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>由标签触发的报告结果</h3>
+            <div class="arrow-list">
+              <div>进入「市场快讯」TOP10，因为企业动态 + 重点竞品命中。</div>
+              <div>进入「竞品动态监测」国内原料商分组。</div>
+              <div>推高「多肽」成分热度，并进入竞品技术矩阵。</div>
+              <div>生成洞察：国产多肽原料商资本化加速。</div>
+              <div>生成建议：Matrixyl 系列需强化国际背书、控释技术和可持续差异化。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="executive">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">EXECUTIVE SUMMARY</div>
+            <h2>执行摘要：由标签聚合出的本月业务信号</h2>
+            <p class="section-note">摘要不再是 AI 自由发挥，而是基于本月标签组合自动提炼：哪些主题高频、哪些公司活跃、哪些方向对 Croda 有意义。</p>
+          </div>
+        </div>
+        <div class="summary-list">
+          <article class="insight" data-status="ok">
+            <div class="rank">01</div>
+            <div>
+              <h3>多肽赛道升温</h3>
+              <p><strong>触发标签：</strong><span class="tag">peptides</span> <span class="tag">product_launch_or_update</span> <span class="tag">corporate_move</span></p>
+              <p>代表文章包括 Croda Matrixyl Neolide、维琪科技 IPO、路博润 AI 多肽。报告判断：多肽竞争正在转向“递送技术 + 功效证据 + 可持续叙事”。</p>
+            </div>
+          </article>
+          <article class="insight" data-status="review">
+            <div class="rank">02</div>
+            <div>
+              <h3>AI 研发成为原料竞争变量</h3>
+              <p><strong>触发标签：</strong><span class="tag">ai_rd_formulation</span> <span class="tag">technology_process_innovation</span></p>
+              <p>路博润、亚什兰等把 AI 用于原料设计、靶点筛选和功效评价。客户需确认是否将 AI 研发设为长期观察主题。</p>
+            </div>
+          </article>
+          <article class="insight" data-status="review">
+            <div class="rank">03</div>
+            <div>
+              <h3>PDRN / 核酸原料国产化加速</h3>
+              <p><strong>触发标签：</strong><span class="tag">pdrn_nucleotides</span> <span class="tag">synthetic_biology</span> <span class="tag">corporate_move</span></p>
+              <p>瑞吉明融资、辉文生物 HWPDRN DDS 等信号显示，PDRN 正从医美概念向护肤原料应用外溢。</p>
+            </div>
+          </article>
+          <article class="insight" data-status="risk">
+            <div class="rank">04</div>
+            <div>
+              <h3>下游客户需求需要独立追踪</h3>
+              <p><strong>触发标签：</strong><span class="tag">brand_finished_product</span> <span class="tag">functional_claim</span> <span class="tag">company: customer</span></p>
+              <p>客户品牌的卖点、成分和功效趋势可以反推供应机会；样例数据仍需补充客户品牌真实来源。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="market-flash">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">MARKET FLASH</div>
+            <h2>市场快讯：由事件标签和重点公司筛选</h2>
+            <p class="section-note">TOP 卡片不是人工排序，而是由事件类型、公司 watchlist、成分技术和证据状态共同决定。</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="report-card" data-status="review">
+            <div class="meta"><span class="id">MF-01</span><span class="status review">待确认</span></div>
+            <h3>维琪科技北交所过会</h3>
+            <p>国内多肽原料商资本化信号，影响多肽赛道竞争格局。</p>
+            <div class="tag-row"><span class="tag">corporate_move</span><span class="tag">peptides</span><span class="tag">competitor_domestic</span></div>
+            <div class="source"><span>入选原因：竞品 + 多肽 + 资本事件</span><a href="https://baijiahao.baidu.com/s?id=1864782104638246238&wfr=spider&for=pc">来源</a></div>
+          </article>
+          <article class="report-card" data-status="ok">
+            <div class="meta"><span class="id">MF-02</span><span class="status ok">建议保留</span></div>
+            <h3>Croda 发布 Matrixyl Neolide</h3>
+            <p>新一代多肽包封递送技术，关联控释、抗衰和可持续叙事。</p>
+            <div class="tag-row"><span class="tag">product_launch_or_update</span><span class="tag">peptides</span><span class="tag">encapsulation_delivery</span></div>
+            <div class="source"><span>入选原因：Croda 自身动态 + 核心产品线</span><a href="https://www.personalcareinsights.com/news/croda-matrixyl-neolide-launch.html">来源</a></div>
+          </article>
+          <article class="report-card" data-status="ok">
+            <div class="meta"><span class="id">MF-03</span><span class="status ok">建议保留</span></div>
+            <h3>PCHi 2026 原料创新集中释放</h3>
+            <p>AI、绿色转型、情绪护肤和国产原料出海成为会场高频主题。</p>
+            <div class="tag-row"><span class="tag">event_news</span><span class="tag">ai_rd_formulation</span><span class="tag">green_chemistry</span></div>
+            <div class="source"><span>入选原因：展会 + 多技术主题聚合</span><a href="https://www.163.com/dy/article/KOMQARL40550789W.html">来源</a></div>
+          </article>
+          <article class="report-card" data-status="risk">
+            <div class="meta"><span class="id">MF-04</span><span class="status risk">需补证据</span></div>
+            <h3>欧盟新增致敏原标注要求</h3>
+            <p>法规更新可能影响出口合规与配方标签管理。</p>
+            <div class="tag-row"><span class="tag">regulation_policy</span><span class="tag">europe</span><span class="tag">regulation_research</span></div>
+            <div class="source"><span>入选原因：法规 + 欧盟市场风险</span><a href="https://chinawto.mofcom.gov.cn/article/jsbl/dtxx/202602/20260203618032.shtml">来源</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="competitor">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">COMPETITOR WATCH</div>
+            <h2>竞品动态：公司 Watchlist 与技术标签交叉</h2>
+            <p class="section-note">公司名由 Agent 自由抽取，再通过 Watchlist 归一化为国际竞品、国内竞品、渠道伙伴、客户或 Croda 自身。</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>企业</th><th>Watchlist 角色</th><th>动态摘要</th><th>命中标签</th><th>报告用途</th></tr></thead>
+            <tbody>
+              <tr><td>BASF</td><td>国际原料商竞品</td><td>发布生物技术红没药醇、生物质平衡防晒剂。</td><td><span class="tag">product_launch_or_update</span> <span class="tag">green_chemistry</span></td><td>竞品可持续产品线对标。</td></tr>
+              <tr><td>Evonik</td><td>国际原料商竞品</td><td>推出鞘脂、防晒膜剂与双靶向递送系统。</td><td><span class="tag">dual_targeting_delivery</span> <span class="tag">ceramides</span></td><td>递送平台竞争观察。</td></tr>
+              <tr><td>Clariant / Lucas Meyer</td><td>国际原料商竞品</td><td>推出蓝生物技术活性物 AlgaSurge。</td><td><span class="tag">marine_blue_biotech_actives</span></td><td>蓝生物技术趋势卡。</td></tr>
+              <tr><td>瑞吉明</td><td>国内原料商竞品</td><td>B 轮融资，人工合成 PDRN 原料中试。</td><td><span class="tag">pdrn_nucleotides</span> <span class="tag">synthetic_biology</span></td><td>PDRN 国产化洞察。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="ingredient">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">INGREDIENT TRENDS</div>
+            <h2>成分趋势：由 ingredient_technology 高频聚合</h2>
+            <p class="section-note">成分趋势不靠手动挑选，而是从文章标签中统计高频主题，再结合代表文章和 Croda 对标角度生成。</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="panel"><h3>多肽 Peptides</h3><p>代表文章：Croda Matrixyl Neolide、维琪科技 IPO、路博润 AI 多肽。</p><div class="tag-row"><span class="tag">anti_aging</span><span class="tag">encapsulation_delivery</span></div></div>
+          <div class="panel"><h3>PDRN / 核酸</h3><p>代表文章：瑞吉明融资、辉文 HWPDRN DDS。客户需确认是否设为重点追踪。</p><div class="tag-row"><span class="tag">synthetic_biology</span><span class="tag">barrier_repair</span></div></div>
+          <div class="panel"><h3>神经酰胺</h3><p>屏障修护仍为核心诉求，透明配方中的神经酰胺递送成为竞争点。</p><div class="tag-row"><span class="tag">ceramides</span><span class="tag">barrier_repair</span></div></div>
+        </div>
+      </section>
+
+      <section class="section" id="technology">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">TECHNOLOGY TRACKING</div>
+            <h2>技术创新：成熟度、商业化与竞争壁垒</h2>
+            <p class="section-note">技术卡片来自 `technology_process_innovation` 与技术类成分标签组合，帮助客户确认哪些技术值得持续跟踪。</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="report-card" data-status="ok"><div class="meta"><span class="id">IT-01</span><span class="status ok">建议保留</span></div><h3>多肽包封递送技术</h3><p>Matrixyl Neolide 的控释、稳定性和低碳叙事可作为 Croda 差异化重点。</p><div class="tag-row"><span class="tag">encapsulation_delivery</span><span class="tag">sustained_release</span></div></article>
+          <article class="report-card" data-status="review"><div class="meta"><span class="id">IT-02</span><span class="status review">待确认</span></div><h3>AI 驱动原料研发</h3><p>AI 正进入靶点筛选、原料设计和功效评价，但是否作为长期栏目需确认。</p><div class="tag-row"><span class="tag">ai_rd_formulation</span><span class="tag">research_science</span></div></article>
+          <article class="report-card" data-status="review"><div class="meta"><span class="id">IT-03</span><span class="status review">待确认</span></div><h3>神经美容 / 情绪护肤</h3><p>从营销概念走向脑电、感官科学和情绪验证，建议作为观察型主题。</p><div class="tag-row"><span class="tag">neurocosmetics_tech</span><span class="tag">emotion_wellbeing</span></div></article>
+          <article class="report-card" data-status="risk"><div class="meta"><span class="id">IT-04</span><span class="status risk">需补证据</span></div><h3>蓝生物技术</h3><p>AlgaSurge 等样例可展示趋势，但正式报告需补充临床和市场验证来源。</p><div class="tag-row"><span class="tag">marine_blue_biotech_actives</span><span class="tag">retinol_alternatives</span></div></article>
+        </div>
+      </section>
+
+      <section class="section" id="customer">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">CUSTOMER WATCH</div>
+            <h2>重点客户监测：从下游信号反推供应机会</h2>
+            <p class="section-note">这一章是对 Workbuddy prototype 的关键补强。品牌新闻只有涉及成分、配方、功效或质量趋势时才进入报告。</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>MNC 客户品牌</h3>
+            <p>示例客户：兰蔻、雅诗兰黛、资生堂、SK-II、妮维雅、优色林。关注高端抗衰、功效验证、防晒、敏感肌修护等原料需求。</p>
+            <div class="tag-row"><span class="tag">brand_finished_product</span><span class="tag">anti_aging</span><span class="tag">sun_protection</span></div>
+          </div>
+          <div class="panel">
+            <h3>国内客户品牌</h3>
+            <p>示例客户：珀莱雅、薇诺娜、润百颜、夸迪、可复美、自然堂。关注成分叙事、功效宣称和国产功效护肤趋势。</p>
+            <div class="tag-row"><span class="tag">company: customer</span><span class="tag">functional_claim</span><span class="tag">skincare</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="charts">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">DATA VIEWS</div>
+            <h2>数据可视化：图表来自标签统计</h2>
+            <p class="section-note">图表不是装饰，而是从 `tagging.json` 和 `report_content.json` 里聚合出来的可复核结果。</p>
+          </div>
+        </div>
+        <div class="chart-grid">
+          <div class="chart-panel">
+            <h3>成分 / 技术热度</h3>
+            <div class="bars">
+              <div class="bar-row"><span>多肽</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><b>92</b></div>
+              <div class="bar-row"><span>PDRN</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><b>85</b></div>
+              <div class="bar-row"><span>AI 研发</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><b>82</b></div>
+              <div class="bar-row"><span>递送系统</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><b>78</b></div>
+              <div class="bar-row"><span>情绪护肤</span><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div><b>64</b></div>
+            </div>
+          </div>
+          <div class="chart-panel">
+            <h3>竞品 × 技术矩阵</h3>
+            <div class="matrix">
+              <div class="head">企业</div><div class="head">新品</div><div class="head">AI</div><div class="head">可持续</div><div class="head">递送</div>
+              <div>BASF</div><div class="score-high">高</div><div>中</div><div class="score-high">高</div><div>低</div>
+              <div>Evonik</div><div class="score-high">高</div><div>低</div><div class="score-high">高</div><div class="score-high">高</div>
+              <div>Lubrizol</div><div>中</div><div class="score-high">高</div><div>中</div><div class="score-mid">中</div>
+              <div>维琪</div><div class="score-high">高</div><div>低</div><div>低</div><div class="score-mid">中</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">SOURCE & EVIDENCE</div>
+            <h2>原文链接与证据：每条报告内容都可回溯</h2>
+            <p class="section-note">正式版本中，HTML 所有链接来自 `source_links` 或 section item 的 URL；报告内容通过 `article_id` 串联原文、标签和证据。</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>报告条目</th><th>原文标题</th><th>来源</th><th>命中标签</th><th>证据状态</th></tr></thead>
+            <tbody>
+              <tr><td>MF-01</td><td>维琪科技北交所过会</td><td>百度百家号</td><td><span class="tag">corporate_move</span> <span class="tag">peptides</span></td><td><span class="status review">待客户确认</span></td></tr>
+              <tr><td>MF-02</td><td>Croda launches Matrixyl Neolide</td><td>Personal Care Insights</td><td><span class="tag">peptides</span> <span class="tag">encapsulation_delivery</span></td><td><span class="status ok">建议保留</span></td></tr>
+              <tr><td>IT-02</td><td>PCHi 2026 AI-driven ingredient innovation</td><td>行业媒体</td><td><span class="tag">ai_rd_formulation</span></td><td><span class="status review">待确认</span></td></tr>
+              <tr><td>MF-04</td><td>欧盟致敏原标注要求</td><td>商务部 WTO 咨询网</td><td><span class="tag">regulation_policy</span></td><td><span class="status risk">需补证据</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p><strong>Demo 边界：</strong>本页面用于客户确认 HTML 前端展示、标签驱动逻辑、报告栏目和人工确认流程。Dummy Data 不代表最终情报准确性。后续正式版本应由 `report_content.json` 驱动渲染，并通过 `article_id` 回连 `rss_clean.json` 与 `tagging.json`。</p>
+      </footer>
+    </main>
+  </div>
+
+  <div id="sc-overlay" role="dialog" aria-modal="true" aria-label="复制给 WorkBuddy">
+    <div class="overlay-card">
+      <h3>复制给 WorkBuddy 的局部修改示例</h3>
+      <p>这些指令展示为什么报告要结构化：用户可以移动、删除或改写某个编号，而不是重生成整份报告。</p>
+      <textarea readonly id="shareText">把 MF-01 移到竞品动态前面。
+删除 MF-04，原因是证据不足。
+把 IT-02 的解读改保守一点，不要说 AI 已经成为行业标准，改成“正在进入部分竞品的研发和评价流程”。
+把 CU 客户监测保留为独立栏目，但先标注为待客户确认。</textarea>
+      <div class="controls" style="margin-top:12px;justify-content:flex-end">
+        <button class="btn" id="closeOverlay">关闭</button>
+        <button class="btn primary" id="copyShare">复制文本</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    function updateActiveToc() {
+      const links = $$('#toc-sidebar a');
+      const sections = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+      let current = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top < 130) current = section;
+      }
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+    }
+
+    function filterCards() {
+      const query = $('#searchBox').value.trim().toLowerCase();
+      const status = $('#statusFilter').value;
+      $$('.report-card, .insight').forEach(card => {
+        const matchesText = !query || card.textContent.toLowerCase().includes(query);
+        const matchesStatus = status === 'all' || card.dataset.status === status;
+        card.classList.toggle('hidden', !(matchesText && matchesStatus));
+      });
+    }
+
+    $('#toc-toggle-btn').addEventListener('click', () => document.body.classList.toggle('toc-open'));
+    $('#card-mode-btn').addEventListener('click', () => document.body.classList.toggle('card-mode'));
+    $('#export-print').addEventListener('click', () => window.print());
+    $('#export-btn').addEventListener('click', () => window.print());
+    $('#export-png-desktop').addEventListener('click', () => alert('Demo 说明：正式版本可接入截图导出；当前单文件 HTML 已支持浏览器打印/PDF。'));
+    $('#export-png-mobile').addEventListener('click', () => alert('Demo 说明：请将浏览器宽度切到移动端预览；正式版本可接入移动截图导出。'));
+    $('#export-im-share').addEventListener('click', () => $('#sc-overlay').classList.add('open'));
+    $('#closeOverlay').addEventListener('click', () => $('#sc-overlay').classList.remove('open'));
+    $('#copyShare').addEventListener('click', async () => {
+      await navigator.clipboard.writeText($('#shareText').value);
+      $('#copyShare').textContent = '已复制';
+      setTimeout(() => $('#copyShare').textContent = '复制文本', 1200);
+    });
+    $('#searchBox').addEventListener('input', filterCards);
+    $('#statusFilter').addEventListener('change', filterCards);
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    $$('#toc-sidebar a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('toc-open')));
+    (function() {
+      const hotzone = $('#edit-hotzone');
+      const toggle = $('#edit-toggle');
+      let active = false;
+      let timer = null;
+      function show() { clearTimeout(timer); toggle.classList.add('show'); }
+      function hide() { timer = setTimeout(() => { if (!active) toggle.classList.remove('show'); }, 500); }
+      function enter() {
+        active = true;
+        document.body.classList.add('edit-mode');
+        toggle.classList.add('active', 'show');
+        toggle.textContent = 'Done';
+        $$('h1,h2,h3,p,li,td,th,.report-card').forEach(el => el.setAttribute('contenteditable', 'true'));
+      }
+      function exit() {
+        active = false;
+        document.body.classList.remove('edit-mode');
+        toggle.classList.remove('active');
+        toggle.textContent = 'Edit';
+        $$('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+        hide();
+      }
+      hotzone.addEventListener('mouseenter', show);
+      hotzone.addEventListener('mouseleave', hide);
+      toggle.addEventListener('mouseenter', show);
+      toggle.addEventListener('mouseleave', hide);
+      toggle.addEventListener('click', () => active ? exit() : enter());
+      hotzone.addEventListener('click', () => active ? exit() : enter());
+      document.addEventListener('keydown', e => {
+        if ((e.key === 'e' || e.key === 'E') && !document.activeElement.isContentEditable) {
+          active ? exit() : enter();
+        }
+      });
+    })();
+    updateActiveToc();
+  </script>
+</body>
+</html>

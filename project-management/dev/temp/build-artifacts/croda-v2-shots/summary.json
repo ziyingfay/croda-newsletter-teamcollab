@@ -1,0 +1,47 @@
+[
+  {
+    "target": 3,
+    "shot": "/Users/fangziying/Documents/trae_projects/claudecodeinstall/newsletter 字典/dev/temp/croda-v2-shots/slide-03.png",
+    "active": {
+      "index": 3,
+      "text": "SCENARIO · 场景需求 03 / 15 我们关注的不是单篇新闻本身， 而是新闻背后的业务含义。 WHAT IT MEANS FOR THE BUSINESS 我们关注什么 Q01 哪些公司正在推出新原料？ Q02 哪些品牌正在强化新的功效卖点？ Q03 哪些成分、技术和法规正在形成趋势？ Q04 哪些变化可能影响推广、研发与客户开发？ 发生了什么 → 为什么重要 → 下一步关注什么",
+      "overflowing": 0
+    }
+  },
+  {
+    "target": 4,
+    "shot": "/Users/fangziying/Documents/trae_projects/claudecodeinstall/newsletter 字典/dev/temp/croda-v2-shots/slide-04.png",
+    "active": {
+      "index": 4,
+      "text": "FROM PROTOTYPE TO V1 · 从原型到一期 04 / 15 演进路径 已验证体验，补齐持续产出能力。 原型已经帮助我们看清报告应该如何被阅读和使用；一期应用在此基础上，把 Business Insight、标签体系与月度生产流程连接起来，让每篇新闻的商业意义可以被稳定识别和沉淀。 PROTOTYPE · 已验证体验 报告应该如何被使用 现有 HTML demo 已经很好地呈现了最终阅读体验：如何浏览、筛选、展开、追溯原文和导出。 报告阅读体验 筛选与展开 原文追溯 一键导出 V1 · 补齐持续产出能",
+      "overflowing": 0
+    }
+  },
+  {
+    "target": 8,
+    "shot": "/Users/fangziying/Documents/trae_projects/claudecodeinstall/newsletter 字典/dev/temp/croda-v2-shots/slide-08.png",
+    "active": {
+      "index": 8,
+      "text": "DELIVERABLES & QA · 交付物与质量控制 08 / 15 交付与质控 交付给客户的是报告体验，支撑报告的是一套质量机制。 客户交付物 5 ITEMS 月度 HTML 报告 用于客户团队阅读、筛选、展开、讨论与导出。 结构化报告内容 承载五大报告板块及每月核心洞察。 标签字段字典 统一分类、标签定义与后续复用口径。 媒体源与关注名单配置 明确监测范围，支持每月持续更新。 首期报告样例与调整建议 帮助双方确认表达方式与业务重点。 内部质控 4 CONTROLS 原始抓取记录 保留文章来源、时间与链接，便",
+      "overflowing": 0
+    }
+  },
+  {
+    "target": 9,
+    "shot": "/Users/fangziying/Documents/trae_projects/claudecodeinstall/newsletter 字典/dev/temp/croda-v2-shots/slide-09.png",
+    "active": {
+      "index": 9,
+      "text": "TEAM COLLABORATION · 协作中的位置 09 / 15 应用的角色 应用负责稳定生产，团队保留关键判断。 这套工作流把重复、结构化、可复用的环节交给应用处理，把真正需要业务语境的判断留给团队确认。 应用负责什么 整理当月文章，形成干净的分析清单 补齐来源、时间、公司、链接等基础字段 识别事件、成分、功效、价值链位置等标签 生成结构化报告草案和 HTML 阅读页面 沉淀可复用的数据与标签口径 团队负责什么 判断哪些动态真正重要 确认哪些洞察更贴近业务语境 把报告重点对齐到当月业务关注 决定哪些建议进入",
+      "overflowing": 0
+    }
+  },
+  {
+    "target": 15,
+    "shot": "/Users/fangziying/Documents/trae_projects/claudecodeinstall/newsletter 字典/dev/temp/croda-v2-shots/slide-15.png",
+    "active": {
+      "index": 15,
+      "text": "CLOSING 15 / 15 FINAL NOTE 把已验证的报告体验， 升级为可沉淀洞察的工作流。 01 可持续产出 02 可沉淀价值 03 成为数据资产",
+      "overflowing": 0
+    }
+  }
+]
