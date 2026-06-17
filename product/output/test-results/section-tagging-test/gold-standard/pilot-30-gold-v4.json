@@ -1,0 +1,373 @@
+{
+  "_about": "V4-remapped gold (model-authored silver, NOT human-verified).",
+  "articles": [
+    {
+      "article_id": "QK17IFx2SdB4JwEYXLA-1Q",
+      "i": 0,
+      "source": "成分控",
+      "gold_primary_v4": "ingredient_innovation",
+      "gold_secondary_v4": [
+        "ingredient_innovation"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "神经美容机制科普（多巴胺/皮肤免疫），讲机制如何运作→tech_innovation",
+      "v3_primary": "technology_innovation"
+    },
+    {
+      "article_id": "NxghWI8u8VafGrhh82eZXA",
+      "i": 1,
+      "source": "真魅博客truebuty",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "博主套装促销，虽提配方技术但本质C端促销",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "qOjLL7gbW3andtAfCjLV2Q",
+      "i": 2,
+      "source": "青眼",
+      "gold_primary_v4": "ingredient_innovation",
+      "gold_secondary_v4": [],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "敏感肌成为最大功效市场，市场/消费者洞察为主线",
+      "v3_primary": "ingredient_trend"
+    },
+    {
+      "article_id": "XGItt9v6lEIzSYsQmpdhOw",
+      "i": 3,
+      "source": "硅碳鼠日化圈",
+      "gold_primary_v4": "ingredient_innovation",
+      "gold_secondary_v4": [
+        "regulation_policy",
+        "market_event"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "opus48_v4_rejudge",
+      "note": "借4月新原料备案数据解读成分创新趋势；备案为数据底座、SIC大会为尾巴",
+      "v3_primary": "ingredient_trend"
+    },
+    {
+      "article_id": "jqap8D1xBVDQk2i2L_2SoQ",
+      "i": 4,
+      "source": "青眼",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "海洋至尊男士护肤销量榜，纯品牌/渠道无成分角度",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "fGhwLgCP5oKEOFag0nCouA",
+      "i": 5,
+      "source": "FBeauty未来迹",
+      "gold_primary_v4": "ka_watch",
+      "gold_secondary_v4": [
+        "ingredient_innovation",
+        "market_event"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "opus48_v4_rejudge",
+      "note": "下游KA品牌HBN自研抗光老机制与美白复配，涉成分/机制/功效；AAD/SID只是发布场合",
+      "v3_primary": "technology_innovation"
+    },
+    {
+      "article_id": "Je1xj16ULW2J7DXlpBwjKQ",
+      "i": 6,
+      "source": "化妆品观察 品观",
+      "gold_primary_v4": "ingredient_innovation",
+      "gold_secondary_v4": [
+        "ingredient_innovation"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "福瑞达合成生物学量产王浆酸，技术突破为主线",
+      "v3_primary": "technology_innovation"
+    },
+    {
+      "article_id": "wzqSfMoniNoU_P2PW11bSQ",
+      "i": 7,
+      "source": "美浪CBEAUTY",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "Forever21进军彩妆，纯品牌发布无成分情报",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "AoV5l8YXHzDfAO0npaG0OQ",
+      "i": 8,
+      "source": "唯铂莱生物科技",
+      "gold_primary_v4": "competitor_watch",
+      "gold_secondary_v4": [
+        "market_event"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "唯铂莱(供应商)FIC2026展示合成生物活性物",
+      "v3_primary": "competitor_watch"
+    },
+    {
+      "article_id": "C8LlcoNo8dZo_hC3nPi9lw",
+      "i": 9,
+      "source": "美浪CBEAUTY",
+      "gold_primary_v4": "competitor_watch",
+      "gold_secondary_v4": [
+        "ka_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "roundup_remap",
+      "note": "多事件汇编,主导实质=华熙生物原料(PDRN/重组胶原)产能→competitor_watch;行业快讯由报告Agent编排",
+      "v3_primary": "market_brief"
+    },
+    {
+      "article_id": "ksKPAldVZFBVW-QQhwSzpQ",
+      "i": 10,
+      "source": "美丽修行App",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "春敏自救消费导购，产品种草无原料情报价值",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "USWR45JcWqV26w658QHQrw",
+      "i": 11,
+      "source": "中国化妆品",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "BeautyMatter创始人访谈,行业/媒体元话题无成分角度",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "-mklrri45Os44-kdHmXpEg",
+      "i": 12,
+      "source": "聚美丽",
+      "gold_primary_v4": "competitor_watch",
+      "gold_secondary_v4": [],
+      "gold_relevance": "relevant",
+      "source_label": "roundup_remap",
+      "note": "多事件汇编,主导实质=巴斯夫换帅/格林生物IPO等竞品动态→competitor_watch;行业快讯由报告Agent编排",
+      "v3_primary": "market_brief"
+    },
+    {
+      "article_id": "s754vTet1CRvN1UHd2Z1Hw",
+      "i": 13,
+      "source": "PCHi",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "ingredient_innovation",
+        "ingredient_innovation"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "PCHi芳典奖控油类获奖产品(贯叶黄酮/花旗松素),奖项形式+新活性物",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "GiSW9lV2lO8p0aUpl7n1rA",
+      "i": 14,
+      "source": "化妆品观察 品观",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "opus48_v4_rejudge",
+      "note": "渠道/支付监管，无任何原料成分角度，对禾大原料情报无价值",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "7ljl-xWScKMPlRvLPlVnXA",
+      "i": 15,
+      "source": "妆妍荟",
+      "gold_primary_v4": "ingredient_innovation",
+      "gold_secondary_v4": [],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "抗皱紧致成分TOP10科普,成分热度为主线",
+      "v3_primary": "ingredient_trend"
+    },
+    {
+      "article_id": "BgMJgS7VyIwKDoOxXolAjw",
+      "i": 16,
+      "source": "PCHi",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "ingredient_innovation",
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "PCHi芳典奖抗皱类(Givaudan Evernityl/核酸四面体),奖项+竞品活性物",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "uEyFfOCHTlZvY-vpSfvz4g",
+      "i": 17,
+      "source": "个护前沿",
+      "gold_primary_v4": "ingredient_innovation",
+      "gold_secondary_v4": [
+        "ka_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "opus48_v4_rejudge",
+      "note": "实质是肌肤长寿前沿技术与新成分趋势/竞品布局；MNC品牌只是承载视角",
+      "v3_primary": "technology_innovation"
+    },
+    {
+      "article_id": "0Ld7n3q1Vl0YW2SQ76Rzig",
+      "i": 18,
+      "source": "克琴实验室",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "母亲节问候+克琴研讨会预告,实质是研讨会公告",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "aDDVwW-EnwwjtmWqeFj3Fg",
+      "i": 19,
+      "source": "亚什兰个人护理",
+      "gold_primary_v4": "competitor_watch",
+      "gold_secondary_v4": [
+        "market_event",
+        "ingredient_innovation"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "亚什兰webinar发新活性物(可可光护因子/视蛋白),供应商新原料发布",
+      "v3_primary": "competitor_watch"
+    },
+    {
+      "article_id": "J1xl7njNM35I2qjQlgZnwg",
+      "i": 20,
+      "source": "肤子堂",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "行业招聘/人才推荐,无成分情报价值",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "ctEgH0pye_zjsWcKymWrVg",
+      "i": 21,
+      "source": "克琴实验室",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "克琴2026研讨会时间公告+平台介绍,活动预告",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "HMkfCIuS6E2U3fvlchlFuQ",
+      "i": 22,
+      "source": "化妆品观察 品观",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "欧莱雅收购伊索/品牌管理,企业/品牌战略无成分角度",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "P1T9pc_8VaG3x0wVCMHy5w",
+      "i": 23,
+      "source": "唯铂莱生物科技",
+      "gold_primary_v4": "exclude",
+      "gold_secondary_v4": [],
+      "gold_relevance": "not_relevant",
+      "source_label": "deterministic_remap",
+      "note": "转发祝贺语,无实质",
+      "v3_primary": "exclude"
+    },
+    {
+      "article_id": "yrrbgtFIIoZ-aiF5mx9W1w",
+      "i": 24,
+      "source": "路博润配方自信无限",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "仅标题:路博润全球首发体验邀请,供应商活动/发布邀约(标题证据)",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "v1XZ5jbe_v37MZcR-R_f7g",
+      "i": 25,
+      "source": "路博润配方自信无限",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "路博润ICIC2026会后回顾+获奖+肽(Eyeseryl),供应商活动回顾",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "mFzk04n-3a9Qu7aEoQ2b8A",
+      "i": 26,
+      "source": "巴斯夫护理化学品",
+      "gold_primary_v4": "competitor_watch",
+      "gold_secondary_v4": [],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "标题为主:巴斯夫APG(表活)30周年,供应商基础原料",
+      "v3_primary": "competitor_watch"
+    },
+    {
+      "article_id": "c94WXPUchs-FyM5IbMMptg",
+      "i": 27,
+      "source": "JLand聚源生物",
+      "gold_primary_v4": "competitor_watch",
+      "gold_secondary_v4": [],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "空正文;标题:聚源(供应商)重组胶原冒用严正声明,供应商法务动作",
+      "v3_primary": "competitor_watch"
+    },
+    {
+      "article_id": "jrC4GqlF5Ckdg7KexAONrQ",
+      "i": 28,
+      "source": "路博润配方自信无限",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "空正文;标题:路博润PCHi2025会后回顾,供应商活动回顾(标题证据)",
+      "v3_primary": "market_event"
+    },
+    {
+      "article_id": "hgdLDTUSBqwwVRdoFP_cQA",
+      "i": 29,
+      "source": "德之馨化妆品技术与科学",
+      "gold_primary_v4": "market_event",
+      "gold_secondary_v4": [
+        "ingredient_innovation",
+        "competitor_watch"
+      ],
+      "gold_relevance": "relevant",
+      "source_label": "deterministic_remap",
+      "note": "空正文;标题:德之馨敏感肌功效评价活动预告(TEM/AI/神经免疫),供应商活动预告",
+      "v3_primary": "market_event"
+    }
+  ]
+}

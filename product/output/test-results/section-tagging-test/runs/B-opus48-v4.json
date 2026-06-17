@@ -1,0 +1,1811 @@
+[
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "QK17IFx2SdB4JwEYXLA-1Q",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s8",
+        "inferred_because": "neurocosmetic mechanism"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "mechanism_research"
+      ],
+      "ingredient_technology": [
+        "neurotransmitter_signaling",
+        "dopamine"
+      ],
+      "functional_claim": [
+        "barrier_health",
+        "anti_inflammatory"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "mechanism_research",
+        "trigger_span_id": "s8"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "neurotransmitter_signaling",
+        "trigger_span_id": "s8"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "dopamine",
+        "trigger_span_id": "s24"
+      },
+      {
+        "field": "functional_claim",
+        "label": "barrier_health",
+        "trigger_span_id": "s12"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_inflammatory",
+        "trigger_span_id": "s29"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "NxghWI8u8VafGrhh82eZXA",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "consumer promo bundle sale"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "consumer_promotion"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "channel"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "consumer_promotion",
+        "trigger_span_id": "s1"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "qOjLL7gbW3andtAfCjLV2Q",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [
+        "ka_watch"
+      ],
+      "evidence": {
+        "trigger_span_id": "s5",
+        "inferred_because": "sensitive-skin market trend"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "market_trend"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [
+        "soothing",
+        "whitening",
+        "anti_aging",
+        "sunscreen"
+      ],
+      "product_application": [
+        "sensitive_skincare"
+      ],
+      "entity_role": [
+        "customer",
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "market_trend",
+        "trigger_span_id": "s5"
+      },
+      {
+        "field": "functional_claim",
+        "label": "soothing",
+        "trigger_span_id": "s17"
+      },
+      {
+        "field": "functional_claim",
+        "label": "whitening",
+        "trigger_span_id": "s29"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_aging",
+        "trigger_span_id": "s38"
+      },
+      {
+        "field": "product_application",
+        "label": "sensitive_skincare",
+        "trigger_span_id": "s7"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "XGItt9v6lEIzSYsQmpdhOw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "new ingredient registrations"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "new_ingredient_registration",
+        "ingredient_trend"
+      ],
+      "ingredient_technology": [
+        "plant_extract",
+        "fermentation",
+        "synthetic_biology",
+        "marine_peptide"
+      ],
+      "functional_claim": [],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor",
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "new_ingredient_registration",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "plant_extract",
+        "trigger_span_id": "s5"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "synthetic_biology",
+        "trigger_span_id": "s13"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "fermentation",
+        "trigger_span_id": "s19"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_trend",
+        "trigger_span_id": "s20"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "jqap8D1xBVDQk2i2L_2SoQ",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ka_watch",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s28",
+        "inferred_because": "brand proprietary oil-control tech"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "brand_strategy",
+        "proprietary_technology"
+      ],
+      "ingredient_technology": [
+        "ampk_oil_control",
+        "thermus_ferment"
+      ],
+      "functional_claim": [
+        "oil_control",
+        "sebum_regulation"
+      ],
+      "product_application": [
+        "mens_skincare"
+      ],
+      "entity_role": [
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "brand_strategy",
+        "trigger_span_id": "s11"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "proprietary_technology",
+        "trigger_span_id": "s28"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "ampk_oil_control",
+        "trigger_span_id": "s28"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "thermus_ferment",
+        "trigger_span_id": "s35"
+      },
+      {
+        "field": "functional_claim",
+        "label": "oil_control",
+        "trigger_span_id": "s29"
+      },
+      {
+        "field": "product_application",
+        "label": "mens_skincare",
+        "trigger_span_id": "s4"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "fGhwLgCP5oKEOFag0nCouA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ka_watch",
+      "secondary_sections": [
+        "ingredient_innovation"
+      ],
+      "evidence": {
+        "trigger_span_id": "s36",
+        "inferred_because": "brand photoaging mechanism research"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "mechanism_research",
+        "brand_strategy"
+      ],
+      "ingredient_technology": [
+        "glycation_biomarker",
+        "st6gal1",
+        "arbutin"
+      ],
+      "functional_claim": [
+        "anti_photoaging",
+        "whitening"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "mechanism_research",
+        "trigger_span_id": "s36"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "glycation_biomarker",
+        "trigger_span_id": "s35"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "st6gal1",
+        "trigger_span_id": "s36"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_photoaging",
+        "trigger_span_id": "s40"
+      },
+      {
+        "field": "functional_claim",
+        "label": "whitening",
+        "trigger_span_id": "s44"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "brand_strategy",
+        "trigger_span_id": "s9"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "Je1xj16ULW2J7DXlpBwjKQ",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s3",
+        "inferred_because": "synthetic-bio ingredient first scale"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "new_ingredient_launch",
+        "mechanism_research"
+      ],
+      "ingredient_technology": [
+        "synthetic_biology",
+        "royal_jelly_acid_10hda",
+        "fermentation"
+      ],
+      "functional_claim": [
+        "anti_aging",
+        "telomere",
+        "collagen_boost"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "new_ingredient_launch",
+        "trigger_span_id": "s3"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "synthetic_biology",
+        "trigger_span_id": "s3"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "royal_jelly_acid_10hda",
+        "trigger_span_id": "s18"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_aging",
+        "trigger_span_id": "s7"
+      },
+      {
+        "field": "functional_claim",
+        "label": "collagen_boost",
+        "trigger_span_id": "s36"
+      },
+      {
+        "field": "functional_claim",
+        "label": "telomere",
+        "trigger_span_id": "s29"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "wzqSfMoniNoU_P2PW11bSQ",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "color cosmetics launch no ingredient"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "brand_launch"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [
+        "color_cosmetics",
+        "lip"
+      ],
+      "entity_role": [
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "brand_launch",
+        "trigger_span_id": "s1"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "AoV5l8YXHzDfAO0npaG0OQ",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s2",
+        "inferred_because": "supplier synthetic-bio ingredients at expo"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "ingredient_showcase",
+        "new_ingredient_launch"
+      ],
+      "ingredient_technology": [
+        "synthetic_biology",
+        "hydroxytyrosol",
+        "ferment_platform"
+      ],
+      "functional_claim": [
+        "antioxidant",
+        "anti_inflammatory"
+      ],
+      "product_application": [
+        "personal_care",
+        "functional_food"
+      ],
+      "entity_role": [
+        "competitor",
+        "self"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_showcase",
+        "trigger_span_id": "s2"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "synthetic_biology",
+        "trigger_span_id": "s11"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "hydroxytyrosol",
+        "trigger_span_id": "s6"
+      },
+      {
+        "field": "functional_claim",
+        "label": "antioxidant",
+        "trigger_span_id": "s6"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "new_ingredient_launch",
+        "trigger_span_id": "s6"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "C8LlcoNo8dZo_hC3nPi9lw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s10",
+        "inferred_because": "supplier raw-material growth points"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "business_strategy",
+        "market_trend"
+      ],
+      "ingredient_technology": [
+        "pdrn",
+        "hyaluronic_acid",
+        "recombinant_collagen"
+      ],
+      "functional_claim": [],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor",
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "business_strategy",
+        "trigger_span_id": "s10"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "pdrn",
+        "trigger_span_id": "s11"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "hyaluronic_acid",
+        "trigger_span_id": "s12"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "recombinant_collagen",
+        "trigger_span_id": "s13"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "market_trend",
+        "trigger_span_id": "s20"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "ksKPAldVZFBVW-QQhwSzpQ",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "consumer shopping guide"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "consumer_guide",
+        "consumer_promotion"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [
+        "soothing",
+        "barrier_repair"
+      ],
+      "product_application": [
+        "sensitive_skincare"
+      ],
+      "entity_role": [
+        "channel"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "consumer_guide",
+        "trigger_span_id": "s6"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "consumer_promotion",
+        "trigger_span_id": "s10"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "USWR45JcWqV26w658QHQrw",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "industry media interview no ingredient"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "industry_commentary",
+        "interview"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "industry_commentary",
+        "trigger_span_id": "s7"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "interview",
+        "trigger_span_id": "s4"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "-mklrri45Os44-kdHmXpEg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s33",
+        "inferred_because": "supplier leadership change roundup"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "personnel_change",
+        "industry_roundup"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "competitor",
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "personnel_change",
+        "trigger_span_id": "s33"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "industry_roundup",
+        "trigger_span_id": "s3"
+      },
+      {
+        "field": "entity_role",
+        "label": "competitor",
+        "trigger_span_id": "s2"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "s754vTet1CRvN1UHd2Z1Hw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s2",
+        "inferred_because": "award-winning oil-control ingredients"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "ingredient_showcase",
+        "award"
+      ],
+      "ingredient_technology": [
+        "hyperforin_flavone",
+        "lipophagy",
+        "dihydroquercetin"
+      ],
+      "functional_claim": [
+        "oil_control",
+        "sebum_regulation",
+        "antioxidant"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_showcase",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "award",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "hyperforin_flavone",
+        "trigger_span_id": "s2"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "lipophagy",
+        "trigger_span_id": "s2"
+      },
+      {
+        "field": "functional_claim",
+        "label": "oil_control",
+        "trigger_span_id": "s5"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "GiSW9lV2lO8p0aUpl7n1rA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [
+        "regulation_policy"
+      ],
+      "evidence": {
+        "trigger_span_id": "s3",
+        "inferred_because": "OTC channel shift, insurance policy"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "channel_trend",
+        "policy_change"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "channel",
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "channel_trend",
+        "trigger_span_id": "s0"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "policy_change",
+        "trigger_span_id": "s3"
+      },
+      {
+        "field": "entity_role",
+        "label": "channel",
+        "trigger_span_id": "s10"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "7ljl-xWScKMPlRvLPlVnXA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "anti-wrinkle ingredient TOP10 guide"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "ingredient_education",
+        "ingredient_trend"
+      ],
+      "ingredient_technology": [
+        "sodium_hyaluronate",
+        "niacinamide",
+        "argireline_peptide",
+        "pro_xylane",
+        "recombinant_collagen"
+      ],
+      "functional_claim": [
+        "anti_wrinkle",
+        "firming",
+        "barrier_repair"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_education",
+        "trigger_span_id": "s3"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_trend",
+        "trigger_span_id": "s3"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "argireline_peptide",
+        "trigger_span_id": "s16"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "pro_xylane",
+        "trigger_span_id": "s21"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_wrinkle",
+        "trigger_span_id": "s0"
+      },
+      {
+        "field": "functional_claim",
+        "label": "firming",
+        "trigger_span_id": "s0"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "BgMJgS7VyIwKDoOxXolAjw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "award-winning anti-wrinkle ingredients"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "ingredient_showcase",
+        "award"
+      ],
+      "ingredient_technology": [
+        "laminaria_extract",
+        "dna_tetrahedron",
+        "synthetic_biology",
+        "colamin_eps"
+      ],
+      "functional_claim": [
+        "anti_aging",
+        "anti_wrinkle",
+        "collagen_boost"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_showcase",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "award",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "laminaria_extract",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "dna_tetrahedron",
+        "trigger_span_id": "s10"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_wrinkle",
+        "trigger_span_id": "s4"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "uEyFfOCHTlZvY-vpSfvz4g",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "ingredient_innovation"
+      ],
+      "evidence": {
+        "trigger_span_id": "s4",
+        "inferred_because": "multinational longevity-skincare strategies"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "competitor_strategy",
+        "ingredient_trend"
+      ],
+      "ingredient_technology": [
+        "mitopure_urolithin_a",
+        "sirt_protein",
+        "epigenetics",
+        "mitophagy"
+      ],
+      "functional_claim": [
+        "longevity",
+        "anti_aging"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor",
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "competitor_strategy",
+        "trigger_span_id": "s38"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "mitopure_urolithin_a",
+        "trigger_span_id": "s24"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "sirt_protein",
+        "trigger_span_id": "s30"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "epigenetics",
+        "trigger_span_id": "s32"
+      },
+      {
+        "field": "functional_claim",
+        "label": "longevity",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_trend",
+        "trigger_span_id": "s5"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "0Ld7n3q1Vl0YW2SQ76Rzig",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s11",
+        "inferred_because": "supplier seminar invite"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "event_preview"
+      ],
+      "ingredient_technology": [
+        "synthetic_biology"
+      ],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "event_preview",
+        "trigger_span_id": "s11"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "synthetic_biology",
+        "trigger_span_id": "s12"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "Supplier seminar invite (克琴 2026研讨会); teaser with no analyzable ingredient detail."
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "aDDVwW-EnwwjtmWqeFj3Fg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s5",
+        "inferred_because": "supplier new ingredient at webinar"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "new_ingredient_launch"
+      ],
+      "ingredient_technology": [
+        "blumilight_opsin",
+        "cocoa_seed_peptide"
+      ],
+      "functional_claim": [
+        "anti_photoaging",
+        "pigment_balance"
+      ],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "new_ingredient_launch",
+        "trigger_span_id": "s5"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "blumilight_opsin",
+        "trigger_span_id": "s5"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "cocoa_seed_peptide",
+        "trigger_span_id": "s7"
+      },
+      {
+        "field": "functional_claim",
+        "label": "anti_photoaging",
+        "trigger_span_id": "s5"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "J1xl7njNM35I2qjQlgZnwg",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "recruitment / talent post"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "recruitment"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "recruitment",
+        "trigger_span_id": "s1"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "ctEgH0pye_zjsWcKymWrVg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "supplier seminar date announcement"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "event_preview"
+      ],
+      "ingredient_technology": [
+        "synthetic_biology"
+      ],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "event_preview",
+        "trigger_span_id": "s0"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "synthetic_biology",
+        "trigger_span_id": "s1"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "Supplier seminar date notice (克琴); no analyzable detail beyond schedule."
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "HMkfCIuS6E2U3fvlchlFuQ",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "KA brand M&A, no ingredient angle"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "mergers_acquisitions",
+        "brand_strategy"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "customer"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "mergers_acquisitions",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "brand_strategy",
+        "trigger_span_id": "s6"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "P1T9pc_8VaG3x0wVCMHy5w",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "congratulatory repost, no content"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "congratulatory"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [],
+      "entity_role": [
+        "ecosystem"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "congratulatory",
+        "trigger_span_id": "s0"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "yrrbgtFIIoZ-aiF5mx9W1w",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "supplier global launch event teaser"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "event_preview"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [
+        "personal_care"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "event_preview",
+        "trigger_span_id": "s0"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "路博润 global tech launch teaser (title-only); no analyzable detail yet."
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "v1XZ5jbe_v37MZcR-R_f7g",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "supplier award ingredient at expo"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "ingredient_showcase",
+        "award"
+      ],
+      "ingredient_technology": [
+        "lectroglaze_biotech",
+        "eyeseryl_peptide"
+      ],
+      "functional_claim": [
+        "eye_care",
+        "anti_aging"
+      ],
+      "product_application": [
+        "skincare",
+        "hair_care"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "award",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_showcase",
+        "trigger_span_id": "s4"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "lectroglaze_biotech",
+        "trigger_span_id": "s1"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "eyeseryl_peptide",
+        "trigger_span_id": "s4"
+      },
+      {
+        "field": "product_application",
+        "label": "eye_care",
+        "trigger_span_id": "s4"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "mFzk04n-3a9Qu7aEoQ2b8A",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "supplier surfactant anniversary feature"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "ingredient_showcase"
+      ],
+      "ingredient_technology": [
+        "apg_surfactant"
+      ],
+      "functional_claim": [
+        "mildness",
+        "green_chemistry"
+      ],
+      "product_application": [
+        "cleansing",
+        "hair_care"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "ingredient_showcase",
+        "trigger_span_id": "s0"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "apg_surfactant",
+        "trigger_span_id": "s1"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "巴斯夫 APG surfactant 30th-anniversary feature; thin body, ingredient-family teaser."
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "c94WXPUchs-FyM5IbMMptg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "supplier ingredient counterfeit statement"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "legal_statement"
+      ],
+      "ingredient_technology": [
+        "recombinant_collagen"
+      ],
+      "functional_claim": [],
+      "product_application": [
+        "skincare"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "legal_statement",
+        "trigger_span_id": "s0"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "recombinant_collagen",
+        "trigger_span_id": "s0"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "聚源 statement against counterfeit recombinant-collagen sales; title-only, no detail."
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "jrC4GqlF5Ckdg7KexAONrQ",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "supplier expo recap, title-only"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "event_recap"
+      ],
+      "ingredient_technology": [],
+      "functional_claim": [],
+      "product_application": [
+        "skincare",
+        "hair_care"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "event_recap",
+        "trigger_span_id": "s0"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "路博润 PCHi 2025 expo recap; empty body, no analyzable detail."
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "hgdLDTUSBqwwVRdoFP_cQA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s0",
+        "inferred_because": "supplier sensitive-skin research event preview"
+      }
+    },
+    "tags": {
+      "primary_story_type": [
+        "event_preview"
+      ],
+      "ingredient_technology": [
+        "neuroimmune",
+        "ai_efficacy_evaluation"
+      ],
+      "functional_claim": [
+        "sensitive_skin_efficacy"
+      ],
+      "product_application": [
+        "sensitive_skincare"
+      ],
+      "entity_role": [
+        "competitor"
+      ]
+    },
+    "evidence_records": [
+      {
+        "field": "primary_story_type",
+        "label": "event_preview",
+        "trigger_span_id": "s0"
+      },
+      {
+        "field": "ingredient_technology",
+        "label": "neuroimmune",
+        "trigger_span_id": "s0"
+      }
+    ],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-16T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "B"
+    },
+    "report_guidance": "德之馨 sensitive-skin efficacy research event preview; title-only, no detail yet."
+  }
+]

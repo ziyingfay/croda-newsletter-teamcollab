@@ -1,0 +1,1020 @@
+{
+  "schema_version": "croda-watchlist-entities-v1",
+  "source_dictionary": "product/parameter-file/tag-dictionary/标签字段字典-禾大美妆个护版-V4-draft.md（第六节 Watchlist）",
+  "purpose": "脚本 company 抽取用：以 aliases（中英别名/缩写/常见变体）做实体匹配，命中后归一到 display_name；entity_role 供后端角色匹配。脚本只抽取、不判角色。",
+  "usage_notes": [
+    "匹配建议：对 aliases 做大小写不敏感、去空格/标点的归一化匹配；命中任一 alias → 输出 display_name。",
+    "display_name 必须同时收录进 aliases（保证显示名本身也能被命中）。",
+    "needs_alias_review=true 表示英文名/常见变体尚未由运营核对，当前仅含确信的中文写法，需补全后再上线该条匹配。",
+    "客户可继续增删；改名单=改本文件，不动代码（配置驱动）。"
+  ],
+  "enums": {
+    "entity_role": [
+      "competitor",
+      "channel_partner",
+      "customer",
+      "self"
+    ],
+    "category": [
+      "international_ingredient_supplier",
+      "domestic_ingredient_supplier",
+      "distributor",
+      "mnc_brand",
+      "domestic_brand",
+      "self"
+    ]
+  },
+  "entities": [
+    {
+      "entity_key": "basf",
+      "display_name": "巴斯夫",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "巴斯夫",
+        "BASF",
+        "BASF SE"
+      ]
+    },
+    {
+      "entity_key": "symrise",
+      "display_name": "德之馨",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "德之馨",
+        "Symrise",
+        "Symrise AG"
+      ]
+    },
+    {
+      "entity_key": "evonik",
+      "display_name": "赢创",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "赢创",
+        "赢创工业",
+        "Evonik",
+        "Evonik Industries"
+      ]
+    },
+    {
+      "entity_key": "wacker",
+      "display_name": "瓦克",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "瓦克",
+        "瓦克化学",
+        "Wacker",
+        "Wacker Chemie"
+      ]
+    },
+    {
+      "entity_key": "dsm_firmenich",
+      "display_name": "帝斯曼芬美意",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "帝斯曼芬美意",
+        "帝斯曼",
+        "芬美意",
+        "DSM-Firmenich",
+        "DSM",
+        "Firmenich"
+      ]
+    },
+    {
+      "entity_key": "ashland",
+      "display_name": "亚什兰",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "亚什兰",
+        "Ashland"
+      ]
+    },
+    {
+      "entity_key": "lubrizol",
+      "display_name": "路博润",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "路博润",
+        "Lubrizol"
+      ]
+    },
+    {
+      "entity_key": "sensient",
+      "display_name": "森馨",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "森馨",
+        "森馨科技",
+        "Sensient",
+        "Sensient Technologies"
+      ]
+    },
+    {
+      "entity_key": "gattefosse",
+      "display_name": "嘉法狮",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "嘉法狮",
+        "Gattefossé",
+        "Gattefosse"
+      ]
+    },
+    {
+      "entity_key": "seppic",
+      "display_name": "仙婷",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "仙婷",
+        "Seppic"
+      ]
+    },
+    {
+      "entity_key": "clariant",
+      "display_name": "科莱恩",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "科莱恩",
+        "Clariant"
+      ]
+    },
+    {
+      "entity_key": "sasol",
+      "display_name": "世索科",
+      "entity_role": "competitor",
+      "category": "international_ingredient_supplier",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "世索科",
+        "Sasol"
+      ]
+    },
+    {
+      "entity_key": "huiwen_bio",
+      "display_name": "辉文生物",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "辉文生物",
+        "辉文",
+        "Huiwen",
+        "Huiwen Bio",
+        "Huiwen Biotech"
+      ]
+    },
+    {
+      "entity_key": "weibolai",
+      "display_name": "唯铂莱",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "唯铂莱",
+        "Viablife"
+      ]
+    },
+    {
+      "entity_key": "keqin",
+      "display_name": "克琴",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "克琴"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "jland_juyuan_bio",
+      "display_name": "JLand聚源生物",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "JLand聚源生物",
+        "JLand",
+        "聚源生物",
+        "聚源"
+      ]
+    },
+    {
+      "entity_key": "ruijiming",
+      "display_name": "瑞吉明",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "瑞吉明"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "weiqi",
+      "display_name": "维琪",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "维琪",
+        "维琪科技",
+        "Winkey"
+      ]
+    },
+    {
+      "entity_key": "chenhai_biotech",
+      "display_name": "辰海生科",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "辰海生科",
+        "辰海",
+        "辰海生物科技"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "ruidelin",
+      "display_name": "瑞德林",
+      "entity_role": "competitor",
+      "category": "domestic_ingredient_supplier",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "瑞德林",
+        "Readline"
+      ]
+    },
+    {
+      "entity_key": "meiin_baihaobo",
+      "display_name": "美in百好博",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "美in百好博",
+        "美in"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "baihaobo_zhimeitang",
+      "display_name": "百好博致美堂",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "百好博致美堂",
+        "致美堂"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "puen_biochem",
+      "display_name": "浦恩生化",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "浦恩生化",
+        "浦恩"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "sakesashuo",
+      "display_name": "萨科萨烁",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "萨科萨烁"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "shanghai_wanming_bio",
+      "display_name": "上海万明生物",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "上海万明生物",
+        "万明生物",
+        "万明"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "boshuo_personal_care",
+      "display_name": "博烁个人护理",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "博烁个人护理",
+        "博烁"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "ownsnow",
+      "display_name": "Ownsnow奥雪",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "Ownsnow奥雪",
+        "Ownsnow",
+        "奥雪"
+      ]
+    },
+    {
+      "entity_key": "oli",
+      "display_name": "奥利OLI",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "奥利OLI",
+        "奥利",
+        "OLI"
+      ]
+    },
+    {
+      "entity_key": "huilang_yanjiuyuan",
+      "display_name": "汇朗颜究院",
+      "entity_role": "channel_partner",
+      "category": "distributor",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "汇朗颜究院",
+        "汇朗",
+        "颜究院"
+      ],
+      "needs_alias_review": true
+    },
+    {
+      "entity_key": "loreal_paris",
+      "display_name": "L'Oréal Paris",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "L'Oréal Paris",
+        "L'Oreal Paris",
+        "巴黎欧莱雅",
+        "欧莱雅",
+        "L'Oréal",
+        "L'Oreal"
+      ]
+    },
+    {
+      "entity_key": "olay",
+      "display_name": "玉兰油",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "玉兰油",
+        "Olay"
+      ]
+    },
+    {
+      "entity_key": "dabao",
+      "display_name": "大宝",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "大宝",
+        "Dabao"
+      ]
+    },
+    {
+      "entity_key": "ahc",
+      "display_name": "AHC",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "AHC"
+      ]
+    },
+    {
+      "entity_key": "vaseline",
+      "display_name": "凡士林",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "凡士林",
+        "Vaseline"
+      ]
+    },
+    {
+      "entity_key": "schwarzkopf",
+      "display_name": "施华蔻",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "施华蔻",
+        "Schwarzkopf"
+      ]
+    },
+    {
+      "entity_key": "vidal_sassoon",
+      "display_name": "沙宣",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "沙宣",
+        "Vidal Sassoon"
+      ]
+    },
+    {
+      "entity_key": "chantecaille",
+      "display_name": "香缇卡",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "香缇卡",
+        "Chantecaille"
+      ]
+    },
+    {
+      "entity_key": "clear",
+      "display_name": "清扬",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "清扬",
+        "Clear"
+      ]
+    },
+    {
+      "entity_key": "neutrogena",
+      "display_name": "露得清",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "露得清",
+        "Neutrogena"
+      ]
+    },
+    {
+      "entity_key": "dove",
+      "display_name": "多芬",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "多芬",
+        "Dove"
+      ]
+    },
+    {
+      "entity_key": "lux",
+      "display_name": "力士",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "力士",
+        "Lux"
+      ]
+    },
+    {
+      "entity_key": "ponds",
+      "display_name": "旁氏",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "旁氏",
+        "Pond's"
+      ]
+    },
+    {
+      "entity_key": "lancome",
+      "display_name": "兰蔻",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "兰蔻",
+        "Lancôme",
+        "Lancome"
+      ]
+    },
+    {
+      "entity_key": "kiehls",
+      "display_name": "科颜氏",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "科颜氏",
+        "Kiehl's"
+      ]
+    },
+    {
+      "entity_key": "helena_rubinstein",
+      "display_name": "赫莲娜",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "赫莲娜",
+        "Helena Rubinstein",
+        "HR"
+      ]
+    },
+    {
+      "entity_key": "estee_lauder",
+      "display_name": "雅诗兰黛",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "雅诗兰黛",
+        "Estée Lauder",
+        "Estee Lauder"
+      ]
+    },
+    {
+      "entity_key": "la_mer",
+      "display_name": "海蓝之谜",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "海蓝之谜",
+        "La Mer"
+      ]
+    },
+    {
+      "entity_key": "clinique",
+      "display_name": "倩碧",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "倩碧",
+        "Clinique"
+      ]
+    },
+    {
+      "entity_key": "cle_de_peau",
+      "display_name": "CPB",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "CPB",
+        "Clé de Peau Beauté",
+        "Cle de Peau",
+        "肌肤之钥"
+      ]
+    },
+    {
+      "entity_key": "ipsa",
+      "display_name": "IPSA",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "IPSA",
+        "茵芙莎"
+      ]
+    },
+    {
+      "entity_key": "sk_ii",
+      "display_name": "SK-II",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "SK-II",
+        "SK-2"
+      ]
+    },
+    {
+      "entity_key": "eucerin",
+      "display_name": "优色林",
+      "entity_role": "customer",
+      "category": "mnc_brand",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "优色林",
+        "Eucerin"
+      ]
+    },
+    {
+      "entity_key": "kans",
+      "display_name": "韩束",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "韩束",
+        "Kans"
+      ]
+    },
+    {
+      "entity_key": "yiyezi",
+      "display_name": "一叶子",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "一叶子",
+        "One Leaf"
+      ]
+    },
+    {
+      "entity_key": "hongse_xiaoxiang",
+      "display_name": "红色小象",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "红色小象",
+        "Baby Elephant"
+      ]
+    },
+    {
+      "entity_key": "newpage",
+      "display_name": "newpage一页",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "newpage一页",
+        "newpage",
+        "一页"
+      ]
+    },
+    {
+      "entity_key": "proya",
+      "display_name": "珀莱雅",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "珀莱雅",
+        "Proya"
+      ]
+    },
+    {
+      "entity_key": "winona",
+      "display_name": "薇诺娜",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "薇诺娜",
+        "Winona"
+      ]
+    },
+    {
+      "entity_key": "runbaiyan",
+      "display_name": "润百颜",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "润百颜",
+        "Biohyalux"
+      ]
+    },
+    {
+      "entity_key": "quadi",
+      "display_name": "夸迪",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "夸迪",
+        "QuadHA"
+      ]
+    },
+    {
+      "entity_key": "mibeier",
+      "display_name": "米蓓尔",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "米蓓尔",
+        "MedRepair"
+      ]
+    },
+    {
+      "entity_key": "bm_jihuo",
+      "display_name": "BM肌活",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "BM肌活",
+        "肌活",
+        "Bio-MESO"
+      ]
+    },
+    {
+      "entity_key": "herborist",
+      "display_name": "佰草集",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "佰草集",
+        "Herborist"
+      ]
+    },
+    {
+      "entity_key": "marubi",
+      "display_name": "丸美",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "丸美",
+        "Marubi"
+      ]
+    },
+    {
+      "entity_key": "perfect_diary",
+      "display_name": "完美日记",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "完美日记",
+        "Perfect Diary"
+      ]
+    },
+    {
+      "entity_key": "comfy",
+      "display_name": "可复美",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "可复美",
+        "Comfy"
+      ]
+    },
+    {
+      "entity_key": "yilian",
+      "display_name": "颐莲",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "颐莲",
+        "Rellet"
+      ]
+    },
+    {
+      "entity_key": "dr_alva",
+      "display_name": "瑷尔博士",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "瑷尔博士",
+        "Dr.Alva"
+      ]
+    },
+    {
+      "entity_key": "chando",
+      "display_name": "自然堂",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "自然堂",
+        "Chando"
+      ]
+    },
+    {
+      "entity_key": "meifubao",
+      "display_name": "美肤宝",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "美肤宝",
+        "Meifubao"
+      ]
+    },
+    {
+      "entity_key": "aobao",
+      "display_name": "澳宝",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "澳宝",
+        "Opal"
+      ]
+    },
+    {
+      "entity_key": "hbn",
+      "display_name": "HBN",
+      "entity_role": "customer",
+      "category": "domestic_brand",
+      "market_region": [
+        "china"
+      ],
+      "aliases": [
+        "HBN"
+      ]
+    },
+    {
+      "entity_key": "croda",
+      "display_name": "禾大 Croda",
+      "entity_role": "self",
+      "category": "self",
+      "market_region": [
+        "global"
+      ],
+      "aliases": [
+        "禾大",
+        "Croda",
+        "禾大 Croda",
+        "Croda International"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "croda-event-keywords-v1",
+  "source_dictionary": "product/parameter-file/tag-dictionary/标签字段字典-禾大美妆个护版-V4-draft.md（2.1 is_event / event_type；含 CBE、竞品 seminar/webinar）",
+  "purpose": "脚本 is_event/event_type 判定用：按数组顺序对 title+正文做关键词匹配，首命中定 event_type；无命中则 is_event=false。",
+  "usage_notes": [
+    "顺序敏感：靠前的 event_type 优先命中，请按优先级排列。",
+    "ASCII 关键词大小写不敏感；中文按子串匹配。",
+    "'直播' 等高频词可能过命中，运营可按精度调整。",
+    "改词表=改本文件，不动代码（配置驱动）。"
+  ],
+  "event_types": [
+    {"event_type": "expo", "keywords": ["PCHi", "in-cosmetics", "ICIC", "CBE", "CES", "美博会", "展会", "展位", "博览会", "展览会", "Anti-Aging Tech"]},
+    {"event_type": "webinar", "keywords": ["WeMeet", "网络研讨", "在线研讨", "webinar", "线上直播", "直播间"]},
+    {"event_type": "forum", "keywords": ["论坛", "研讨会", "峰会", "大会", "沙龙", "seminar", "InnoCosme", "Innocosme"]},
+    {"event_type": "award", "keywords": ["芳典奖", "获奖", "颁奖", "盛典", "奖项", "评选"]},
+    {"event_type": "launch_event", "keywords": ["发布会", "全球首发", "新品发布", "上市发布"]},
+    {"event_type": "other", "keywords": ["报名", "预告", "邀请函", "邀请", "圆满落幕", "活动回顾", "展望"]}
+  ]
+}

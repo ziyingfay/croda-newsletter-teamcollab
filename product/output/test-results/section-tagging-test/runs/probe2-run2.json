@@ -1,0 +1,822 @@
+[
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "2tGFmdmYjzu1Nupr3SOY-g",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "competitor_watch"
+      ],
+      "evidence": {
+        "trigger_span_id": "s14",
+        "inferred_because": "供应商发布新成分技术"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "7tKK0hclTu7LLpBZV6Fyww",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s4",
+        "inferred_because": "原料商获奖新原料"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "8-ud8QJBWhR9x89KoJVNYg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s2",
+        "inferred_because": "药监局发检验新方法"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "8769Yqj8-5THnFYhPDCwrw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "regulation_policy"
+      ],
+      "evidence": {
+        "trigger_span_id": "s5",
+        "inferred_because": "备案讲成分趋势"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "B9pfJv4rV2b3LO4ols5xVQ",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s3",
+        "inferred_because": "医保白名单新规"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "DFtPfTGLVQ8PmC3SmKB1MQ",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "regulation_policy"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "供应商成分登记"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "DK8wxmy6FaxZDbKVD9ds2Q",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s7",
+        "inferred_because": "包装违规处罚"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "Go0-9Vu3SM2dJnctP06Gxg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s5",
+        "inferred_because": "条码新规落地"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "HFDhx5x3tw273hgRrO6UqA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "regulation_policy"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "供应商合成新原料备案"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "RWivuuX5dU_enfQrdCa0Sw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [
+        "ingredient_innovation"
+      ],
+      "evidence": {
+        "trigger_span_id": "s5",
+        "inferred_because": "新原料撤回潮"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "SRr4CLdPBXSCqMteZa-hug",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s5",
+        "inferred_because": "网络经营合规治理"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "_WtA-nZJJmIHCqtFJuC9ig",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s6",
+        "inferred_because": "进出口监管新办法"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "cb5jDztGmmZ8OgR6pzvO1A",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "regulation_policy"
+      ],
+      "evidence": {
+        "trigger_span_id": "s4",
+        "inferred_because": "供应商PDRN原料标准"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "hll6BLHQVDX_FEz7OGHz7Q",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ingredient_innovation",
+      "secondary_sections": [
+        "regulation_policy"
+      ],
+      "evidence": {
+        "trigger_span_id": "s9",
+        "inferred_because": "备案数据讲植物原料"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "j9P4nWnlazpdsbi8PXHG9Q",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "competitor_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s3",
+        "inferred_because": "供应商防腐剂研讨会"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "yWz9KQCHcHvixxp_xiUXfA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "药监局通告不合规"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "8VEgW5S_2ZX4ecrhPing3A",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "KA投资无成分角度"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "AzsYxuGYen5xS2cENafJag",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s4",
+        "inferred_because": "KA公益营销"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "CbNWGHyiwyWSkmMNozrJPA",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "商标法律纠纷"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "EAvEchfXaEUpXLuO21rBZw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [
+        "ingredient_innovation"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "过度包装新规征意见"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "H7vsoN6E-c13pAmWirWq4g",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ka_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s2",
+        "inferred_because": "KA核心成分发布"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "OJ_mQu7wrZHL484LuHpxbg",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "展会议程预告"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "W7k8m8stWvhw50X4PsOC-g",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ka_watch",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s30",
+        "inferred_because": "KA美白成分功效"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "XRhR2bCYUPNZP8nNvIkz1w",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ka_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s15",
+        "inferred_because": "KA参与抗衰成分共识"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "erjAoIz4L4XYxWbq_cPgYw",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s4",
+        "inferred_because": "心机商标治理"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "fGhwLgCP5oKEOFag0nCouA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "ka_watch",
+      "secondary_sections": [
+        "market_event"
+      ],
+      "evidence": {
+        "trigger_span_id": "s36",
+        "inferred_because": "KA抗光老机制研究"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "figlAFQAx7WdryaVWNv2cA",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s10",
+        "inferred_because": "KA官媒带货渠道"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "jCTYNZLEm3xxViDduS7iQA",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "regulation_policy",
+      "secondary_sections": [
+        "ingredient_innovation"
+      ],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "检验新方法+质量缺陷"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "jKSU7uIX_WO1gd4LANig5g",
+    "relevance": "relevant",
+    "tagging_decision": "tagged",
+    "section": {
+      "primary_section": "market_event",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "论坛讲者预告"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "lArx6wyrw_p5KrFfriltDw",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "商标姓名权纠纷"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "nDTs2utO1sgnHwThyaxrJA",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s8",
+        "inferred_because": "高管任命与融资"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "nOzVg13LcgCRgzR7W79sJg",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s1",
+        "inferred_because": "包材供应商无成分"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  },
+  {
+    "schema_version": "newsletter-tagging/croda-beauty-v4",
+    "article_id": "r9e6Q5OHXH5IZuOygXlHAg",
+    "relevance": "not_relevant",
+    "tagging_decision": "excluded",
+    "section": {
+      "primary_section": "exclude",
+      "secondary_sections": [],
+      "evidence": {
+        "trigger_span_id": "s9",
+        "inferred_because": "ESG可持续报告"
+      }
+    },
+    "evidence_records": [],
+    "suggested_new_tags": [],
+    "review_reasons": [],
+    "tag_audit": {
+      "tagger": "opus-4.8",
+      "tagged_at": "2026-06-17T12:00:00+08:00",
+      "dictionary_version": "croda-beauty-2026-06-12-v4-draft",
+      "prompt_version": "newsletter-tagging-prompt/croda-beauty-v4",
+      "group": "A"
+    }
+  }
+]

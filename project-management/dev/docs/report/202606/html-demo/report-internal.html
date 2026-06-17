@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Croda Beauty 市场监测月报</title>
+<style>
+:root{
+  --primary:#16584C;--primary-dark:#0E3D34;--primary-mid:#1F6F5C;--leaf:#3E9A78;--sage:#8FBCA8;
+  --gradient:linear-gradient(135deg,#0E3D34 0%,#1F6F5C 58%,#2E8B6F 100%);
+  --bg:#F2F6F3;--card:#FFFFFF;--text:#1C2925;--text-secondary:#5B6C64;--muted:#8A998F;
+  --border:#E1E8E3;--chip-bg:#EAF2EC;--shadow:0 1px 2px rgba(16,61,52,.05),0 6px 18px rgba(16,61,52,.06);
+  --story-fg:#2C6E8F;--story-bg:#E6F0F5;--ingredient-fg:#2C7D58;--ingredient-bg:#E3F1E9;
+  --claim-fg:#7250A6;--claim-bg:#EEE8F6;--application-fg:#AD6B22;--application-bg:#F6EEDD;
+  --regulation-fg:#B04A45;--regulation-bg:#F6E6E5;--default-fg:#5B6C64;--default-bg:#EDF1EE;
+  --amber-fg:#9a6b16;--amber-bg:#fde7cf;--amber-bd:#d8a23a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;font-size:15px}
+body.mode-internal{padding-bottom:64px}
+a{color:var(--primary-mid);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Mode banner */
+.mode-banner{padding:7px 40px;font-size:.82em;text-align:center;font-weight:600;color:#fff}
+.mode-internal .mode-banner{background:var(--amber-fg)}
+.mode-final .mode-banner{display:none}
+
+/* Header */
+.report-header{background:var(--gradient);color:#fff;padding:42px 40px 36px;position:relative;overflow:hidden}
+.report-header::before{content:'';position:absolute;top:-55%;right:-12%;width:560px;height:560px;
+  background:radial-gradient(circle,rgba(255,255,255,.10) 0%,transparent 70%);border-radius:50%}
+.report-header::after{content:'';position:absolute;bottom:-60%;left:-8%;width:420px;height:420px;
+  background:radial-gradient(circle,rgba(143,188,168,.16) 0%,transparent 70%);border-radius:50%}
+.header-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.report-header h1{font-size:2em;font-weight:700;letter-spacing:.5px;margin-bottom:6px}
+.report-header .subtitle{font-size:1.05em;opacity:.9;margin-bottom:18px}
+.report-header .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:.86em;opacity:.9}
+.report-header .meta span{display:flex;align-items:center;gap:6px}
+.brand-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:.82em}
+.lang-toggle{display:flex;background:rgba(255,255,255,.16);border-radius:999px;padding:3px;border:1px solid rgba(255,255,255,.25)}
+.lang-toggle button{background:none;border:none;color:#fff;padding:5px 14px;border-radius:999px;cursor:pointer;font-size:.84em;opacity:.8}
+.lang-toggle button.active{background:#fff;color:var(--primary-dark);opacity:1;font-weight:600}
+
+/* Toolbar */
+.toolbar{background:var(--card);border-bottom:1px solid var(--border);padding:10px 40px;position:sticky;top:0;z-index:200;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 2px 10px rgba(16,61,52,.05)}
+.search-box{flex:1;min-width:220px;max-width:380px;padding:9px 14px;border:1px solid var(--border);border-radius:9px;
+  font-size:.9em;outline:none;transition:border-color .2s,box-shadow .2s}
+.search-box:focus{border-color:var(--leaf);box-shadow:0 0 0 3px rgba(62,154,120,.15)}
+.toc-strip{display:flex;gap:6px;flex-wrap:wrap}
+.toc-chip{padding:5px 12px;border:1px solid var(--border);border-radius:999px;background:#fff;font-size:.8em;
+  color:var(--text-secondary);cursor:pointer;transition:all .18s;white-space:nowrap}
+.toc-chip:hover{background:var(--chip-bg);border-color:var(--sage);color:var(--primary)}
+.tool-spacer{flex:1}
+.tool-btn{padding:8px 16px;border:1px solid var(--border);background:#fff;border-radius:9px;cursor:pointer;font-size:.86em;
+  color:var(--text);transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.tool-btn:hover{border-color:var(--leaf);color:var(--primary)}
+.tool-btn.primary{background:var(--gradient);color:#fff;border:none}
+.tool-btn.primary:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(16,61,52,.28);color:#fff}
+
+/* Tag cascade filter */
+.filter-wrap{position:relative}
+.filter-trigger{padding:8px 16px;border:1px solid var(--border);background:#fff;border-radius:9px;cursor:pointer;font-size:.86em;
+  display:inline-flex;align-items:center;gap:6px;color:var(--text)}
+.filter-trigger:hover,.filter-wrap.open .filter-trigger{border-color:var(--leaf);color:var(--primary)}
+.filter-trigger .cnt{background:var(--leaf);color:#fff;border-radius:999px;font-size:.72em;padding:1px 7px;display:none}
+.filter-trigger.has-active .cnt{display:inline-block}
+.cascade{position:absolute;top:calc(100% + 8px);right:0;left:auto;display:none;background:#fff;border:1px solid var(--border);
+  border-radius:12px;box-shadow:0 10px 34px rgba(16,61,52,.16);z-index:300;width:min(560px,calc(100vw - 36px))}
+.filter-wrap.open .cascade,.filter-wrap:hover .cascade{display:flex}
+.cascade-cats{width:200px;border-right:1px solid var(--border);padding:8px;flex-shrink:0}
+.cascade-cat{padding:9px 12px;border-radius:8px;cursor:pointer;font-size:.88em;display:flex;align-items:center;
+  justify-content:space-between;gap:8px;color:var(--text)}
+.cascade-cat:hover,.cascade-cat.active{background:var(--chip-bg);color:var(--primary);font-weight:600}
+.cascade-cat .dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.cascade-cat .arrow{color:var(--muted);font-size:.8em}
+.cascade-wrap2{display:flex;flex-direction:column;flex:1;min-width:0}
+.cascade-fields{flex:1;padding:12px;max-height:340px;overflow:auto;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+.cascade-field{padding:6px 12px;border-radius:999px;font-size:.82em;cursor:pointer;border:1px solid transparent;user-select:none}
+.cascade-field.on{box-shadow:inset 0 0 0 2px currentColor}
+.cascade-foot{padding:8px 12px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;align-items:center;font-size:.8em}
+.af-clear{font-size:.8em;color:var(--text-secondary);cursor:pointer;text-decoration:underline}
+.active-filters{display:flex;gap:8px;flex-wrap:wrap;padding:0 40px;margin-top:14px}
+.active-filters:empty{display:none}
+.af-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.8em;cursor:pointer}
+.af-chip .x{font-weight:700}
+
+/* Container */
+.container{max-width:1180px;margin:0 auto;padding:28px 40px 70px}
+
+/* KPI — count auto-adapts to JSON via auto-fit grid */
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:26px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;position:relative;
+  box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.kpi-card:hover{transform:translateY(-2px)}
+.kpi-card.clickable{cursor:pointer}
+.kpi-card.clickable:hover{box-shadow:0 8px 22px rgba(16,61,52,.12);border-color:var(--sage)}
+.kpi-card.has-suggestion{border-color:var(--amber-bd);box-shadow:0 0 0 2px rgba(216,162,58,.35)}
+.kpi-card::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:3px;background:var(--leaf)}
+.kpi-top{position:absolute;top:9px;right:9px;display:flex;gap:6px;align-items:center}
+.kpi-top .status-pill{margin-left:0}
+.kpi-value{font-size:1.9em;font-weight:700;color:var(--primary);letter-spacing:-.5px}
+.kpi-label{font-size:.8em;color:var(--text-secondary);margin-top:4px;line-height:1.4}
+.kpi-jump{margin-top:9px;font-size:.72em;color:var(--primary-mid);font-weight:600}
+.kpi-edit{border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--text-secondary);font-size:.74em;
+  padding:2px 7px;border-radius:7px;line-height:1.4}
+.kpi-edit:hover{background:var(--chip-bg);color:var(--primary);border-color:var(--sage)}
+.kpi-edit.active{background:var(--amber-bg);color:var(--amber-fg);border-color:var(--amber-bd)}
+
+/* Section */
+.section{margin-bottom:30px;scroll-margin-top:120px}
+.section-header{display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;padding:15px 20px;background:var(--card);
+  border-radius:13px;border:1px solid var(--border);box-shadow:var(--shadow);transition:box-shadow .2s}
+.section-header:hover{box-shadow:0 6px 20px rgba(16,61,52,.10)}
+.section-header .s-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  font-size:1.25em;background:var(--gradient);color:#fff;flex-shrink:0}
+.section-header h2{flex:1;font-size:1.2em;font-weight:650}
+.section-header .s-sub{font-size:.78em;color:var(--text-secondary);font-weight:400;margin-top:2px;display:block}
+.section-count{background:var(--chip-bg);color:var(--primary);border-radius:999px;padding:3px 11px;font-size:.78em;font-weight:600}
+.toggle-icon{transition:transform .3s;color:var(--muted);font-size:.85em}
+.section.collapsed .toggle-icon{transform:rotate(-90deg)}
+.section-body{padding:18px 2px 2px}
+.section.collapsed .section-body{display:none}
+.group-label{font-size:.92em;font-weight:650;color:var(--primary-mid);margin:14px 0 12px;display:flex;align-items:center;gap:8px}
+.group-label::before{content:'';width:4px;height:14px;background:var(--leaf);border-radius:2px}
+
+/* Cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.intel-card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:15px 17px;position:relative;
+  box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s}
+.intel-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,61,52,.10);border-color:var(--sage)}
+.intel-card.has-suggestion{border-color:var(--amber-bd);box-shadow:0 0 0 2px rgba(216,162,58,.35)}
+@keyframes flashhl{0%{box-shadow:0 0 0 3px rgba(62,154,120,.65)}100%{box-shadow:0 0 0 3px rgba(62,154,120,0)}}
+.flash-hl{animation:flashhl 1.8s ease-out}
+.card-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.idx-badge{width:22px;height:22px;border-radius:7px;background:var(--primary);color:#fff;font-size:.74em;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.date-chip{font-size:.74em;color:var(--muted)}
+.section-chip{font-size:.73em;padding:2px 9px;border-radius:999px;background:var(--chip-bg);color:var(--primary);font-weight:600;cursor:help}
+.company-chip{font-size:.76em;padding:2px 9px;border-radius:6px;background:#eef2ef;color:var(--text);font-weight:600}
+.region-chip{font-size:.73em;color:var(--text-secondary);border:1px solid var(--border);padding:1px 8px;border-radius:6px}
+.status-pill{font-size:.7em;padding:2px 9px;border-radius:999px;margin-left:auto;font-weight:600}
+.status-tobemod{background:var(--amber-bg);color:var(--amber-fg)}
+.intel-card h3{font-size:.98em;font-weight:650;line-height:1.45;margin-bottom:7px}
+.intel-card .summary{font-size:.85em;color:var(--text-secondary);margin-bottom:11px}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tag{font-size:.74em;padding:2px 9px;border-radius:999px;cursor:help;font-weight:500;white-space:nowrap}
+.tag-story{color:var(--story-fg);background:var(--story-bg)}
+.tag-ingredient{color:var(--ingredient-fg);background:var(--ingredient-bg)}
+.tag-claim{color:var(--claim-fg);background:var(--claim-bg)}
+.tag-application{color:var(--application-fg);background:var(--application-bg)}
+.tag-regulation{color:var(--regulation-fg);background:var(--regulation-bg)}
+.tag-default{color:var(--default-fg);background:var(--default-bg)}
+.card-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px dashed var(--border);padding-top:9px;font-size:.78em}
+.src-link{color:var(--primary-mid);display:inline-flex;align-items:baseline;gap:4px}
+.edit-hot{margin-left:auto;border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--text-secondary);
+  font-size:.82em;padding:3px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.edit-hot:hover{background:var(--chip-bg);color:var(--primary);border-color:var(--sage)}
+.edit-hot.active{background:var(--amber-bg);color:var(--amber-fg);border-color:var(--amber-bd)}
+
+/* Inline collapsible deep analysis on the card */
+.deep{margin-bottom:11px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.deep-toggle{width:100%;text-align:left;background:#f3f7f4;border:none;padding:9px 12px;cursor:pointer;font-size:.82em;
+  font-weight:650;color:var(--primary);display:flex;align-items:center;gap:7px}
+.deep-toggle:hover{background:var(--chip-bg)}
+.deep-toggle .chev{transition:transform .25s;font-size:.78em;color:var(--primary-mid)}
+.deep.open .deep-toggle .chev{transform:rotate(90deg)}
+.deep-body{padding:12px 13px;border-top:1px solid var(--border);background:#fbfdfc}
+.deep:not(.open) .deep-body{display:none}
+.ai-disclaimer{display:inline-flex;align-items:center;gap:5px;font-size:.7em;color:var(--amber-fg);background:var(--amber-bg);
+  padding:2px 9px;border-radius:999px;margin-bottom:10px}
+.an-block{margin-bottom:11px}
+.an-block:last-child{margin-bottom:0}
+.an-label{display:block;font-weight:700;color:var(--primary);font-size:.8em;margin-bottom:3px}
+.an-text{font-size:.85em;line-height:1.66;color:var(--text)}
+
+/* Appendix */
+.src-group{margin-bottom:18px}
+.src-group h4{font-size:.92em;color:var(--primary-mid);margin-bottom:9px}
+.src-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 15px;margin-bottom:8px;
+  display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.src-item .s-title{font-weight:600;font-size:.9em;flex:1;min-width:200px}
+.src-item .s-meta{font-size:.78em;color:var(--text-secondary);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.src-item .s-secs{display:flex;gap:5px;flex-wrap:wrap}
+.src-item .s-sec{font-size:.72em;background:var(--chip-bg);color:var(--primary);padding:1px 8px;border-radius:999px;cursor:help}
+
+/* Footer */
+.report-footer{background:var(--primary-dark);color:rgba(255,255,255,.78);padding:26px 40px;text-align:center;font-size:.82em}
+.report-footer strong{color:#fff}
+
+/* Submit bar (internal only) — pinned to the bottom of the screen */
+.submit-panel{position:fixed;left:0;right:0;bottom:0;z-index:250;background:#fff;border-top:1px solid var(--border);
+  box-shadow:0 -4px 18px rgba(16,61,52,.12);padding:11px 40px;display:flex;align-items:center;gap:16px}
+.submit-panel .sg-count{margin-right:auto;font-size:.9em;color:var(--text-secondary)}
+.submit-panel .sg-count b{color:var(--amber-fg)}
+
+/* Tooltip */
+#tooltip{position:fixed;z-index:1200;max-width:300px;background:#1C2925;color:#fff;padding:10px 13px;border-radius:9px;
+  font-size:.8em;line-height:1.5;box-shadow:0 8px 26px rgba(0,0,0,.28);display:none;pointer-events:none}
+#tooltip .tt-title{font-weight:700;margin-bottom:3px;color:var(--sage)}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(14,61,52,.45);backdrop-filter:blur(2px);display:none;z-index:900;
+  align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:580px;width:100%;max-height:84vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-head{background:var(--gradient);color:#fff;padding:18px 56px 18px 22px;position:sticky;top:0;z-index:2}
+.modal-head .m-sec{font-size:.78em;opacity:.85}
+.modal-head h3{font-size:1.12em;margin-top:5px;line-height:1.4}
+.modal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.5);
+  color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.05em;line-height:1;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(255,255,255,.45)}
+.modal-body{padding:22px 24px}
+.modal-body .m-row{margin-bottom:16px}
+.modal-body .m-k{font-size:.76em;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:5px}
+.modal-body .m-detail{font-size:.92em;line-height:1.7}
+.modal-src{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:.86em}
+.m-analysis .an-block{margin-bottom:12px}
+.m-analysis .an-block:last-child{margin-bottom:0}
+.m-analysis .an-label{display:block;font-weight:700;color:var(--primary);font-size:.82em;margin-bottom:3px}
+.m-analysis .an-text{font-size:.9em;line-height:1.7;color:var(--text)}
+.sg-list{list-style:none}
+.sg-list li{border:1px solid var(--border);border-radius:10px;padding:11px 13px;margin-bottom:9px}
+.sg-list .sg-t{font-weight:650;font-size:.9em;margin-bottom:4px}
+.sg-list .sg-c{font-size:.86em;color:var(--text-secondary);margin-bottom:6px}
+.sg-scope{display:inline-block;font-size:.72em;background:var(--chip-bg);color:var(--primary);padding:1px 9px;border-radius:999px}
+.sg-scope.sg-kpi{background:var(--application-bg);color:var(--application-fg);margin-right:6px}
+.done-box{text-align:center;padding:6px 0 2px}
+.done-ico{font-size:2.2em;margin-bottom:6px}
+.done-file{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:8px;
+  padding:6px 12px;font-size:.84em;margin:10px 0;font-family:ui-monospace,Menlo,monospace}
+.done-steps{text-align:left;background:var(--bg);border-radius:10px;padding:14px 16px;font-size:.86em;line-height:1.8;margin-top:8px}
+
+/* Inline rewrite panel in modal (internal) + floating popover (cards/KPIs) */
+.m-sg textarea,.edit-pop textarea{width:100%;min-height:78px;border:1px solid var(--border);border-radius:9px;padding:9px 11px;
+  font-size:.88em;font-family:inherit;resize:vertical;outline:none}
+.m-sg textarea:focus,.edit-pop textarea:focus{border-color:var(--leaf);box-shadow:0 0 0 3px rgba(62,154,120,.15)}
+.prefill-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:8px}
+.prefill{font-size:.78em;color:var(--primary-mid);cursor:pointer;text-decoration:underline;display:inline-block}
+.ep-scope{display:flex;gap:12px;flex-wrap:wrap;margin-top:9px;font-size:.8em}
+.ep-scope label{display:inline-flex;align-items:center;gap:4px;cursor:pointer;color:var(--text-secondary)}
+.ep-row{display:flex;gap:8px;margin-top:10px}
+.ep-row button{flex:1;border-radius:8px;padding:9px;cursor:pointer;font-size:.85em;border:1px solid var(--border);background:#fff;color:var(--text)}
+.ep-row button.ep-save{background:var(--gradient);color:#fff;border:none;font-weight:600}
+.ep-row button.ep-del{background:#fff;color:#b04a45;border-color:#e6c9c7}
+.ep-note{font-size:.72em;color:var(--muted);margin-top:8px}
+.edit-pop{position:fixed;z-index:1100;background:#fff;border:1px solid var(--border);border-radius:12px;
+  box-shadow:0 12px 34px rgba(16,61,52,.2);padding:14px;display:none;width:320px;max-width:calc(100vw - 24px)}
+.edit-pop .ep-title{font-size:.86em;font-weight:650;margin-bottom:3px}
+.edit-pop .ep-sub{font-size:.78em;color:var(--text-secondary);margin-bottom:8px}
+
+.no-results{text-align:center;padding:50px;color:var(--muted);display:none}
+
+@media (max-width:768px){
+  .mode-banner,.report-header,.toolbar,.container,.report-footer,.active-filters,.submit-panel{padding-left:18px;padding-right:18px}
+  .report-header h1{font-size:1.5em}
+  .header-top{flex-direction:column}
+  .card-grid{grid-template-columns:1fr}
+  .cascade{width:calc(100vw - 36px);flex-direction:column}
+  .cascade-cats{width:auto;border-right:none;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap}
+  .toc-strip{display:none}
+}
+@media print{
+  .no-print{display:none !important}
+  body{background:#fff}
+  body.mode-internal{padding-bottom:0}
+  .section.collapsed .section-body{display:block !important}
+  .section,.intel-card,.src-item{break-inside:avoid}
+  .report-header{padding:24px}
+  #tooltip,.modal-overlay,.edit-pop,.submit-panel,.mode-banner{display:none !important}
+  .edit-hot,.kpi-edit{display:none !important}
+}
+</style>
+</head>
+<body class="mode-internal">
+<div id="app"></div>
+<div id="tooltip"></div>
+<div class="modal-overlay" id="modal-overlay"><div class="modal" id="modal"></div></div>
+<div class="edit-pop" id="edit-pop"></div>
+
+<script id="report-data" type="application/json">{"schema_version":"croda-report-content/v1","month":"202606","title":{"zh":"Croda Beauty 市场监测月报","en":"Croda Beauty Market Intelligence Monthly"},"period":{"start":"2026-06-01","end":"2026-06-30","display_zh":"2026年6月","display_en":"June 2026"},"language_default":"zh","client":"Croda Beauty","render_options":{"max_market_flash_items":10,"kpi_update_policy":"fixed_first_phase","enable_language_toggle":true,"english_scope":"full_body","enable_glossary_definition":true,"definition_scope":["tags","ingredients","sections","regulatory_terms"],"brand_priority":"croda_com_first","enable_local_edit_hotzone":true},"kpis":[{"kpi_id":"new_ingredient_filings_2025","value":"169","label":{"zh":"2025年新原料备案数量（+88%）","en":"2025 new ingredient filings (+88%)"},"source_ref_ids":["src_reg_filing"],"note":{"zh":"","en":""}},{"kpi_id":"domestic_new_ingredient_share","value":"89.3%","label":{"zh":"国产新原料占比","en":"Share of domestic new ingredients"},"source_ref_ids":["src_reg_filing"],"note":{"zh":"","en":""}},{"kpi_id":"global_ingredients_market_size","value":"~$35B","label":{"zh":"全球化妆品原料市场规模","en":"Global cosmetic ingredients market size"},"source_ref_ids":["src_market_size"],"note":{"zh":"","en":""}},{"kpi_id":"china_market_cagr","value":"8.2%","label":{"zh":"中国市场年复合增速","en":"China market CAGR"},"source_ref_ids":["src_market_size"],"note":{"zh":"","en":""}},{"kpi_id":"competitor_updates_monitored","value":"30+","label":{"zh":"本月监测竞品动态","en":"Competitor updates monitored this month"},"source_ref_ids":["src_watchlist"],"note":{"zh":"","en":""}}],"glossary":[{"term_id":"market_flash","display":{"zh":"市场快讯","en":"Market Flash"},"definition":{"zh":"每月高信号事件集合","en":"Monthly set of high-signal events"},"source":"section_dictionary"},{"term_id":"competitor_watch","display":{"zh":"竞品动态","en":"Competitor Watch"},"definition":{"zh":"国际/国内原料商、代理商或生态伙伴在新品、技术、合作、投融资、产能方面的动作。","en":"Updates from global or domestic ingredient players, distributors, or ecosystem partners across launches, technologies, partnerships, funding, or capacity."},"source":"section_dictionary"},{"term_id":"ka_watch","display":{"zh":"KA 监测","en":"KA Watch"},"definition":{"zh":"沿用 V4 Watchlist 中的 MNC 与国内关键客户品牌，关注成分、功效、产品方向和潜在供应机会。","en":"Monitoring MNC and domestic key-account brands from the V4 Watchlist, focused on ingredients, claims, product direction, and supply opportunities."},"source":"v4_watchlist"},{"term_id":"ingredient_innovation","display":{"zh":"新成分 & 新趋势","en":"New Ingredients & Trends"},"definition":{"zh":"合并原成分趋势和技术创新，覆盖新成分、递送技术、AI、合成生物和可持续工艺。","en":"A merged view of ingredient trends and technology innovation, including new actives, delivery systems, AI, synthetic biology, and sustainable processes."},"source":"section_dictionary"},{"term_id":"market_event","display":{"zh":"市场活动汇总","en":"Market Events"},"definition":{"zh":"展会、峰会、论坛、研讨会、CBE 及竞品 seminar/webinar 的预告与回顾；活动是“场合”，若现场发布新原料则实质归入竞品或新趋势栏目。","en":"Previews and recaps of expos, summits, forums, seminars, CBE, and competitor seminars/webinars. Events are 'occasions'; an ingredient launched on-site is classified under competitor or trend sections."},"source":"section_dictionary"},{"term_id":"regulation_policy","display":{"zh":"法规政策","en":"Regulations & Policy"},"definition":{"zh":"新原料备案、法规、标准、认证、致敏原标识和监管动作；用于提示 Croda 的合规节奏与注册风险。","en":"New-ingredient filings, regulations, standards, certifications, allergen labelling, and regulatory actions; flags Croda's compliance pace and registration risk."},"source":"section_dictionary"},{"term_id":"encapsulation_delivery","display":{"zh":"包封/递送技术","en":"Encapsulation / delivery"},"definition":{"zh":"通过包封、载体或控释提升稳定性、肤感、渗透或功效表达。","en":"Carrier, encapsulation, or delivery systems improving stability, sensory feel, penetration, or efficacy."},"source":"v4_tag_dictionary"},{"term_id":"new_ingredient_filing","display":{"zh":"新原料备案","en":"New ingredient filing"},"definition":{"zh":"中国化妆品新原料进入备案或注册管理的监管事项。","en":"China cosmetic new-ingredient filing or registration processes."},"source":"v4_tag_dictionary"},{"term_id":"iecic","display":{"zh":"已使用化妆品原料目录","en":"IECIC"},"definition":{"zh":"中国已使用化妆品原料目录，用于判断原料既有使用范围。","en":"Inventory of Existing Cosmetic Ingredients in China."},"source":"v4_tag_dictionary"},{"term_id":"claim_substantiation","display":{"zh":"功效宣称评价","en":"Claim substantiation"},"definition":{"zh":"对功效宣称进行证据支撑、测试和合规表达的要求。","en":"Evidence, testing, and compliant expression requirements for efficacy claims."},"source":"v4_tag_dictionary"},{"term_id":"corporate_move","display":{"zh":"企业动态","en":"Corporate move"},"definition":{"zh":"并购、合作、产能、投融资、组织调整或高校合作等企业动作。","en":"M&A, partnerships, capacity, funding, organizational changes, or university collaborations."},"source":"v4_tag_dictionary"},{"term_id":"product_launch_or_update","display":{"zh":"新原料/新品发布","en":"New ingredient / product launch"},"definition":{"zh":"新活性物、新配方方案、商业化发布或升级。","en":"New actives, formulation solutions, commercial launches, or upgrades."},"source":"v4_tag_dictionary"},{"term_id":"technology_process_innovation","display":{"zh":"技术/工艺创新","en":"Technology / process innovation"},"definition":{"zh":"递送系统、合成生物、发酵、AI研发或绿色化学等技术动作。","en":"Delivery systems, synthetic biology, fermentation, AI R&D, green chemistry, and related technologies."},"source":"v4_tag_dictionary"},{"term_id":"research_science","display":{"zh":"科研/功效验证","en":"Research / efficacy validation"},"definition":{"zh":"学术研究、临床测试、专利、机理验证或功效评价。","en":"Academic research, clinical testing, patents, mechanisms, or efficacy validation."},"source":"v4_tag_dictionary"},{"term_id":"market_consumer_insight","display":{"zh":"市场/消费者洞察","en":"Market / consumer insight"},"definition":{"zh":"市场规模、品类走势、成分热度、消费者偏好或趋势报告。","en":"Market sizing, category trends, ingredient heat, consumer preferences, or trend reports."},"source":"v4_tag_dictionary"},{"term_id":"peptides","display":{"zh":"多肽","en":"Peptides"},"definition":{"zh":"以多肽为主轴的活性物或抗老/修护技术。","en":"Peptide-led actives or anti-aging / repair technologies."},"source":"v4_tag_dictionary"},{"term_id":"pdrn_nucleotides","display":{"zh":"PDRN / 核酸原料","en":"PDRN / nucleotide actives"},"definition":{"zh":"常用于修护、再生或医美叙事的核酸类活性物。","en":"Nucleotide-based actives often used in repair, regeneration, or aesthetics-led narratives."},"source":"v4_tag_dictionary"},{"term_id":"hyaluronic_acid","display":{"zh":"透明质酸 / 玻尿酸","en":"Hyaluronic acid"},"definition":{"zh":"保湿、填充、递送或衍生物创新相关的透明质酸体系。","en":"HA systems related to hydration, plumping, delivery, or derivative innovation."},"source":"v4_tag_dictionary"},{"term_id":"ceramides","display":{"zh":"神经酰胺","en":"Ceramides"},"definition":{"zh":"屏障修护和敏感肌方向的脂质类活性物。","en":"Lipid actives associated with barrier repair and sensitive skin."},"source":"v4_tag_dictionary"},{"term_id":"retinoids","display":{"zh":"视黄醇/维A类","en":"Retinoids"},"definition":{"zh":"抗老、焕肤和细纹改善相关的维A类活性物。","en":"Vitamin A derivatives used for anti-aging, resurfacing, and fine-line improvement."},"source":"v4_tag_dictionary"},{"term_id":"recombinant_collagen","display":{"zh":"重组胶原蛋白","en":"Recombinant collagen"},"definition":{"zh":"重组胶原或胶原相关修护活性物。","en":"Recombinant collagen or collagen-related repair actives."},"source":"v4_tag_dictionary"},{"term_id":"niacinamide","display":{"zh":"烟酰胺","en":"Niacinamide"},"definition":{"zh":"美白、修护、控油和屏障方向的经典活性物。","en":"Classic active for brightening, repair, oil control, and barrier support."},"source":"v4_tag_dictionary"},{"term_id":"vitamin_c","display":{"zh":"维生素C","en":"Vitamin C"},"definition":{"zh":"抗氧化、美白提亮或VC衍生物相关活性物。","en":"Vitamin C or derivatives for antioxidant and brightening claims."},"source":"v4_tag_dictionary"},{"term_id":"probiotics_postbiotics","display":{"zh":"益生菌/后生元","en":"Probiotics / postbiotics"},"definition":{"zh":"微生态平衡、舒缓或屏障相关的菌群来源活性物。","en":"Microbiome-derived actives for balance, soothing, or barrier claims."},"source":"v4_tag_dictionary"},{"term_id":"marine_blue_biotech_actives","display":{"zh":"海洋/蓝色生物技术活性物","en":"Marine / blue biotech actives"},"definition":{"zh":"微藻、海洋来源或蓝色生物技术活性物。","en":"Microalgae, marine-origin, or blue-biotech actives."},"source":"v4_tag_dictionary"},{"term_id":"sustained_release","display":{"zh":"缓释/控释","en":"Sustained release"},"definition":{"zh":"控制活性物释放节奏以提升持久性或温和性的技术。","en":"Controlled release technologies improving duration or mildness."},"source":"v4_tag_dictionary"},{"term_id":"synthetic_biology","display":{"zh":"合成生物学","en":"Synthetic biology"},"definition":{"zh":"通过生物制造或工程化生物体系生产活性物。","en":"Bio-manufacturing or engineered biological systems for active production."},"source":"v4_tag_dictionary"},{"term_id":"fermentation_biotech","display":{"zh":"发酵/生物技术","en":"Fermentation / biotech"},"definition":{"zh":"通过发酵、生物转化或生物技术生产原料。","en":"Fermentation, biotransformation, or biotech-based ingredient production."},"source":"v4_tag_dictionary"},{"term_id":"sustainability_chemistry","display":{"zh":"绿色化学/可持续工艺","en":"Sustainable chemistry"},"definition":{"zh":"低碳、绿色溶剂、生物基、循环利用或更低环境影响的制造实践。","en":"Lower-carbon, green-solvent, bio-based, circular, or lower-impact manufacturing practices."},"source":"v4_tag_dictionary"},{"term_id":"ai_rd_formulation","display":{"zh":"AI研发/配方","en":"AI R&D / formulation"},"definition":{"zh":"AI用于原料筛选、配方优化、功效评价或研发提速。","en":"AI used for ingredient screening, formulation optimization, efficacy evaluation, or R&D acceleration."},"source":"v4_tag_dictionary"},{"term_id":"anti_aging","display":{"zh":"抗衰/抗皱","en":"Anti-aging / anti-wrinkle"},"definition":{"zh":"围绕皱纹、紧致、胶原、弹性或衰老相关的功效宣称。","en":"Claims around wrinkles, firmness, collagen, elasticity, or aging."},"source":"v4_tag_dictionary"},{"term_id":"whitening_brightening","display":{"zh":"美白/提亮","en":"Whitening / brightening"},"definition":{"zh":"肤色、色斑、暗沉或亮度改善相关宣称。","en":"Claims around tone, spots, dullness, or radiance."},"source":"v4_tag_dictionary"},{"term_id":"moisturizing","display":{"zh":"保湿","en":"Moisturizing"},"definition":{"zh":"补水、锁水、长效保湿或水润肤感相关宣称。","en":"Hydration, water retention, long-lasting moisture, or dewy feel claims."},"source":"v4_tag_dictionary"},{"term_id":"barrier_repair","display":{"zh":"屏障修护","en":"Barrier repair"},"definition":{"zh":"皮肤屏障、敏感肌、泛红或修护相关宣称。","en":"Skin barrier, sensitive-skin, redness, or repair claims."},"source":"v4_tag_dictionary"},{"term_id":"soothing_sensitive_skin","display":{"zh":"舒缓/敏感肌","en":"Soothing / sensitive skin"},"definition":{"zh":"舒缓、降红、抗刺激或敏感肌友好相关宣称。","en":"Soothing, redness reduction, anti-irritation, or sensitive-skin claims."},"source":"v4_tag_dictionary"},{"term_id":"firming_lifting","display":{"zh":"紧致提拉","en":"Firming / lifting"},"definition":{"zh":"紧致、轮廓、弹性和提拉相关宣称。","en":"Firmness, contour, elasticity, and lifting claims."},"source":"v4_tag_dictionary"},{"term_id":"microbiome_balance","display":{"zh":"微生态平衡","en":"Microbiome balance"},"definition":{"zh":"皮肤或头皮微生态相关宣称。","en":"Skin or scalp microbiome-related claims."},"source":"v4_tag_dictionary"},{"term_id":"hair_scalp_care","display":{"zh":"发用/头皮功效","en":"Hair / scalp care"},"definition":{"zh":"发丝、头皮、控油、去屑、强韧等发用宣称。","en":"Hair strand, scalp, oil-control, anti-dandruff, or strengthening claims."},"source":"v4_tag_dictionary"},{"term_id":"enhance_penetration","display":{"zh":"促进渗透","en":"Enhanced penetration"},"definition":{"zh":"提升活性物吸收、渗透或递送效率的宣称。","en":"Claims around improved absorption, penetration, or delivery efficiency."},"source":"v4_tag_dictionary"},{"term_id":"emotion_wellbeing","display":{"zh":"情绪护肤/愉悦","en":"Emotional wellbeing"},"definition":{"zh":"愉悦、放松、情绪护理或神经美容相关宣称。","en":"Wellbeing, relaxation, emotional care, or neurocosmetic claims."},"source":"v4_tag_dictionary"},{"term_id":"skincare","display":{"zh":"护肤/面部清洁","en":"Skincare / facial cleansing"},"definition":{"zh":"面部清洁、卸妆、精华、面霜、水乳或面膜。","en":"Facial cleansing, makeup removal, serum, cream, lotion, or mask applications."},"source":"v4_tag_dictionary"},{"term_id":"sun_care","display":{"zh":"防晒","en":"Sun care"},"definition":{"zh":"防晒产品或防晒剂应用。","en":"Sunscreen products or UV-filter applications."},"source":"v4_tag_dictionary"},{"term_id":"hair_care","display":{"zh":"洗护发","en":"Hair care"},"definition":{"zh":"洗发、养护、头皮护理或护色。","en":"Shampoo, conditioning, scalp care, or color protection."},"source":"v4_tag_dictionary"},{"term_id":"body_personal_care","display":{"zh":"身体/个护","en":"Body / personal care"},"definition":{"zh":"身体护理、沐浴或个护场景。","en":"Body care, shower, or personal-care applications."},"source":"v4_tag_dictionary"},{"term_id":"teen_age_care","display":{"zh":"青少年护理","en":"Teen age care"},"definition":{"zh":"青少年头部、面部、身体或口腔护理。","en":"Teen hair, face, body, or oral-care applications."},"source":"v4_tag_dictionary"},{"term_id":"men_care","display":{"zh":"男士护理","en":"Men care"},"definition":{"zh":"男士面部护理、头发洗护或造型。","en":"Men facial care, hair care, or styling."},"source":"v4_tag_dictionary"},{"term_id":"fragrance_perfume","display":{"zh":"香水/香氛","en":"Fragrance / perfume"},"definition":{"zh":"香水、家居香氛或身体香氛。","en":"Perfume, home fragrance, or body fragrance."},"source":"v4_tag_dictionary"}],"source_links":[{"source_ref_id":"src_reg_filing","title":{"zh":"中国化妆品新原料备案公开信息","en":"China cosmetic new ingredient filing public information"},"source_name":{"zh":"国家药监局 / 行业公开信息","en":"NMPA / Industry public sources"},"url":"https://www.nmpa.gov.cn/","source_type":"regulatory","section_ids":["regulation_policy"],"item_ids":["reg_001","reg_002"]},{"source_ref_id":"src_market_size","title":{"zh":"全球及中国化妆品原料市场规模公开资料","en":"Public market sizing sources for global and China cosmetic ingredients"},"source_name":{"zh":"行业报告 / 公开市场数据","en":"Industry reports / public market data"},"url":"https://www.specialchem.com/","source_type":"market_data","section_ids":["market_flash"],"item_ids":["market_001"]},{"source_ref_id":"src_watchlist","title":{"zh":"V4 Watchlist 监测来源","en":"V4 Watchlist monitoring sources"},"source_name":{"zh":"Croda 监测名单","en":"Croda Watchlist"},"url":"https://www.croda.com/en-gb","source_type":"watchlist","section_ids":["competitor_watch","ka_watch"],"item_ids":["comp_001","ka_001"]},{"source_ref_id":"src_basf_peptide","title":{"zh":"BASF 多肽与胶原相关活性物发布","en":"BASF peptide and collagen-related active launch"},"source_name":{"zh":"巴斯夫","en":"BASF"},"url":"https://www.basf.com/global/en/media/news-releases/2025/04/p-25-057","source_type":"competitor_website","section_ids":["competitor_watch","ingredient_innovation"],"item_ids":["comp_001","ing_001"]},{"source_ref_id":"src_symrise_wellness","title":{"zh":"Symrise Care & Wellness 业务整合","en":"Symrise Care & Wellness division"},"source_name":{"zh":"Nutrition Insight","en":"Nutrition Insight"},"url":"https://www.nutritioninsight.com/news/symrise-care-wellness-division.html","source_type":"media","section_ids":["competitor_watch"],"item_ids":["comp_002"]},{"source_ref_id":"src_incosmetics","title":{"zh":"in-cosmetics Global 活动与原料发布","en":"in-cosmetics Global event and ingredient launches"},"source_name":{"zh":"in-cosmetics 展商新闻","en":"in-cosmetics / Exhibitor news"},"url":"https://www.in-cosmetics.com/global/en-gb.html","source_type":"event","section_ids":["market_event","ingredient_innovation"],"item_ids":["event_001","ing_002"]},{"source_ref_id":"src_loreal_claims","title":{"zh":"欧莱雅功效与成分趋势","en":"L'Oreal claims and ingredient trends"},"source_name":{"zh":"品牌公开新闻","en":"Public brand news"},"url":"https://www.loreal.com/en/","source_type":"brand_website","section_ids":["ka_watch"],"item_ids":["ka_001"]},{"source_ref_id":"src_proya_repair","title":{"zh":"珀莱雅修护与抗老新品传播","en":"Proya repair and anti-aging product communication"},"source_name":{"zh":"品牌公开新闻","en":"Public brand news"},"url":"https://www.proya-group.com/","source_type":"brand_website","section_ids":["ka_watch"],"item_ids":["ka_002"]},{"source_ref_id":"src_cbe","title":{"zh":"CBE / PCHi 市场活动公开信息","en":"CBE / PCHi public event information"},"source_name":{"zh":"活动公开页面","en":"Event public pages"},"url":"https://www.pchi-china.com/en-us.html","source_type":"event","section_ids":["market_event"],"item_ids":["event_002"]},{"source_ref_id":"src_reg_allergen","title":{"zh":"致敏原标识与功效宣称合规","en":"Allergen labeling and claim substantiation compliance"},"source_name":{"zh":"监管公开来源","en":"Regulatory public sources"},"url":"https://www.nmpa.gov.cn/","source_type":"regulatory","section_ids":["regulation_policy"],"item_ids":["reg_003"]}],"sections":[{"section_id":"market_flash","title":{"zh":"市场快讯 · 本月热点事件","en":"Market Flash · Monthly Highlights"},"summary":{"zh":"","en":""},"layout":"cards","max_items":10,"items":[{"item_id":"market_001","type":"news_card","date":"2026-06","category":{"zh":"市场规模","en":"Market size"},"title":{"zh":"全球化妆品原料市场维持增长，中国仍是高增速区域","en":"Global cosmetic ingredients continue growing, with China remaining a high-CAGR region"},"summary":{"zh":"公开资料显示，全球化妆品原料市场规模约 350 亿美元，预计未来数年保持中个位数增长；中国市场增速持续高于全球平均，年复合增速约 8%，仍是各大原料商重点投入的高增速区域。功效护肤、抗老与屏障修护是拉动原料需求的主要品类。","en":"Public sources put the global cosmetic ingredients market at about USD 35B with mid-single-digit growth expected; China keeps growing faster than the global average at roughly 8% CAGR and remains a priority high-growth region for suppliers. Efficacy skincare, anti-aging and barrier repair are the main demand drivers."},"detail":{"zh":"这条信息支撑顶部市场规模与 CAGR KPI，也为竞品、KA 与新成分分析提供市场背景。","en":"This item supports the top market-size and CAGR KPIs and frames competitor, KA, and ingredient analysis."},"tags":["market_consumer_insight","sustainability_chemistry"],"glossary_term_ids":["market_consumer_insight","sustainability_chemistry"],"source_ref_ids":["src_market_size"],"review_status":"pending_review","local_editable":true,"category_key":"market","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"原料需求由功效而非数量驱动，多肽、重组胶原、递送技术等高附加值活性物的增速明显快于基础原料。","en":"Demand is driven by efficacy rather than volume; high-value actives such as peptides, recombinant collagen and delivery systems grow markedly faster than commodity ingredients."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"中国高增速区域适合优先投放高端抗老与递送类原料；建议把市场规模与 CAGR 作为客户沟通的宏观背景，支撑高端定位。","en":"China's high-growth segment favours premium anti-aging and delivery ingredients first; use market size and CAGR as the macro backdrop in customer conversations to support premium positioning."}}]},{"item_id":"market_002","type":"news_card","date":"2026-06","category":{"zh":"新原料备案","en":"New filings"},"title":{"zh":"2025 年新原料备案数量达到 169 个，国产新原料占比突出","en":"New ingredient filings reached 169 in 2025, with domestic filings taking the majority share"},"summary":{"zh":"据公开备案信息，2025 年中国化妆品新原料备案数量达到 169 个，较上一年增长约 88%；其中国产新原料占比接近九成，显示本土原料商研发与合规能力快速提升，国产替代趋势进一步确立。","en":"Per public filing data, China recorded 169 cosmetic new-ingredient filings in 2025, up about 88% year on year, with domestic ingredients making up nearly 90% — signalling rapidly improving local R&D and compliance capability and a firmer domestic-substitution trend."},"detail":{"zh":"新原料备案活跃度可帮助判断本地供应、法规节奏和创新方向。","en":"New ingredient filing momentum helps assess local supply, regulatory pacing, and innovation direction."},"tags":["new_ingredient_filing","market_consumer_insight"],"glossary_term_ids":["new_ingredient_filing","market_consumer_insight"],"source_ref_ids":["src_reg_filing"],"review_status":"pending_review","local_editable":true,"category_key":"regulation","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"备案数量与国产占比同时走高，说明创新热度与合规节奏同步加快，本土新锐正成为竞争变量。","en":"Filing volume and the domestic share rose together, showing innovation heat and compliance pace accelerating in step, with local challengers becoming a competitive variable."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"需密切跟踪高频备案的成分方向和企业，判断国产替代对禾大现有品类的冲击与潜在合作机会。","en":"Track the ingredients and companies behind frequent filings to assess both the threat of domestic substitution to Croda's categories and potential partnership opportunities."}}]},{"item_id":"market_003","type":"news_card","date":"2026-06","category":{"zh":"竞品发布","en":"Competitor launch"},"title":{"zh":"BASF 多肽与胶原相关活性物强化抗老叙事","en":"BASF peptide and collagen-related actives strengthen the anti-aging narrative"},"summary":{"zh":"巴斯夫围绕多肽与胶原相关活性物持续补强抗老与结构修护产品线，强调高端活性物的功效叙事与证据链表达，进一步巩固其在精准抗老赛道的布局。","en":"BASF continues to strengthen its anti-aging and structural-repair lines around peptide and collagen-related actives, emphasising efficacy narratives and evidence chains for premium actives and reinforcing its position in precision anti-aging."},"detail":{"zh":"该事件同时关联竞品动态和新成分趋势，适合跟踪抗老功效原料的竞争叙事。","en":"This event also connects to competitor activity and ingredient trends, making it useful for tracking anti-aging active narratives."},"tags":["product_launch_or_update","peptides","anti_aging"],"glossary_term_ids":["product_launch_or_update","peptides","anti_aging"],"source_ref_ids":["src_basf_peptide"],"review_status":"pending_review","local_editable":true,"category_key":"product","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"国际大厂把多肽+胶原作为高端抗老的核心组合，推动赛道从单一成分向复合机制升级。","en":"Global majors are making peptide-plus-collagen the core premium anti-aging combination, pushing the field from single ingredients toward combined mechanisms."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"禾大 Matrixyl® 系列需强化差异化卖点（缓释、肤感、配方兼容性）与功效证据，避免在纯成分层面被对标。","en":"Croda's Matrixyl® range should sharpen differentiators (sustained release, sensory feel, formulation compatibility) and efficacy evidence to avoid being benchmarked purely at the ingredient level."}}]},{"item_id":"market_004","type":"news_card","date":"2026-06","category":{"zh":"活动","en":"Event"},"title":{"zh":"in-cosmetics 与 PCHi 继续成为竞品发布和趋势观察的关键场合","en":"in-cosmetics and PCHi remain key venues for competitor launches and trend scanning"},"summary":{"zh":"in-cosmetics Global 与 PCHi 继续成为国际与国内原料商发布新品、释放技术叙事和观察趋势的关键场合；本届展会上递送技术、可持续工艺和生物技术活性物是高频主题。","en":"in-cosmetics Global and PCHi remain key venues where global and domestic suppliers launch products, release technology narratives and read trends; delivery technology, sustainable processes and biotech actives were high-frequency themes this edition."},"detail":{"zh":"展会信息可帮助识别原料发布节奏、技术关键词和供应商传播重点。","en":"Event intelligence helps identify launch cadence, technology vocabulary, and supplier communication focus."},"tags":["market_consumer_insight"],"glossary_term_ids":["market_consumer_insight"],"source_ref_ids":["src_incosmetics","src_cbe"],"review_status":"pending_review","local_editable":true,"category_key":"event","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"展会的发布节奏与展台主题，是预判竞品下一阶段技术路线的领先指标。","en":"Launch cadence and booth themes at trade shows are leading indicators of competitors' next-stage technology roadmaps."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"建议系统收集竞品展会发布与技术词汇，作为新趋势情报和竞品对标的输入。","en":"Systematically capture competitor show launches and technology vocabulary as input for trend intelligence and competitor benchmarking."}}]},{"item_id":"market_005","type":"news_card","date":"2026-06","category":{"zh":"KA 信号","en":"KA signal"},"title":{"zh":"欧莱雅、珀莱雅等 KA 品牌继续围绕修护、抗老和屏障功效做成分叙事","en":"KA brands such as L'Oreal and Proya continue building ingredient narratives around repair, anti-aging, and barrier care"},"summary":{"zh":"欧莱雅、珀莱雅等国内外 KA 品牌继续围绕修护、抗老和屏障功效构建成分叙事，强调活性物的证据链和故事化表达，对上游高端功效原料与递送技术保持稳定需求。","en":"Domestic and international key accounts such as L'Oréal and Proya keep building ingredient narratives around repair, anti-aging and barrier claims, emphasising evidence chains and storytelling, and sustaining demand for premium upstream actives and delivery technology."},"detail":{"zh":"这类信息对 BD 和客户沟通最有价值，不应被混在泛营销新闻里。","en":"This signal is most valuable for BD and customer conversations and should not be buried inside generic marketing news."},"tags":["market_consumer_insight","anti_aging","barrier_repair"],"glossary_term_ids":["market_consumer_insight","anti_aging","barrier_repair"],"source_ref_ids":["src_loreal_claims","src_proya_repair"],"review_status":"pending_review","local_editable":true,"category_key":"ka","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"下游品牌的功效叙事方向，直接决定上游原料的需求结构。","en":"The claim narratives of downstream brands directly shape the demand structure for upstream ingredients."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"可从 KA 品牌主推功效反推备料与概念方向，提前准备 BD 沟通素材。","en":"Work back from key accounts' lead claims to anticipate stocking and concept direction, and prepare BD materials in advance."}}]},{"item_id":"market_006","type":"news_card","date":"2026-06","category":{"zh":"法规","en":"Regulation"},"title":{"zh":"功效宣称评价和致敏原标识继续影响配方传播方式","en":"Claim substantiation and allergen labeling continue shaping formulation communication"},"summary":{"zh":"功效宣称评价和致敏原标识要求继续影响配方和传播方式：品牌方在宣称表达上更趋谨慎，对原料的功效证据和合规支撑提出更高要求；欧盟新增致敏原标注也将影响出口配方。","en":"Claim-substantiation rules and allergen-labelling requirements keep shaping formulation and communication: brands are more cautious in wording claims and demand stronger efficacy evidence and compliance support from ingredients, while the EU's expanded allergen labelling will affect export formulas."},"detail":{"zh":"该动态影响原料卖点、测试证据、上市节奏和客户沟通文本。","en":"This signal affects ingredient claims, testing evidence, launch timing, and customer communication copy."},"tags":["claim_substantiation"],"glossary_term_ids":["claim_substantiation"],"source_ref_ids":["src_reg_allergen"],"review_status":"pending_review","local_editable":true,"category_key":"regulation","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"合规趋严把\"证据链\"从加分项变成准入项，利好能提供完整功效与安全数据的上游原料商。","en":"Tighter compliance turns the evidence chain from a bonus into an entry requirement, favouring upstream suppliers that can provide complete efficacy and safety data."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"建议把功效测试与合规文档作为原料卖点的一部分，主动支持客户的宣称合规。","en":"Make efficacy testing and compliance documentation part of the ingredient value proposition and proactively support customers' claim compliance."}}]},{"item_id":"market_007","type":"news_card","date":"2026-06","category":{"zh":"可持续","en":"Sustainability"},"title":{"zh":"生物基、绿色工艺和供应链透明度继续进入原料商叙事","en":"Bio-based sourcing, greener processes, and supply-chain transparency remain central to supplier narratives"},"summary":{"zh":"生物基原料、绿色工艺和供应链透明度继续进入原料商叙事，碳足迹、可持续认证和可追溯性正从\"加分项\"转为高端客户的\"必选项\"，并开始影响采购决策。","en":"Bio-based ingredients, green processes and supply-chain transparency continue to enter supplier narratives; carbon footprint, sustainability certifications and traceability are shifting from a bonus to a must-have for premium customers and starting to influence purchasing."},"detail":{"zh":"可持续相关动态可集中回顾，用于观察供应商故事、KA 卖点和客户沟通机会。","en":"Sustainability-related signals can be reviewed together to observe supplier stories, KA selling points, and customer conversation opportunities."},"tags":["sustainability_chemistry","market_consumer_insight"],"glossary_term_ids":["sustainability_chemistry","market_consumer_insight"],"source_ref_ids":["src_watchlist"],"review_status":"pending_review","local_editable":true,"category_key":"sustainability","analysis":[{"label":{"zh":"市场信号","en":"Market signal"},"text":{"zh":"可持续从营销话术转向可量化指标（碳足迹、认证、生物质平衡），成为差异化竞争维度。","en":"Sustainability is moving from marketing language to quantifiable metrics (carbon footprint, certification, biomass balance) and becoming a differentiation axis."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"建议沉淀可持续数据资产（碳足迹、认证），在高端客户沟通中前置表达。","en":"Build sustainability data assets (carbon footprint, certifications) and lead with them in premium-customer conversations."}}]}]},{"section_id":"competitor_watch","title":{"zh":"竞品动态监测","en":"Competitor Watch"},"summary":{"zh":"","en":""},"layout":"matrix","items":[{"item_id":"comp_001","type":"matrix_row","company":"BASF","group":"international","title":{"zh":"多肽与胶原相关活性物组合","en":"Peptide and collagen-related active portfolio"},"summary":{"zh":"巴斯夫持续布局多肽与胶原相关活性物组合，强化抗老、结构修护和高端活性物叙事，并以功效证据和配方兼容性作为主要卖点，巩固其在精准抗老原料市场的领先地位。","en":"BASF keeps building its peptide and collagen-related active portfolio, reinforcing anti-aging, structural-repair and premium-active narratives, with efficacy evidence and formulation compatibility as key selling points, consolidating its lead in precision anti-aging ingredients."},"detail":{"zh":"对 Croda 的启示是保持高端功效原料的证据链表达，并强调差异化肤感和配方兼容性。","en":"For Croda, the implication is to sharpen evidence-led claims for premium actives while stressing differentiated sensory and formulation compatibility."},"tags":["product_launch_or_update","peptides","anti_aging"],"glossary_term_ids":["product_launch_or_update","peptides","anti_aging"],"source_ref_ids":["src_basf_peptide"],"review_status":"pending_review","local_editable":true,"company_display":{"zh":"巴斯夫","en":"BASF"},"analysis":[{"label":{"zh":"战略意图","en":"Strategic intent"},"text":{"zh":"通过\"多肽+胶原\"复合机制把抗老叙事从单一成分升级为系统解决方案，绑定高端客户。","en":"Use the peptide-plus-collagen combined mechanism to upgrade anti-aging from single ingredients to a system solution, locking in premium customers."}},{"label":{"zh":"市场影响","en":"Market impact"},"text":{"zh":"推高高端抗老原料的功效证据门槛，挤压仅靠单一成分竞争的供应商空间。","en":"Raises the efficacy-evidence bar for premium anti-aging ingredients, squeezing suppliers that compete on a single ingredient alone."}},{"label":{"zh":"应对建议","en":"Recommendation"},"text":{"zh":"禾大 Matrixyl® 系列应突出缓释/递送与肤感差异化，并补齐临床功效证据，避免在成分层面被直接对标。","en":"Croda's Matrixyl® range should highlight sustained-release/delivery and sensory differentiation and fill in clinical efficacy evidence to avoid being benchmarked at the ingredient level."}}]},{"item_id":"comp_002","type":"matrix_row","company":"Symrise","group":"international","title":{"zh":"Care & Wellness 业务整合","en":"Care & Wellness business integration"},"summary":{"zh":"德之馨推进 Care & Wellness 业务整合，将护肤、个护与微生态、情绪健康等概念打通，强化\"健康护肤\"平台叙事，意图通过业务重组提升活性物与解决方案的协同销售。","en":"Symrise is advancing its Care & Wellness integration, connecting skincare and personal care with microbiome and emotional-wellbeing concepts to strengthen a 'healthy skincare' platform narrative and lift cross-selling of actives and solutions through the reorganisation."},"detail":{"zh":"这类动作提示原料商正在从单一成分转向跨品类解决方案。","en":"This type of move suggests suppliers are shifting from individual ingredients to cross-category solution platforms."},"tags":["corporate_move","microbiome_balance"],"glossary_term_ids":["corporate_move","microbiome_balance"],"source_ref_ids":["src_symrise_wellness"],"review_status":"pending_review","local_editable":true,"company_display":{"zh":"德之馨","en":"Symrise"},"analysis":[{"label":{"zh":"战略意图","en":"Strategic intent"},"text":{"zh":"以业务整合构建\"健康+美妆\"跨品类平台，提升解决方案式销售和客户黏性。","en":"Use the integration to build a cross-category 'health + beauty' platform, boosting solution selling and customer stickiness."}},{"label":{"zh":"市场影响","en":"Market impact"},"text":{"zh":"微生态与情绪护肤概念有望被进一步主流化，带动相关活性物需求。","en":"Microbiome and emotional-skincare concepts may become more mainstream, lifting demand for related actives."}},{"label":{"zh":"应对建议","en":"Recommendation"},"text":{"zh":"关注德之馨微生态产品线动向，评估禾大在屏障修护/微生态方向的原料补位与差异化机会。","en":"Watch Symrise's microbiome line and assess Croda's gap-filling and differentiation opportunities in barrier-repair/microbiome ingredients."}}]},{"item_id":"comp_003","type":"matrix_row","company":"Clariant / Lucas Meyer","group":"international","title":{"zh":"微藻与蜂蜜修护相关概念","en":"Microalgae and honey-repair concepts"},"summary":{"zh":"科莱恩（Lucas Meyer）围绕微藻与蜂蜜修护相关概念推出活性物，结合蓝生物技术和可持续来源叙事，主打屏障修护与温和功效，强化其天然来源高端活性物的定位。","en":"Clariant (Lucas Meyer) is launching actives around microalgae and honey-repair concepts, combining blue-biotech and sustainable-sourcing narratives, focusing on barrier repair and gentle efficacy and reinforcing its natural-origin premium-active positioning."},"detail":{"zh":"可作为新趋势栏目中的递送、修护和天然来源组合案例。","en":"Can be used as a case for delivery, repair, and natural-origin combinations in the New Ingredients section."},"tags":["product_launch_or_update","marine_blue_biotech_actives","barrier_repair","sustainability_chemistry"],"glossary_term_ids":["product_launch_or_update","marine_blue_biotech_actives","barrier_repair","sustainability_chemistry"],"source_ref_ids":["src_incosmetics"],"review_status":"pending_review","local_editable":true,"company_display":{"zh":"科莱恩","en":"Clariant / Lucas Meyer"},"analysis":[{"label":{"zh":"战略意图","en":"Strategic intent"},"text":{"zh":"用\"海洋/蓝生物技术+可持续来源\"构建天然高端活性物的差异化故事。","en":"Use 'marine/blue-biotech + sustainable sourcing' to build a differentiated natural premium-active story."}},{"label":{"zh":"市场影响","en":"Market impact"},"text":{"zh":"推动屏障修护赛道与可持续叙事结合，抬高天然来源活性物的溢价空间。","en":"Pushes the barrier-repair field to merge with sustainability narratives, lifting the premium of natural-origin actives."}},{"label":{"zh":"应对建议","en":"Recommendation"},"text":{"zh":"评估禾大在海洋来源/蓝生物技术活性物的布局，必要时通过合作或活字典快速补充新成分情报。","en":"Assess Croda's footprint in marine/blue-biotech actives and, if needed, fill new-ingredient intelligence quickly via partnerships or the living dictionary."}}]},{"item_id":"comp_004","type":"matrix_row","company":"Domestic suppliers","group":"domestic","title":{"zh":"国产替代与全矩阵个护原料方案","en":"Domestic substitution and full personal-care ingredient portfolios"},"summary":{"zh":"多家国内原料商加速推进国产替代和全矩阵个护原料方案，凭借成本、响应速度和本土合规优势快速切入市场，并通过融资与产能扩张提升供应能力，对国际大厂形成结构性竞争。","en":"Several domestic suppliers are accelerating import substitution and full-matrix personal-care ingredient offerings, entering the market fast on cost, responsiveness and local-compliance advantages and scaling capacity through funding and expansion, posing structural competition to global majors."},"detail":{"zh":"报告中应把这类动态与 Croda 的本地化沟通和配方服务能力连接起来。","en":"The report should connect this signal to Croda's local communication and formulation-service capabilities."},"tags":["corporate_move"],"glossary_term_ids":["corporate_move"],"source_ref_ids":["src_watchlist"],"review_status":"pending_review","local_editable":true,"company_display":{"zh":"国内原料商","en":"Domestic suppliers"},"analysis":[{"label":{"zh":"战略意图","en":"Strategic intent"},"text":{"zh":"以\"全矩阵+国产替代+快速响应\"抢占中端市场，再向高端活性物渗透。","en":"Capture the mid-tier with 'full matrix + import substitution + fast response', then push into premium actives."}},{"label":{"zh":"市场影响","en":"Market impact"},"text":{"zh":"加剧基础与中端原料价格竞争，并逐步向高附加值赛道蔓延。","en":"Intensifies price competition in commodity and mid-tier ingredients and gradually spreads to higher-value segments."}},{"label":{"zh":"应对建议","en":"Recommendation"},"text":{"zh":"禾大应守住高端功效与技术壁垒，强化证据链与服务，避免在中端被价格战裹挟。","en":"Croda should defend premium efficacy and technology barriers and strengthen evidence and service to avoid being dragged into a mid-tier price war."}}]}]},{"section_id":"ingredient_innovation","title":{"zh":"新成分 & 新趋势情报","en":"New Ingredients & Trend Intelligence"},"summary":{"zh":"","en":""},"layout":"trend_cards","items":[{"item_id":"ing_001","type":"trend_card","title":{"zh":"精准多肽与胶原叙事","en":"Precision peptide and collagen narratives"},"summary":{"zh":"抗老赛道继续从单一成分走向复合机制和证据链表达，精准多肽与胶原相关活性物成为高端抗老的核心叙事；品牌方更关注作用机理、临床功效和肤感综合表现，而非单一成分浓度。","en":"Anti-aging continues to shift from single ingredients to combined mechanisms and evidence-led claims, with precision peptides and collagen-related actives becoming the core premium narrative; brands focus on mechanism, clinical efficacy and overall sensory performance rather than single-ingredient concentration."},"detail":{"zh":"可关联功效宣称、实验验证和 KA 品牌卖点，帮助判断高端抗老原料机会。","en":"This can connect efficacy claims, testing evidence, and KA brand messaging to assess premium anti-aging ingredient opportunities."},"tags":["peptides","anti_aging","research_science"],"glossary_term_ids":["peptides","anti_aging","research_science"],"source_ref_ids":["src_basf_peptide"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"技术原理","en":"Mechanism"},"text":{"zh":"多肽通过信号传导调节胶原合成，与重组胶原形成\"信号+结构\"互补机制。","en":"Peptides modulate collagen synthesis through signalling and complement recombinant collagen in a 'signal + structure' mechanism."}},{"label":{"zh":"市场接受度","en":"Market adoption"},"text":{"zh":"高端抗老线接受度高，消费者教育成熟，复合机制更易讲出差异化故事。","en":"Adoption is high in premium anti-aging lines with mature consumer education, and combined mechanisms make differentiation easier to tell."}},{"label":{"zh":"应用前景与禾大对标","en":"Outlook & Croda benchmarking"},"text":{"zh":"适配精华、面霜等高端品类；禾大 Matrixyl® 应以缓释递送和功效证据建立对标优势。","en":"Fits premium serums and creams; Croda's Matrixyl® should build a benchmarking edge on sustained-release delivery and efficacy evidence."}}]},{"item_id":"ing_002","type":"trend_card","title":{"zh":"包封/递送技术回到功效表达核心","en":"Encapsulation and delivery return to the center of efficacy communication"},"summary":{"zh":"包封与递送技术重新回到功效表达的核心，递送系统通过提升活性物稳定性、渗透和缓释表现，直接影响最终功效和肤感；双靶向递送、微囊化和控释成为竞品技术叙事的高频词。","en":"Encapsulation and delivery technology is back at the centre of efficacy expression; delivery systems improve active stability, penetration and sustained release and directly affect end efficacy and sensory feel, with dual-targeting delivery, microencapsulation and controlled release becoming frequent terms in competitor narratives."},"detail":{"zh":"该趋势影响活性物稳定性、肤感、渗透和功效表达，是配方沟通中的重要技术语言。","en":"This trend affects active stability, sensory feel, penetration, and efficacy communication, making it important technical language in formulation discussions."},"tags":["encapsulation_delivery","sustained_release","enhance_penetration"],"glossary_term_ids":["encapsulation_delivery","sustained_release","enhance_penetration"],"source_ref_ids":["src_incosmetics"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"技术原理","en":"Mechanism"},"text":{"zh":"通过载体/包封改善活性物稳定性、靶向性与渗透，把\"成分功效\"转化为\"配方功效\"。","en":"Carriers and encapsulation improve stability, targeting and penetration, converting 'ingredient efficacy' into 'formulation efficacy'."}},{"label":{"zh":"市场接受度","en":"Market adoption"},"text":{"zh":"递送叙事在高端线接受度上升，成为功效宣称的重要支撑。","en":"Delivery narratives are gaining acceptance in premium lines and becoming important support for efficacy claims."}},{"label":{"zh":"应用前景与禾大对标","en":"Outlook & Croda benchmarking"},"text":{"zh":"禾大递送平台可与竞品双靶向/缓释系统对标，强调精准递送与肤感优势，作为高端原料的核心卖点。","en":"Croda's delivery platforms can benchmark against competitors' dual-targeting/sustained-release systems, stressing precise delivery and sensory advantages as a core premium selling point."}}]},{"item_id":"ing_003","type":"trend_card","title":{"zh":"PDRN 与核酸类活性物继续受关注","en":"PDRN and nucleotide actives remain high-interest signals"},"summary":{"zh":"PDRN 与核酸类活性物继续受到关注，主打修护、再生和医美级护肤叙事，国产 PDRN 原料的产能与成本优势推动其从医美向日化渗透，相关备案与新品持续增加。","en":"PDRN and nucleotide-based actives keep drawing attention around repair, regeneration and aesthetics-grade skincare; the capacity and cost advantages of domestic PDRN are pushing it from medical aesthetics into mass cosmetics, with related filings and launches rising."},"detail":{"zh":"需要区分医美概念、化妆品功效和法规表达边界，避免修护叙事过度医疗化。","en":"The analysis should separate aesthetics narratives, cosmetic claims, and regulatory expression boundaries to avoid over-medicalized repair messaging."},"tags":["pdrn_nucleotides","barrier_repair","anti_aging"],"glossary_term_ids":["pdrn_nucleotides","barrier_repair","anti_aging"],"source_ref_ids":["src_reg_allergen"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"技术原理","en":"Mechanism"},"text":{"zh":"核酸类活性物参与皮肤修护与再生相关通路，契合医美级修护叙事。","en":"Nucleotide-based actives engage skin-repair and regeneration pathways, fitting the aesthetics-grade repair narrative."}},{"label":{"zh":"市场接受度","en":"Market adoption"},"text":{"zh":"受医美热度带动，消费者认知快速提升，但功效证据与合规表达仍需完善。","en":"Driven by aesthetics buzz, consumer awareness is rising fast, though efficacy evidence and compliant wording still need work."}},{"label":{"zh":"应用前景与禾大对标","en":"Outlook & Croda benchmarking"},"text":{"zh":"屏障修护与术后修护品类机会大；禾大可通过活字典持续跟踪国产 PDRN 动态，评估补位或差异化方向。","en":"Strong opportunity in barrier and post-procedure repair; Croda can track domestic PDRN via the living dictionary and assess gap-filling or differentiation."}}]},{"item_id":"ing_004","type":"trend_card","title":{"zh":"可持续工艺成为原料故事的一部分","en":"Sustainable processes become part of the ingredient story"},"summary":{"zh":"可持续工艺成为原料故事的重要组成部分，绿色化学、生物质平衡和碳足迹数据被纳入原料卖点；客户不只看成分本身，也开始评估来源、工艺和供应链可信度。","en":"Sustainable processes have become a core part of the ingredient story; green chemistry, biomass balance and carbon-footprint data are built into selling points, and customers assess not only the ingredient itself but also its source, process and supply-chain credibility."},"detail":{"zh":"该趋势横跨竞品动态、KA 监测和市场快讯，适合形成可持续原料专题回顾。","en":"This trend spans competitor activity, KA monitoring, and market flash items, making it suitable for a sustainability-focused ingredient review."},"tags":["sustainability_chemistry"],"glossary_term_ids":["sustainability_chemistry"],"source_ref_ids":["src_watchlist"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"技术原理","en":"Mechanism"},"text":{"zh":"通过绿色化学与生物制造降低碳足迹和环境负荷，同时维持功效与肤感。","en":"Green chemistry and bio-manufacturing cut carbon footprint and environmental load while maintaining efficacy and sensory feel."}},{"label":{"zh":"市场接受度","en":"Market adoption"},"text":{"zh":"高端与出口导向客户接受度高，并逐步转为采购硬指标。","en":"Adoption is high among premium and export-oriented customers and is becoming a hard procurement criterion."}},{"label":{"zh":"应用前景与禾大对标","en":"Outlook & Croda benchmarking"},"text":{"zh":"禾大应把可持续数据（碳足迹、认证）资产化，作为高端客户沟通的前置卖点。","en":"Croda should turn sustainability data (carbon footprint, certifications) into an asset and lead with it in premium-customer conversations."}}]}]},{"section_id":"ka_watch","title":{"zh":"KA 监测","en":"KA Watch"},"summary":{"zh":"","en":""},"layout":"ka_groups","items":[{"item_id":"ka_001","type":"ka_item","group":"MNC","company":"L'Oreal / Lancome","title":{"zh":"高端抗老线继续强调活性物、证据链和肤感","en":"Premium anti-aging lines continue emphasizing actives, evidence, and sensory profile"},"summary":{"zh":"欧莱雅、兰蔻等 MNC 高端抗老线继续强调活性物、证据链和肤感的综合表现，围绕精准抗老和修护构建故事化功效叙事，对高端活性物与递送技术保持稳定且高标准的需求。","en":"MNC premium anti-aging lines such as L'Oréal and Lancôme keep emphasising the combined performance of actives, evidence chains and sensory feel, building story-led claims around precision anti-aging and repair, and sustaining steady, high-standard demand for premium actives and delivery technology."},"detail":{"zh":"这类条目可帮助 BD 准备客户沟通问题：现有配方缺口是什么，Croda 能提供哪些差异化原料。","en":"This item helps BD prepare customer questions: what formulation gap exists and which differentiated Croda ingredients can address it."},"tags":["anti_aging","research_science"],"glossary_term_ids":["anti_aging","research_science"],"source_ref_ids":["src_loreal_claims"],"review_status":"pending_review","local_editable":true,"company_display":{"zh":"欧莱雅 / 兰蔻","en":"L'Oreal / Lancome"},"analysis":[{"label":{"zh":"客户卖点","en":"Brand positioning"},"text":{"zh":"以\"科学+故事\"驱动高端抗老，强调临床证据与高级肤感。","en":"Drives premium anti-aging with 'science + story', stressing clinical evidence and refined sensory feel."}},{"label":{"zh":"在用成分与技术","en":"Ingredients & tech in use"},"text":{"zh":"多肽、重组胶原、递送系统等高端活性物组合。","en":"Premium active combinations such as peptides, recombinant collagen and delivery systems."}},{"label":{"zh":"对禾大的供应机会","en":"Croda supply opportunity"},"text":{"zh":"可针对其抗老线的功效与肤感缺口，推介差异化多肽与递送原料，提前准备 BD 证据包。","en":"Target the efficacy and sensory gaps in their anti-aging lines with differentiated peptide and delivery ingredients, and prepare a BD evidence pack in advance."}}]},{"item_id":"ka_002","type":"ka_item","group":"Domestic","company":"Proya / Winona","title":{"zh":"国内 KA 在修护、抗老、屏障方向持续做成分升级","en":"Domestic KAs continue upgrading ingredients around repair, anti-aging, and barrier care"},"summary":{"zh":"珀莱雅、薇诺娜等国内 KA 在修护、抗老和屏障方向持续做成分升级，强调成分组合与递送技术的功效表达，并加快新品迭代节奏，对高性价比高端活性物与递送方案需求增长。","en":"Domestic key accounts such as Proya and Winona keep upgrading ingredients in repair, anti-aging and barrier directions, emphasising the efficacy of ingredient combinations and delivery technology and accelerating launch cadence, with growing demand for cost-effective premium actives and delivery solutions."},"detail":{"zh":"报告不收录纯代言和纯促销，只有涉及成分、功效或配方方向的动态进入 KA 监测。","en":"The report excludes pure endorsements or promotions; only ingredient, claim, or formulation-related signals enter KA Watch."},"tags":["barrier_repair","encapsulation_delivery"],"glossary_term_ids":["barrier_repair","encapsulation_delivery"],"source_ref_ids":["src_proya_repair"],"review_status":"pending_review","local_editable":true,"company_display":{"zh":"珀莱雅 / 薇诺娜","en":"Proya / Winona"},"analysis":[{"label":{"zh":"客户卖点","en":"Brand positioning"},"text":{"zh":"以屏障修护和敏感肌友好为核心，强调高性价比和快速迭代。","en":"Centres on barrier repair and sensitive-skin friendliness, stressing value for money and fast iteration."}},{"label":{"zh":"在用成分与技术","en":"Ingredients & tech in use"},"text":{"zh":"屏障修护成分、神经酰胺、包封/递送技术等。","en":"Barrier-repair ingredients, ceramides and encapsulation/delivery technology."}},{"label":{"zh":"对禾大的供应机会","en":"Croda supply opportunity"},"text":{"zh":"可提供兼具功效证据与成本可控的递送/修护原料，匹配其快速上新与高性价比需求。","en":"Offer delivery/repair ingredients that combine efficacy evidence with controlled cost to match their fast launches and value focus."}}]}]},{"section_id":"market_event","title":{"zh":"市场活动汇总","en":"Market Events"},"summary":{"zh":"","en":""},"layout":"timeline","items":[{"item_id":"event_001","type":"event","date":"2026-06","title":{"zh":"in-cosmetics Global 原料发布与趋势观察","en":"in-cosmetics Global ingredient launches and trend scanning"},"summary":{"zh":"in-cosmetics Global 作为全球原料商发布新品和释放技术叙事的核心场合，可用于观察国际供应商的发布节奏、技术词汇和展台主题；本届递送技术、生物技术活性物与可持续工艺是高频议题。","en":"As the core venue for global suppliers to launch products and release technology narratives, in-cosmetics Global is useful for reading suppliers' launch cadence, technology vocabulary and booth themes; delivery technology, biotech actives and sustainable processes were high-frequency topics this edition."},"detail":{"zh":"若活动中出现具体原料发布，可与竞品动态和新趋势情报一起阅读。","en":"If a specific ingredient launch appears at the event, it can be read together with competitor and new-trend intelligence."},"tags":["product_launch_or_update","market_consumer_insight"],"glossary_term_ids":["product_launch_or_update","market_consumer_insight"],"source_ref_ids":["src_incosmetics"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"活动影响力","en":"Event significance"},"text":{"zh":"全球原料风向标，发布内容往往预示未来 1–2 年技术路线。","en":"A global ingredient bellwether whose launches often foreshadow the next 1–2 years of technology direction."}},{"label":{"zh":"参与价值","en":"Participation value"},"text":{"zh":"适合系统收集竞品发布、技术叙事和客户反馈。","en":"Good for systematically collecting competitor launches, technology narratives and customer feedback."}},{"label":{"zh":"后续跟进建议","en":"Follow-up"},"text":{"zh":"将展会发布与竞品动态、新趋势情报交叉阅读，整理重点竞品技术清单。","en":"Cross-read show launches with competitor moves and trend intelligence to build a key-competitor technology list."}}]},{"item_id":"event_002","type":"event","date":"2026-06","title":{"zh":"PCHi / CBE 作为国内原料和品牌趋势窗口","en":"PCHi / CBE as domestic ingredient and brand trend windows"},"summary":{"zh":"PCHi 与 CBE 作为国内原料和品牌趋势的重要窗口，可观察国产原料商的发布节奏、国货品牌的成分偏好以及国产替代和出海动向，是判断本土竞争格局的重要场合。","en":"PCHi and CBE are key windows into domestic ingredient and brand trends, useful for observing local suppliers' launch cadence, domestic brands' ingredient preferences and import-substitution and overseas-expansion moves, and important for reading the local competitive landscape."},"detail":{"zh":"国内活动可补充国产替代、KA 成分偏好和渠道热点，帮助形成中国市场视角。","en":"Domestic events add local substitution, KA ingredient preferences, and channel topics, helping build a China-market view."},"tags":["market_consumer_insight"],"glossary_term_ids":["market_consumer_insight"],"source_ref_ids":["src_cbe"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"活动影响力","en":"Event significance"},"text":{"zh":"国内原料与品牌趋势的集中展示窗口，反映国产替代进度。","en":"A concentrated window into domestic ingredient and brand trends, reflecting import-substitution progress."}},{"label":{"zh":"参与价值","en":"Participation value"},"text":{"zh":"适合监测国产新锐、代理商动向和国货品牌成分偏好。","en":"Good for monitoring domestic challengers, distributor moves and local brands' ingredient preferences."}},{"label":{"zh":"后续跟进建议","en":"Follow-up"},"text":{"zh":"重点跟踪高热度国产原料和潜在客户品牌，纳入竞品与 KA 监测。","en":"Track hot domestic ingredients and prospective customer brands and feed them into competitor and KA monitoring."}}]},{"item_id":"event_003","type":"event","date":"2026-06","title":{"zh":"竞品 seminar / webinar 可作为技术叙事素材","en":"Competitor seminars and webinars can serve as technology-narrative material"},"summary":{"zh":"竞品的 seminar 与 webinar 可作为技术叙事素材来源，供应商常通过线上研讨会释放新技术、新机理和应用方向；这些内容是判断竞品技术路线和功效话术的低成本情报来源。","en":"Competitor seminars and webinars are a source of technology-narrative material; suppliers often use online sessions to release new technologies, mechanisms and application directions, making them a low-cost intelligence source for reading competitors' technology roadmaps and claim language."},"detail":{"zh":"技术型 seminar / webinar 对理解竞品研发方向和客户教育话术更有参考价值。","en":"Technical seminars and webinars are useful for understanding competitor R&D direction and customer education narratives."},"tags":["technology_process_innovation","research_science"],"glossary_term_ids":["technology_process_innovation","research_science"],"source_ref_ids":["src_watchlist"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"活动影响力","en":"Event significance"},"text":{"zh":"线上研讨会是竞品技术叙事和话术的直接来源。","en":"Online sessions are a direct source of competitors' technology narratives and claim language."}},{"label":{"zh":"参与价值","en":"Participation value"},"text":{"zh":"低成本获取竞品技术路线、机理表达和应用方向。","en":"Low-cost access to competitors' technology roadmaps, mechanism wording and application directions."}},{"label":{"zh":"后续跟进建议","en":"Follow-up"},"text":{"zh":"建立竞品 webinar 监测清单，提炼技术词汇用于新趋势情报与对标。","en":"Build a competitor-webinar watch list and distil technology vocabulary for trend intelligence and benchmarking."}}]}]},{"section_id":"regulation_policy","title":{"zh":"法规政策","en":"Regulations & Policy"},"summary":{"zh":"","en":""},"layout":"reg_cards","items":[{"item_id":"reg_001","type":"reg_card","region":{"zh":"中国","en":"China"},"title":{"zh":"新原料备案持续活跃","en":"New ingredient filing remains active"},"summary":{"zh":"中国新原料备案持续活跃，备案数量和国产占比双双走高，反映原料创新与合规节奏同步加快；备案活跃度可作为创新热度和合规节奏的宏观指标，值得持续跟踪来源、功效方向和应用边界。","en":"China's new-ingredient filing remains active, with both volume and the domestic share rising, reflecting innovation and compliance accelerating together; filing activity is a macro indicator of innovation heat and compliance pace, worth tracking for source, claim direction and application boundaries."},"detail":{"zh":"备案活跃度提示原料创新与合规节奏同步加快，值得持续关注来源、功效方向和应用边界。","en":"Active filings indicate that ingredient innovation and compliance pacing are accelerating together, with source, claim direction, and application boundaries worth monitoring."},"tags":["new_ingredient_filing"],"glossary_term_ids":["new_ingredient_filing"],"source_ref_ids":["src_reg_filing"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"法规要点","en":"Key points"},"text":{"zh":"新原料须完成备案/注册方可使用，备案信息公开可查。","en":"New ingredients must complete filing/registration before use, and filing information is publicly searchable."}},{"label":{"zh":"影响对象","en":"Who is affected"},"text":{"zh":"所有在华上市的新原料供应商与品牌方。","en":"All new-ingredient suppliers and brands marketing in China."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"跟踪高频备案的成分与企业，评估对现有品类的竞争与合作影响，规划自身注册节奏。","en":"Track ingredients and companies behind frequent filings, assess competitive and partnership impact on current categories, and plan Croda's own registration cadence."}}]},{"item_id":"reg_002","type":"reg_card","region":{"zh":"中国","en":"China"},"title":{"zh":"IECIC 与既有原料边界需要解释","en":"IECIC and existing-ingredient boundaries need explanation"},"summary":{"zh":"已使用化妆品原料目录（IECIC）与既有原料边界需要清晰解释：原料是否在目录内、使用范围和限量，直接决定其能否免备案使用，是配方和合规判断的基础依据。","en":"The Inventory of Existing Cosmetic Ingredients in China (IECIC) and existing-ingredient boundaries need clear explanation: whether an ingredient is on the list and its permitted scope and limits directly determine whether it can be used without filing, forming the basis of formulation and compliance judgement."},"detail":{"zh":"IECIC 相关判断会影响原料使用边界、沟通方式和客户合规复核重点。","en":"IECIC-related judgment affects ingredient use boundaries, communication approach, and customer compliance review priorities."},"tags":["iecic"],"glossary_term_ids":["iecic"],"source_ref_ids":["src_reg_filing"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"法规要点","en":"Key points"},"text":{"zh":"IECIC 界定原料的既有使用范围，目录内外对应不同合规路径。","en":"IECIC defines an ingredient's existing scope of use; on- and off-list status correspond to different compliance paths."}},{"label":{"zh":"影响对象","en":"Who is affected"},"text":{"zh":"配方研发、法规和采购环节。","en":"Formulation R&D, regulatory and procurement functions."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"在客户沟通中清晰说明原料的目录状态与使用边界，降低客户合规顾虑。","en":"Clearly explain ingredients' list status and usage boundaries in customer conversations to reduce compliance concerns."}}]},{"item_id":"reg_003","type":"reg_card","region":{"zh":"中国 / 欧盟","en":"China / EU"},"title":{"zh":"功效宣称与致敏原标识影响传播文本","en":"Claims and allergen labeling influence communication copy"},"summary":{"zh":"功效宣称评价与致敏原标识要求继续影响传播文本：中国功效宣称评价要求证据支撑，欧盟新增 56 种致敏原标注将于 2026 年生效，品牌方在宣称和成分披露上更趋谨慎，对原料的证据与合规支撑要求提高。","en":"Claim-substantiation and allergen-labelling requirements keep shaping communication text: China requires evidence to support efficacy claims and the EU's 56 newly added allergens take effect in 2026, so brands are more cautious in claims and ingredient disclosure and demand stronger evidence and compliance support from ingredients."},"detail":{"zh":"需要判断哪些表达适合客户沟通，哪些表述应进入法务或合规复核。","en":"The key question is which statements are suitable for customer communication and which should enter legal or regulatory review."},"tags":["claim_substantiation"],"glossary_term_ids":["claim_substantiation"],"source_ref_ids":["src_reg_allergen"],"review_status":"pending_review","local_editable":true,"analysis":[{"label":{"zh":"法规要点","en":"Key points"},"text":{"zh":"功效宣称需证据支撑；欧盟致敏原标注范围扩大，影响出口配方标签。","en":"Efficacy claims require supporting evidence; the EU's expanded allergen labelling affects export formula labels."}},{"label":{"zh":"影响对象","en":"Who is affected"},"text":{"zh":"出口导向品牌、配方与法规团队、上游功效原料商。","en":"Export-oriented brands, formulation and regulatory teams, and upstream efficacy-ingredient suppliers."}},{"label":{"zh":"对禾大的提示","en":"Implication for Croda"},"text":{"zh":"提供功效测试与致敏原信息支持，把合规能力作为原料卖点，帮助客户顺利宣称与出口。","en":"Provide efficacy-testing and allergen information, make compliance capability a selling point, and help customers claim and export smoothly."}}]}]}],"tag_taxonomy":[{"category_id":"primary_story_type","display":{"zh":"主故事类型","en":"Story type"},"color_class":"tag-story","tags":["corporate_move","product_launch_or_update","technology_process_innovation","research_science","market_consumer_insight"]},{"category_id":"ingredient_technology","display":{"zh":"原料与技术","en":"Ingredients & technologies"},"color_class":"tag-ingredient","tags":["peptides","pdrn_nucleotides","hyaluronic_acid","ceramides","retinoids","recombinant_collagen","niacinamide","vitamin_c","probiotics_postbiotics","marine_blue_biotech_actives","encapsulation_delivery","sustained_release","synthetic_biology","fermentation_biotech","sustainability_chemistry","ai_rd_formulation"]},{"category_id":"functional_claim","display":{"zh":"功效宣称","en":"Functional claims"},"color_class":"tag-claim","tags":["anti_aging","whitening_brightening","moisturizing","barrier_repair","soothing_sensitive_skin","firming_lifting","microbiome_balance","hair_scalp_care","enhance_penetration","emotion_wellbeing"]},{"category_id":"product_application","display":{"zh":"产品/应用场景","en":"Product applications"},"color_class":"tag-application","tags":["skincare","sun_care","hair_care","body_personal_care","teen_age_care","men_care","fragrance_perfume"]},{"category_id":"regulation_compliance","display":{"zh":"法规与合规","en":"Regulatory & compliance"},"color_class":"tag-regulation","tags":["new_ingredient_filing","iecic","claim_substantiation"]}]}</script>
+<script>
+const MODE='internal';                 // 'internal' | 'final'
+function boot(DATA){ try{ render(DATA); }catch(e){ document.getElementById('app').innerHTML='<p style="padding:40px">Render error: '+e.message+'</p>'; console.error(e);} }
+(function(){
+  const embedded=JSON.parse(document.getElementById('report-data').textContent);
+  fetch('report_content.json').then(r=>r.ok?r.json():Promise.reject()).then(boot).catch(()=>boot(embedded));
+})();
+
+let DATA, lang='zh';
+let glossaryById={}, sourceById={}, sectionById={}, categoryById={}, tagCategoryByTag={}, sgMeta={};
+const activeFilters=new Set();
+const suggestions={};   // key -> {text, scope:'both'|'zh'|'en'}  (internal mode; key = item_id or kpi_id)
+
+function t(o){ if(o==null) return ''; if(typeof o==='string') return o; return o[lang]||o.zh||o.en||''; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function cssEsc(s){ return (window.CSS&&CSS.escape)?CSS.escape(s):String(s).replace(/[^\w-]/g,'\\$&'); }
+function tagLabel(tag){ const g=glossaryById[tag]; return g?t(g.display):tag; }
+function tagClass(tag){ const c=tagCategoryByTag[tag]; return c?c.color_class:'tag-default'; }
+function sectionName(id){ const s=sectionById[id]; return s?t(s.title):id; }
+function L(zh,en){ return lang==='zh'?zh:en; }
+
+function render(d){
+  DATA=d; lang=d.language_default||'zh';
+  glossaryById={}; (d.glossary||[]).forEach(g=>glossaryById[g.term_id]=g);
+  sourceById={}; (d.source_links||[]).forEach(s=>sourceById[s.source_ref_id]=s);
+  sectionById={}; (d.sections||[]).forEach(s=>sectionById[s.section_id]=s);
+  categoryById={}; tagCategoryByTag={};
+  (d.tag_taxonomy||[]).forEach(c=>{categoryById[c.category_id]=c; (c.tags||[]).forEach(tg=>tagCategoryByTag[tg]=c);});
+  sgMeta={};
+  (d.kpis||[]).forEach(k=>sgMeta[k.kpi_id]={type:'kpi',title:k.label});
+  (d.sections||[]).forEach(s=>(s.items||[]).forEach(i=>sgMeta[i.item_id]={type:'item',title:i.title,sectionId:s.section_id}));
+  draw();
+}
+
+function draw(){
+  const d=DATA;
+  document.documentElement.lang = lang==='zh'?'zh-CN':'en';
+  document.getElementById('app').innerHTML =
+    (MODE==='internal'?'<div class="mode-banner">'+L('内部调整版 · 供团队审阅与提交重写建议，提交后由报告 Agent 重新编写','Internal review version · for team review and rewrite requests; resubmitted to the report Agent')+'</div>':'')+
+    headerHTML(d) + toolbarHTML(d) +
+    '<div class="active-filters" id="active-filters"></div>' +
+    '<main class="container">' +
+      kpiHTML(d) +
+      (d.sections||[]).map(sectionHTML).join('') +
+      appendixHTML(d) +
+      '<div class="no-results" id="no-results">'+L('没有匹配的内容，请调整搜索或筛选条件。','No matching content. Adjust your search or filters.')+'</div>' +
+    '</main>' + footerHTML(d) +
+    (MODE==='internal'?submitPanelHTML():'');
+  bindEvents();
+  renderActiveFilters();
+  applyVisibility();
+  if(MODE==='internal') reapplySuggestions();
+}
+
+function headerHTML(d){
+  return '<header class="report-header"><div class="header-inner">'+
+    '<div class="header-top"><div>'+
+      '<h1>'+esc(t(d.title))+'</h1>'+
+      '<div class="subtitle">'+esc(t({zh:d.period.display_zh,en:d.period.display_en}))+' · '+L('内部情报参考','Internal intelligence')+'</div>'+
+      '<div class="meta">'+
+        '<span>📅 '+esc(d.period.start||'')+' – '+esc(d.period.end||'')+'</span>'+
+        '<span>🏢 '+esc(d.client||'Croda Beauty')+'</span>'+
+        '<span>🔖 '+L('每月自动生成 · 双语','Auto-generated monthly · Bilingual')+'</span>'+
+      '</div></div>'+
+    '<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end">'+
+      '<div class="brand-badge">🌿 Croda Beauty</div>'+
+      '<div class="lang-toggle no-print">'+
+        '<button data-lang="zh" class="'+(lang==='zh'?'active':'')+'">中文</button>'+
+        '<button data-lang="en" class="'+(lang==='en'?'active':'')+'">English</button>'+
+      '</div></div></div></div></header>';
+}
+
+function toolbarHTML(d){
+  const toc=(d.sections||[]).map(s=>'<span class="toc-chip" data-jump="sec-'+s.section_id+'" data-term="'+s.section_id+'">'+esc(t(s.title))+'</span>').join('')+
+    '<span class="toc-chip" data-jump="sec-appendix">'+L('原文链接','Sources')+'</span>';
+  const cats=(d.tag_taxonomy||[]).map((c,i)=>{
+    const color='var(--'+c.color_class.replace('tag-','')+'-fg)';
+    return '<div class="cascade-cat'+(i===0?' active':'')+'" data-cat="'+c.category_id+'">'+
+      '<span><span class="dot" style="background:'+color+'"></span> '+esc(t(c.display))+'</span><span class="arrow">▸</span></div>';
+  }).join('');
+  return '<nav class="toolbar no-print">'+
+    '<input type="text" class="search-box" id="search" placeholder="'+L('🔍 搜索公司 / 成分 / 功效 / 栏目 / 来源 / 标签','🔍 Search company / ingredient / claim / section / source / tag')+'">'+
+    '<div class="toc-strip">'+toc+'</div>'+
+    '<div class="tool-spacer"></div>'+
+    '<div class="filter-wrap" id="filter-wrap"><button class="filter-trigger" id="filter-trigger">🏷️ '+L('标签筛选','Tag filter')+' <span class="cnt" id="filter-cnt">0</span></button>'+
+      '<div class="cascade"><div class="cascade-cats">'+cats+'</div>'+
+      '<div class="cascade-wrap2"><div class="cascade-fields" id="cascade-fields"></div>'+
+      '<div class="cascade-foot"><span class="af-clear" id="cascade-clear">'+L('清除','Clear')+'</span></div></div></div></div>'+
+    '<button class="tool-btn" id="print-btn">🖨️ '+L('导出 PDF','Export PDF')+'</button></nav>';
+}
+
+function kpiTarget(k){ for(const sid of (k.source_ref_ids||[])){ const s=sourceById[sid]; if(s&&s.item_ids&&s.item_ids.length) return s.item_ids[0]; } return null; }
+function kpiHTML(d){
+  return '<div class="kpi-row">'+(d.kpis||[]).map(k=>{
+    const tgt=kpiTarget(k);
+    const edit=MODE==='internal'?'<button class="kpi-edit edit-hot no-print" title="'+L('建议修改该指标','Suggest a change to this KPI')+'">✏️</button>':'';
+    return '<div class="kpi-card'+(tgt?' clickable':'')+'" data-sgkey="'+esc(k.kpi_id)+'"'+(tgt?' data-jump-item="'+esc(tgt)+'"':'')+'>'+
+      (edit?'<div class="kpi-top">'+edit+'</div>':'')+
+      '<div class="kpi-value">'+esc(k.value)+'</div>'+
+      '<div class="kpi-label">'+esc(t(k.label))+'</div>'+
+      (tgt?'<div class="kpi-jump">'+L('↘ 查看来源新闻','↘ View source story')+'</div>':'')+
+      '</div>';
+  }).join('')+'</div>';
+}
+
+const SEC_ICON={market_flash:'⚡',competitor_watch:'🎯',ingredient_innovation:'🧪',ka_watch:'👑',market_event:'📅',regulation_policy:'⚖️'};
+function groupLabel(g,sid){
+  const k=(g||'').toLowerCase();
+  if(k==='mnc') return {zh:'🌍 跨国客户品牌 (MNC)',en:'🌍 MNC customer brands'};
+  if(k==='international') return {zh:'🌐 国际原料商',en:'🌐 International suppliers'};
+  if(k==='domestic') return sid==='ka_watch'?{zh:'🇨🇳 国内客户品牌',en:'🇨🇳 Domestic customer brands'}:{zh:'🇨🇳 国内原料商',en:'🇨🇳 Domestic suppliers'};
+  return {zh:g,en:g};
+}
+
+function sectionHTML(s){
+  const items=s.items||[];
+  const grouped=items.some(i=>i.group);
+  let body;
+  if(grouped){
+    const order=[...new Set(items.map(i=>i.group))];
+    body=order.map(g=>{
+      const gl=groupLabel(g,s.section_id);
+      const cards=items.filter(i=>i.group===g).map((i,idx)=>cardHTML(i,s,idx)).join('');
+      return '<div class="group"><div class="group-label">'+esc(t(gl))+'</div><div class="card-grid">'+cards+'</div></div>';
+    }).join('');
+  } else {
+    body='<div class="card-grid">'+items.map((i,idx)=>cardHTML(i,s,idx)).join('')+'</div>';
+  }
+  return '<section class="section" id="sec-'+s.section_id+'" data-section="'+s.section_id+'">'+
+    '<div class="section-header"><div class="s-icon">'+(SEC_ICON[s.section_id]||'📄')+'</div>'+
+    '<h2 data-term="'+s.section_id+'">'+esc(t(s.title))+'<span class="s-sub">'+esc(t(s.summary))+'</span></h2>'+
+    '<span class="section-count" data-count-for="'+s.section_id+'">'+items.length+'</span>'+
+    '<span class="toggle-icon">▼</span></div>'+
+    '<div class="section-body">'+body+'</div></section>';
+}
+
+function cardHTML(item,sec,idx){
+  const tags=(item.tags||[]).filter(tg=>tagCategoryByTag[tg]);   // only V4 dictionary fields
+  const tagRow=tags.map(tg=>'<span class="tag '+tagClass(tg)+'" data-term="'+esc(tg)+'">'+esc(tagLabel(tg))+'</span>').join('');
+  const meta=[];
+  if(sec.section_id==='market_flash') meta.push('<span class="idx-badge">'+(idx+1)+'</span>');
+  if(item.date) meta.push('<span class="date-chip">'+esc(item.date)+'</span>');
+  meta.push('<span class="section-chip" data-term="'+sec.section_id+'">'+esc(sectionName(sec.section_id))+'</span>');
+  if(item.company) meta.push('<span class="company-chip">'+esc(item.company_display?t(item.company_display):item.company)+'</span>');
+  if(item.region) meta.push('<span class="region-chip">'+esc(t(item.region))+'</span>');
+  const srcFoot=(item.source_ref_ids||[]).map(id=>srcLink(id)).join(' ');
+  const edit = MODE==='internal' ? '<button class="edit-hot no-print">✏️ '+L('建议重写','Request rewrite')+'</button>' : '';
+  const foot=(srcFoot||edit)?'<div class="card-foot">'+(srcFoot?'<span>🔗 '+srcFoot+'</span>':'')+edit+'</div>':'';
+  return '<div class="intel-card" id="item-'+esc(item.item_id)+'" data-item="'+esc(item.item_id)+'" data-sgkey="'+esc(item.item_id)+'" data-tags=\''+esc(JSON.stringify(item.tags||[]))+'\' data-search="'+esc(buildSearch(item,sec))+'">'+
+    '<div class="card-meta">'+meta.join('')+'</div>'+
+    '<h3>'+esc(t(item.title))+'</h3>'+
+    '<div class="summary">'+esc(t(item.summary))+'</div>'+
+    (tagRow?'<div class="tag-row">'+tagRow+'</div>':'')+
+    deepHTML(item,sec)+
+    foot+'</div>';
+}
+
+const DEEP_LABEL={market_flash:{zh:'深度解读',en:'In-depth analysis'},
+  competitor_watch:{zh:'竞品深度解读',en:'Competitor deep-dive'},
+  ingredient_innovation:{zh:'技术深度解读',en:'Technical deep-dive'},
+  ka_watch:{zh:'客户深度解读',en:'Customer deep-dive'},
+  market_event:{zh:'活动价值分析',en:'Event value analysis'},
+  regulation_policy:{zh:'法规深度解读',en:'Regulatory deep-dive'}};
+function analysisBlocks(item){
+  if(item.analysis&&item.analysis.length)
+    return item.analysis.map(a=>'<div class="an-block"><span class="an-label">'+esc(t(a.label))+'</span><div class="an-text">'+esc(t(a.text))+'</div></div>').join('');
+  return item.detail?'<div class="an-text">'+esc(t(item.detail))+'</div>':'';
+}
+function deepHTML(item,sec){
+  const blocks=analysisBlocks(item); if(!blocks) return '';
+  const lab=DEEP_LABEL[sec.section_id]||{zh:'深度解读',en:'In-depth analysis'};
+  return '<div class="deep"><button class="deep-toggle"><span class="chev">▶</span>🔎 '+esc(t(lab))+'</button>'+
+    '<div class="deep-body"><span class="ai-disclaimer">🤖 '+L('AI 生成 · 仅供参考','AI-generated · for reference only')+'</span>'+blocks+'</div></div>';
+}
+
+function buildSearch(item,sec){
+  const parts=[];
+  ['title','summary','detail','category','region'].forEach(k=>{ if(item[k]){parts.push(item[k].zh||'',item[k].en||'');} });
+  (item.analysis||[]).forEach(a=>parts.push(a.text&&a.text.zh||'',a.text&&a.text.en||''));
+  if(item.company) parts.push(item.company);
+  if(item.company_display) parts.push(item.company_display.zh||'',item.company_display.en||'');
+  (item.tags||[]).forEach(tg=>{parts.push(tg); const g=glossaryById[tg]; if(g) parts.push(g.display.zh||'',g.display.en||'');});
+  parts.push(t(sec.title),sec.title.zh,sec.title.en,sec.section_id);
+  (item.source_ref_ids||[]).forEach(id=>{const s=sourceById[id]; if(s){ if(s.source_name) parts.push(s.source_name.zh||s.source_name,s.source_name.en||''); parts.push(s.title.zh||'',s.title.en||'');}});
+  return parts.join(' ').toLowerCase();
+}
+
+/* #1 — show the real article / news title (source_name moves to the hover title) */
+function srcLink(id){
+  const s=sourceById[id]; if(!s) return '';
+  return '<a class="src-link" href="'+esc(s.url)+'" target="_blank" rel="noopener" title="'+esc(t(s.source_name))+'">'+esc(t(s.title))+' ↗</a>';
+}
+
+function appendixHTML(d){
+  const groups={};
+  (d.source_links||[]).forEach(s=>{ (groups[s.source_type]=groups[s.source_type]||[]).push(s); });
+  const TYPE={regulatory:{zh:'⚖️ 法规与官方',en:'⚖️ Regulatory & official'},industry_media:{zh:'📰 行业媒体',en:'📰 Industry media'},
+    company:{zh:'🏢 企业来源',en:'🏢 Company sources'},database:{zh:'📊 数据库与机构',en:'📊 Databases & institutions'},
+    market_data:{zh:'📊 市场数据',en:'📊 Market data'},event:{zh:'📅 活动来源',en:'📅 Event sources'},brand:{zh:'🏷️ 品牌来源',en:'🏷️ Brand sources'}};
+  const body=Object.keys(groups).map(tp=>{
+    const head=TYPE[tp]?t(TYPE[tp]):tp;
+    const rows=groups[tp].map(s=>{
+      const secs=(s.section_ids||[]).map(id=>'<span class="s-sec" data-term="'+id+'">'+esc(sectionName(id))+'</span>').join('');
+      return '<div class="src-item" id="src-'+esc(s.source_ref_id)+'"><div class="s-title"><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(t(s.title))+' ↗</a></div>'+
+        '<div class="s-meta"><span>'+esc(t(s.source_name))+'</span><span class="s-secs">'+secs+'</span></div></div>';
+    }).join('');
+    return '<div class="src-group"><h4>'+esc(head)+'</h4>'+rows+'</div>';
+  }).join('');
+  return '<section class="section appendix" id="sec-appendix"><div class="section-header"><div class="s-icon">🔗</div>'+
+    '<h2>'+L('数据来源与原文链接汇总','Sources & Links')+'<span class="s-sub">'+L('所有引用来源、原文链接、来源类型与对应栏目','All cited sources, original links, source types, and mapped sections')+'</span></h2>'+
+    '<span class="section-count">'+(d.source_links||[]).length+'</span><span class="toggle-icon">▼</span></div>'+
+    '<div class="section-body">'+body+'</div></section>';
+}
+
+function footerHTML(d){
+  return '<footer class="report-footer"><strong>Croda Beauty '+L('市场监测月报','Market Intelligence Monthly')+'</strong> · '+esc(t({zh:d.period.display_zh,en:d.period.display_en}))+
+    '<br>'+L('配置驱动渲染 Demo · 数值与内容为演示数据 · 仅供内部参考','Config-driven demo · figures and content are illustrative · internal use only')+'</footer>';
+}
+
+function submitPanelHTML(){
+  return '<div class="submit-panel no-print" id="submit-panel"><span class="sg-count" id="sg-count"></span>'+
+    '<button class="tool-btn primary" id="submit-all">📤 '+L('一键提交给报告 Agent','Submit all to report Agent')+'</button></div>';
+}
+
+/* ---------- interactions ---------- */
+function bindEvents(){
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.onclick=()=>{ if(b.dataset.lang!==lang){lang=b.dataset.lang; draw();} });
+  document.querySelectorAll('.section-header').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('collapsed'));
+  document.querySelectorAll('[data-jump]').forEach(el=>el.addEventListener('click',e=>{
+    e.stopPropagation(); const tgt=document.getElementById(el.dataset.jump);
+    if(tgt){ tgt.classList.remove('collapsed'); tgt.scrollIntoView({behavior:'smooth',block:'start'}); }
+  }));
+  const sb=document.getElementById('search'); if(sb) sb.oninput=()=>applyVisibility();
+  document.getElementById('print-btn').onclick=()=>window.print();
+  setupCascade();
+  document.querySelectorAll('.deep-toggle').forEach(b=>b.onclick=()=>b.closest('.deep').classList.toggle('open'));
+  document.querySelectorAll('.kpi-card.clickable').forEach(c=>c.addEventListener('click',e=>{
+    if(e.target.closest('.edit-hot')) return; jumpToItem(c.dataset.jumpItem);
+  }));
+  document.querySelectorAll('.edit-hot').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();
+    const host=b.closest('[data-sgkey]'); if(host) openSuggestionBox(host.dataset.sgkey,b);}));
+  const sa=document.getElementById('submit-all'); if(sa) sa.onclick=submitAll;
+  setupTooltips();
+  const ov=document.getElementById('modal-overlay'); ov.onclick=e=>{ if(e.target===ov) closeModal(); };
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeModal();hideTooltip();hideEditPop();} });
+  document.addEventListener('click',e=>{ if(!e.target.closest('#edit-pop')&&!e.target.closest('.edit-hot')) hideEditPop(); });
+}
+
+function jumpToItem(itemId){
+  closeModal();
+  const card=document.getElementById('item-'+itemId); if(!card) return;
+  const sec=card.closest('.section'); if(sec) sec.classList.remove('collapsed');
+  card.scrollIntoView({behavior:'smooth',block:'center'});
+  card.classList.remove('flash-hl'); void card.offsetWidth; card.classList.add('flash-hl');
+  setTimeout(()=>card.classList.remove('flash-hl'),1900);
+}
+
+function setupCascade(){
+  const wrap=document.getElementById('filter-wrap'), trigger=document.getElementById('filter-trigger');
+  trigger.onclick=()=>wrap.classList.toggle('open');
+  document.addEventListener('click',e=>{ if(!e.target.closest('#filter-wrap')) wrap.classList.remove('open'); });
+  function showCat(cid){
+    document.querySelectorAll('.cascade-cat').forEach(c=>c.classList.toggle('active',c.dataset.cat===cid));
+    const cat=categoryById[cid]; const fg='var(--'+cat.color_class.replace('tag-','')+'-fg)', bg='var(--'+cat.color_class.replace('tag-','')+'-bg)';
+    document.getElementById('cascade-fields').innerHTML=cat.tags.map(tg=>{
+      const key=cid+'::'+tg, on=activeFilters.has(key);
+      return '<span class="cascade-field '+(on?'on':'')+'" data-key="'+key+'" data-term="'+esc(tg)+'" style="color:'+fg+';background:'+bg+'">'+esc(tagLabel(tg))+'</span>';
+    }).join('');
+    document.querySelectorAll('.cascade-field').forEach(f=>{ f.onclick=()=>{ toggleFilter(f.dataset.key); f.classList.toggle('on'); }; attachTip(f); });
+  }
+  document.querySelectorAll('.cascade-cat').forEach(c=>{ c.addEventListener('mouseenter',()=>showCat(c.dataset.cat)); c.addEventListener('click',()=>showCat(c.dataset.cat)); });
+  document.getElementById('cascade-clear').onclick=()=>{ activeFilters.clear(); showCat(document.querySelector('.cascade-cat.active').dataset.cat); renderActiveFilters(); applyVisibility(); };
+  showCat((DATA.tag_taxonomy[0]||{}).category_id);
+}
+function toggleFilter(key){ activeFilters.has(key)?activeFilters.delete(key):activeFilters.add(key); renderActiveFilters(); applyVisibility(); }
+function renderActiveFilters(){
+  const box=document.getElementById('active-filters'); if(!box) return;
+  const arr=[...activeFilters];
+  document.getElementById('filter-cnt').textContent=arr.length;
+  document.getElementById('filter-trigger').classList.toggle('has-active',arr.length>0);
+  box.innerHTML=arr.map(key=>{ const tg=key.split('::')[1]; const cat=tagCategoryByTag[tg];
+    const fg='var(--'+cat.color_class.replace('tag-','')+'-fg)', bg='var(--'+cat.color_class.replace('tag-','')+'-bg)';
+    return '<span class="af-chip" data-key="'+key+'" style="color:'+fg+';background:'+bg+'">'+esc(tagLabel(tg))+' <span class="x">✕</span></span>';
+  }).join('') + (arr.length?'<span class="af-clear" id="af-clear-all">'+L('全部清除','Clear all')+'</span>':'');
+  box.querySelectorAll('.af-chip').forEach(c=>c.onclick=()=>{ activeFilters.delete(c.dataset.key); renderActiveFilters(); applyVisibility();
+    const af=document.querySelector('.cascade-field[data-key="'+c.dataset.key+'"]'); if(af) af.classList.remove('on'); });
+  const clr=document.getElementById('af-clear-all'); if(clr) clr.onclick=()=>{ activeFilters.clear(); renderActiveFilters(); applyVisibility(); document.querySelectorAll('.cascade-field.on').forEach(f=>f.classList.remove('on')); };
+}
+
+function applyVisibility(){
+  const ql=((document.getElementById('search')||{}).value||'').trim().toLowerCase();
+  const byCat={}; activeFilters.forEach(k=>{ const[c,tg]=k.split('::'); (byCat[c]=byCat[c]||[]).push(tg); });
+  const cats=Object.keys(byCat);
+  let anyVisible=false;
+  document.querySelectorAll('.intel-card').forEach(card=>{
+    const tags=JSON.parse(card.dataset.tags||'[]');
+    const okSearch=!ql||card.dataset.search.indexOf(ql)>=0;
+    const okFilter=cats.every(c=>byCat[c].some(tg=>tags.includes(tg)));
+    const show=okSearch&&okFilter; card.style.display=show?'':'none'; if(show) anyVisible=true;
+  });
+  document.querySelectorAll('.group').forEach(g=>{ g.style.display=[...g.querySelectorAll('.intel-card')].some(c=>c.style.display!=='none')?'':'none'; });
+  document.querySelectorAll('.section[data-section]').forEach(sec=>{
+    const cards=[...sec.querySelectorAll('.intel-card')], vis=cards.filter(c=>c.style.display!=='none').length;
+    sec.style.display=vis?'':'none';
+    const badge=sec.querySelector('[data-count-for]'); if(badge) badge.textContent=(ql||cats.length)?vis+'/'+cards.length:cards.length;
+  });
+  document.getElementById('no-results').style.display=anyVisible?'none':'block';
+}
+
+/* tooltips */
+function tipShow(el){
+  const tip=document.getElementById('tooltip'); const g=glossaryById[el.dataset.term]; if(!g) return;
+  tip.innerHTML='<div class="tt-title">'+esc(t(g.display))+'</div>'+esc(t(g.definition)); tip.style.display='block';
+  const r=el.getBoundingClientRect(), tw=tip.offsetWidth, th=tip.offsetHeight;
+  let x=Math.max(8,Math.min(r.left+r.width/2-tw/2,innerWidth-tw-8)); let y=r.top-th-8; if(y<8) y=r.bottom+8;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+function attachTip(el){
+  if(!el||el._tip||!glossaryById[el.dataset.term]) return; el._tip=1;
+  el.addEventListener('mouseenter',()=>tipShow(el)); el.addEventListener('mouseleave',hideTooltip);
+  el.addEventListener('focus',()=>tipShow(el)); el.addEventListener('blur',hideTooltip);
+  if(!el.matches('h2')) el.tabIndex=0;
+  el.addEventListener('click',e=>{ if(window.matchMedia('(hover:none)').matches){ e.stopPropagation(); document.getElementById('tooltip').style.display==='block'?hideTooltip():tipShow(el);} });
+}
+function setupTooltips(){ document.querySelectorAll('[data-term]').forEach(attachTip); }
+function hideTooltip(){ document.getElementById('tooltip').style.display='none'; }
+
+/* detail modal */
+let itemIndex=null;
+function findItem(id){ if(!itemIndex){ itemIndex={}; DATA.sections.forEach(s=>s.items.forEach(i=>itemIndex[i.item_id]={item:i,sec:s})); } return itemIndex[id]; }
+function closeModal(){ document.getElementById('modal-overlay').classList.remove('open'); hideTooltip(); }
+
+/* ---------- internal: rewrite suggestions (items + KPIs, with EN/ZH scope) ---------- */
+function scopeRadios(name,sel){
+  const o=[['both',L('同步中英文','Sync ZH+EN')],['zh',L('仅中文','ZH only')],['en',L('仅英文','EN only')]];
+  return '<div class="ep-scope">'+o.map(v=>'<label><input type="radio" name="'+name+'" value="'+v[0]+'"'+(v[0]===(sel||'both')?' checked':'')+'> '+v[1]+'</label>').join('')+'</div>';
+}
+function reapplySuggestions(){ Object.keys(suggestions).forEach(k=>markSug(k,true)); updateSubmitCount(); }
+function markSug(key,on){
+  document.querySelectorAll('[data-sgkey="'+cssEsc(key)+'"]').forEach(el=>{
+    el.classList.toggle('has-suggestion',on);
+    const btn=el.querySelector('.edit-hot');
+    if(btn){ btn.classList.toggle('active',on);
+      if(!btn.classList.contains('kpi-edit')) btn.innerHTML=on?'✏️ '+L('已填写建议','Suggestion added'):'✏️ '+L('建议重写','Request rewrite'); }
+    const holder=el.querySelector('.card-meta')||el.querySelector('.kpi-top');
+    let pill=el.querySelector('.status-pill');
+    if(on){ if(!pill&&holder) holder.insertAdjacentHTML('beforeend','<span class="status-pill status-tobemod">'+L('待修改','To revise')+'</span>'); }
+    else if(pill) pill.remove();
+  });
+}
+function setSug(key,text,scope){
+  const v=(text||'').trim();
+  if(v){ suggestions[key]={text:v,scope:scope||'both'}; markSug(key,true); }
+  else { delete suggestions[key]; markSug(key,false); }
+  updateSubmitCount();
+}
+function hideEditPop(){ document.getElementById('edit-pop').style.display='none'; }
+function analysisText(item){
+  if(item.analysis&&item.analysis.length) return item.analysis.map(a=>t(a.label)+(lang==='zh'?'：':': ')+t(a.text)).join('\n');
+  return item.detail?t(item.detail):'';
+}
+function openSuggestionBox(key,anchor){
+  const pop=document.getElementById('edit-pop'); const ex=suggestions[key]||{text:'',scope:'both'};
+  const meta=sgMeta[key]||{title:{zh:key,en:key}};
+  const item=meta.type==='item'?(findItem(key)||{}).item:null;
+  const hasAn=item&&((item.analysis&&item.analysis.length)||item.detail);
+  const prefill=item?'<div class="prefill-row"><span class="prefill" data-pf="summary">'+L('↪ 基于新闻摘要','↪ From summary')+'</span>'+
+    (hasAn?'<span class="prefill" data-pf="analysis">'+L('↪ 基于深度解读','↪ From analysis')+'</span>':'')+'</div>':'';
+  pop.innerHTML='<div class="ep-title">'+L('建议重写 / 删除','Request rewrite / delete')+'</div>'+
+    '<div class="ep-sub">'+(meta.type==='kpi'?L('指标卡：','KPI: '):'')+esc(t(meta.title))+'</div>'+
+    prefill+
+    '<textarea id="ep-text" placeholder="'+L('请输入调整需求或意见，例如：补充对 Croda 的供应机会；或：建议删除本条。','Describe the change, e.g. add the Croda supply angle; or: please delete this item.')+'">'+esc(ex.text)+'</textarea>'+
+    scopeRadios('ep-scope',ex.scope)+
+    '<div class="ep-row"><button class="ep-save" id="ep-save">'+L('提交建议','Save')+'</button>'+
+      (ex.text?'<button class="ep-del" id="ep-del">'+L('删除建议','Remove')+'</button>':'')+'</div>'+
+    '<div class="ep-note">'+L('删除建议即视同确认本条。提交后由报告 Agent 重写。','Removing a suggestion confirms the item. Submitted items are rewritten by the report Agent.')+'</div>';
+  pop.style.display='block';
+  const r=anchor.getBoundingClientRect();
+  pop.style.left=Math.max(8,Math.min(r.left,innerWidth-pop.offsetWidth-8))+'px';
+  pop.style.top=(r.bottom+6+pop.offsetHeight>innerHeight?Math.max(8,r.top-pop.offsetHeight-6):r.bottom+6)+'px';
+  const ta=document.getElementById('ep-text'); ta.focus();
+  pop.querySelectorAll('.prefill').forEach(p=>p.onclick=()=>{ ta.value=(p.dataset.pf==='analysis')?analysisText(item):t(item.summary); });
+  document.getElementById('ep-save').onclick=()=>{ setSug(key,ta.value,(pop.querySelector('input[name=ep-scope]:checked')||{}).value); hideEditPop(); };
+  const del=document.getElementById('ep-del'); if(del) del.onclick=()=>{ setSug(key,'',''); hideEditPop(); };
+}
+function updateSubmitCount(){
+  const el=document.getElementById('sg-count'); if(!el) return; const n=Object.keys(suggestions).length;
+  el.innerHTML=n?L('已标记 <b>'+n+'</b> 条修改建议','<b>'+n+'</b> rewrite suggestion(s) marked'):L('暂无修改建议，默认不改动即视为确认','No suggestions — unmarked items are treated as confirmed');
+}
+function scopeLabel(s){ return s==='zh'?L('仅中文','ZH only'):s==='en'?L('仅英文','EN only'):L('中英同步','ZH+EN'); }
+function submitAll(){
+  const keys=Object.keys(suggestions);
+  const list=keys.length?'<ul class="sg-list">'+keys.map(k=>{ const m=sgMeta[k]||{title:{zh:k,en:k}}; const sg=suggestions[k];
+    const kpiTag=m.type==='kpi'?'<span class="sg-scope sg-kpi">'+L('指标卡','KPI')+'</span>':'';
+    return '<li><div class="sg-t">'+kpiTag+esc(t(m.title))+'</div><div class="sg-c">'+esc(sg.text)+'</div><span class="sg-scope">'+scopeLabel(sg.scope)+'</span></li>';
+  }).join('')+'</ul>':'<p style="color:var(--text-secondary)">'+L('当前没有任何修改建议。所有卡片默认视为确认。','No rewrite suggestions. All cards are confirmed by default.')+'</p>';
+  document.getElementById('modal').innerHTML='<div class="modal-head"><button class="modal-close" id="m-close">✕</button>'+
+    '<div class="m-sec">'+L('提交给报告 Agent','Submit to report Agent')+'</div><h3>'+L(keys.length+' 条修改建议',keys.length+' rewrite suggestion(s)')+'</h3></div>'+
+    '<div class="modal-body">'+
+    (keys.length?'<div class="ep-note" style="margin-bottom:12px">'+L('每条建议右侧标注了应用范围（中英同步 / 仅中文 / 仅英文）。如需调整，请关闭后在卡片上重新编辑。','Each suggestion is tagged with its scope (ZH+EN / ZH only / EN only). To change it, close and re-edit on the card.')+'</div>':'')+
+    list+
+    (keys.length?'<button class="tool-btn primary" id="confirm-submit" style="width:100%;margin-top:6px">'+L('确认提交','Confirm submit')+'</button>':'')+
+    '</div>';
+  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('m-close').onclick=closeModal;
+  const cs=document.getElementById('confirm-submit'); if(cs) cs.onclick=()=>submitDone(keys);
+}
+function submitDone(keys){
+  const month=DATA.month||'';
+  const stamp=new Date().toISOString().slice(0,10).replace(/-/g,'');
+  const fname='修改建议_'+month+'_'+stamp+'.html';
+  document.getElementById('modal').innerHTML='<div class="modal-head"><button class="modal-close" id="m-close">✕</button>'+
+    '<div class="m-sec">'+L('提交修改建议','Submit rewrite suggestions')+'</div><h3>'+L('已生成本期修改建议文件','Rewrite-suggestion file generated')+'</h3></div>'+
+    '<div class="modal-body"><div class="done-box"><div class="done-ico">📄✅</div>'+
+    '<div>'+L('已生成包含 '+keys.length+' 条修改建议的文件（Demo 阶段不实际下载）：','A file with '+keys.length+' suggestion(s) has been generated (not actually downloaded in demo):')+'</div>'+
+    '<div class="done-file">'+esc(fname)+'</div></div>'+
+    '<div class="done-steps"><b>'+L('下一步操作','Next steps')+'</b><br>'+
+      L('1. 保存这份修改建议文件。<br>2. 将文件放入本期报告目录 report/'+month+'/ 下的「修改意见」文件夹。<br>3. 报告 Agent 会自动读取该文件，按你标记的建议（含中英同步范围）重写相关卡片，并返回新一版报告。',
+        '1. Save this suggestion file.<br>2. Drop it into the "rewrite-suggestions" folder under report/'+month+'/ for this issue.<br>3. The report Agent will read it and rewrite the flagged cards (respecting each ZH/EN scope), then return a new version.')+
+    '</div>'+
+    '<button class="tool-btn primary" id="done-ok" style="width:100%;margin-top:14px">'+L('知道了','Got it')+'</button></div>';
+  document.getElementById('m-close').onclick=closeModal;
+  document.getElementById('done-ok').onclick=closeModal;
+}
+</script>
+</body>
+</html>

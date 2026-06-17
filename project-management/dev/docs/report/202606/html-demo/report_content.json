@@ -1,0 +1,2481 @@
+{
+  "schema_version": "croda-report-content/v1",
+  "month": "202606",
+  "title": {
+    "zh": "Croda Beauty 市场监测月报",
+    "en": "Croda Beauty Market Intelligence Monthly"
+  },
+  "period": {
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "display_zh": "2026年6月",
+    "display_en": "June 2026"
+  },
+  "language_default": "zh",
+  "client": "Croda Beauty",
+  "render_options": {
+    "max_market_flash_items": 10,
+    "kpi_update_policy": "fixed_first_phase",
+    "enable_language_toggle": true,
+    "english_scope": "full_body",
+    "enable_glossary_definition": true,
+    "definition_scope": [
+      "tags",
+      "ingredients",
+      "sections",
+      "regulatory_terms"
+    ],
+    "brand_priority": "croda_com_first",
+    "enable_local_edit_hotzone": true
+  },
+  "kpis": [
+    {
+      "kpi_id": "new_ingredient_filings_2025",
+      "value": "169",
+      "label": {
+        "zh": "2025年新原料备案数量（+88%）",
+        "en": "2025 new ingredient filings (+88%)"
+      },
+      "source_ref_ids": [
+        "src_reg_filing"
+      ],
+      "note": {
+        "zh": "",
+        "en": ""
+      }
+    },
+    {
+      "kpi_id": "domestic_new_ingredient_share",
+      "value": "89.3%",
+      "label": {
+        "zh": "国产新原料占比",
+        "en": "Share of domestic new ingredients"
+      },
+      "source_ref_ids": [
+        "src_reg_filing"
+      ],
+      "note": {
+        "zh": "",
+        "en": ""
+      }
+    },
+    {
+      "kpi_id": "global_ingredients_market_size",
+      "value": "~$35B",
+      "label": {
+        "zh": "全球化妆品原料市场规模",
+        "en": "Global cosmetic ingredients market size"
+      },
+      "source_ref_ids": [
+        "src_market_size"
+      ],
+      "note": {
+        "zh": "",
+        "en": ""
+      }
+    },
+    {
+      "kpi_id": "china_market_cagr",
+      "value": "8.2%",
+      "label": {
+        "zh": "中国市场年复合增速",
+        "en": "China market CAGR"
+      },
+      "source_ref_ids": [
+        "src_market_size"
+      ],
+      "note": {
+        "zh": "",
+        "en": ""
+      }
+    },
+    {
+      "kpi_id": "competitor_updates_monitored",
+      "value": "30+",
+      "label": {
+        "zh": "本月监测竞品动态",
+        "en": "Competitor updates monitored this month"
+      },
+      "source_ref_ids": [
+        "src_watchlist"
+      ],
+      "note": {
+        "zh": "",
+        "en": ""
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "term_id": "market_flash",
+      "display": {
+        "zh": "市场快讯",
+        "en": "Market Flash"
+      },
+      "definition": {
+        "zh": "每月高信号事件集合",
+        "en": "Monthly set of high-signal events"
+      },
+      "source": "section_dictionary"
+    },
+    {
+      "term_id": "competitor_watch",
+      "display": {
+        "zh": "竞品动态",
+        "en": "Competitor Watch"
+      },
+      "definition": {
+        "zh": "国际/国内原料商、代理商或生态伙伴在新品、技术、合作、投融资、产能方面的动作。",
+        "en": "Updates from global or domestic ingredient players, distributors, or ecosystem partners across launches, technologies, partnerships, funding, or capacity."
+      },
+      "source": "section_dictionary"
+    },
+    {
+      "term_id": "ka_watch",
+      "display": {
+        "zh": "KA 监测",
+        "en": "KA Watch"
+      },
+      "definition": {
+        "zh": "沿用 V4 Watchlist 中的 MNC 与国内关键客户品牌，关注成分、功效、产品方向和潜在供应机会。",
+        "en": "Monitoring MNC and domestic key-account brands from the V4 Watchlist, focused on ingredients, claims, product direction, and supply opportunities."
+      },
+      "source": "v4_watchlist"
+    },
+    {
+      "term_id": "ingredient_innovation",
+      "display": {
+        "zh": "新成分 & 新趋势",
+        "en": "New Ingredients & Trends"
+      },
+      "definition": {
+        "zh": "合并原成分趋势和技术创新，覆盖新成分、递送技术、AI、合成生物和可持续工艺。",
+        "en": "A merged view of ingredient trends and technology innovation, including new actives, delivery systems, AI, synthetic biology, and sustainable processes."
+      },
+      "source": "section_dictionary"
+    },
+    {
+      "term_id": "market_event",
+      "display": {
+        "zh": "市场活动汇总",
+        "en": "Market Events"
+      },
+      "definition": {
+        "zh": "展会、峰会、论坛、研讨会、CBE 及竞品 seminar/webinar 的预告与回顾；活动是“场合”，若现场发布新原料则实质归入竞品或新趋势栏目。",
+        "en": "Previews and recaps of expos, summits, forums, seminars, CBE, and competitor seminars/webinars. Events are 'occasions'; an ingredient launched on-site is classified under competitor or trend sections."
+      },
+      "source": "section_dictionary"
+    },
+    {
+      "term_id": "regulation_policy",
+      "display": {
+        "zh": "法规政策",
+        "en": "Regulations & Policy"
+      },
+      "definition": {
+        "zh": "新原料备案、法规、标准、认证、致敏原标识和监管动作；用于提示 Croda 的合规节奏与注册风险。",
+        "en": "New-ingredient filings, regulations, standards, certifications, allergen labelling, and regulatory actions; flags Croda's compliance pace and registration risk."
+      },
+      "source": "section_dictionary"
+    },
+    {
+      "term_id": "encapsulation_delivery",
+      "display": {
+        "zh": "包封/递送技术",
+        "en": "Encapsulation / delivery"
+      },
+      "definition": {
+        "zh": "通过包封、载体或控释提升稳定性、肤感、渗透或功效表达。",
+        "en": "Carrier, encapsulation, or delivery systems improving stability, sensory feel, penetration, or efficacy."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "new_ingredient_filing",
+      "display": {
+        "zh": "新原料备案",
+        "en": "New ingredient filing"
+      },
+      "definition": {
+        "zh": "中国化妆品新原料进入备案或注册管理的监管事项。",
+        "en": "China cosmetic new-ingredient filing or registration processes."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "iecic",
+      "display": {
+        "zh": "已使用化妆品原料目录",
+        "en": "IECIC"
+      },
+      "definition": {
+        "zh": "中国已使用化妆品原料目录，用于判断原料既有使用范围。",
+        "en": "Inventory of Existing Cosmetic Ingredients in China."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "claim_substantiation",
+      "display": {
+        "zh": "功效宣称评价",
+        "en": "Claim substantiation"
+      },
+      "definition": {
+        "zh": "对功效宣称进行证据支撑、测试和合规表达的要求。",
+        "en": "Evidence, testing, and compliant expression requirements for efficacy claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "corporate_move",
+      "display": {
+        "zh": "企业动态",
+        "en": "Corporate move"
+      },
+      "definition": {
+        "zh": "并购、合作、产能、投融资、组织调整或高校合作等企业动作。",
+        "en": "M&A, partnerships, capacity, funding, organizational changes, or university collaborations."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "product_launch_or_update",
+      "display": {
+        "zh": "新原料/新品发布",
+        "en": "New ingredient / product launch"
+      },
+      "definition": {
+        "zh": "新活性物、新配方方案、商业化发布或升级。",
+        "en": "New actives, formulation solutions, commercial launches, or upgrades."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "technology_process_innovation",
+      "display": {
+        "zh": "技术/工艺创新",
+        "en": "Technology / process innovation"
+      },
+      "definition": {
+        "zh": "递送系统、合成生物、发酵、AI研发或绿色化学等技术动作。",
+        "en": "Delivery systems, synthetic biology, fermentation, AI R&D, green chemistry, and related technologies."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "research_science",
+      "display": {
+        "zh": "科研/功效验证",
+        "en": "Research / efficacy validation"
+      },
+      "definition": {
+        "zh": "学术研究、临床测试、专利、机理验证或功效评价。",
+        "en": "Academic research, clinical testing, patents, mechanisms, or efficacy validation."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "market_consumer_insight",
+      "display": {
+        "zh": "市场/消费者洞察",
+        "en": "Market / consumer insight"
+      },
+      "definition": {
+        "zh": "市场规模、品类走势、成分热度、消费者偏好或趋势报告。",
+        "en": "Market sizing, category trends, ingredient heat, consumer preferences, or trend reports."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "peptides",
+      "display": {
+        "zh": "多肽",
+        "en": "Peptides"
+      },
+      "definition": {
+        "zh": "以多肽为主轴的活性物或抗老/修护技术。",
+        "en": "Peptide-led actives or anti-aging / repair technologies."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "pdrn_nucleotides",
+      "display": {
+        "zh": "PDRN / 核酸原料",
+        "en": "PDRN / nucleotide actives"
+      },
+      "definition": {
+        "zh": "常用于修护、再生或医美叙事的核酸类活性物。",
+        "en": "Nucleotide-based actives often used in repair, regeneration, or aesthetics-led narratives."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "hyaluronic_acid",
+      "display": {
+        "zh": "透明质酸 / 玻尿酸",
+        "en": "Hyaluronic acid"
+      },
+      "definition": {
+        "zh": "保湿、填充、递送或衍生物创新相关的透明质酸体系。",
+        "en": "HA systems related to hydration, plumping, delivery, or derivative innovation."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "ceramides",
+      "display": {
+        "zh": "神经酰胺",
+        "en": "Ceramides"
+      },
+      "definition": {
+        "zh": "屏障修护和敏感肌方向的脂质类活性物。",
+        "en": "Lipid actives associated with barrier repair and sensitive skin."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "retinoids",
+      "display": {
+        "zh": "视黄醇/维A类",
+        "en": "Retinoids"
+      },
+      "definition": {
+        "zh": "抗老、焕肤和细纹改善相关的维A类活性物。",
+        "en": "Vitamin A derivatives used for anti-aging, resurfacing, and fine-line improvement."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "recombinant_collagen",
+      "display": {
+        "zh": "重组胶原蛋白",
+        "en": "Recombinant collagen"
+      },
+      "definition": {
+        "zh": "重组胶原或胶原相关修护活性物。",
+        "en": "Recombinant collagen or collagen-related repair actives."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "niacinamide",
+      "display": {
+        "zh": "烟酰胺",
+        "en": "Niacinamide"
+      },
+      "definition": {
+        "zh": "美白、修护、控油和屏障方向的经典活性物。",
+        "en": "Classic active for brightening, repair, oil control, and barrier support."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "vitamin_c",
+      "display": {
+        "zh": "维生素C",
+        "en": "Vitamin C"
+      },
+      "definition": {
+        "zh": "抗氧化、美白提亮或VC衍生物相关活性物。",
+        "en": "Vitamin C or derivatives for antioxidant and brightening claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "probiotics_postbiotics",
+      "display": {
+        "zh": "益生菌/后生元",
+        "en": "Probiotics / postbiotics"
+      },
+      "definition": {
+        "zh": "微生态平衡、舒缓或屏障相关的菌群来源活性物。",
+        "en": "Microbiome-derived actives for balance, soothing, or barrier claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "marine_blue_biotech_actives",
+      "display": {
+        "zh": "海洋/蓝色生物技术活性物",
+        "en": "Marine / blue biotech actives"
+      },
+      "definition": {
+        "zh": "微藻、海洋来源或蓝色生物技术活性物。",
+        "en": "Microalgae, marine-origin, or blue-biotech actives."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "sustained_release",
+      "display": {
+        "zh": "缓释/控释",
+        "en": "Sustained release"
+      },
+      "definition": {
+        "zh": "控制活性物释放节奏以提升持久性或温和性的技术。",
+        "en": "Controlled release technologies improving duration or mildness."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "synthetic_biology",
+      "display": {
+        "zh": "合成生物学",
+        "en": "Synthetic biology"
+      },
+      "definition": {
+        "zh": "通过生物制造或工程化生物体系生产活性物。",
+        "en": "Bio-manufacturing or engineered biological systems for active production."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "fermentation_biotech",
+      "display": {
+        "zh": "发酵/生物技术",
+        "en": "Fermentation / biotech"
+      },
+      "definition": {
+        "zh": "通过发酵、生物转化或生物技术生产原料。",
+        "en": "Fermentation, biotransformation, or biotech-based ingredient production."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "sustainability_chemistry",
+      "display": {
+        "zh": "绿色化学/可持续工艺",
+        "en": "Sustainable chemistry"
+      },
+      "definition": {
+        "zh": "低碳、绿色溶剂、生物基、循环利用或更低环境影响的制造实践。",
+        "en": "Lower-carbon, green-solvent, bio-based, circular, or lower-impact manufacturing practices."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "ai_rd_formulation",
+      "display": {
+        "zh": "AI研发/配方",
+        "en": "AI R&D / formulation"
+      },
+      "definition": {
+        "zh": "AI用于原料筛选、配方优化、功效评价或研发提速。",
+        "en": "AI used for ingredient screening, formulation optimization, efficacy evaluation, or R&D acceleration."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "anti_aging",
+      "display": {
+        "zh": "抗衰/抗皱",
+        "en": "Anti-aging / anti-wrinkle"
+      },
+      "definition": {
+        "zh": "围绕皱纹、紧致、胶原、弹性或衰老相关的功效宣称。",
+        "en": "Claims around wrinkles, firmness, collagen, elasticity, or aging."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "whitening_brightening",
+      "display": {
+        "zh": "美白/提亮",
+        "en": "Whitening / brightening"
+      },
+      "definition": {
+        "zh": "肤色、色斑、暗沉或亮度改善相关宣称。",
+        "en": "Claims around tone, spots, dullness, or radiance."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "moisturizing",
+      "display": {
+        "zh": "保湿",
+        "en": "Moisturizing"
+      },
+      "definition": {
+        "zh": "补水、锁水、长效保湿或水润肤感相关宣称。",
+        "en": "Hydration, water retention, long-lasting moisture, or dewy feel claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "barrier_repair",
+      "display": {
+        "zh": "屏障修护",
+        "en": "Barrier repair"
+      },
+      "definition": {
+        "zh": "皮肤屏障、敏感肌、泛红或修护相关宣称。",
+        "en": "Skin barrier, sensitive-skin, redness, or repair claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "soothing_sensitive_skin",
+      "display": {
+        "zh": "舒缓/敏感肌",
+        "en": "Soothing / sensitive skin"
+      },
+      "definition": {
+        "zh": "舒缓、降红、抗刺激或敏感肌友好相关宣称。",
+        "en": "Soothing, redness reduction, anti-irritation, or sensitive-skin claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "firming_lifting",
+      "display": {
+        "zh": "紧致提拉",
+        "en": "Firming / lifting"
+      },
+      "definition": {
+        "zh": "紧致、轮廓、弹性和提拉相关宣称。",
+        "en": "Firmness, contour, elasticity, and lifting claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "microbiome_balance",
+      "display": {
+        "zh": "微生态平衡",
+        "en": "Microbiome balance"
+      },
+      "definition": {
+        "zh": "皮肤或头皮微生态相关宣称。",
+        "en": "Skin or scalp microbiome-related claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "hair_scalp_care",
+      "display": {
+        "zh": "发用/头皮功效",
+        "en": "Hair / scalp care"
+      },
+      "definition": {
+        "zh": "发丝、头皮、控油、去屑、强韧等发用宣称。",
+        "en": "Hair strand, scalp, oil-control, anti-dandruff, or strengthening claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "enhance_penetration",
+      "display": {
+        "zh": "促进渗透",
+        "en": "Enhanced penetration"
+      },
+      "definition": {
+        "zh": "提升活性物吸收、渗透或递送效率的宣称。",
+        "en": "Claims around improved absorption, penetration, or delivery efficiency."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "emotion_wellbeing",
+      "display": {
+        "zh": "情绪护肤/愉悦",
+        "en": "Emotional wellbeing"
+      },
+      "definition": {
+        "zh": "愉悦、放松、情绪护理或神经美容相关宣称。",
+        "en": "Wellbeing, relaxation, emotional care, or neurocosmetic claims."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "skincare",
+      "display": {
+        "zh": "护肤/面部清洁",
+        "en": "Skincare / facial cleansing"
+      },
+      "definition": {
+        "zh": "面部清洁、卸妆、精华、面霜、水乳或面膜。",
+        "en": "Facial cleansing, makeup removal, serum, cream, lotion, or mask applications."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "sun_care",
+      "display": {
+        "zh": "防晒",
+        "en": "Sun care"
+      },
+      "definition": {
+        "zh": "防晒产品或防晒剂应用。",
+        "en": "Sunscreen products or UV-filter applications."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "hair_care",
+      "display": {
+        "zh": "洗护发",
+        "en": "Hair care"
+      },
+      "definition": {
+        "zh": "洗发、养护、头皮护理或护色。",
+        "en": "Shampoo, conditioning, scalp care, or color protection."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "body_personal_care",
+      "display": {
+        "zh": "身体/个护",
+        "en": "Body / personal care"
+      },
+      "definition": {
+        "zh": "身体护理、沐浴或个护场景。",
+        "en": "Body care, shower, or personal-care applications."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "teen_age_care",
+      "display": {
+        "zh": "青少年护理",
+        "en": "Teen age care"
+      },
+      "definition": {
+        "zh": "青少年头部、面部、身体或口腔护理。",
+        "en": "Teen hair, face, body, or oral-care applications."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "men_care",
+      "display": {
+        "zh": "男士护理",
+        "en": "Men care"
+      },
+      "definition": {
+        "zh": "男士面部护理、头发洗护或造型。",
+        "en": "Men facial care, hair care, or styling."
+      },
+      "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "fragrance_perfume",
+      "display": {
+        "zh": "香水/香氛",
+        "en": "Fragrance / perfume"
+      },
+      "definition": {
+        "zh": "香水、家居香氛或身体香氛。",
+        "en": "Perfume, home fragrance, or body fragrance."
+      },
+      "source": "v4_tag_dictionary"
+    }
+  ],
+  "source_links": [
+    {
+      "source_ref_id": "src_reg_filing",
+      "title": {
+        "zh": "中国化妆品新原料备案公开信息",
+        "en": "China cosmetic new ingredient filing public information"
+      },
+      "source_name": {
+        "zh": "国家药监局 / 行业公开信息",
+        "en": "NMPA / Industry public sources"
+      },
+      "url": "https://www.nmpa.gov.cn/",
+      "source_type": "regulatory",
+      "section_ids": [
+        "regulation_policy"
+      ],
+      "item_ids": [
+        "reg_001",
+        "reg_002"
+      ]
+    },
+    {
+      "source_ref_id": "src_market_size",
+      "title": {
+        "zh": "全球及中国化妆品原料市场规模公开资料",
+        "en": "Public market sizing sources for global and China cosmetic ingredients"
+      },
+      "source_name": {
+        "zh": "行业报告 / 公开市场数据",
+        "en": "Industry reports / public market data"
+      },
+      "url": "https://www.specialchem.com/",
+      "source_type": "market_data",
+      "section_ids": [
+        "market_flash"
+      ],
+      "item_ids": [
+        "market_001"
+      ]
+    },
+    {
+      "source_ref_id": "src_watchlist",
+      "title": {
+        "zh": "V4 Watchlist 监测来源",
+        "en": "V4 Watchlist monitoring sources"
+      },
+      "source_name": {
+        "zh": "Croda 监测名单",
+        "en": "Croda Watchlist"
+      },
+      "url": "https://www.croda.com/en-gb",
+      "source_type": "watchlist",
+      "section_ids": [
+        "competitor_watch",
+        "ka_watch"
+      ],
+      "item_ids": [
+        "comp_001",
+        "ka_001"
+      ]
+    },
+    {
+      "source_ref_id": "src_basf_peptide",
+      "title": {
+        "zh": "BASF 多肽与胶原相关活性物发布",
+        "en": "BASF peptide and collagen-related active launch"
+      },
+      "source_name": {
+        "zh": "巴斯夫",
+        "en": "BASF"
+      },
+      "url": "https://www.basf.com/global/en/media/news-releases/2025/04/p-25-057",
+      "source_type": "competitor_website",
+      "section_ids": [
+        "competitor_watch",
+        "ingredient_innovation"
+      ],
+      "item_ids": [
+        "comp_001",
+        "ing_001"
+      ]
+    },
+    {
+      "source_ref_id": "src_symrise_wellness",
+      "title": {
+        "zh": "Symrise Care & Wellness 业务整合",
+        "en": "Symrise Care & Wellness division"
+      },
+      "source_name": {
+        "zh": "Nutrition Insight",
+        "en": "Nutrition Insight"
+      },
+      "url": "https://www.nutritioninsight.com/news/symrise-care-wellness-division.html",
+      "source_type": "media",
+      "section_ids": [
+        "competitor_watch"
+      ],
+      "item_ids": [
+        "comp_002"
+      ]
+    },
+    {
+      "source_ref_id": "src_incosmetics",
+      "title": {
+        "zh": "in-cosmetics Global 活动与原料发布",
+        "en": "in-cosmetics Global event and ingredient launches"
+      },
+      "source_name": {
+        "zh": "in-cosmetics 展商新闻",
+        "en": "in-cosmetics / Exhibitor news"
+      },
+      "url": "https://www.in-cosmetics.com/global/en-gb.html",
+      "source_type": "event",
+      "section_ids": [
+        "market_event",
+        "ingredient_innovation"
+      ],
+      "item_ids": [
+        "event_001",
+        "ing_002"
+      ]
+    },
+    {
+      "source_ref_id": "src_loreal_claims",
+      "title": {
+        "zh": "欧莱雅功效与成分趋势",
+        "en": "L'Oreal claims and ingredient trends"
+      },
+      "source_name": {
+        "zh": "品牌公开新闻",
+        "en": "Public brand news"
+      },
+      "url": "https://www.loreal.com/en/",
+      "source_type": "brand_website",
+      "section_ids": [
+        "ka_watch"
+      ],
+      "item_ids": [
+        "ka_001"
+      ]
+    },
+    {
+      "source_ref_id": "src_proya_repair",
+      "title": {
+        "zh": "珀莱雅修护与抗老新品传播",
+        "en": "Proya repair and anti-aging product communication"
+      },
+      "source_name": {
+        "zh": "品牌公开新闻",
+        "en": "Public brand news"
+      },
+      "url": "https://www.proya-group.com/",
+      "source_type": "brand_website",
+      "section_ids": [
+        "ka_watch"
+      ],
+      "item_ids": [
+        "ka_002"
+      ]
+    },
+    {
+      "source_ref_id": "src_cbe",
+      "title": {
+        "zh": "CBE / PCHi 市场活动公开信息",
+        "en": "CBE / PCHi public event information"
+      },
+      "source_name": {
+        "zh": "活动公开页面",
+        "en": "Event public pages"
+      },
+      "url": "https://www.pchi-china.com/en-us.html",
+      "source_type": "event",
+      "section_ids": [
+        "market_event"
+      ],
+      "item_ids": [
+        "event_002"
+      ]
+    },
+    {
+      "source_ref_id": "src_reg_allergen",
+      "title": {
+        "zh": "致敏原标识与功效宣称合规",
+        "en": "Allergen labeling and claim substantiation compliance"
+      },
+      "source_name": {
+        "zh": "监管公开来源",
+        "en": "Regulatory public sources"
+      },
+      "url": "https://www.nmpa.gov.cn/",
+      "source_type": "regulatory",
+      "section_ids": [
+        "regulation_policy"
+      ],
+      "item_ids": [
+        "reg_003"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "section_id": "market_flash",
+      "title": {
+        "zh": "市场快讯 · 本月热点事件",
+        "en": "Market Flash · Monthly Highlights"
+      },
+      "summary": {
+        "zh": "",
+        "en": ""
+      },
+      "layout": "cards",
+      "max_items": 10,
+      "items": [
+        {
+          "item_id": "market_001",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "市场规模",
+            "en": "Market size"
+          },
+          "title": {
+            "zh": "全球化妆品原料市场维持增长，中国仍是高增速区域",
+            "en": "Global cosmetic ingredients continue growing, with China remaining a high-CAGR region"
+          },
+          "summary": {
+            "zh": "公开资料显示，全球化妆品原料市场规模约 350 亿美元，预计未来数年保持中个位数增长；中国市场增速持续高于全球平均，年复合增速约 8%，仍是各大原料商重点投入的高增速区域。功效护肤、抗老与屏障修护是拉动原料需求的主要品类。",
+            "en": "Public sources put the global cosmetic ingredients market at about USD 35B with mid-single-digit growth expected; China keeps growing faster than the global average at roughly 8% CAGR and remains a priority high-growth region for suppliers. Efficacy skincare, anti-aging and barrier repair are the main demand drivers."
+          },
+          "detail": {
+            "zh": "这条信息支撑顶部市场规模与 CAGR KPI，也为竞品、KA 与新成分分析提供市场背景。",
+            "en": "This item supports the top market-size and CAGR KPIs and frames competitor, KA, and ingredient analysis."
+          },
+          "tags": [
+            "market_consumer_insight",
+            "sustainability_chemistry"
+          ],
+          "glossary_term_ids": [
+            "market_consumer_insight",
+            "sustainability_chemistry"
+          ],
+          "source_ref_ids": [
+            "src_market_size"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "market",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "原料需求由功效而非数量驱动，多肽、重组胶原、递送技术等高附加值活性物的增速明显快于基础原料。",
+                "en": "Demand is driven by efficacy rather than volume; high-value actives such as peptides, recombinant collagen and delivery systems grow markedly faster than commodity ingredients."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "中国高增速区域适合优先投放高端抗老与递送类原料；建议把市场规模与 CAGR 作为客户沟通的宏观背景，支撑高端定位。",
+                "en": "China's high-growth segment favours premium anti-aging and delivery ingredients first; use market size and CAGR as the macro backdrop in customer conversations to support premium positioning."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "market_002",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "新原料备案",
+            "en": "New filings"
+          },
+          "title": {
+            "zh": "2025 年新原料备案数量达到 169 个，国产新原料占比突出",
+            "en": "New ingredient filings reached 169 in 2025, with domestic filings taking the majority share"
+          },
+          "summary": {
+            "zh": "据公开备案信息，2025 年中国化妆品新原料备案数量达到 169 个，较上一年增长约 88%；其中国产新原料占比接近九成，显示本土原料商研发与合规能力快速提升，国产替代趋势进一步确立。",
+            "en": "Per public filing data, China recorded 169 cosmetic new-ingredient filings in 2025, up about 88% year on year, with domestic ingredients making up nearly 90% — signalling rapidly improving local R&D and compliance capability and a firmer domestic-substitution trend."
+          },
+          "detail": {
+            "zh": "新原料备案活跃度可帮助判断本地供应、法规节奏和创新方向。",
+            "en": "New ingredient filing momentum helps assess local supply, regulatory pacing, and innovation direction."
+          },
+          "tags": [
+            "new_ingredient_filing",
+            "market_consumer_insight"
+          ],
+          "glossary_term_ids": [
+            "new_ingredient_filing",
+            "market_consumer_insight"
+          ],
+          "source_ref_ids": [
+            "src_reg_filing"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "regulation",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "备案数量与国产占比同时走高，说明创新热度与合规节奏同步加快，本土新锐正成为竞争变量。",
+                "en": "Filing volume and the domestic share rose together, showing innovation heat and compliance pace accelerating in step, with local challengers becoming a competitive variable."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "需密切跟踪高频备案的成分方向和企业，判断国产替代对禾大现有品类的冲击与潜在合作机会。",
+                "en": "Track the ingredients and companies behind frequent filings to assess both the threat of domestic substitution to Croda's categories and potential partnership opportunities."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "market_003",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "竞品发布",
+            "en": "Competitor launch"
+          },
+          "title": {
+            "zh": "BASF 多肽与胶原相关活性物强化抗老叙事",
+            "en": "BASF peptide and collagen-related actives strengthen the anti-aging narrative"
+          },
+          "summary": {
+            "zh": "巴斯夫围绕多肽与胶原相关活性物持续补强抗老与结构修护产品线，强调高端活性物的功效叙事与证据链表达，进一步巩固其在精准抗老赛道的布局。",
+            "en": "BASF continues to strengthen its anti-aging and structural-repair lines around peptide and collagen-related actives, emphasising efficacy narratives and evidence chains for premium actives and reinforcing its position in precision anti-aging."
+          },
+          "detail": {
+            "zh": "该事件同时关联竞品动态和新成分趋势，适合跟踪抗老功效原料的竞争叙事。",
+            "en": "This event also connects to competitor activity and ingredient trends, making it useful for tracking anti-aging active narratives."
+          },
+          "tags": [
+            "product_launch_or_update",
+            "peptides",
+            "anti_aging"
+          ],
+          "glossary_term_ids": [
+            "product_launch_or_update",
+            "peptides",
+            "anti_aging"
+          ],
+          "source_ref_ids": [
+            "src_basf_peptide"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "product",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "国际大厂把多肽+胶原作为高端抗老的核心组合，推动赛道从单一成分向复合机制升级。",
+                "en": "Global majors are making peptide-plus-collagen the core premium anti-aging combination, pushing the field from single ingredients toward combined mechanisms."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "禾大 Matrixyl® 系列需强化差异化卖点（缓释、肤感、配方兼容性）与功效证据，避免在纯成分层面被对标。",
+                "en": "Croda's Matrixyl® range should sharpen differentiators (sustained release, sensory feel, formulation compatibility) and efficacy evidence to avoid being benchmarked purely at the ingredient level."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "market_004",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "活动",
+            "en": "Event"
+          },
+          "title": {
+            "zh": "in-cosmetics 与 PCHi 继续成为竞品发布和趋势观察的关键场合",
+            "en": "in-cosmetics and PCHi remain key venues for competitor launches and trend scanning"
+          },
+          "summary": {
+            "zh": "in-cosmetics Global 与 PCHi 继续成为国际与国内原料商发布新品、释放技术叙事和观察趋势的关键场合；本届展会上递送技术、可持续工艺和生物技术活性物是高频主题。",
+            "en": "in-cosmetics Global and PCHi remain key venues where global and domestic suppliers launch products, release technology narratives and read trends; delivery technology, sustainable processes and biotech actives were high-frequency themes this edition."
+          },
+          "detail": {
+            "zh": "展会信息可帮助识别原料发布节奏、技术关键词和供应商传播重点。",
+            "en": "Event intelligence helps identify launch cadence, technology vocabulary, and supplier communication focus."
+          },
+          "tags": [
+            "market_consumer_insight"
+          ],
+          "glossary_term_ids": [
+            "market_consumer_insight"
+          ],
+          "source_ref_ids": [
+            "src_incosmetics",
+            "src_cbe"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "event",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "展会的发布节奏与展台主题，是预判竞品下一阶段技术路线的领先指标。",
+                "en": "Launch cadence and booth themes at trade shows are leading indicators of competitors' next-stage technology roadmaps."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "建议系统收集竞品展会发布与技术词汇，作为新趋势情报和竞品对标的输入。",
+                "en": "Systematically capture competitor show launches and technology vocabulary as input for trend intelligence and competitor benchmarking."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "market_005",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "KA 信号",
+            "en": "KA signal"
+          },
+          "title": {
+            "zh": "欧莱雅、珀莱雅等 KA 品牌继续围绕修护、抗老和屏障功效做成分叙事",
+            "en": "KA brands such as L'Oreal and Proya continue building ingredient narratives around repair, anti-aging, and barrier care"
+          },
+          "summary": {
+            "zh": "欧莱雅、珀莱雅等国内外 KA 品牌继续围绕修护、抗老和屏障功效构建成分叙事，强调活性物的证据链和故事化表达，对上游高端功效原料与递送技术保持稳定需求。",
+            "en": "Domestic and international key accounts such as L'Oréal and Proya keep building ingredient narratives around repair, anti-aging and barrier claims, emphasising evidence chains and storytelling, and sustaining demand for premium upstream actives and delivery technology."
+          },
+          "detail": {
+            "zh": "这类信息对 BD 和客户沟通最有价值，不应被混在泛营销新闻里。",
+            "en": "This signal is most valuable for BD and customer conversations and should not be buried inside generic marketing news."
+          },
+          "tags": [
+            "market_consumer_insight",
+            "anti_aging",
+            "barrier_repair"
+          ],
+          "glossary_term_ids": [
+            "market_consumer_insight",
+            "anti_aging",
+            "barrier_repair"
+          ],
+          "source_ref_ids": [
+            "src_loreal_claims",
+            "src_proya_repair"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "ka",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "下游品牌的功效叙事方向，直接决定上游原料的需求结构。",
+                "en": "The claim narratives of downstream brands directly shape the demand structure for upstream ingredients."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "可从 KA 品牌主推功效反推备料与概念方向，提前准备 BD 沟通素材。",
+                "en": "Work back from key accounts' lead claims to anticipate stocking and concept direction, and prepare BD materials in advance."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "market_006",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "法规",
+            "en": "Regulation"
+          },
+          "title": {
+            "zh": "功效宣称评价和致敏原标识继续影响配方传播方式",
+            "en": "Claim substantiation and allergen labeling continue shaping formulation communication"
+          },
+          "summary": {
+            "zh": "功效宣称评价和致敏原标识要求继续影响配方和传播方式：品牌方在宣称表达上更趋谨慎，对原料的功效证据和合规支撑提出更高要求；欧盟新增致敏原标注也将影响出口配方。",
+            "en": "Claim-substantiation rules and allergen-labelling requirements keep shaping formulation and communication: brands are more cautious in wording claims and demand stronger efficacy evidence and compliance support from ingredients, while the EU's expanded allergen labelling will affect export formulas."
+          },
+          "detail": {
+            "zh": "该动态影响原料卖点、测试证据、上市节奏和客户沟通文本。",
+            "en": "This signal affects ingredient claims, testing evidence, launch timing, and customer communication copy."
+          },
+          "tags": [
+            "claim_substantiation"
+          ],
+          "glossary_term_ids": [
+            "claim_substantiation"
+          ],
+          "source_ref_ids": [
+            "src_reg_allergen"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "regulation",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "合规趋严把\"证据链\"从加分项变成准入项，利好能提供完整功效与安全数据的上游原料商。",
+                "en": "Tighter compliance turns the evidence chain from a bonus into an entry requirement, favouring upstream suppliers that can provide complete efficacy and safety data."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "建议把功效测试与合规文档作为原料卖点的一部分，主动支持客户的宣称合规。",
+                "en": "Make efficacy testing and compliance documentation part of the ingredient value proposition and proactively support customers' claim compliance."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "market_007",
+          "type": "news_card",
+          "date": "2026-06",
+          "category": {
+            "zh": "可持续",
+            "en": "Sustainability"
+          },
+          "title": {
+            "zh": "生物基、绿色工艺和供应链透明度继续进入原料商叙事",
+            "en": "Bio-based sourcing, greener processes, and supply-chain transparency remain central to supplier narratives"
+          },
+          "summary": {
+            "zh": "生物基原料、绿色工艺和供应链透明度继续进入原料商叙事，碳足迹、可持续认证和可追溯性正从\"加分项\"转为高端客户的\"必选项\"，并开始影响采购决策。",
+            "en": "Bio-based ingredients, green processes and supply-chain transparency continue to enter supplier narratives; carbon footprint, sustainability certifications and traceability are shifting from a bonus to a must-have for premium customers and starting to influence purchasing."
+          },
+          "detail": {
+            "zh": "可持续相关动态可集中回顾，用于观察供应商故事、KA 卖点和客户沟通机会。",
+            "en": "Sustainability-related signals can be reviewed together to observe supplier stories, KA selling points, and customer conversation opportunities."
+          },
+          "tags": [
+            "sustainability_chemistry",
+            "market_consumer_insight"
+          ],
+          "glossary_term_ids": [
+            "sustainability_chemistry",
+            "market_consumer_insight"
+          ],
+          "source_ref_ids": [
+            "src_watchlist"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "category_key": "sustainability",
+          "analysis": [
+            {
+              "label": {
+                "zh": "市场信号",
+                "en": "Market signal"
+              },
+              "text": {
+                "zh": "可持续从营销话术转向可量化指标（碳足迹、认证、生物质平衡），成为差异化竞争维度。",
+                "en": "Sustainability is moving from marketing language to quantifiable metrics (carbon footprint, certification, biomass balance) and becoming a differentiation axis."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "建议沉淀可持续数据资产（碳足迹、认证），在高端客户沟通中前置表达。",
+                "en": "Build sustainability data assets (carbon footprint, certifications) and lead with them in premium-customer conversations."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "competitor_watch",
+      "title": {
+        "zh": "竞品动态监测",
+        "en": "Competitor Watch"
+      },
+      "summary": {
+        "zh": "",
+        "en": ""
+      },
+      "layout": "matrix",
+      "items": [
+        {
+          "item_id": "comp_001",
+          "type": "matrix_row",
+          "company": "BASF",
+          "group": "international",
+          "title": {
+            "zh": "多肽与胶原相关活性物组合",
+            "en": "Peptide and collagen-related active portfolio"
+          },
+          "summary": {
+            "zh": "巴斯夫持续布局多肽与胶原相关活性物组合，强化抗老、结构修护和高端活性物叙事，并以功效证据和配方兼容性作为主要卖点，巩固其在精准抗老原料市场的领先地位。",
+            "en": "BASF keeps building its peptide and collagen-related active portfolio, reinforcing anti-aging, structural-repair and premium-active narratives, with efficacy evidence and formulation compatibility as key selling points, consolidating its lead in precision anti-aging ingredients."
+          },
+          "detail": {
+            "zh": "对 Croda 的启示是保持高端功效原料的证据链表达，并强调差异化肤感和配方兼容性。",
+            "en": "For Croda, the implication is to sharpen evidence-led claims for premium actives while stressing differentiated sensory and formulation compatibility."
+          },
+          "tags": [
+            "product_launch_or_update",
+            "peptides",
+            "anti_aging"
+          ],
+          "glossary_term_ids": [
+            "product_launch_or_update",
+            "peptides",
+            "anti_aging"
+          ],
+          "source_ref_ids": [
+            "src_basf_peptide"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "company_display": {
+            "zh": "巴斯夫",
+            "en": "BASF"
+          },
+          "analysis": [
+            {
+              "label": {
+                "zh": "战略意图",
+                "en": "Strategic intent"
+              },
+              "text": {
+                "zh": "通过\"多肽+胶原\"复合机制把抗老叙事从单一成分升级为系统解决方案，绑定高端客户。",
+                "en": "Use the peptide-plus-collagen combined mechanism to upgrade anti-aging from single ingredients to a system solution, locking in premium customers."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场影响",
+                "en": "Market impact"
+              },
+              "text": {
+                "zh": "推高高端抗老原料的功效证据门槛，挤压仅靠单一成分竞争的供应商空间。",
+                "en": "Raises the efficacy-evidence bar for premium anti-aging ingredients, squeezing suppliers that compete on a single ingredient alone."
+              }
+            },
+            {
+              "label": {
+                "zh": "应对建议",
+                "en": "Recommendation"
+              },
+              "text": {
+                "zh": "禾大 Matrixyl® 系列应突出缓释/递送与肤感差异化，并补齐临床功效证据，避免在成分层面被直接对标。",
+                "en": "Croda's Matrixyl® range should highlight sustained-release/delivery and sensory differentiation and fill in clinical efficacy evidence to avoid being benchmarked at the ingredient level."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "comp_002",
+          "type": "matrix_row",
+          "company": "Symrise",
+          "group": "international",
+          "title": {
+            "zh": "Care & Wellness 业务整合",
+            "en": "Care & Wellness business integration"
+          },
+          "summary": {
+            "zh": "德之馨推进 Care & Wellness 业务整合，将护肤、个护与微生态、情绪健康等概念打通，强化\"健康护肤\"平台叙事，意图通过业务重组提升活性物与解决方案的协同销售。",
+            "en": "Symrise is advancing its Care & Wellness integration, connecting skincare and personal care with microbiome and emotional-wellbeing concepts to strengthen a 'healthy skincare' platform narrative and lift cross-selling of actives and solutions through the reorganisation."
+          },
+          "detail": {
+            "zh": "这类动作提示原料商正在从单一成分转向跨品类解决方案。",
+            "en": "This type of move suggests suppliers are shifting from individual ingredients to cross-category solution platforms."
+          },
+          "tags": [
+            "corporate_move",
+            "microbiome_balance"
+          ],
+          "glossary_term_ids": [
+            "corporate_move",
+            "microbiome_balance"
+          ],
+          "source_ref_ids": [
+            "src_symrise_wellness"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "company_display": {
+            "zh": "德之馨",
+            "en": "Symrise"
+          },
+          "analysis": [
+            {
+              "label": {
+                "zh": "战略意图",
+                "en": "Strategic intent"
+              },
+              "text": {
+                "zh": "以业务整合构建\"健康+美妆\"跨品类平台，提升解决方案式销售和客户黏性。",
+                "en": "Use the integration to build a cross-category 'health + beauty' platform, boosting solution selling and customer stickiness."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场影响",
+                "en": "Market impact"
+              },
+              "text": {
+                "zh": "微生态与情绪护肤概念有望被进一步主流化，带动相关活性物需求。",
+                "en": "Microbiome and emotional-skincare concepts may become more mainstream, lifting demand for related actives."
+              }
+            },
+            {
+              "label": {
+                "zh": "应对建议",
+                "en": "Recommendation"
+              },
+              "text": {
+                "zh": "关注德之馨微生态产品线动向，评估禾大在屏障修护/微生态方向的原料补位与差异化机会。",
+                "en": "Watch Symrise's microbiome line and assess Croda's gap-filling and differentiation opportunities in barrier-repair/microbiome ingredients."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "comp_003",
+          "type": "matrix_row",
+          "company": "Clariant / Lucas Meyer",
+          "group": "international",
+          "title": {
+            "zh": "微藻与蜂蜜修护相关概念",
+            "en": "Microalgae and honey-repair concepts"
+          },
+          "summary": {
+            "zh": "科莱恩（Lucas Meyer）围绕微藻与蜂蜜修护相关概念推出活性物，结合蓝生物技术和可持续来源叙事，主打屏障修护与温和功效，强化其天然来源高端活性物的定位。",
+            "en": "Clariant (Lucas Meyer) is launching actives around microalgae and honey-repair concepts, combining blue-biotech and sustainable-sourcing narratives, focusing on barrier repair and gentle efficacy and reinforcing its natural-origin premium-active positioning."
+          },
+          "detail": {
+            "zh": "可作为新趋势栏目中的递送、修护和天然来源组合案例。",
+            "en": "Can be used as a case for delivery, repair, and natural-origin combinations in the New Ingredients section."
+          },
+          "tags": [
+            "product_launch_or_update",
+            "marine_blue_biotech_actives",
+            "barrier_repair",
+            "sustainability_chemistry"
+          ],
+          "glossary_term_ids": [
+            "product_launch_or_update",
+            "marine_blue_biotech_actives",
+            "barrier_repair",
+            "sustainability_chemistry"
+          ],
+          "source_ref_ids": [
+            "src_incosmetics"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "company_display": {
+            "zh": "科莱恩",
+            "en": "Clariant / Lucas Meyer"
+          },
+          "analysis": [
+            {
+              "label": {
+                "zh": "战略意图",
+                "en": "Strategic intent"
+              },
+              "text": {
+                "zh": "用\"海洋/蓝生物技术+可持续来源\"构建天然高端活性物的差异化故事。",
+                "en": "Use 'marine/blue-biotech + sustainable sourcing' to build a differentiated natural premium-active story."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场影响",
+                "en": "Market impact"
+              },
+              "text": {
+                "zh": "推动屏障修护赛道与可持续叙事结合，抬高天然来源活性物的溢价空间。",
+                "en": "Pushes the barrier-repair field to merge with sustainability narratives, lifting the premium of natural-origin actives."
+              }
+            },
+            {
+              "label": {
+                "zh": "应对建议",
+                "en": "Recommendation"
+              },
+              "text": {
+                "zh": "评估禾大在海洋来源/蓝生物技术活性物的布局，必要时通过合作或活字典快速补充新成分情报。",
+                "en": "Assess Croda's footprint in marine/blue-biotech actives and, if needed, fill new-ingredient intelligence quickly via partnerships or the living dictionary."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "comp_004",
+          "type": "matrix_row",
+          "company": "Domestic suppliers",
+          "group": "domestic",
+          "title": {
+            "zh": "国产替代与全矩阵个护原料方案",
+            "en": "Domestic substitution and full personal-care ingredient portfolios"
+          },
+          "summary": {
+            "zh": "多家国内原料商加速推进国产替代和全矩阵个护原料方案，凭借成本、响应速度和本土合规优势快速切入市场，并通过融资与产能扩张提升供应能力，对国际大厂形成结构性竞争。",
+            "en": "Several domestic suppliers are accelerating import substitution and full-matrix personal-care ingredient offerings, entering the market fast on cost, responsiveness and local-compliance advantages and scaling capacity through funding and expansion, posing structural competition to global majors."
+          },
+          "detail": {
+            "zh": "报告中应把这类动态与 Croda 的本地化沟通和配方服务能力连接起来。",
+            "en": "The report should connect this signal to Croda's local communication and formulation-service capabilities."
+          },
+          "tags": [
+            "corporate_move"
+          ],
+          "glossary_term_ids": [
+            "corporate_move"
+          ],
+          "source_ref_ids": [
+            "src_watchlist"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "company_display": {
+            "zh": "国内原料商",
+            "en": "Domestic suppliers"
+          },
+          "analysis": [
+            {
+              "label": {
+                "zh": "战略意图",
+                "en": "Strategic intent"
+              },
+              "text": {
+                "zh": "以\"全矩阵+国产替代+快速响应\"抢占中端市场，再向高端活性物渗透。",
+                "en": "Capture the mid-tier with 'full matrix + import substitution + fast response', then push into premium actives."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场影响",
+                "en": "Market impact"
+              },
+              "text": {
+                "zh": "加剧基础与中端原料价格竞争，并逐步向高附加值赛道蔓延。",
+                "en": "Intensifies price competition in commodity and mid-tier ingredients and gradually spreads to higher-value segments."
+              }
+            },
+            {
+              "label": {
+                "zh": "应对建议",
+                "en": "Recommendation"
+              },
+              "text": {
+                "zh": "禾大应守住高端功效与技术壁垒，强化证据链与服务，避免在中端被价格战裹挟。",
+                "en": "Croda should defend premium efficacy and technology barriers and strengthen evidence and service to avoid being dragged into a mid-tier price war."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "ingredient_innovation",
+      "title": {
+        "zh": "新成分 & 新趋势情报",
+        "en": "New Ingredients & Trend Intelligence"
+      },
+      "summary": {
+        "zh": "",
+        "en": ""
+      },
+      "layout": "trend_cards",
+      "items": [
+        {
+          "item_id": "ing_001",
+          "type": "trend_card",
+          "title": {
+            "zh": "精准多肽与胶原叙事",
+            "en": "Precision peptide and collagen narratives"
+          },
+          "summary": {
+            "zh": "抗老赛道继续从单一成分走向复合机制和证据链表达，精准多肽与胶原相关活性物成为高端抗老的核心叙事；品牌方更关注作用机理、临床功效和肤感综合表现，而非单一成分浓度。",
+            "en": "Anti-aging continues to shift from single ingredients to combined mechanisms and evidence-led claims, with precision peptides and collagen-related actives becoming the core premium narrative; brands focus on mechanism, clinical efficacy and overall sensory performance rather than single-ingredient concentration."
+          },
+          "detail": {
+            "zh": "可关联功效宣称、实验验证和 KA 品牌卖点，帮助判断高端抗老原料机会。",
+            "en": "This can connect efficacy claims, testing evidence, and KA brand messaging to assess premium anti-aging ingredient opportunities."
+          },
+          "tags": [
+            "peptides",
+            "anti_aging",
+            "research_science"
+          ],
+          "glossary_term_ids": [
+            "peptides",
+            "anti_aging",
+            "research_science"
+          ],
+          "source_ref_ids": [
+            "src_basf_peptide"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "技术原理",
+                "en": "Mechanism"
+              },
+              "text": {
+                "zh": "多肽通过信号传导调节胶原合成，与重组胶原形成\"信号+结构\"互补机制。",
+                "en": "Peptides modulate collagen synthesis through signalling and complement recombinant collagen in a 'signal + structure' mechanism."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场接受度",
+                "en": "Market adoption"
+              },
+              "text": {
+                "zh": "高端抗老线接受度高，消费者教育成熟，复合机制更易讲出差异化故事。",
+                "en": "Adoption is high in premium anti-aging lines with mature consumer education, and combined mechanisms make differentiation easier to tell."
+              }
+            },
+            {
+              "label": {
+                "zh": "应用前景与禾大对标",
+                "en": "Outlook & Croda benchmarking"
+              },
+              "text": {
+                "zh": "适配精华、面霜等高端品类；禾大 Matrixyl® 应以缓释递送和功效证据建立对标优势。",
+                "en": "Fits premium serums and creams; Croda's Matrixyl® should build a benchmarking edge on sustained-release delivery and efficacy evidence."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "ing_002",
+          "type": "trend_card",
+          "title": {
+            "zh": "包封/递送技术回到功效表达核心",
+            "en": "Encapsulation and delivery return to the center of efficacy communication"
+          },
+          "summary": {
+            "zh": "包封与递送技术重新回到功效表达的核心，递送系统通过提升活性物稳定性、渗透和缓释表现，直接影响最终功效和肤感；双靶向递送、微囊化和控释成为竞品技术叙事的高频词。",
+            "en": "Encapsulation and delivery technology is back at the centre of efficacy expression; delivery systems improve active stability, penetration and sustained release and directly affect end efficacy and sensory feel, with dual-targeting delivery, microencapsulation and controlled release becoming frequent terms in competitor narratives."
+          },
+          "detail": {
+            "zh": "该趋势影响活性物稳定性、肤感、渗透和功效表达，是配方沟通中的重要技术语言。",
+            "en": "This trend affects active stability, sensory feel, penetration, and efficacy communication, making it important technical language in formulation discussions."
+          },
+          "tags": [
+            "encapsulation_delivery",
+            "sustained_release",
+            "enhance_penetration"
+          ],
+          "glossary_term_ids": [
+            "encapsulation_delivery",
+            "sustained_release",
+            "enhance_penetration"
+          ],
+          "source_ref_ids": [
+            "src_incosmetics"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "技术原理",
+                "en": "Mechanism"
+              },
+              "text": {
+                "zh": "通过载体/包封改善活性物稳定性、靶向性与渗透，把\"成分功效\"转化为\"配方功效\"。",
+                "en": "Carriers and encapsulation improve stability, targeting and penetration, converting 'ingredient efficacy' into 'formulation efficacy'."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场接受度",
+                "en": "Market adoption"
+              },
+              "text": {
+                "zh": "递送叙事在高端线接受度上升，成为功效宣称的重要支撑。",
+                "en": "Delivery narratives are gaining acceptance in premium lines and becoming important support for efficacy claims."
+              }
+            },
+            {
+              "label": {
+                "zh": "应用前景与禾大对标",
+                "en": "Outlook & Croda benchmarking"
+              },
+              "text": {
+                "zh": "禾大递送平台可与竞品双靶向/缓释系统对标，强调精准递送与肤感优势，作为高端原料的核心卖点。",
+                "en": "Croda's delivery platforms can benchmark against competitors' dual-targeting/sustained-release systems, stressing precise delivery and sensory advantages as a core premium selling point."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "ing_003",
+          "type": "trend_card",
+          "title": {
+            "zh": "PDRN 与核酸类活性物继续受关注",
+            "en": "PDRN and nucleotide actives remain high-interest signals"
+          },
+          "summary": {
+            "zh": "PDRN 与核酸类活性物继续受到关注，主打修护、再生和医美级护肤叙事，国产 PDRN 原料的产能与成本优势推动其从医美向日化渗透，相关备案与新品持续增加。",
+            "en": "PDRN and nucleotide-based actives keep drawing attention around repair, regeneration and aesthetics-grade skincare; the capacity and cost advantages of domestic PDRN are pushing it from medical aesthetics into mass cosmetics, with related filings and launches rising."
+          },
+          "detail": {
+            "zh": "需要区分医美概念、化妆品功效和法规表达边界，避免修护叙事过度医疗化。",
+            "en": "The analysis should separate aesthetics narratives, cosmetic claims, and regulatory expression boundaries to avoid over-medicalized repair messaging."
+          },
+          "tags": [
+            "pdrn_nucleotides",
+            "barrier_repair",
+            "anti_aging"
+          ],
+          "glossary_term_ids": [
+            "pdrn_nucleotides",
+            "barrier_repair",
+            "anti_aging"
+          ],
+          "source_ref_ids": [
+            "src_reg_allergen"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "技术原理",
+                "en": "Mechanism"
+              },
+              "text": {
+                "zh": "核酸类活性物参与皮肤修护与再生相关通路，契合医美级修护叙事。",
+                "en": "Nucleotide-based actives engage skin-repair and regeneration pathways, fitting the aesthetics-grade repair narrative."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场接受度",
+                "en": "Market adoption"
+              },
+              "text": {
+                "zh": "受医美热度带动，消费者认知快速提升，但功效证据与合规表达仍需完善。",
+                "en": "Driven by aesthetics buzz, consumer awareness is rising fast, though efficacy evidence and compliant wording still need work."
+              }
+            },
+            {
+              "label": {
+                "zh": "应用前景与禾大对标",
+                "en": "Outlook & Croda benchmarking"
+              },
+              "text": {
+                "zh": "屏障修护与术后修护品类机会大；禾大可通过活字典持续跟踪国产 PDRN 动态，评估补位或差异化方向。",
+                "en": "Strong opportunity in barrier and post-procedure repair; Croda can track domestic PDRN via the living dictionary and assess gap-filling or differentiation."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "ing_004",
+          "type": "trend_card",
+          "title": {
+            "zh": "可持续工艺成为原料故事的一部分",
+            "en": "Sustainable processes become part of the ingredient story"
+          },
+          "summary": {
+            "zh": "可持续工艺成为原料故事的重要组成部分，绿色化学、生物质平衡和碳足迹数据被纳入原料卖点；客户不只看成分本身，也开始评估来源、工艺和供应链可信度。",
+            "en": "Sustainable processes have become a core part of the ingredient story; green chemistry, biomass balance and carbon-footprint data are built into selling points, and customers assess not only the ingredient itself but also its source, process and supply-chain credibility."
+          },
+          "detail": {
+            "zh": "该趋势横跨竞品动态、KA 监测和市场快讯，适合形成可持续原料专题回顾。",
+            "en": "This trend spans competitor activity, KA monitoring, and market flash items, making it suitable for a sustainability-focused ingredient review."
+          },
+          "tags": [
+            "sustainability_chemistry"
+          ],
+          "glossary_term_ids": [
+            "sustainability_chemistry"
+          ],
+          "source_ref_ids": [
+            "src_watchlist"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "技术原理",
+                "en": "Mechanism"
+              },
+              "text": {
+                "zh": "通过绿色化学与生物制造降低碳足迹和环境负荷，同时维持功效与肤感。",
+                "en": "Green chemistry and bio-manufacturing cut carbon footprint and environmental load while maintaining efficacy and sensory feel."
+              }
+            },
+            {
+              "label": {
+                "zh": "市场接受度",
+                "en": "Market adoption"
+              },
+              "text": {
+                "zh": "高端与出口导向客户接受度高，并逐步转为采购硬指标。",
+                "en": "Adoption is high among premium and export-oriented customers and is becoming a hard procurement criterion."
+              }
+            },
+            {
+              "label": {
+                "zh": "应用前景与禾大对标",
+                "en": "Outlook & Croda benchmarking"
+              },
+              "text": {
+                "zh": "禾大应把可持续数据（碳足迹、认证）资产化，作为高端客户沟通的前置卖点。",
+                "en": "Croda should turn sustainability data (carbon footprint, certifications) into an asset and lead with it in premium-customer conversations."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "ka_watch",
+      "title": {
+        "zh": "KA 监测",
+        "en": "KA Watch"
+      },
+      "summary": {
+        "zh": "",
+        "en": ""
+      },
+      "layout": "ka_groups",
+      "items": [
+        {
+          "item_id": "ka_001",
+          "type": "ka_item",
+          "group": "MNC",
+          "company": "L'Oreal / Lancome",
+          "title": {
+            "zh": "高端抗老线继续强调活性物、证据链和肤感",
+            "en": "Premium anti-aging lines continue emphasizing actives, evidence, and sensory profile"
+          },
+          "summary": {
+            "zh": "欧莱雅、兰蔻等 MNC 高端抗老线继续强调活性物、证据链和肤感的综合表现，围绕精准抗老和修护构建故事化功效叙事，对高端活性物与递送技术保持稳定且高标准的需求。",
+            "en": "MNC premium anti-aging lines such as L'Oréal and Lancôme keep emphasising the combined performance of actives, evidence chains and sensory feel, building story-led claims around precision anti-aging and repair, and sustaining steady, high-standard demand for premium actives and delivery technology."
+          },
+          "detail": {
+            "zh": "这类条目可帮助 BD 准备客户沟通问题：现有配方缺口是什么，Croda 能提供哪些差异化原料。",
+            "en": "This item helps BD prepare customer questions: what formulation gap exists and which differentiated Croda ingredients can address it."
+          },
+          "tags": [
+            "anti_aging",
+            "research_science"
+          ],
+          "glossary_term_ids": [
+            "anti_aging",
+            "research_science"
+          ],
+          "source_ref_ids": [
+            "src_loreal_claims"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "company_display": {
+            "zh": "欧莱雅 / 兰蔻",
+            "en": "L'Oreal / Lancome"
+          },
+          "analysis": [
+            {
+              "label": {
+                "zh": "客户卖点",
+                "en": "Brand positioning"
+              },
+              "text": {
+                "zh": "以\"科学+故事\"驱动高端抗老，强调临床证据与高级肤感。",
+                "en": "Drives premium anti-aging with 'science + story', stressing clinical evidence and refined sensory feel."
+              }
+            },
+            {
+              "label": {
+                "zh": "在用成分与技术",
+                "en": "Ingredients & tech in use"
+              },
+              "text": {
+                "zh": "多肽、重组胶原、递送系统等高端活性物组合。",
+                "en": "Premium active combinations such as peptides, recombinant collagen and delivery systems."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的供应机会",
+                "en": "Croda supply opportunity"
+              },
+              "text": {
+                "zh": "可针对其抗老线的功效与肤感缺口，推介差异化多肽与递送原料，提前准备 BD 证据包。",
+                "en": "Target the efficacy and sensory gaps in their anti-aging lines with differentiated peptide and delivery ingredients, and prepare a BD evidence pack in advance."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "ka_002",
+          "type": "ka_item",
+          "group": "Domestic",
+          "company": "Proya / Winona",
+          "title": {
+            "zh": "国内 KA 在修护、抗老、屏障方向持续做成分升级",
+            "en": "Domestic KAs continue upgrading ingredients around repair, anti-aging, and barrier care"
+          },
+          "summary": {
+            "zh": "珀莱雅、薇诺娜等国内 KA 在修护、抗老和屏障方向持续做成分升级，强调成分组合与递送技术的功效表达，并加快新品迭代节奏，对高性价比高端活性物与递送方案需求增长。",
+            "en": "Domestic key accounts such as Proya and Winona keep upgrading ingredients in repair, anti-aging and barrier directions, emphasising the efficacy of ingredient combinations and delivery technology and accelerating launch cadence, with growing demand for cost-effective premium actives and delivery solutions."
+          },
+          "detail": {
+            "zh": "报告不收录纯代言和纯促销，只有涉及成分、功效或配方方向的动态进入 KA 监测。",
+            "en": "The report excludes pure endorsements or promotions; only ingredient, claim, or formulation-related signals enter KA Watch."
+          },
+          "tags": [
+            "barrier_repair",
+            "encapsulation_delivery"
+          ],
+          "glossary_term_ids": [
+            "barrier_repair",
+            "encapsulation_delivery"
+          ],
+          "source_ref_ids": [
+            "src_proya_repair"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "company_display": {
+            "zh": "珀莱雅 / 薇诺娜",
+            "en": "Proya / Winona"
+          },
+          "analysis": [
+            {
+              "label": {
+                "zh": "客户卖点",
+                "en": "Brand positioning"
+              },
+              "text": {
+                "zh": "以屏障修护和敏感肌友好为核心，强调高性价比和快速迭代。",
+                "en": "Centres on barrier repair and sensitive-skin friendliness, stressing value for money and fast iteration."
+              }
+            },
+            {
+              "label": {
+                "zh": "在用成分与技术",
+                "en": "Ingredients & tech in use"
+              },
+              "text": {
+                "zh": "屏障修护成分、神经酰胺、包封/递送技术等。",
+                "en": "Barrier-repair ingredients, ceramides and encapsulation/delivery technology."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的供应机会",
+                "en": "Croda supply opportunity"
+              },
+              "text": {
+                "zh": "可提供兼具功效证据与成本可控的递送/修护原料，匹配其快速上新与高性价比需求。",
+                "en": "Offer delivery/repair ingredients that combine efficacy evidence with controlled cost to match their fast launches and value focus."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "market_event",
+      "title": {
+        "zh": "市场活动汇总",
+        "en": "Market Events"
+      },
+      "summary": {
+        "zh": "",
+        "en": ""
+      },
+      "layout": "timeline",
+      "items": [
+        {
+          "item_id": "event_001",
+          "type": "event",
+          "date": "2026-06",
+          "title": {
+            "zh": "in-cosmetics Global 原料发布与趋势观察",
+            "en": "in-cosmetics Global ingredient launches and trend scanning"
+          },
+          "summary": {
+            "zh": "in-cosmetics Global 作为全球原料商发布新品和释放技术叙事的核心场合，可用于观察国际供应商的发布节奏、技术词汇和展台主题；本届递送技术、生物技术活性物与可持续工艺是高频议题。",
+            "en": "As the core venue for global suppliers to launch products and release technology narratives, in-cosmetics Global is useful for reading suppliers' launch cadence, technology vocabulary and booth themes; delivery technology, biotech actives and sustainable processes were high-frequency topics this edition."
+          },
+          "detail": {
+            "zh": "若活动中出现具体原料发布，可与竞品动态和新趋势情报一起阅读。",
+            "en": "If a specific ingredient launch appears at the event, it can be read together with competitor and new-trend intelligence."
+          },
+          "tags": [
+            "product_launch_or_update",
+            "market_consumer_insight"
+          ],
+          "glossary_term_ids": [
+            "product_launch_or_update",
+            "market_consumer_insight"
+          ],
+          "source_ref_ids": [
+            "src_incosmetics"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "活动影响力",
+                "en": "Event significance"
+              },
+              "text": {
+                "zh": "全球原料风向标，发布内容往往预示未来 1–2 年技术路线。",
+                "en": "A global ingredient bellwether whose launches often foreshadow the next 1–2 years of technology direction."
+              }
+            },
+            {
+              "label": {
+                "zh": "参与价值",
+                "en": "Participation value"
+              },
+              "text": {
+                "zh": "适合系统收集竞品发布、技术叙事和客户反馈。",
+                "en": "Good for systematically collecting competitor launches, technology narratives and customer feedback."
+              }
+            },
+            {
+              "label": {
+                "zh": "后续跟进建议",
+                "en": "Follow-up"
+              },
+              "text": {
+                "zh": "将展会发布与竞品动态、新趋势情报交叉阅读，整理重点竞品技术清单。",
+                "en": "Cross-read show launches with competitor moves and trend intelligence to build a key-competitor technology list."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "event_002",
+          "type": "event",
+          "date": "2026-06",
+          "title": {
+            "zh": "PCHi / CBE 作为国内原料和品牌趋势窗口",
+            "en": "PCHi / CBE as domestic ingredient and brand trend windows"
+          },
+          "summary": {
+            "zh": "PCHi 与 CBE 作为国内原料和品牌趋势的重要窗口，可观察国产原料商的发布节奏、国货品牌的成分偏好以及国产替代和出海动向，是判断本土竞争格局的重要场合。",
+            "en": "PCHi and CBE are key windows into domestic ingredient and brand trends, useful for observing local suppliers' launch cadence, domestic brands' ingredient preferences and import-substitution and overseas-expansion moves, and important for reading the local competitive landscape."
+          },
+          "detail": {
+            "zh": "国内活动可补充国产替代、KA 成分偏好和渠道热点，帮助形成中国市场视角。",
+            "en": "Domestic events add local substitution, KA ingredient preferences, and channel topics, helping build a China-market view."
+          },
+          "tags": [
+            "market_consumer_insight"
+          ],
+          "glossary_term_ids": [
+            "market_consumer_insight"
+          ],
+          "source_ref_ids": [
+            "src_cbe"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "活动影响力",
+                "en": "Event significance"
+              },
+              "text": {
+                "zh": "国内原料与品牌趋势的集中展示窗口，反映国产替代进度。",
+                "en": "A concentrated window into domestic ingredient and brand trends, reflecting import-substitution progress."
+              }
+            },
+            {
+              "label": {
+                "zh": "参与价值",
+                "en": "Participation value"
+              },
+              "text": {
+                "zh": "适合监测国产新锐、代理商动向和国货品牌成分偏好。",
+                "en": "Good for monitoring domestic challengers, distributor moves and local brands' ingredient preferences."
+              }
+            },
+            {
+              "label": {
+                "zh": "后续跟进建议",
+                "en": "Follow-up"
+              },
+              "text": {
+                "zh": "重点跟踪高热度国产原料和潜在客户品牌，纳入竞品与 KA 监测。",
+                "en": "Track hot domestic ingredients and prospective customer brands and feed them into competitor and KA monitoring."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "event_003",
+          "type": "event",
+          "date": "2026-06",
+          "title": {
+            "zh": "竞品 seminar / webinar 可作为技术叙事素材",
+            "en": "Competitor seminars and webinars can serve as technology-narrative material"
+          },
+          "summary": {
+            "zh": "竞品的 seminar 与 webinar 可作为技术叙事素材来源，供应商常通过线上研讨会释放新技术、新机理和应用方向；这些内容是判断竞品技术路线和功效话术的低成本情报来源。",
+            "en": "Competitor seminars and webinars are a source of technology-narrative material; suppliers often use online sessions to release new technologies, mechanisms and application directions, making them a low-cost intelligence source for reading competitors' technology roadmaps and claim language."
+          },
+          "detail": {
+            "zh": "技术型 seminar / webinar 对理解竞品研发方向和客户教育话术更有参考价值。",
+            "en": "Technical seminars and webinars are useful for understanding competitor R&D direction and customer education narratives."
+          },
+          "tags": [
+            "technology_process_innovation",
+            "research_science"
+          ],
+          "glossary_term_ids": [
+            "technology_process_innovation",
+            "research_science"
+          ],
+          "source_ref_ids": [
+            "src_watchlist"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "活动影响力",
+                "en": "Event significance"
+              },
+              "text": {
+                "zh": "线上研讨会是竞品技术叙事和话术的直接来源。",
+                "en": "Online sessions are a direct source of competitors' technology narratives and claim language."
+              }
+            },
+            {
+              "label": {
+                "zh": "参与价值",
+                "en": "Participation value"
+              },
+              "text": {
+                "zh": "低成本获取竞品技术路线、机理表达和应用方向。",
+                "en": "Low-cost access to competitors' technology roadmaps, mechanism wording and application directions."
+              }
+            },
+            {
+              "label": {
+                "zh": "后续跟进建议",
+                "en": "Follow-up"
+              },
+              "text": {
+                "zh": "建立竞品 webinar 监测清单，提炼技术词汇用于新趋势情报与对标。",
+                "en": "Build a competitor-webinar watch list and distil technology vocabulary for trend intelligence and benchmarking."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "regulation_policy",
+      "title": {
+        "zh": "法规政策",
+        "en": "Regulations & Policy"
+      },
+      "summary": {
+        "zh": "",
+        "en": ""
+      },
+      "layout": "reg_cards",
+      "items": [
+        {
+          "item_id": "reg_001",
+          "type": "reg_card",
+          "region": {
+            "zh": "中国",
+            "en": "China"
+          },
+          "title": {
+            "zh": "新原料备案持续活跃",
+            "en": "New ingredient filing remains active"
+          },
+          "summary": {
+            "zh": "中国新原料备案持续活跃，备案数量和国产占比双双走高，反映原料创新与合规节奏同步加快；备案活跃度可作为创新热度和合规节奏的宏观指标，值得持续跟踪来源、功效方向和应用边界。",
+            "en": "China's new-ingredient filing remains active, with both volume and the domestic share rising, reflecting innovation and compliance accelerating together; filing activity is a macro indicator of innovation heat and compliance pace, worth tracking for source, claim direction and application boundaries."
+          },
+          "detail": {
+            "zh": "备案活跃度提示原料创新与合规节奏同步加快，值得持续关注来源、功效方向和应用边界。",
+            "en": "Active filings indicate that ingredient innovation and compliance pacing are accelerating together, with source, claim direction, and application boundaries worth monitoring."
+          },
+          "tags": [
+            "new_ingredient_filing"
+          ],
+          "glossary_term_ids": [
+            "new_ingredient_filing"
+          ],
+          "source_ref_ids": [
+            "src_reg_filing"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "法规要点",
+                "en": "Key points"
+              },
+              "text": {
+                "zh": "新原料须完成备案/注册方可使用，备案信息公开可查。",
+                "en": "New ingredients must complete filing/registration before use, and filing information is publicly searchable."
+              }
+            },
+            {
+              "label": {
+                "zh": "影响对象",
+                "en": "Who is affected"
+              },
+              "text": {
+                "zh": "所有在华上市的新原料供应商与品牌方。",
+                "en": "All new-ingredient suppliers and brands marketing in China."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "跟踪高频备案的成分与企业，评估对现有品类的竞争与合作影响，规划自身注册节奏。",
+                "en": "Track ingredients and companies behind frequent filings, assess competitive and partnership impact on current categories, and plan Croda's own registration cadence."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "reg_002",
+          "type": "reg_card",
+          "region": {
+            "zh": "中国",
+            "en": "China"
+          },
+          "title": {
+            "zh": "IECIC 与既有原料边界需要解释",
+            "en": "IECIC and existing-ingredient boundaries need explanation"
+          },
+          "summary": {
+            "zh": "已使用化妆品原料目录（IECIC）与既有原料边界需要清晰解释：原料是否在目录内、使用范围和限量，直接决定其能否免备案使用，是配方和合规判断的基础依据。",
+            "en": "The Inventory of Existing Cosmetic Ingredients in China (IECIC) and existing-ingredient boundaries need clear explanation: whether an ingredient is on the list and its permitted scope and limits directly determine whether it can be used without filing, forming the basis of formulation and compliance judgement."
+          },
+          "detail": {
+            "zh": "IECIC 相关判断会影响原料使用边界、沟通方式和客户合规复核重点。",
+            "en": "IECIC-related judgment affects ingredient use boundaries, communication approach, and customer compliance review priorities."
+          },
+          "tags": [
+            "iecic"
+          ],
+          "glossary_term_ids": [
+            "iecic"
+          ],
+          "source_ref_ids": [
+            "src_reg_filing"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "法规要点",
+                "en": "Key points"
+              },
+              "text": {
+                "zh": "IECIC 界定原料的既有使用范围，目录内外对应不同合规路径。",
+                "en": "IECIC defines an ingredient's existing scope of use; on- and off-list status correspond to different compliance paths."
+              }
+            },
+            {
+              "label": {
+                "zh": "影响对象",
+                "en": "Who is affected"
+              },
+              "text": {
+                "zh": "配方研发、法规和采购环节。",
+                "en": "Formulation R&D, regulatory and procurement functions."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "在客户沟通中清晰说明原料的目录状态与使用边界，降低客户合规顾虑。",
+                "en": "Clearly explain ingredients' list status and usage boundaries in customer conversations to reduce compliance concerns."
+              }
+            }
+          ]
+        },
+        {
+          "item_id": "reg_003",
+          "type": "reg_card",
+          "region": {
+            "zh": "中国 / 欧盟",
+            "en": "China / EU"
+          },
+          "title": {
+            "zh": "功效宣称与致敏原标识影响传播文本",
+            "en": "Claims and allergen labeling influence communication copy"
+          },
+          "summary": {
+            "zh": "功效宣称评价与致敏原标识要求继续影响传播文本：中国功效宣称评价要求证据支撑，欧盟新增 56 种致敏原标注将于 2026 年生效，品牌方在宣称和成分披露上更趋谨慎，对原料的证据与合规支撑要求提高。",
+            "en": "Claim-substantiation and allergen-labelling requirements keep shaping communication text: China requires evidence to support efficacy claims and the EU's 56 newly added allergens take effect in 2026, so brands are more cautious in claims and ingredient disclosure and demand stronger evidence and compliance support from ingredients."
+          },
+          "detail": {
+            "zh": "需要判断哪些表达适合客户沟通，哪些表述应进入法务或合规复核。",
+            "en": "The key question is which statements are suitable for customer communication and which should enter legal or regulatory review."
+          },
+          "tags": [
+            "claim_substantiation"
+          ],
+          "glossary_term_ids": [
+            "claim_substantiation"
+          ],
+          "source_ref_ids": [
+            "src_reg_allergen"
+          ],
+          "review_status": "pending_review",
+          "local_editable": true,
+          "analysis": [
+            {
+              "label": {
+                "zh": "法规要点",
+                "en": "Key points"
+              },
+              "text": {
+                "zh": "功效宣称需证据支撑；欧盟致敏原标注范围扩大，影响出口配方标签。",
+                "en": "Efficacy claims require supporting evidence; the EU's expanded allergen labelling affects export formula labels."
+              }
+            },
+            {
+              "label": {
+                "zh": "影响对象",
+                "en": "Who is affected"
+              },
+              "text": {
+                "zh": "出口导向品牌、配方与法规团队、上游功效原料商。",
+                "en": "Export-oriented brands, formulation and regulatory teams, and upstream efficacy-ingredient suppliers."
+              }
+            },
+            {
+              "label": {
+                "zh": "对禾大的提示",
+                "en": "Implication for Croda"
+              },
+              "text": {
+                "zh": "提供功效测试与致敏原信息支持，把合规能力作为原料卖点，帮助客户顺利宣称与出口。",
+                "en": "Provide efficacy-testing and allergen information, make compliance capability a selling point, and help customers claim and export smoothly."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tag_taxonomy": [
+    {
+      "category_id": "primary_story_type",
+      "display": {
+        "zh": "主故事类型",
+        "en": "Story type"
+      },
+      "color_class": "tag-story",
+      "tags": [
+        "corporate_move",
+        "product_launch_or_update",
+        "technology_process_innovation",
+        "research_science",
+        "market_consumer_insight"
+      ]
+    },
+    {
+      "category_id": "ingredient_technology",
+      "display": {
+        "zh": "原料与技术",
+        "en": "Ingredients & technologies"
+      },
+      "color_class": "tag-ingredient",
+      "tags": [
+        "peptides",
+        "pdrn_nucleotides",
+        "hyaluronic_acid",
+        "ceramides",
+        "retinoids",
+        "recombinant_collagen",
+        "niacinamide",
+        "vitamin_c",
+        "probiotics_postbiotics",
+        "marine_blue_biotech_actives",
+        "encapsulation_delivery",
+        "sustained_release",
+        "synthetic_biology",
+        "fermentation_biotech",
+        "sustainability_chemistry",
+        "ai_rd_formulation"
+      ]
+    },
+    {
+      "category_id": "functional_claim",
+      "display": {
+        "zh": "功效宣称",
+        "en": "Functional claims"
+      },
+      "color_class": "tag-claim",
+      "tags": [
+        "anti_aging",
+        "whitening_brightening",
+        "moisturizing",
+        "barrier_repair",
+        "soothing_sensitive_skin",
+        "firming_lifting",
+        "microbiome_balance",
+        "hair_scalp_care",
+        "enhance_penetration",
+        "emotion_wellbeing"
+      ]
+    },
+    {
+      "category_id": "product_application",
+      "display": {
+        "zh": "产品/应用场景",
+        "en": "Product applications"
+      },
+      "color_class": "tag-application",
+      "tags": [
+        "skincare",
+        "sun_care",
+        "hair_care",
+        "body_personal_care",
+        "teen_age_care",
+        "men_care",
+        "fragrance_perfume"
+      ]
+    },
+    {
+      "category_id": "regulation_compliance",
+      "display": {
+        "zh": "法规与合规",
+        "en": "Regulatory & compliance"
+      },
+      "color_class": "tag-regulation",
+      "tags": [
+        "new_ingredient_filing",
+        "iecic",
+        "claim_substantiation"
+      ]
+    }
+  ]
+}
