@@ -1,0 +1,22 @@
+{
+  "_DEPRECATED": "已弃用（2026-06-18，用户决定）。primary_story_type 纯关键词无区分度（450篇语料94%命中、多数同中3-4类），栏目 section 已覆盖大部分场景。此文件存档备查，不接入任何脚本。详见 tag-dictionary/archive/deprecated-primary_story_type-v4.md。",
+  "schema_version": "croda-story-type-v1",
+  "source_dictionary": "product/parameter-file/tag-dictionary/标签字段字典-禾大美妆个护版-V4-draft.md（3.1 primary_story_type，已归档）",
+  "purpose": "[已弃用] 原：脚本 primary_story_type 抽取用。现不接入脚本，仅存档。",
+  "usage_notes": [
+    "⚠️ story_type 语义性最强、纯关键词最弱（同一词可属多类、很多文章无明显触发词）——上线前必须用真实数据评估是否值得保留；很可能需降级或弃用，由打标 Agent 的 section 已能覆盖大部分场景。",
+    "event_news 不在此（活动场合由脚本 is_event/event_type 单独判，见 event-keywords 配置）。",
+    "ASCII 大小写不敏感、中文子串匹配；一篇可命中多类（多选）。",
+    "命中不到时留空即可，不要强行套（other 仅作兜底，不配关键词）。",
+    "改词表=改本文件，不动代码（配置驱动）。"
+  ],
+  "story_types": [
+    {"key": "corporate_move", "display": "企业动态", "keywords": ["并购", "收购", "合并", "战略合作", "合资", "产能", "建厂", "投产", "扩产", "出海", "投融资", "融资", "增资", "IPO", "上市", "过会", "股权", "高校合作", "产学研", "人事", "换帅", "任命", "组织调整", "经销协议", "代理协议", "merger", "acquisition", "IPO", "investment", "partnership"]},
+    {"key": "product_launch_or_update", "display": "新原料/新品发布", "keywords": ["发布", "新品", "新原料", "新活性物", "新配方", "推出", "首发", "全球首发", "商业化", "上新", "升级", "launch", "unveil", "new ingredient", "new active", "release"]},
+    {"key": "technology_process_innovation", "display": "技术/工艺创新", "keywords": ["技术创新", "工艺创新", "递送系统", "合成生物", "发酵技术", "AI研发", "绿色化学", "技术平台", "工艺突破", "新技术", "technology", "process innovation", "platform", "breakthrough"]},
+    {"key": "research_science", "display": "科研/功效验证", "keywords": ["科研", "研究", "临床", "临床试验", "功效测试", "功效验证", "专利", "机理", "机制", "论文", "期刊", "SCI", "学术", "课题", "研发成果", "research", "clinical", "patent", "study", "mechanism"]},
+    {"key": "regulation_policy", "display": "政策法规", "keywords": ["备案", "法规", "标准", "团体标准", "国家标准", "认证", "致敏原", "监管", "药监", "新规", "条例", "合规", "禁用", "限用", "检测方法", "白名单", "regulation", "policy", "compliance", "standard"]},
+    {"key": "market_consumer_insight", "display": "市场/消费者洞察", "keywords": ["市场", "趋势", "洞察", "消费者", "品类", "赛道", "增长", "市场规模", "成分热度", "趋势报告", "消费洞察", "偏好", "数据显示", "market", "trend", "insight", "consumer", "growth"]}
+  ],
+  "fallback_key": "other"
+}

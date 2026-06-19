@@ -1,0 +1,29 @@
+{
+  "schema_version": "croda-functional-claim-v1",
+  "source_dictionary": "product/parameter-file/tag-dictionary/标签字段字典-禾大美妆个护版-V4-draft.md（3.4 functional_claim）",
+  "purpose": "脚本 functional_claim 抽取用：以 keywords 命中 title+正文，输出对齐字典 functional_claim 的 key。仅作展示/搜索辅助。",
+  "usage_notes": [
+    "⚠️ 纯关键词只能判'是否提到该功效词'，判不了'是否真宣称/有依据'（语义重）——上线前需用真实数据评估够不够展示，否则降级。",
+    "ASCII 大小写不敏感、中文子串匹配；一篇可命中多个功效。",
+    "hair_scalp_care（头皮/防脱）与 hair_strands（发丝/顺滑）已拆开，注意区分。",
+    "改词表=改本文件，不动代码（配置驱动）。"
+  ],
+  "claims": [
+    {"key": "anti_aging", "display": "抗衰/抗皱", "keywords": ["抗衰", "抗衰老", "抗皱", "抗初老", "淡纹", "去皱", "皱纹", "细纹", "法令纹", "年轻化", "逆龄", "抗老", "anti-aging", "anti aging", "anti-wrinkle", "antiaging"]},
+    {"key": "whitening_brightening", "display": "美白/提亮", "keywords": ["美白", "提亮", "亮白", "焕白", "透白", "淡斑", "祛斑", "匀净肤色", "去黄", "提亮肤色", "whitening", "brightening", "lightening", "dark spot"]},
+    {"key": "moisturizing", "display": "保湿", "keywords": ["保湿", "补水", "锁水", "水润", "滋润", "润泽", "长效保湿", "hydrating", "moisturizing", "moisturising", "hydration"]},
+    {"key": "barrier_repair", "display": "屏障修护", "keywords": ["屏障", "皮肤屏障", "屏障修护", "修护", "修复", "角质层修护", "维稳", "barrier", "barrier repair", "skin barrier"]},
+    {"key": "soothing_sensitive_skin", "display": "舒缓/敏感肌", "keywords": ["舒缓", "敏感肌", "敏肌", "镇静", "抗敏", "泛红", "耐受", "维稳", "soothing", "sensitive skin", "calming", "anti-redness"]},
+    {"key": "acne_oil_control", "display": "祛痘/控油", "keywords": ["祛痘", "去痘", "控油", "痘痘", "粉刺", "黑头", "油皮", "平衡油脂", "抗痘", "acne", "oil control", "anti-acne", "sebum"]},
+    {"key": "sun_protection", "display": "防晒防护", "keywords": ["防晒", "防护", "UV防护", "紫外线防护", "光防护", "防晒伤", "sun protection", "UV protection", "photoprotection"]},
+    {"key": "firming_lifting", "display": "紧致提拉", "keywords": ["紧致", "提拉", "抗松弛", "弹润", "弹力", "塑颜", "紧实", "firming", "lifting", "tightening"]},
+    {"key": "microbiome_balance", "display": "微生态平衡", "keywords": ["微生态", "皮肤微生态", "菌群", "微生物组", "微生态平衡", "microbiome", "microbiota"]},
+    {"key": "hair_scalp_care", "display": "发用/头皮功效", "keywords": ["头皮护理", "头皮", "防脱", "生发", "固发", "去屑", "止痒", "控油蓬松", "发根", "scalp", "anti-hair-loss", "anti-dandruff"]},
+    {"key": "hair_strands", "display": "发丝", "keywords": ["发丝", "秀发", "顺滑", "柔顺", "受损发", "毛鳞片", "光泽", "韧性", "修护发质", "hair fiber", "hair strand", "smoothness"]},
+    {"key": "enhance_penetration", "display": "促进渗透", "keywords": ["促进渗透", "促渗", "透皮", "渗透增强", "经皮吸收", "渗透促进", "penetration enhancer", "permeation"]},
+    {"key": "emotion_wellbeing", "display": "情绪护肤/愉悦", "keywords": ["情绪护肤", "愉悦", "舒压", "解压", "身心", "情绪价值", "芳疗", "情绪", "well-being", "wellbeing", "emotional", "mood"]},
+    {"key": "anti_glycation", "display": "抗糖化", "keywords": ["抗糖", "抗糖化", "糖化", "抗糖基化", "AGEs", "anti-glycation", "glycation"]},
+    {"key": "blue_light_protection", "display": "抗蓝光", "keywords": ["抗蓝光", "蓝光防护", "蓝光", "数码污染", "blue light", "HEV"]},
+    {"key": "anti_pollution", "display": "抗污染", "keywords": ["抗污染", "抗雾霾", "城市污染", "环境防护", "抗氧化防护", "anti-pollution", "anti-pollutant", "pollution"]}
+  ]
+}

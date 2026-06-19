@@ -2,7 +2,42 @@
 
 > 这份是给"重新接手时的我自己"看的，不是给人看的分享稿。目标：读完这一页 + 它指的文件，
 > 就能立刻知道做到哪、为什么这么定、怎么复现、下一步干什么。**先读本页，再按需点开链接。**
-> 最后状态：第三轮（标签权重 A/B + 新栏目探针 + 边界规则重跑）已完成；下一步见 §6。
+
+---
+
+## 0. 最新状态（2026-06-17/18，看这条优先于下面旧条目）
+
+两个**已定稿的大决定**（用户拍板），已落到字典 + skill 四件套：
+
+1. **栏目改"平等多标签"**：取消 primary/secondary 主次分级 → `section.sections[]` 平等数组。
+   一篇符合多个栏目就**全部平等打上、不判主次**；报告 Agent 下游再去重/择一。
+   `exclude`/`needs_review` 为系统态，单独出现、不与正式栏目并列。
+   → 这**从根上消掉了第三轮"主次轮换"不稳**（不再有 primary 可翻）。原"待定的边界规则去留"
+   也随之化解：reg↔ingredient 两者都符合就都打；**只剩 ka_watch↔exclude 一条要把住**（必须有成分角度）。
+2. **AI 只判 relevance + sections**；**所有描述标签下放脚本**（配置驱动）。
+   - 脚本层**已开发并跑过 450 篇** → `product/output/result/tagging/待打标.json`
+     （字段：company/company_normalized/company_detail[带role]/ingredient_mentions/ingredient_keys/
+     is_event/event_type/spans/fact_hints；**无 section/relevance**，留给 AI）。
+   - 配置文件已建并跑过：`product/parameter-file/{watchlist,ingredient-alias,event-keywords}/*_seed.json`
+     （watchlist 73 实体）。**待建配置**：product_application / functional_claim / story_type。
+   - 已知权衡：纯脚本抓不到字典外新成分/新功效（"活字典 other: 发现"能力下降，可接受，标签仅展示）。
+
+**四件套已同步到上面两点**（dict V4 + prompt + schema + validator，2026-06-17）：
+AI 输出只含 relevance + `section.sections[]` + per-section `evidence[]`(+可选 report_guidance)；
+**禁** tags/confidence/primary_section/旧结构（validator 会报错）。已用正/负例测过。
+
+**ka_watch 空的担忧 = 已缓解**：450 篇里命中 KA 实体 141 篇、KA+含成分(ka_watch 前置候选)**98 篇**
+（pilot-30 只有 1）。能测、不空；窄是定义使然（纯品牌无成分→exclude，正确）。
+
+**⚠️ 旧 run 文件作废**：`runs/A-/B-opus48-v4.json`、`probe*.json` 是旧 primary_section 格式，
+**不过新 schema**。下次测试用新 prompt/schema 重跑（平等多选）。
+
+**下一步候选**（替代旧 §6）：① 用新 schema 重跑一轮(平等多选)验证 multi-section 行为 + flip；
+② 建 product_application/functional_claim/story_type 三个脚本配置 + 把 `待打标.json` 的脚本正式化
+（脚本层设计文档 P0）；③ 评估 story_type/functional_claim 纯关键词够不够展示。
+
+> 下面 §1–§8 是 2026-06-16 写的旧打包，**部分已被本 §0 覆盖**（尤其："primary/secondary""边界规则待定"
+> "AI 打轻量标签"等已过时）；保留作历史脉络，冲突时以 §0 为准。
 
 ---
 

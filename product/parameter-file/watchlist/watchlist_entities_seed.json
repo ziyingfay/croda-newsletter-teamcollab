@@ -232,9 +232,14 @@
         "china"
       ],
       "aliases": [
-        "克琴"
+        "克琴",
+        "克琴实验室",
+        "上海克琴",
+        "上海克琴科技",
+        "CoachChem",
+        "COACH-LINK"
       ],
-      "needs_alias_review": true
+      "needs_alias_review": false
     },
     {
       "entity_key": "jland_juyuan_bio",

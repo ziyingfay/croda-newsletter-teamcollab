@@ -1,0 +1,21 @@
+{
+  "schema_version": "croda-product-application-v1",
+  "source_dictionary": "product/parameter-file/tag-dictionary/标签字段字典-禾大美妆个护版-V4-draft.md（3.2 product_application）",
+  "purpose": "脚本 product_application 抽取用：以 keywords 命中 title+正文，输出对齐字典 product_application 的 key。仅作展示/搜索辅助。",
+  "usage_notes": [
+    "key 与字典 3.2 枚举对齐（已删 color_cosmetics，卸妆并入 skincare；新增 teen_age_care，口腔护理并入其中）。",
+    "ASCII 大小写不敏感、中文子串匹配；一篇可命中多个品类。",
+    "skincare 关键词最泛，注意与 sun_care/men_care 等并存时都打（脚本只抽取，不判主次）。",
+    "改词表=改本文件，不动代码（配置驱动）。"
+  ],
+  "applications": [
+    {"key": "skincare", "display": "护肤", "keywords": ["护肤", "面部护肤", "面霜", "乳液", "水乳", "精华", "精华液", "安瓶", "面膜", "爽肤水", "化妆水", "眼霜", "眼部精华", "洁面", "洁面乳", "面部清洁", "卸妆", "卸妆油", "卸妆膏", "护肤品", "skincare", "face cream", "serum", "essence", "facial mask", "cleanser", "makeup remover"]},
+    {"key": "sun_care", "display": "防晒", "keywords": ["防晒", "防晒霜", "防晒乳", "防晒喷雾", "防晒棒", "隔离", "物理防晒", "化学防晒", "防晒剂", "硬防晒", "sunscreen", "sun care", "SPF", "PA+", "UV filter"]},
+    {"key": "hair_care", "display": "洗护发", "keywords": ["洗发", "护发", "洗护", "洗发水", "护发素", "发膜", "头皮护理", "养护", "染发", "烫发", "护色", "造型", "发用", "hair care", "shampoo", "conditioner", "hair mask"]},
+    {"key": "body_personal_care", "display": "身体/个护", "keywords": ["身体护理", "身体乳", "沐浴", "沐浴露", "身体磨砂", "香皂", "皂", "清洁", "除臭", "止汗", "手霜", "足部", "个护", "个人护理", "body care", "shower gel", "body lotion", "deodorant", "hand cream"]},
+    {"key": "baby_care", "display": "母婴护理", "keywords": ["母婴", "婴幼儿", "婴儿", "宝宝", "孕产", "婴童", "baby care", "infant", "diaper"]},
+    {"key": "teen_age_care", "display": "青少年护理", "keywords": ["青少年", "学生党", "头部洗护", "面部洗护", "身体洗护", "口腔护理", "牙膏", "漱口水", "口腔", "teen care", "oral care", "toothpaste", "mouthwash"]},
+    {"key": "men_care", "display": "男士护理", "keywords": ["男士护理", "男士", "男性", "男士护肤", "胡须", "剃须", "须后", "men care", "men's", "for men", "shaving"]},
+    {"key": "fragrance_perfume", "display": "香水/香氛", "keywords": ["香水", "香氛", "香精", "淡香水", "浓香水", "身体喷雾", "家居香氛", "香薰", "古龙", "fragrance", "perfume", "EDP", "EDT", "cologne", "home fragrance"]}
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://local.openclaw.skills/newsletter-tagging/croda_tag_output_v4.schema.json",
-  "title": "Croda Beauty newsletter tagging output (V4 draft)",
-  "description": "DRAFT V4 = V3 engineering + client v260605 feedback. 5 formal sections (行业快讯/热点 is composed downstream by the report agent, NOT a tagging label). section is a first-class holistic judgment; evidence is a trigger_span_id pointer; no confidence; event_news lives in script fields. Optional report_guidance is a single short string for the report agent. Group-B open-vocab tags are allowed via relaxed tag-value validation (validator --open-tags).",
+  "title": "Croda Beauty newsletter tagging output (V4 draft, 2026-06-17)",
+  "description": "DRAFT V4. AI (小龙虾1) outputs ONLY relevance + section.sections (flat equal multi-label) + evidence (+optional report_guidance). Descriptive tags (company/ingredient/functional/product/story_type/event) are script-generated on the article record, NOT here. Sections are EQUAL (no primary/secondary ranking): tag all that apply; the report agent decides dedup/placement. exclude/needs_review are mutually-exclusive system states (sections must be exactly [exclude] or [needs_review]). No confidence. Evidence = trigger_span_id pointer into the article's spans.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "article_id", "relevance", "tagging_decision", "section", "evidence_records", "suggested_new_tags", "review_reasons", "tag_audit"],
+  "required": ["schema_version", "article_id", "relevance", "tagging_decision", "section", "review_reasons", "tag_audit"],
   "properties": {
     "schema_version": { "const": "newsletter-tagging/croda-beauty-v4" },
     "article_id": { "type": "string", "minLength": 1 },
@@ -13,42 +13,32 @@
     "source_key": { "type": "string" },
     "source_name": { "type": "string" },
     "relevance": { "type": "string", "enum": ["relevant", "not_relevant", "unclear"] },
-    "tagging_decision": { "type": "string", "enum": ["tagged", "excluded", "no_matching_tag", "needs_review"] },
+    "tagging_decision": { "type": "string", "enum": ["tagged", "excluded", "needs_review"] },
     "report_guidance": { "type": "string", "minLength": 1, "maxLength": 140 },
     "section": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["primary_section", "secondary_sections", "evidence"],
+      "required": ["sections", "evidence"],
       "properties": {
-        "primary_section": {
-          "type": "string",
-          "enum": ["competitor_watch", "ingredient_innovation", "ka_watch", "market_event", "regulation_policy", "exclude", "needs_review"]
-        },
-        "secondary_sections": {
+        "sections": {
           "type": "array",
-          "items": { "type": "string", "enum": ["competitor_watch", "ingredient_innovation", "ka_watch", "market_event", "regulation_policy"] },
-          "uniqueItems": true
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["competitor_watch", "ingredient_innovation", "ka_watch", "market_event", "regulation_policy", "exclude", "needs_review"]
+          }
         },
-        "evidence": { "$ref": "#/$defs/sectionEvidence" }
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/sectionEvidence" }
+        }
       }
     },
-    "tags": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "primary_story_type": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
-        "product_application": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "ingredient_technology": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "functional_claim": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "value_chain_stage": { "type": ["string", "null"] },
-        "entity_role": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
-      }
-    },
-    "evidence_records": { "type": "array", "items": { "$ref": "#/$defs/evidenceRecord" } },
-    "suggested_new_tags": { "type": "array", "items": { "$ref": "#/$defs/suggestedNewTag" } },
     "review_reasons": {
       "type": "array",
-      "items": { "type": "string", "enum": ["insufficient_content", "title_body_conflict", "ambiguous_relevance", "suggested_new_taxonomy_label", "no_matching_closed_label", "human_requested"] },
+      "items": { "type": "string", "enum": ["insufficient_content", "title_body_conflict", "ambiguous_relevance", "human_requested"] },
       "uniqueItems": true
     },
     "tag_audit": {
@@ -59,61 +49,54 @@
         "tagger": { "type": "string", "minLength": 1 },
         "tagged_at": { "type": "string", "minLength": 1 },
         "dictionary_version": { "type": "string", "minLength": 1 },
-        "prompt_version": { "type": "string", "minLength": 1 },
-        "group": { "type": "string" }
+        "prompt_version": { "type": "string", "minLength": 1 }
       }
     }
   },
   "allOf": [
     {
-      "comment": "tagged needs story_type + an evidence pointer (group B); group A may omit tags",
+      "comment": "tagged: sections are formal content sections (no exclude/needs_review mixed in)",
       "if": { "properties": { "tagging_decision": { "const": "tagged" } } },
-      "then": { "properties": { "section": { "properties": { "primary_section": { "enum": ["competitor_watch", "ingredient_innovation", "ka_watch", "market_event", "regulation_policy"] } } } } }
+      "then": {
+        "properties": {
+          "section": {
+            "properties": {
+              "sections": {
+                "items": { "enum": ["competitor_watch", "ingredient_innovation", "ka_watch", "market_event", "regulation_policy"] }
+              }
+            }
+          }
+        }
+      }
     },
     {
-      "comment": "needs_review must agree across decision and section, and carry a reason",
-      "if": { "properties": { "tagging_decision": { "const": "needs_review" } } },
-      "then": { "properties": { "review_reasons": { "minItems": 1 }, "section": { "properties": { "primary_section": { "const": "needs_review" } } } } }
-    },
-    {
-      "comment": "excluded articles land in the exclude section",
+      "comment": "excluded: sections must be exactly [exclude]",
       "if": { "properties": { "tagging_decision": { "const": "excluded" } } },
-      "then": { "properties": { "section": { "properties": { "primary_section": { "const": "exclude" } } } } }
+      "then": { "properties": { "section": { "properties": { "sections": { "const": ["exclude"] } } } } }
+    },
+    {
+      "comment": "needs_review: sections must be exactly [needs_review] and a reason given",
+      "if": { "properties": { "tagging_decision": { "const": "needs_review" } } },
+      "then": {
+        "properties": {
+          "section": { "properties": { "sections": { "const": ["needs_review"] } } },
+          "review_reasons": { "minItems": 1 }
+        }
+      }
     }
   ],
   "$defs": {
     "sectionEvidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["trigger_span_id", "inferred_because"],
+      "required": ["section", "trigger_span_id", "inferred_because"],
       "properties": {
+        "section": {
+          "type": "string",
+          "enum": ["competitor_watch", "ingredient_innovation", "ka_watch", "market_event", "regulation_policy", "exclude", "needs_review"]
+        },
         "trigger_span_id": { "type": "string", "pattern": "^s[0-9]+$" },
         "inferred_because": { "type": "string", "minLength": 1, "maxLength": 60 }
-      }
-    },
-    "suggestedNewTag": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["field", "label", "display_name", "reason", "trigger_span_id", "status"],
-      "properties": {
-        "field": { "type": "string" },
-        "label": { "type": "string", "pattern": "^[a-z0-9_]+$" },
-        "display_name": { "type": "string", "minLength": 1 },
-        "parent_label": { "type": "string" },
-        "reason": { "type": "string", "minLength": 1 },
-        "trigger_span_id": { "type": "string", "pattern": "^s[0-9]+$" },
-        "status": { "const": "pending_review" }
-      }
-    },
-    "evidenceRecord": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["field", "label", "trigger_span_id"],
-      "properties": {
-        "field": { "type": "string" },
-        "label": { "type": "string" },
-        "extracted_name": { "type": "string" },
-        "trigger_span_id": { "type": "string", "pattern": "^s[0-9]+$" }
       }
     }
   }

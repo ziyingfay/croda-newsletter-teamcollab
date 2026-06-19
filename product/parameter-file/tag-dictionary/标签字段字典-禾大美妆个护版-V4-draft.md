@@ -44,17 +44,21 @@
 
 ## 一、报告栏目结构（5 个 AI 栏目 + 1 个报告编排板块 + 原文链接）
 
-> `section.primary_section` 是小龙虾 1 的栏目判断，只允许 5 个正式栏目（外加 `exclude` /
-> `needs_review` 系统态）。"行业新闻快讯 / 本月热点新闻"是报告展示板块，**不做打标签**：
-> 由报告 Agent 从各正式栏目中挑选最多 10 条最相关、最值得快速浏览的新闻编排生成。
+> **栏目改为平等多标签（取消 primary/secondary 分级，2026-06-17 用户决定）**：小龙虾 1 输出
+> `section.sections`——一个**平等的栏目数组**。一篇文章若符合多个栏目，就**把符合的全部平等打上**
+> （不判主次、不分等级）；之后由**报告 Agent** 决定是各栏目重复放置、还是择一最优落位。
+> 打标这步**不判栏目优先级**，但仍须按下方标准/边界**只打真正符合的，不多打不乱打**。
+>
+> 取值：5 个正式栏目（可多选）；或系统态 `exclude` / `needs_review`（互斥，单独出现，不与正式栏目并列）。
+> "行业新闻快讯 / 本月热点新闻"是报告展示板块，**不打标签**，由报告 Agent 从各正式栏目挑 ≤10 条编排。
 > 原文链接为附录（脚本汇总，非分类目标）。
 
-### 1.1 小龙虾 1 正式栏目标签（`section.primary_section`）
+### 1.1 小龙虾 1 正式栏目（`section.sections[]`，平等多选）
 
-| 栏目 `primary_section` | 客户栏目名 | 定位 |
+| 栏目 | 客户栏目名 | 定位 |
 |---|---|---|
 | `competitor_watch` | 竞品动态监测 | 国际/国内原料商的新品、技术、合作、投融资、产能等动态 |
-| `ingredient_innovation` | 新成分&新趋势情报 | **（合并）** 热门成分与新兴技术的市场热度、应用方向、竞品布局；递送系统、AI 研发、合成生物、可持续工艺等前沿技术 |
+| `ingredient_innovation` | **新成分与新技术** | **（合并）** 热门成分与新兴技术的市场热度、应用方向、竞品布局；递送系统、AI 研发、合成生物、可持续工艺等前沿技术（栏目中文名 2026-06-18 由"新成分&新趋势情报"改为"新成分与新技术"；key 不变） |
 | `ka_watch` | KA监测 | MNC 及国内品牌（关键客户）的原料相关动态、新品方向、技术合作 |
 | `market_event` | 市场活动汇总 | 展会、峰会、论坛、研讨会、**CBE**、竞品 seminar/webinar 的预告与回顾 |
 | `regulation_policy` | 法规新政策 | **（新增）** 新原料备案、法规、标准、认证、致敏原、监管动作 |
@@ -68,32 +72,22 @@
 | 行业新闻快讯 / 本月热点新闻 | 报告 Agent | 从 `competitor_watch`、`ingredient_innovation`、`ka_watch`、`market_event`、`regulation_policy` 中综合挑选最多 10 条最相关新闻；不要求小龙虾 1 输出热点标签 |
 | 原文链接汇总 | 脚本 / 报告 Agent | 汇总本期引用文章的 URL、来源和栏目归属；不是分类目标 |
 
-**优先级判定指引（消除"活动劫持"，沿用 V3）：**
-- 供应商/竞品在 webinar/展会发新原料/新技术 → 实质算 `competitor_watch` 或
-  `ingredient_innovation`，`secondary_sections += market_event`，`is_event=true`。
-- 纯活动预告/会后流水 → `market_event`。
-- 多条不相关重大短讯汇编 → 不输出"热点/快讯"标签；按文章中最重要的实质内容选一个正式栏目，
-  其他可进入 `secondary_sections`，报告 Agent 再决定是否拆分或选入行业新闻快讯。
-- 下游 KA 品牌且涉及成分/配方/功效/采购 → `ka_watch`；无成分角度 → `exclude`。
-- 监管/备案/标准为主线 → `regulation_policy`。
+**归类规则（平等多选；符合就打，不符合不打；不判主次）：**
+- 供应商/竞品在 webinar/展会发新原料/新技术 → 同时打 `competitor_watch` + `ingredient_innovation`
+  + `market_event`（三者都符合就都打，平等）；`is_event=true`。
+- 纯活动预告/会后流水（无实质内容）→ 只打 `market_event`。
+- 多条不相关重大短讯汇编 → 把涉及到的正式栏目**都打上**；行业新闻快讯由报告 Agent 编排，不在此打。
+- 下游 KA 品牌**且**涉及成分/配方/功效/采购 → 打 `ka_watch`（可与 ingredient_innovation 等并存）；
+  **无成分角度 → 不打 ka_watch**（纯品牌营销/明星/公益/ESG/诉讼/人事/财报带货/渠道包装 → `exclude`）。
+- 监管/备案/标准动作 → 打 `regulation_policy`（若同篇也讲成分趋势，就**同时**打 `ingredient_innovation`）。
 
-**两条边界细则（第三轮探针发现 reg↔ingredient、ka↔exclude 漏判+不稳，特此收紧）：**
-
-- **regulation_policy ↔ ingredient_innovation**：看**主线落点**——
-  - **监管动作/备案制度/标准/检查/处罚/限用本身**是主线（"药监发布X项新方法""检验不合规X批次"
-    "团体标准启动""备案撤回潮""安评/防腐剂法规"）→ **`regulation_policy`**。
-  - 文章**借备案/监管数据去讲某成分的趋势、应用、竞品布局**（重点是成分而非规则）→ **`ingredient_innovation`**，
-    `regulation_policy` 进 `secondary_sections`。
-  - 一句话：**问"这篇在讲规则，还是借规则讲成分"**——讲规则→regulation，讲成分→ingredient。
-
-- **ka_watch ↔ exclude（从严）**：KA 品牌文**必须实打实涉及成分/配方/功效/原料采购**才进 `ka_watch`。
-  - 纯品牌营销、明星代言、公益、ESG/可持续报告、商标/法务诉讼、人事任命、纯销量/财报/带货、
-    纯渠道/包装 → **`exclude`**（即使主角是 KA 品牌）。
-  - 只有"某 KA 品牌发了涉**具体成分/技术/功效机制**的新品或动作"才算 `ka_watch`。
-  - 一句话：**ka_watch 是"KA 品牌 + 原料情报"，不是"KA 品牌出现即收"**；宁可 exclude 也不滥收。
-
-> **side benefit**：客户把成分趋势+技术创新合并，正好消掉了 Pilot-30 里
-> `ingredient_trend↔technology_innovation` 的一类模型分歧。
+> **平等多标签如何消解第三轮的"主次轮换"问题**：第三轮 probe 发现"哪个当 primary"会在共属栏目间
+> 来回翻（克琴/德之馨这类原料商发新成分 = 竞品 + 成分 + 法规皆成立）。取消主次后，**这些栏目一律
+> 平等打上、不再选主**，主次轮换的不稳定**从根上消失**；剩下的只是"某栏目算不算成员"的真判断，
+> 交报告 Agent + 人工抽检即可。
+>
+> **唯一仍需把住的边界 = ka_watch ↔ exclude**：ka_watch 必须有真实成分/配方/功效/采购角度，
+> "KA 品牌出现即收"是错的，宁可 exclude 也不滥收（reg↔ingredient 因平等多选已自然化解：两者都符合就都打）。
 
 ---
 
@@ -112,19 +106,21 @@
 | `spans` | object[] | 标题+正文按句切分编号 `{id,text}`，供 AI `trigger_span_id` 指针引用 |
 | `fact_hints` | object | 竞品/客户/成分/活动词命中（短文/空文线索） |
 
-### 2.2 Agent 一等判断
+### 2.2 Agent 判断字段（**AI 只判这两类：relevance + sections**）
+
+> 第三轮 A/B 测试定论：让 AI 在判栏目之外还打描述标签**不提升栏目、成本翻倍**。所以
+> **AI 只做 relevance + sections**（+可选 report_guidance）；**其余描述标签全部由脚本生成**（见 2.3）。
 
 | 字段 | 用途 | 约束 |
 |------|------|------|
 | `relevance` | 准入闸门 | `relevant`/`not_relevant`/`unclear`；下游品牌须涉成分/配方/采购/功效才算相关 |
-| `section.primary_section` | 栏目落位（唯一） | 5 个正式栏目 + `exclude` / `needs_review`；整体判断 |
-| `section.secondary_sections` | 次要栏目 | 可空；只允许 5 个正式栏目，不含热点/快讯 |
-| `section.evidence` | 证据 | `{trigger_span_id, inferred_because(≤20字)}` |
+| `section.sections` | 栏目落位（**平等多选数组**） | 5 个正式栏目可多选；或单独的 `exclude` / `needs_review`（系统态，不与正式栏目并列）。**不判主次、不分等级** |
+| `section.evidence` | 证据 | `{trigger_span_id, inferred_because(≤20字)}`；指向促成归类的句子（多栏目可给多条 evidence_records） |
 | `report_guidance` | **可选**：给报告 Agent 的一句话提醒 | **默认省略**；仅当有必须提醒的点才写，单条字符串（≤1 句） |
 
+> **取消 `primary_section` / `secondary_sections` 主次分级**（2026-06-17 用户决定）→ 改 `sections[]` 平等多选。
 > **取消 `confidence`**（V3 决策）；质量由人工抽检；`needs_review` 仅作客观状态。
-> **取消 `is_market_brief_candidate` / `is_customer_watch_candidate` 标志位**：热点新闻由报告 Agent
-> 编排，不在小龙虾 1 打标；KA 已是正式栏目，重叠由 `secondary_sections` 承载。
+> **取消 `is_market_brief_candidate` / `is_customer_watch_candidate` 标志位**：热点新闻由报告 Agent 编排。
 
 #### `report_guidance` —— 给报告 Agent 的可选提醒（不是闸门，默认不写）
 
@@ -139,33 +135,45 @@ Agent（作为文章首位完整读者）发现**有一个必须提醒报告 Age
 > 与隔离的区别：**判不了 → needs_review 隔离（不传下游）**；**判得了但有需提醒处 → 正常落栏目
 > + 可选 report_guidance**。前者拦在打标，后者只是给精筛递个话。
 
-### 2.3 Agent 语义标签（二级，描述/搜索/证据）
+### 2.3 脚本派生标签（**配置驱动，非 AI；2026-06-17 改**）
 
-| 字段 | 用途 | 约束 |
-|------|------|------|
-| `primary_story_type` | 文章**实质**类型（不含活动） | 多选≥1 |
-| `ingredient_technology` | 成分/技术**主轴 + 新词** | 多选；抽取已在脚本 `ingredient_mentions`，此处标主轴 + 补 `other:` |
-| `functional_claim` | 宣称功效（判定，非命中） | 多选；`other:` |
-| `product_application` | 产品品类/应用场景 | 多选；脚本初抽 + Agent 兜底；`other:` |
-| `value_chain_stage` | 产业链位置（二期，粗粒度） | 单选；MVP 可 null |
+> 第三轮定论：除 relevance + sections 外，**其余标签一律由脚本在入库阶段生成**（关键词/别名表命中），
+> 仅作展示点缀 + 搜索辅助。脚本不内嵌词表，全部读**配置文件**（改词表=改配置，不动代码）。
+
+| 字段 | 谁生成 | 配置文件 | 状态 |
+|------|--------|----------|------|
+| `company` / `company_normalized` / `company_detail` | 脚本（别名匹配→display_name+role） | `watchlist/watchlist_entities_seed.json` | ✅ 已配置 + 已跑（450 篇） |
+| `ingredient_mentions` / `ingredient_keys` | 脚本（别名命中） | `ingredient-alias/ingredient_alias_seed.json` | ✅ 已配置 + 已跑 |
+| `is_event` / `event_type` | 脚本（关键词命中） | `event-keywords/event_keywords_seed.json` | ✅ 已配置 + 已跑 |
+| `product_application` | 脚本（品类关键词命中） | `product-application/product_application_seed.json` | ✅ 配置已建 |
+| `functional_claim` | 脚本（功效关键词命中） | `functional-claim/functional_claim_seed.json` | ✅ 配置已建；纯关键词精度有限（"是否真宣称"难判），仅作展示 |
+| ~~`primary_story_type`~~ | — | — | ⛔ **已弃用**（2026-06-18，移入 archive，见下）|
+| `value_chain_stage` | 脚本（二期，粗粒度） | 二期 | ⛔ 二期 |
+
+> **`primary_story_type` 已弃用**：第三轮体检显示纯关键词无区分度（450 篇 94% 命中、多数同中 3–4 类），
+> 栏目 `section` 已覆盖其大部分用途。词表与配置已归档：`tag-dictionary/archive/deprecated-primary_story_type-v4.md`、
+> `parameter-file/archive/story-type/story_type_seed.json`，不再接入任何脚本。
+
+> **重要权衡（脚本化的代价）**：纯别名/关键词脚本**抓不到字典外的新成分/新功效**（旧"活字典 `other:`"
+> 靠 AI 语义发现，现已不在打标 Agent 里）。即**新趋势发现能力下降**——可接受，因为标签现仅作展示；
+> 若后续要回补新词发现，需单独加一个轻量 AI 富化趟（不在 MVP 打标 Agent 主链路）。
+> `functional_claim` 仍是关键词较难做准的一项（"是否真宣称"语义重），上线前需用真实数据评估
+> "脚本版够不够展示用"，否则考虑降级。
 
 ---
 
-## 三、Agent 判断标签词表（V4）
+## 三、标签词表（V4）—— 现作为**脚本配置文件的词源**
 
-### 3.1 主故事类型 `primary_story_type`（多选≥1，不含 event_news）
+> ⚠️ 自 2026-06-17：以下词表**不再由 AI 判断**，而是作为 2.3 各脚本**配置文件的取值来源**
+> （company/ingredient/event/product_application/functional_claim 配置均已建）。
+> 词表内容保留不变，仅用途从"AI picklist"改为"脚本别名/关键词表来源"。
 
-| 标签值 | 中文名 | 典型场景 |
-|--------|--------|------|
-| `corporate_move` | 企业动态 | 并购、合作、产能/建厂、出海、投融资、IPO、组织调整、**高校合作** |
-| `product_launch_or_update` | 新原料/新品发布 | 新活性物、新配方方案、商业化发布或升级 |
-| `technology_process_innovation` | 技术/工艺创新 | 递送系统、合成生物、发酵、AI 研发、绿色化学 |
-| `research_science` | 科研/功效验证 | 学术研究、临床/功效测试、专利、机理验证 |
-| `regulation_policy` | 政策法规 | 备案、法规、标准、认证、致敏原、监管动作 |
-| `market_consumer_insight` | 市场/消费者洞察 | 市场规模、品类走势、成分热度、消费者偏好、趋势报告 |
-| `other` | 其他 | 相关但无法归入 |
+### 3.1 主故事类型 `primary_story_type` —— ⛔ 已弃用（2026-06-18）
 
-> `event_news` 已删除（活动 → 脚本字段 `is_event`/`event_type`，见 2.1）。
+> 第三轮体检显示纯关键词无区分度（450 篇 94% 命中、多数同中 3–4 类），栏目 `section` 已覆盖其用途，故弃用。
+> 词表内容与配置已**归档（不删除）**：
+> - 词表：`product/parameter-file/tag-dictionary/archive/deprecated-primary_story_type-v4.md`
+> - 配置：`product/parameter-file/archive/story-type/story_type_seed.json`（已标 `_DEPRECATED`，不接入脚本）
 
 ### 3.2 产品/应用场景 `product_application`（多选，可空，活字典）
 
@@ -249,9 +257,8 @@ longevity_telomere_actives、acids_exfoliants、base_functional_raw）。
 
 - **活字典**：开放字段 `other:` 实时采集；频次晋升流程列二期。
 - **证据规则（脚本切句 spans + AI `trigger_span_id` 指针）**：
-  - 脚本事实字段：无需 Agent 证据。
-  - 一等判断（`relevance`、`section`、`other:` 新词）：`trigger_span_id` + `inferred_because`。
-  - 描述标签：只给 `trigger_span_id` 指针，不转写、不写理由。
+  - 脚本派生标签（company/成分/活动/场景/功效）：无需 Agent 证据（脚本存命中位置）。
+  - AI 判断（`relevance`、`section.sections`）：`trigger_span_id` + `inferred_because`；多栏目可多条 evidence_records。
   - 不设置信度；`needs_review` 仅客观状态；质量靠人工抽检。
 
 ---
@@ -283,21 +290,61 @@ longevity_telomere_actives、acids_exfoliants、base_functional_raw）。
 
 ---
 
-## 八、AI 打标约束（V4 判断顺序，沿用 V3 机制）
+## 八、AI 打标约束（V4，**AI 只判 relevance + sections**）
 
-1. 沿用脚本字段（来源、语言、地区、`company`、`ingredient_mentions`、`is_event`、`spans`），不重算。
+> 描述标签（company/成分/功效/场景/活动）由**入库脚本**在打标前生成（见 2.3），AI 不碰；story_type 已弃用。
+
+1. 沿用脚本字段（来源、语言、地区、`company`、`ingredient_mentions`、`is_event`、`spans` 等），不重算。
 2. 判 `relevance`。
-3. **判 `section`**：整体判 `primary_section`（5 个正式栏目 + exclude/needs_review）+ `secondary_sections`
-   + `evidence`（trigger_span_id + inferred_because）。**不反推、不输出置信度。**
-   行业新闻快讯 / 热点新闻不在此处输出，由报告 Agent 从各栏目中挑选最多 10 条。
-   判 section 前，必须依次穷尽"正文→标题→脚本字段→来源画像"才允许 `needs_review`（隔离，不传下游）。
-3b. **（可选）`report_guidance`**：仅当有必须提醒报告 Agent 的点时补一句话（单条字符串，建议用法也写在里面）；
-   普通文章省略。不改栏目、不是闸门。
-4. 判 `primary_story_type`（实质，多选≥1，不含活动）。
-5. 标 `ingredient_technology` 主轴 + `other:`；按需 `functional_claim`、`product_application`。
-6. `value_chain_stage` 二期。
-7. 描述标签给 `trigger_span_id` 指针；一等判断给指针 + `inferred_because`；`other:` 另给 `extracted_name`。
-8. 封闭字段缺标签 → `suggested_new_tags`（二期复核）。
+3. **判 `section.sections`（平等多选数组）**：把**所有真正符合的正式栏目都打上**，不判主次、不分等级、不输出置信度；
+   每个归类给 `evidence`（trigger_span_id + inferred_because，多栏目可多条）。
+   - 只打真正符合的：`ka_watch` 必须有成分/配方/功效/采购角度；纯品牌出现不算。不多打、不乱打。
+   - `exclude` / `needs_review` 单独出现，不与正式栏目并列。
+   - 判 section 前，必须依次穷尽"正文→标题→脚本字段→来源画像"才允许 `needs_review`（隔离，不传下游）。
+   - 行业新闻快讯 / 热点新闻不在此输出，由报告 Agent 从各栏目挑 ≤10 条编排。
+4. **（可选）`report_guidance`**：仅当有必须提醒报告 Agent 的点时补一句话；普通文章省略。不改栏目、不是闸门。
+
+> AI 不再输出 ingredient_technology / functional_claim / product_application / value_chain
+> （全部下放脚本，见 2.3；primary_story_type 已弃用并归档）；也不再做 `other:` 新词发现
+> （脚本只命中已知词，新词发现能力下降，属已知权衡）。
+
+---
+
+## 九、脚本后处理：兜底"其他-X 待确认"标签（2026-06-18 新增）
+
+> 这是一个**很小的脚本规则函数**，在"AI 出栏目 + 脚本出标签"之后跑，用来补齐"字典没收到的内容"。
+> **不需要 AI 判断**，纯规则。
+
+### 9.1 规则
+
+对每篇文章，比对【AI 给的栏目】与【脚本打出的对应标签】，缺则补一个**通用待确认标签**（由脚本加，不是 AI）：
+
+| AI 归入的栏目 | 脚本对应标签家族 | 若脚本该家族为空 → 自动补 |
+|---|---|---|
+| `ingredient_innovation`（新成分与新技术） | `ingredient_mentions`（成分/技术） | **`其他-成分技术`** |
+| `ingredient_innovation`（新成分与新技术） | `functional_claim`（功效宣称） | **`其他-宣称`** |
+| `regulation_policy`（法规与政策） | （法规细分标签，暂无）| **`其他-法规`** |
+| `market_event`（市场活动汇总） | `event_type`/`is_event` | **`其他-活动`** |
+| `competitor_watch` | — | **不补**（按用户决定，竞品不加 other） |
+| `ka_watch` | — | **不补**（KA 不加 other） |
+
+> 含义：AI 认定这篇属于"新成分与新技术 / 法规 / 活动"，但脚本字典没命中具体成分/功效/活动词
+> → 说明很可能是**字典外内容**，补一个通用占位 `其他-X` 作为**待确认入口**，供人工在 HTML 审阅时处理。
+> 说明：`其他-宣称`**只挂在 `ingredient_innovation` 栏目下**（成分/技术文才该有功效宣称）——不在
+> 竞品/活动/法规等无功效角度的文章上触发，避免噪声。一篇成分文若 ingredient 和 claim 都没命中，
+> 会同时拿到 `其他-成分技术` + `其他-宣称`（两个待确认维度，互不冲突）。
+
+### 9.2 三条边界（务必遵守）
+
+- **不判新旧**：系统**只**判"属于成分/技术相关内容"，**绝不**判断某成分是"新"还是"旧"。
+  玻色因/依克多因/传明酸可能是老成分，但不在字典里——一律走 `其他-成分技术`（待确认），
+  **新/旧由业务团队在报告审阅阶段人工定**。
+- **当前不做活字典**：`其他-X` 是**通用占位**，**不是**具体新标签。**不要**让 AI/脚本自动生成
+  `其他→玻色因`、`其他→依克多因` 这类具体新标签，也不自动入正式字典。先沉淀人工修改记录，
+  跑几期后再统一看客户反复补了哪些，才决定是否纳入正式字典。
+- **标签不承担报告正文责任**：标签只为筛选/归类/点缀展示。某篇讲了玻色因但没打出"玻色因"标签，
+  **不代表报告里不能写玻色因**——报告撰写 Agent 会读标题/摘要/正文自行生成内容。**不要**为了"让报告
+  写全所有成分名"而把打标做复杂。
 
 ---
 
@@ -307,5 +354,14 @@ customer_watch→ka_watch（升为栏目）、行业新闻快讯/热点新闻改
 新增 teen_age_care / hair_strands / enhance_penetration、green_chemistry→sustainability_chemistry、
 corporate_move 补高校合作、Watchlist 按客户名单补全、**新增可选 `report_guidance` 字段**（默认省略，
 仅在有必须提醒报告 Agent 的点时补一句 note，避免增加打标复杂度）、**明确 needs_review 隔离门槛**（穷尽
-正文→标题→脚本字段→来源画像才隔离，且不传下游、待人工周期审计）｜ schema 名 newsletter-tagging/croda-beauty-v4 ｜
+正文→标题→脚本字段→来源画像才隔离，且不传下游、待人工周期审计）｜
+**2026-06-17 重大更新（按用户决定 + 第三轮定论）：①栏目取消 primary/secondary 主次分级 → `section.sections[]`
+平等多选（符合就都打、不判主次，报告 Agent 再去重/择一）；②AI 只判 relevance + sections，其余描述标签
+（company/成分/功效/场景/活动）全部下放脚本配置驱动（watchlist/ingredient-alias/event-keywords/
+product-application/functional-claim 配置均已建，前三个已跑过 450 篇）；**story_type 已弃用并归档**
+（纯关键词无区分度）；③已知权衡：脚本化后字典外新成分/新功效的"活字典发现"能力下降。** ｜
+**2026-06-18 更新：①栏目"新成分&新趋势情报"中文名改为"新成分与新技术"（key ingredient_innovation 不变）；
+②新增 §九 脚本后处理兜底"其他-X 待确认"（ingredient_innovation→其他-成分技术 / regulation_policy→其他-法规 /
+market_event→其他-活动；competitor/ka 不补）；③明确不判新旧、当前不做活字典、标签不承担报告正文责任。** ｜
+schema 名 newsletter-tagging/croda-beauty-v4 ｜
 状态：草稿，待客户对栏目结构与开放问题最终确认后正式合入*

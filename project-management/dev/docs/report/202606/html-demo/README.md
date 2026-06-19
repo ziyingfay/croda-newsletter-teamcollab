@@ -4,6 +4,8 @@ Config-driven monthly-report demo, output in **two versions** for two stages.
 
 - `report_content.json`: bilingual config fixture (KPIs, 6 sections, glossary, source links, V4 tag taxonomy). Single source of truth.
 - `render_report.py`: renderer. Reads `report_content.json` and writes both HTML files. HTML owns only layout, interaction, brand visuals, and link display — all business content comes from the JSON.
+- `apply_review.py`: demo reference script for applying exported internal review files. It applies deterministic `delete` / selected `replace` edits and lists semantic `instruct` edits for the report Agent.
+- `extract_json.py`: recovers the embedded `report_content` JSON from a rendered HTML file via the `#report-data` block.
 - `report-internal.html` — **内部调整版**: draft for the internal team to review and request rewrites before publishing.
 - `report-final.html` — **最终展示版**: clean final report shown after adjustment.
 
@@ -11,6 +13,8 @@ Config-driven monthly-report demo, output in **two versions** for two stages.
 
 ```bash
 python3 render_report.py        # report_content.json -> report-internal.html + report-final.html
+python3 apply_review.py review_202606.json report_content.json -o report_content.reviewed.json
+python3 extract_json.py report-final.html -o report_content.extracted.json
 ```
 
 Each HTML loads `report_content.json` via `fetch`, with an embedded copy as fallback so it also opens directly from `file://`.
@@ -33,6 +37,8 @@ Both share the same layout, data, KPIs, 6 fixed sections, appendix, bilingual to
 - Saving a suggestion flips the card's top-right status to `待修改` and highlights the card.
 - Removing the suggestion clears it = confirmed.
 - `一键提交` lists all suggestions and (in the real pipeline) sends them to the report Agent, which returns a new version. Demo only; not persisted.
+- Exported review files use `croda-report-review/v1`. `apply_review.py` is a reference implementation: deterministic edits can be applied locally; semantic instructions remain pending for the report Agent.
+- Pending `其他-X` tags are review placeholders, not final dictionary terms. Manual tags and pending-tag resolutions are written to the review record only; they do not update the formal dictionary or backend config.
 
 ## Layout & visual
 

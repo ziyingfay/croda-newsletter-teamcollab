@@ -28,80 +28,97 @@
     "brand_priority": "croda_com_first",
     "enable_local_edit_hotzone": true
   },
+  "kpi_fixed": [
+    {
+      "kpi_id": "articles_monitored",
+      "label": {
+        "zh": "本月监测文章数",
+        "en": "Articles monitored"
+      },
+      "count_sections": [
+        "competitor_watch",
+        "ingredient_innovation",
+        "ka_watch",
+        "market_event",
+        "regulation_policy"
+      ],
+      "jump_section": "sec-appendix"
+    },
+    {
+      "kpi_id": "competitor_updates",
+      "label": {
+        "zh": "重点竞品动态数",
+        "en": "Key competitor updates"
+      },
+      "count_section": "competitor_watch",
+      "jump_section": "sec-competitor_watch"
+    },
+    {
+      "kpi_id": "new_ingredient_tech",
+      "label": {
+        "zh": "新成分 / 新技术数",
+        "en": "New ingredients & tech"
+      },
+      "count_section": "ingredient_innovation",
+      "jump_section": "sec-ingredient_innovation"
+    },
+    {
+      "kpi_id": "regulation_count",
+      "label": {
+        "zh": "法规政策数",
+        "en": "Regulatory updates"
+      },
+      "count_section": "regulation_policy",
+      "jump_section": "sec-regulation_policy"
+    }
+  ],
   "kpis": [
     {
-      "kpi_id": "new_ingredient_filings_2025",
+      "kpi_id": "hl_new_ingredient_filings",
+      "kpi_kind": "highlight",
       "value": "169",
       "label": {
         "zh": "2025年新原料备案数量（+88%）",
-        "en": "2025 new ingredient filings (+88%)"
+        "en": "2025 new-ingredient filings (+88%)"
       },
       "source_ref_ids": [
         "src_reg_filing"
       ],
       "note": {
-        "zh": "",
-        "en": ""
+        "zh": "AI 从本期法规与备案新闻中挑选的代表性数字。",
+        "en": "Representative figure picked by AI from this issue's regulatory/filing news."
       }
     },
     {
-      "kpi_id": "domestic_new_ingredient_share",
+      "kpi_id": "hl_domestic_share",
+      "kpi_kind": "highlight",
       "value": "89.3%",
       "label": {
         "zh": "国产新原料占比",
-        "en": "Share of domestic new ingredients"
+        "en": "Domestic new-ingredient share"
       },
       "source_ref_ids": [
         "src_reg_filing"
       ],
       "note": {
-        "zh": "",
-        "en": ""
+        "zh": "AI 从本期市场洞察内容中挑选。",
+        "en": "Picked by AI from this issue's market-insight content."
       }
     },
     {
-      "kpi_id": "global_ingredients_market_size",
+      "kpi_id": "hl_market_size",
+      "kpi_kind": "highlight",
       "value": "~$35B",
       "label": {
         "zh": "全球化妆品原料市场规模",
-        "en": "Global cosmetic ingredients market size"
+        "en": "Global cosmetic ingredients market"
       },
       "source_ref_ids": [
         "src_market_size"
       ],
       "note": {
-        "zh": "",
-        "en": ""
-      }
-    },
-    {
-      "kpi_id": "china_market_cagr",
-      "value": "8.2%",
-      "label": {
-        "zh": "中国市场年复合增速",
-        "en": "China market CAGR"
-      },
-      "source_ref_ids": [
-        "src_market_size"
-      ],
-      "note": {
-        "zh": "",
-        "en": ""
-      }
-    },
-    {
-      "kpi_id": "competitor_updates_monitored",
-      "value": "30+",
-      "label": {
-        "zh": "本月监测竞品动态",
-        "en": "Competitor updates monitored this month"
-      },
-      "source_ref_ids": [
-        "src_watchlist"
-      ],
-      "note": {
-        "zh": "",
-        "en": ""
+        "zh": "AI 从本期市场规模相关新闻中挑选。",
+        "en": "Picked by AI from this issue's market-size news."
       }
     }
   ],
@@ -137,20 +154,20 @@
         "en": "KA Watch"
       },
       "definition": {
-        "zh": "沿用 V4 Watchlist 中的 MNC 与国内关键客户品牌，关注成分、功效、产品方向和潜在供应机会。",
-        "en": "Monitoring MNC and domestic key-account brands from the V4 Watchlist, focused on ingredients, claims, product direction, and supply opportunities."
+        "zh": "MNC 及国内品牌的原料相关动态。",
+        "en": "Ingredient-related developments from MNC and domestic brands."
       },
       "source": "v4_watchlist"
     },
     {
       "term_id": "ingredient_innovation",
       "display": {
-        "zh": "新成分 & 新趋势",
-        "en": "New Ingredients & Trends"
+        "zh": "新成分与新技术",
+        "en": "New Ingredients & Technologies"
       },
       "definition": {
-        "zh": "合并原成分趋势和技术创新，覆盖新成分、递送技术、AI、合成生物和可持续工艺。",
-        "en": "A merged view of ingredient trends and technology innovation, including new actives, delivery systems, AI, synthetic biology, and sustainable processes."
+        "zh": "覆盖新成分、递送技术、AI、合成生物和可持续工艺。",
+        "en": "Covers new actives, delivery systems, AI, synthetic biology, and sustainable processes."
       },
       "source": "section_dictionary"
     },
@@ -161,8 +178,8 @@
         "en": "Market Events"
       },
       "definition": {
-        "zh": "展会、峰会、论坛、研讨会、CBE 及竞品 seminar/webinar 的预告与回顾；活动是“场合”，若现场发布新原料则实质归入竞品或新趋势栏目。",
-        "en": "Previews and recaps of expos, summits, forums, seminars, CBE, and competitor seminars/webinars. Events are 'occasions'; an ingredient launched on-site is classified under competitor or trend sections."
+        "zh": "展会、峰会、论坛、研讨会等活动的预告与回顾。",
+        "en": "Previews and recaps of expos, summits, forums, seminars, and similar events."
       },
       "source": "section_dictionary"
     },
@@ -173,8 +190,8 @@
         "en": "Regulations & Policy"
       },
       "definition": {
-        "zh": "新原料备案、法规、标准、认证、致敏原标识和监管动作；用于提示 Croda 的合规节奏与注册风险。",
-        "en": "New-ingredient filings, regulations, standards, certifications, allergen labelling, and regulatory actions; flags Croda's compliance pace and registration risk."
+        "zh": "新原料备案、法规、标准、认证、致敏原标识和监管动作。",
+        "en": "New-ingredient filings, regulations, standards, certifications, allergen labelling, and regulatory actions."
       },
       "source": "section_dictionary"
     },
@@ -669,6 +686,54 @@
         "en": "Perfume, home fragrance, or body fragrance."
       },
       "source": "v4_tag_dictionary"
+    },
+    {
+      "term_id": "other_ingredient_tech",
+      "display": {
+        "zh": "其他：成分/技术",
+        "en": "Other: ingredient / tech"
+      },
+      "definition": {
+        "zh": "属于「成分/技术」分类，但该标签尚未收录进字典，需人工确认。",
+        "en": "Under the ingredient/technology category, but this tag is not yet in the dictionary — pending human review."
+      },
+      "source": "pending_placeholder"
+    },
+    {
+      "term_id": "other_claim",
+      "display": {
+        "zh": "其他：宣称",
+        "en": "Other: claim"
+      },
+      "definition": {
+        "zh": "属于「功效宣称」分类，但该标签尚未收录进字典，需人工确认。",
+        "en": "Under the functional-claim category, but this tag is not yet in the dictionary — pending human review."
+      },
+      "source": "pending_placeholder"
+    },
+    {
+      "term_id": "other_event",
+      "display": {
+        "zh": "其他：活动",
+        "en": "Other: event"
+      },
+      "definition": {
+        "zh": "属于「市场活动」分类，但该标签尚未收录进字典，需人工确认。",
+        "en": "Under the market-event category, but this tag is not yet in the dictionary — pending human review."
+      },
+      "source": "pending_placeholder"
+    },
+    {
+      "term_id": "other_regulation",
+      "display": {
+        "zh": "其他：法规",
+        "en": "Other: regulation"
+      },
+      "definition": {
+        "zh": "属于「法规」分类，但该标签尚未收录进字典，需人工确认。",
+        "en": "Under the regulation category, but this tag is not yet in the dictionary — pending human review."
+      },
+      "source": "pending_placeholder"
     }
   ],
   "source_links": [
@@ -1576,8 +1641,8 @@
     {
       "section_id": "ingredient_innovation",
       "title": {
-        "zh": "新成分 & 新趋势情报",
-        "en": "New Ingredients & Trend Intelligence"
+        "zh": "新成分与新技术",
+        "en": "New Ingredients & Technologies"
       },
       "summary": {
         "zh": "",
@@ -1603,7 +1668,8 @@
           "tags": [
             "peptides",
             "anti_aging",
-            "research_science"
+            "research_science",
+            "other_claim"
           ],
           "glossary_term_ids": [
             "peptides",
@@ -1666,7 +1732,8 @@
           "tags": [
             "encapsulation_delivery",
             "sustained_release",
-            "enhance_penetration"
+            "enhance_penetration",
+            "other_ingredient_tech"
           ],
           "glossary_term_ids": [
             "encapsulation_delivery",
@@ -2135,7 +2202,8 @@
           },
           "tags": [
             "technology_process_innovation",
-            "research_science"
+            "research_science",
+            "other_event"
           ],
           "glossary_term_ids": [
             "technology_process_innovation",
@@ -2276,7 +2344,8 @@
             "en": "IECIC-related judgment affects ingredient use boundaries, communication approach, and customer compliance review priorities."
           },
           "tags": [
-            "iecic"
+            "iecic",
+            "other_regulation"
           ],
           "glossary_term_ids": [
             "iecic"
@@ -2475,6 +2544,20 @@
         "new_ingredient_filing",
         "iecic",
         "claim_substantiation"
+      ]
+    },
+    {
+      "category_id": "pending_review",
+      "display": {
+        "zh": "待确认",
+        "en": "Pending review"
+      },
+      "color_class": "tag-pending",
+      "tags": [
+        "other_ingredient_tech",
+        "other_claim",
+        "other_event",
+        "other_regulation"
       ]
     }
   ]
